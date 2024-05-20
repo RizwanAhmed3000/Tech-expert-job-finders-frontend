@@ -18,18 +18,22 @@ const Home = () => {
         <img
           src={BannerWaves}
           alt="banner-waves"
-          className="absolute top-[50%] left-[15rem] w-[5rem]"
+          className="absolute bottom-0 right-0 w-[90rem]"
         />
-        <img src={BannerParticle01} alt="Particle-01" />
+        <img
+          src={BannerParticle01}
+          alt="Particle-01"
+          className="absolute top-[40%] left-[1.5%] w-[6rem]"
+        />
         <img
           src={BannerParticle02}
           alt="Particle-02"
-          className="absolute top-[60%] left-[2rem] w-[5.5rem]"
+          className="absolute top-[65%] left-[1.5%] w-[5.5rem]"
         />
         <img
           src={BannerParticle03}
           alt="Particle-03"
-          className="absolute top-[22%] left-[12%] w-[2.5rem]"
+          className="absolute top-[20%] left-[12%] w-[2.2rem]"
         />
         <div className="bannerWrapper mx-[3%]"></div>
       </div>
