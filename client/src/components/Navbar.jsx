@@ -24,6 +24,7 @@ const Navbar = () => {
               { linkTitle: "Template", LinkURL: "/", badge: false },
               { linkTitle: "Word Template", LinkURL: "/", badge: true },
               { linkTitle: "Order Resume", LinkURL: "/", badge: true },
+              { linkTitle: "Blog", LinkURL: "/", badge: false },
               { linkTitle: "Job Alert", LinkURL: "/", badge: false },
               { linkTitle: "Login", LinkURL: "/", badge: false },
               { linkTitle: "Sign Up", LinkURL: "/", badge: false },

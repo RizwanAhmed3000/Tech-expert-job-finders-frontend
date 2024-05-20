@@ -14,7 +14,7 @@ const Home = () => {
     <div className="w-full relative">
       <Navbar />
 
-      <div className="bannerCont relative w-full min-h-dvh">
+      <div className="bannerCont relative z-0 w-full h-dvh px-[4%]">
         <img
           src={BannerWaves}
           alt="banner-waves"
@@ -35,7 +35,34 @@ const Home = () => {
           alt="Particle-03"
           className="absolute top-[20%] left-[12%] w-[2.2rem]"
         />
-        <div className="bannerWrapper mx-[3%]">nabdev changes</div>
+
+        <div className="bannerWrapper relative z-[40] w-full h-full flex items-center justify-center">
+          <div className="contentSide01 w-[50%] flex flex-col items-start justify-center">
+            <h4 className="text-[1.6rem] leading-[1.6rem] font-medium">
+              Welcome to TechexpertJobfinders
+            </h4>
+
+            <h1 className="text-[2.5rem] leading-[2.5rem] font-semibold">
+              Create a <br /> compelling CV with <br /> AI assistance in <br />{" "}
+              minutes.
+            </h1>
+
+            <h3>Online resume builder with AI assistance</h3>
+
+            <p>
+              Seamlessly create{" "}
+              <span className="text-theme-red">
+                an exceptional resume/CV with AI-powered features,
+              </span>{" "}
+              fine-tuning expert content to match your individuality.
+            </p>
+
+            <button className="bg-theme-red text-white px-[1rem] py-[0.6rem] rounded-md">
+              Get Started
+            </button>
+          </div>
+          <div className="contentSide02 w-[50%]"></div>
+        </div>
       </div>
     </div>
   );
