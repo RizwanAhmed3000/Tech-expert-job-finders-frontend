@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+    font-family: "Overpass", sans-serif;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .signup::before {
+    width: 10rem;
+    height: 8rem;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    transform: translate(-90%, -90%);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+    border-radius: 100%;
+  }
+
+  .signup:hover::before {
+    transform: translate(-10%, -25%);
+  }
+}
