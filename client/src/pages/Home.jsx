@@ -35,7 +35,7 @@ const Home = () => {
           alt="Particle-03"
           className="absolute top-[20%] left-[12%] w-[2.2rem]"
         />
-        <div className="bannerWrapper mx-[3%]"></div>
+        <div className="bannerWrapper mx-[3%]">nabdev changes</div>
       </div>
     </div>
   );
