@@ -36,7 +36,7 @@ const Navbar = () => {
                     linkTitle === "Template" &&
                     setIsDropdownOpen(!isDropdownOpen)
                   }
-                  className={`text-[1.7rem] leading-[1.5rem] font-normal flex items-center gap-[0.2rem] pt-[1rem] pb-[1rem] relative z-10 transition-all overflow-hidden ${
+                  className={`text-[1.6rem] leading-[1.6rem] font-normal flex items-center gap-[0.2rem] py-[0.8rem] relative z-10 transition-all overflow-hidden ${
                     linkTitle === "Sign Up"
                       ? "signup text-theme-red bg-white rounded-md px-[1rem] hover:text-white before:bg-theme-red"
                       : "text-white hover:text-theme-red"

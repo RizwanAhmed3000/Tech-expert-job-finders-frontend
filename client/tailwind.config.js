@@ -22,7 +22,7 @@ export default {
         "coral-light": "#fef6f6",
       },
       backgroundImage: {
-        'testimonial-custom-bg': "url('https://img.freepik.com/premium-photo/3d-rendering-abstract-gray-paper-cut-art-background-design-poster-template-gray-background-pattern-abstract-background_41204-18352.jpg?w=360')",
+        "solution-bg-image": "url('/src/assets/solution-bg.jpg')",
       },
     },
   },
