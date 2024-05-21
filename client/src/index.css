@@ -11,7 +11,7 @@
 
   html {
     font-size: 62.5%;
-    font-family: "Overpass", sans-serif;
+    font-family: "Poppins", sans-serif;
     scroll-behavior: smooth;
   }
 }
@@ -31,6 +31,6 @@
   }
 
   .signup:hover::before {
-    transform: translate(-10%, -25%);
+    transform: translate(-8%, -25%);
   }
 }

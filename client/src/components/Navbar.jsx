@@ -24,6 +24,7 @@ const Navbar = () => {
               { linkTitle: "Template", LinkURL: "/", badge: false },
               { linkTitle: "Word Template", LinkURL: "/", badge: true },
               { linkTitle: "Order Resume", LinkURL: "/", badge: true },
+              { linkTitle: "Blog", LinkURL: "/", badge: false },
               { linkTitle: "Job Alert", LinkURL: "/", badge: false },
               { linkTitle: "Login", LinkURL: "/", badge: false },
               { linkTitle: "Sign Up", LinkURL: "/", badge: false },
@@ -35,21 +36,21 @@ const Navbar = () => {
                     linkTitle === "Template" &&
                     setIsDropdownOpen(!isDropdownOpen)
                   }
-                  className={`text-[1.7rem] leading-[1.5rem] font-normal flex items-center gap-[0.2rem] pt-[1.2rem] pb-[0.8rem] relative z-10 transition-all overflow-hidden ${
+                  className={`text-[1.7rem] leading-[1.5rem] font-normal flex items-center gap-[0.2rem] pt-[1rem] pb-[1rem] relative z-10 transition-all overflow-hidden ${
                     linkTitle === "Sign Up"
-                      ? "signup text-theme-red bg-white leading-[1rem] rounded-md px-[1rem] hover:text-white before:bg-theme-red"
+                      ? "signup text-theme-red bg-white rounded-md px-[1rem] hover:text-white before:bg-theme-red"
                       : "text-white hover:text-theme-red"
                   }`}
                 >
                   {linkTitle}
                   {badge && (
-                    <span className="badge text-[1rem] leading-[1rem] text-white bg-red-500 px-[0.2rem] pt-[0.2rem] mb-[0.2rem] flex items-center rounded-sm">
+                    <span className="badge text-[1rem] leading-[1rem] text-white bg-red-500 px-[0.2rem] py-[0.1rem] flex items-center rounded-sm">
                       Hot
                     </span>
                   )}
                   {linkTitle === "Template" && (
                     <FaChevronDown
-                      className={`text-[1.5rem] font-bold mb-[0.5rem] ml-[0.3rem] transition-all ${
+                      className={`text-[1.5rem] font-bold mb-[0.2rem] ml-[0.3rem] transition-all ${
                         isDropdownOpen ? "rotate-180" : "rotate-0"
                       }`}
                     />
