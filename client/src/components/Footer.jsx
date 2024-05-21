@@ -58,59 +58,59 @@ const Footer = () => {
                     <div className='flex justify-between'>
                         <ul className="list-none">
                             <li>
-                                <a className="text-lg text-white hover:underline" href="#">
+                                <a className="text-lg text-white hover:text-theme-red" href="#">
                                     Home
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Order Resume
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Cover Later
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Word Template
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Blog
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Url to PDF
                                 </a>
                             </li>
                         </ul>
                         <ul className="list-none pr-[30%]">
                             <li>
-                                <a className="text-lg text-white hover:underline" href="#">
+                                <a className="text-lg text-white hover:text-theme-red" href="#">
                                     Download App
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Resume
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Website
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Job Alert
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Career
                                 </a>
                             </li>
@@ -128,39 +128,39 @@ const Footer = () => {
                     <div className='flex justify-between'>
                         <ul className="list-none">
                             <li>
-                                <a className="text-lg text-white hover:underline" href="#">
+                                <a className="text-lg text-white hover:text-theme-red" href="#">
                                     About Us
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Privacy Policy
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Affiliate
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Program
                                 </a>
                             </li>
                         </ul>
                         <ul className="list-none pr-[30%]">
                             <li>
-                                <a className="text-lg text-white hover:underline" href="#">
+                                <a className="text-lg text-white hover:text-theme-red" href="#">
                                     Contact Us
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Terms & Conditions
                                 </a>
                             </li>
                             <li>
-                                <a className="text-white text-lg hover:underline" href="#">
+                                <a className="text-white text-lg hover:text-theme-red" href="#">
                                     Sponsorship Program
                                 </a>
                             </li>
