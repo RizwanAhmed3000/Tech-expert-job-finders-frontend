@@ -21,7 +21,9 @@ export default {
         "theme-yellow": "#ffa910",
         "coral-light": "#fef6f6",
       },
-      backgroundImage: {},
+      backgroundImage: {
+        "solution-bg-image": "url('/src/assets/solution-bg.jpg')",
+      },
     },
   },
   plugins: [],
