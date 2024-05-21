@@ -42,7 +42,7 @@ const Home = () => {
               Welcome to TechexpertJobfinders
             </h4>
 
-            <h1 className="text-[2.5rem] leading-[2.5rem] font-semibold">
+            <h1 className="text-[3.5rem] leading-[3.5rem] font-semibold text-theme-red">
               Create a <br /> compelling CV with <br /> AI assistance in <br />{" "}
               minutes.
             </h1>
