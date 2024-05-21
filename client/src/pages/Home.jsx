@@ -7,20 +7,22 @@ import Solution from "../components/Solution";
 import Templates from "../components/Templates";
 
 
-
 const Home = () => {
   return (
-<>
+
 <div className="w-full relative">
       <Navbar />
+      
 
       <Banner />
+
+
 
       <Solution />
       <Templates />
     </div>
 
-</>
+
   );
 };
 
