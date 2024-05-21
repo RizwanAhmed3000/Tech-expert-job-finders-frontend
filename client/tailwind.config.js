@@ -21,7 +21,9 @@ export default {
         "theme-yellow": "#ffa910",
         "coral-light": "#fef6f6",
       },
-      backgroundImage: {},
+      backgroundImage: {
+        'testimonial-custom-bg': "url('https://img.freepik.com/premium-photo/3d-rendering-abstract-gray-paper-cut-art-background-design-poster-template-gray-background-pattern-abstract-background_41204-18352.jpg?w=360')",
+      },
     },
   },
   plugins: [],
