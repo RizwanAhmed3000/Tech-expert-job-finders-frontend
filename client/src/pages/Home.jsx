@@ -8,11 +8,13 @@ import BannerWaves from "../assets/banner-bg.png";
 import BannerParticle01 from "../assets/banner-particle-01.png";
 import BannerParticle02 from "../assets/banner-particle-02.png";
 import BannerParticle03 from "../assets/banner-particle-03.png";
+import Section2 from "../components/Section2";
 
 const Home = () => {
   return (
     <div className="w-full relative">
       <Navbar />
+      
 
       <div className="bannerCont relative z-0 w-full h-dvh px-[4%]">
         <img
@@ -64,6 +66,7 @@ const Home = () => {
           <div className="contentSide02 w-[50%]"></div>
         </div>
       </div>
+     
     </div>
   );
 };
