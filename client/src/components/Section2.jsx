@@ -11,7 +11,6 @@ import timer from "../assets/3.webp";
 import editor from "../assets/6.webp";
 import bulb from "../assets/5.webp";
 
-
 const Section2 = () => {
   const featureCardContent = [
     {
@@ -48,40 +47,35 @@ const Section2 = () => {
       img: star,
       head: "Follow Tips From Experts",
       para: "Our experts' tips and AI assistance will show you how to write a resume.",
-     
     },
     {
       id: 3,
       img: graph,
       head: "20+ Best Resume Templates",
       para: "Create a modern and professional resume and cover letter.",
-      
     },
     {
       id: 4,
       img: timer,
       head: " Resume / CV Check",
       para: "Our builder will give you suggestions on how to improve your resume.",
-      
     },
     {
       id: 5,
       img: bulb,
       head: " It's Fast and Easy to Use",
       para: "Our online resume / CV builder will help you write a  perfect resume in minutes.",
-      
     },
     {
       id: 6,
       img: editor,
       head: "Flexible Text Editor",
       para: "You will have access to the best text editor available.",
-      
     },
   ];
 
   return (
-    <div className="h-screen mt-20">
+    <div className="pb-[5rem] mt-20">
       <div className="flex justify-center flex-col items-center">
         <h3 className="text-theme-yellow text- font-bold">
           CREATE A CV IN MINIUTES
@@ -91,9 +85,9 @@ const Section2 = () => {
         </h1>
       </div>
       <div className="flex justify-center gap-x-24 p-12 px-1/2">
-        {featureCardContent.map((product,index) => (
+        {featureCardContent.map((product, index) => (
           <FeatureCards
-          key={index}
+            key={index}
             img={product.img}
             head={product.head}
             para={product.para}
@@ -125,14 +119,14 @@ const Section2 = () => {
           ></iframe>
         </div>
         <div className="w-1/3 flex flex-wrap">
-            {featureAssistanceContent.map((product,index) => (
-          <FeatureAsistanceContent
-          key={index}
-            img={product.img}
-            head={product.head}
-            para={product.para}
-          />
-        ))}
+          {featureAssistanceContent.map((product, index) => (
+            <FeatureAsistanceContent
+              key={index}
+              img={product.img}
+              head={product.head}
+              para={product.para}
+            />
+          ))}
         </div>
       </div>
     </div>

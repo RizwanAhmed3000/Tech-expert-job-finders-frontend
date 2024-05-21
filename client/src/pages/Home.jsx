@@ -5,24 +5,33 @@ import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
 import Solution from "../components/Solution";
 import Templates from "../components/Templates";
-
+import Section2 from "../components/Section2";
+import WorksSection from "../components/WorksSection";
+import ChooseUsSection from "../components/ChooseUsSection";
+import CounterCard from "../components/CounterCard";
+import DownloadSection from "../components/DownloadSection";
+import TestimonialSection from "../components/TestimonialSection";
+import OurCompanySection from "../components/OurCompanySection";
+import BlogCard from "../components/BlogCard";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
-
-<div className="w-full relative">
+    <div className="w-full relative">
       <Navbar />
-      
-
       <Banner />
-
-
-
-      <Solution />
+      <Section2 />
+      <WorksSection />
+      <ChooseUsSection />
+      <CounterCard />
       <Templates />
+      <DownloadSection />
+      <Solution />
+      <TestimonialSection />
+      <OurCompanySection />
+      <BlogCard />
+      <Footer />
     </div>
-
-
   );
 };
 
