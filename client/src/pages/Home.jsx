@@ -11,7 +11,8 @@ import BannerParticle03 from "../assets/banner-particle-03.png";
 
 const Home = () => {
   return (
-    <div className="w-full relative">
+<>
+<div className="w-full relative">
       <Navbar />
 
       <div className="bannerCont relative w-full min-h-dvh">
@@ -38,6 +39,8 @@ const Home = () => {
         <div className="bannerWrapper mx-[3%]">nabdev changes</div>
       </div>
     </div>
+
+</>
   );
 };
 
