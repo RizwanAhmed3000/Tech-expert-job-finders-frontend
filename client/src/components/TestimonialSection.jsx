@@ -1,27 +1,3 @@
-// import React from 'react'
-// import TestimonialCardData from "../dummyData";
-// import TestimonialCard from "../components/TestimonialCard";
-// const TestimonialSection = () => {
-//   return (
-//     <div className=' bg-theme-red h-[70vh] '>
-//         <h3 className='text-center text-[2rem] pt-9'>Testimonials</h3>
-//         <h1 className='text-center text-[3rem] text-white font-bold'>Some Lovely Feedback From <br /> Our Clients</h1>
-
-//         <div className="flex flex-no-wrap justify-around mt-[3rem] transition-transform duration-700">
-//         {TestimonialCardData.map((data) => (
-//           <TestimonialCard data={data} key={data.name} />
-//         ))}
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default TestimonialSection
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import TestimonialCardData from "../dummyData";
 import TestimonialCard from "../components/TestimonialCard";
@@ -45,7 +21,7 @@ const TestimonialSection = () => {
 
   return (
     <div className='bg-theme-red h-[70vh] overflow-hidden'>
-      <h3 className='text-center text-[2rem] pt-9'>Testimonials</h3>
+      <h3 className='text-center text-[2rem] pt-9 uppercase'>Testimonials</h3>
       <h1 className='text-center text-[3rem] text-white font-bold'>
         Some Lovely Feedback From <br /> Our Clients
       </h1>

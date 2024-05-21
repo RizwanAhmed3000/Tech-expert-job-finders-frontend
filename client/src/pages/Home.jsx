@@ -3,11 +3,13 @@ import React from "react";
 // Import Component
 import Navbar from "../components/Navbar";
 
+
 // Import Images
 import BannerWaves from "../assets/banner-bg.png";
 import BannerParticle01 from "../assets/banner-particle-01.png";
 import BannerParticle02 from "../assets/banner-particle-02.png";
 import BannerParticle03 from "../assets/banner-particle-03.png";
+
 
 const Home = () => {
   return (
@@ -64,6 +66,8 @@ const Home = () => {
           <div className="contentSide02 w-[50%]"></div>
         </div>
       </div>
+
+      
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import TestimonialSection from './components/TestimonialSection'
+
 // Import Pages
 import Home from "./pages/Home";
 
@@ -8,7 +8,7 @@ const App = () => {
     <>
       <div className="w-full">
         <Home />
-        <TestimonialSection/>
+        
       </div>
 
       
