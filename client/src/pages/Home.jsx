@@ -10,7 +10,8 @@ import Templates from "../components/Templates";
 
 const Home = () => {
   return (
-    <div className="w-full relative">
+<>
+<div className="w-full relative">
       <Navbar />
 
       <Banner />
@@ -18,6 +19,8 @@ const Home = () => {
       <Solution />
       <Templates />
     </div>
+
+</>
   );
 };
 
