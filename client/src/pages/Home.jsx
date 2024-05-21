@@ -6,17 +6,23 @@ import Banner from "../components/Banner";
 import Solution from "../components/Solution";
 import Templates from "../components/Templates";
 
+
 const Home = () => {
   return (
-    <div className="w-full relative">
+
+<div className="w-full relative">
       <Navbar />
+      
 
       <Banner />
 
-      <Solution />
 
+
+      <Solution />
       <Templates />
     </div>
+
+
   );
 };
 
