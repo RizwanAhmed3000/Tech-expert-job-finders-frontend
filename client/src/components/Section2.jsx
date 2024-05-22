@@ -4,12 +4,12 @@ import resumeIcons from "../assets/Cv.png";
 import websiteWeb from "../assets/website.webp";
 import letter from "../assets/Letter.png";
 import FeatureAsistanceContent from "./FeatureAsistanceContent";
-import lock from "../assets/1.webp";
-import star from "../assets/4.webp";
-import graph from "../assets/2.webp";
-import timer from "../assets/3.webp";
-import editor from "../assets/6.webp";
-import bulb from "../assets/5.webp";
+import lock from "../assets/FeaturesIcons/icons8-lock-50.png";
+import star from "../assets/FeaturesIcons/icons8-star-50.png";
+import graph from "../assets/FeaturesIcons/icons8-graph-64.png";
+import timer from "../assets/FeaturesIcons/icons8-timer-50.png";
+import editor from "../assets/FeaturesIcons/icons8-file-100.png";
+import bulb from "../assets/FeaturesIcons/icons8-bulb-30.png";
 
 const Section2 = () => {
   const featureCardContent = [
@@ -118,7 +118,7 @@ const Section2 = () => {
             allowfullscreen
           ></iframe>
         </div>
-        <div className="w-1/3 flex flex-wrap">
+        <div className="w-1/3 flex flex-wrap p-3">
           {featureAssistanceContent.map((product, index) => (
             <FeatureAsistanceContent
               key={index}
