@@ -2,7 +2,7 @@ import React from "react";
 import banner from "../assets/sideban.png";
 function ChooseUsSection() {
   return (
-    <div className="flex justify-center gap-x-24 py-40 ">
+    <div className="flex  justify-center gap-x-24 py-40 ">
       <div className="w-[30%] pt-28">
         <h2 className="text-theme-yellow text-4xl py-8">Why Choose Us</h2>
         <h1 className="text-theme-red text-6xl pb-4 font-bold leading-tight">
