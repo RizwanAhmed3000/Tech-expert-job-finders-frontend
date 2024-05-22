@@ -6,7 +6,7 @@ function CounterCard() {
       <div className="hover:border-l-2 hover:border-t-2 hover:border-r-0 hover:border-b-0 border-dashed border-theme-black border-r-2 border-b-2 relative z-[2] text-center w-1/5 py-16  hover:bg-white hover:bg-opacity-20 transition-all duration-300 mr-8">
         <div className="relative">
           <p className="font-bold text-gray-600 text-9xl absolute -z-[1] w-full">
-            Y
+            TE
           </p>
           <div className="hover:translate-y-[-10px] transition-transform duration-300">
             <p className="text-theme-black text-6xl font-bold pt-6">633787</p>
@@ -17,7 +17,7 @@ function CounterCard() {
       <div className="hover:border-l-2 hover:border-t-2 hover:border-r-0 hover:border-b-0 border-dashed border-theme-black border-r-2 border-b-2 relative z-[2] text-center w-1/5 py-16  hover:bg-white hover:bg-opacity-20 transition-all duration-300 mr-8">
         <div className="relative">
           <p className="font-bold text-gray-600 text-9xl absolute -z-[1] w-full">
-            Y
+            CH
           </p>
           <div className="hover:translate-y-[-10px] transition-transform duration-300">
             <p className="text-theme-black text-6xl font-bold pt-6">633787</p>
@@ -30,7 +30,7 @@ function CounterCard() {
       <div className="hover:border-l-2 hover:border-t-2 hover:border-r-0 hover:border-b-0 border-dashed border-theme-black border-r-2 border-b-2 relative z-[2] text-center w-1/5 py-16  hover:bg-white hover:bg-opacity-20 transition-all duration-300 mr-8">
         <div className="relative">
           <p className="font-bold text-gray-600 text-9xl absolute -z-[1] w-full">
-            Y
+            EX
           </p>
           <div className="hover:translate-y-[-10px] transition-transform duration-300">
             <p className="text-theme-black text-6xl font-bold pt-6">633787</p>
@@ -43,7 +43,7 @@ function CounterCard() {
       <div className="hover:border-l-2 hover:border-t-2 hover:border-r-0 hover:border-b-0 border-dashed border-theme-black border-r-2 border-b-2 relative z-[2] text-center w-1/5 py-16  hover:bg-white hover:bg-opacity-20 transition-all duration-300 mr-8">
         <div className="relative">
           <p className="font-bold text-gray-600 text-9xl absolute -z-[1] w-full">
-            Y
+            PERT
           </p>
           <div className="hover:translate-y-[-10px] transition-transform duration-300">
             <p className="text-theme-black text-6xl font-bold pt-6">633787</p>
