@@ -1,18 +1,14 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 
 // Import React Icon
 import { BsArrowRight } from "react-icons/bs";
 
 // Import Image
-import coverLetterTemplate from "../assets/templates/cv-template-01.png";
-import Footer from "../components/Footer";
+import coverLetterTemplate from "../assets/templates/cv-template-03.png";
 
 const CoverLetter = () => {
   return (
     <div className="w-full relative">
-      <Navbar />
-
       <div className="coverLetterCont flex flex-col px-[4%]">
         {/* Content Side 01 */}
         <div className="w-full flex flex-col items-center gap-[0.5rem] mt-[8rem] py-[5rem]">
@@ -61,8 +57,6 @@ const CoverLetter = () => {
           </button>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

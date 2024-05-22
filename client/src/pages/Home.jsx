@@ -13,12 +13,10 @@ import DownloadSection from "../components/DownloadSection";
 import TestimonialSection from "../components/TestimonialSection";
 import OurCompanySection from "../components/OurCompanySection";
 import BlogSection from "../components/BlogSection";
-import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     <div className="w-full relative">
-      <Navbar />
       <Banner />
       <Section2 />
       <WorksSection />
@@ -30,7 +28,6 @@ const Home = () => {
       <TestimonialSection />
       <OurCompanySection />
       <BlogSection />
-      <Footer />
     </div>
   );
 };
