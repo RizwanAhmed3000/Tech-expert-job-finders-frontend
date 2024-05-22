@@ -8,10 +8,7 @@ const App = () => {
     <>
       <div className="w-full">
         <Home />
-        
       </div>
-
-      
     </>
   );
 };

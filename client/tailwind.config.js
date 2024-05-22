@@ -19,7 +19,7 @@ export default {
         "theme-red": "#ec4843",
         "theme-black": "#000000",
         "theme-yellow": "#ffa910",
-        "coral-light": "#fef6f6",
+        "coral-light": "#FEF6F5",
       },
       backgroundImage: {
         "solution-bg-image": "url('/src/assets/solution-bg.jpg')",
