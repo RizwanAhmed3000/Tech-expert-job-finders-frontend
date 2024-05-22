@@ -12,7 +12,7 @@ import CounterCard from "../components/CounterCard";
 import DownloadSection from "../components/DownloadSection";
 import TestimonialSection from "../components/TestimonialSection";
 import OurCompanySection from "../components/OurCompanySection";
-import BlogCard from "../components/BlogCard";
+import BlogSection from "../components/BlogSection";
 import Footer from "../components/Footer";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
       <Solution />
       <TestimonialSection />
       <OurCompanySection />
-      <BlogCard />
+      <BlogSection />
       <Footer />
     </div>
   );
