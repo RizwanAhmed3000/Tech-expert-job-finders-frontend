@@ -23,6 +23,7 @@ export default {
       },
       backgroundImage: {
         "solution-bg-image": "url('/src/assets/solution-bg.jpg')",
+        "login-bg-image": "url('/src/assets/loginbg.jpg')",
       },
     },
   },

@@ -1,6 +1,7 @@
 import React from "react";
 
 // Import Pages
+import Home from "./pages/Home";
 // import Home from "./pages/Home";
 import Resume from "./pages/Resume";
 import CoverLetter from "./pages/CoverLetter";
