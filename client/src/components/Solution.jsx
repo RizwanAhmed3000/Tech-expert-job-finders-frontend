@@ -22,7 +22,7 @@ const Solution = () => {
             designed resume templates. Get noticed, Get hired.
           </p>
 
-          <button className="text-[1.6rem] leading-[1.6rem] bg-theme-red py-[1.5rem] px-[1.5rem] rounded-xl mt-[2rem]">
+          <button className="text-[1.6rem] overflow-hidden leading-[1.6rem] bg-theme-red py-[1.5rem] px-[1.5rem] rounded-xl mt-[2rem] before:transition-all before:duration-[1200ms] relative z-[10] before:content-[''] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-yellow before:top-0 before:left-0  before:translate-x-[-125%]  hover:before:translate-x-[0%] before:rounded-2xl">
             ORDER A RESUME NOW
           </button>
         </div>
