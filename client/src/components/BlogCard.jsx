@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import blogImg1 from "../assets/images/blogImg1.jpeg";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
+import { blogCardData } from "../dummyData";
+
 const BlogCard = ({ name, desc, imgUrl }) => {
     return (
         <Card
