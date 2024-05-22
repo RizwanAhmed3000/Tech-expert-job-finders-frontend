@@ -14,8 +14,10 @@ function WorksSection() {
           </p>
         </div>
       </div>
-      <div className="flex  justify-center pb-16">
-        <div className='bg-white group/card overflow-hidden w-1/5 before:transition-all before:duration-[1200ms] text-start mb-10 mr-12 relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-red  before:translate-x-[-101%]  hover:before:translate-x-[0%] '>
+
+      <div className="flex flex-wrap justify-center pb-16">
+        <div className='bg-white group/card overflow-hidden w-[30rem] before:transition-all before:duration-[1200ms] text-start mb-10 mr-12 relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-red  before:translate-x-[-101%]  hover:before:translate-x-[0%] '>
+
           <div className="pt-14 px-6">
             <img className="h-36" src={searchicon} alt="" />
           </div>
@@ -28,7 +30,7 @@ function WorksSection() {
             </h2>
           </div>
         </div>
-        <div className='bg-white w-1/5 group/card overflow-hidden before:transition-all before:duration-[1200ms]  text-start mb-10 mr-12 relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-red  before:translate-x-[-101%]  hover:before:translate-x-[0%]'>
+        <div className='bg-white w-[30rem] group/card overflow-hidden before:transition-all before:duration-[1200ms]  text-start mb-10 mr-12 relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-red  before:translate-x-[-101%]  hover:before:translate-x-[0%]'>
           <div className="pt-14 px-6">
             <img className="h-36" src={research} alt="" />
           </div>
@@ -41,7 +43,7 @@ function WorksSection() {
             </h2>
           </div>
         </div>
-        <div className='bg-white w-1/5 group/card overflow-hidden before:transition-all before:duration-[1200ms]  text-start mb-10 relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-red  before:translate-x-[-101%]  hover:before:translate-x-[0%]'>
+        <div className='bg-white w-[30rem] group/card overflow-hidden before:transition-all before:duration-[1200ms]  text-start mb-10 relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-red  before:translate-x-[-101%]  hover:before:translate-x-[0%]'>
           <div className="pt-14">
             <img className="h-36 px-6" src={blueprint} alt="" />
           </div>
