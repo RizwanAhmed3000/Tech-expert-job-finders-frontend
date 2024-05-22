@@ -19,7 +19,7 @@ const WebsiteTemplateComp = ({ imgUrl, name, desc }) => {
         <Card.Body className="p-[10px] flex justify-between flex-col h-1/2">
           <div className="group-hover/item:-translate-y-[3rem] relative duration-300 ease-out z-10 ">
             <Card.Title className="text-theme-red text-[2.3rem] font-bold my-5">
-              {name}
+              {'Mark'}
             </Card.Title>
             <Card.Text className="text-theme-black text-xl my-4 mb-[0]">
               {desc}
@@ -28,7 +28,7 @@ const WebsiteTemplateComp = ({ imgUrl, name, desc }) => {
           <div className="">
             <Button
               variant="primary"
-              className="text-white text-lg group-hover/item:text-theme-red duration-300 ease-out -translate-y-4"
+              className="text-white  text-lg group-hover/item:text-theme-red duration-300 ease-out -translate-y-4"
             >
               View Template <ArrowForwardIcon />
             </Button>
