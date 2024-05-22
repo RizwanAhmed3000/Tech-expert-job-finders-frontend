@@ -4,7 +4,6 @@ import React from "react";
 import { BsPlusLg } from "react-icons/bs";
 
 // Import Images
-import CVTemplate01 from "../assets/templates/cv-template-01.png";
 import CVTemplate02 from "../assets/templates/cv-template-02.png";
 import CVTemplate03 from "../assets/templates/cv-template-03.png";
 import CVTemplate04 from "../assets/templates/cv-template-04.png";
@@ -23,7 +22,7 @@ const Templates = () => {
 
       <div className="templatesRow min-w-full flex gap-[2rem] mt-[5rem] overflow-auto">
         {[
-          CVTemplate01,
+          CVTemplate04,
           CVTemplate02,
           CVTemplate03,
           CVTemplate04,

@@ -1,34 +1,4 @@
-// import React from "react";
-// // import { Card, CardContent, CardHeader, Typography } from "@mui/material";
-// import ButtonCmp from "./ButtonCmp";
-// import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-
-// const JobCard = (data) => {
-//   // console.log(data.data);
-//   const { companyName, designation, general, location, country } = data.data;
-//   return (
-//     <div className="flex gap-5 items-start p-6 mb-2">
-//       <div className="bg-gray">
-//         <WorkOutlineIcon />
-//       </div>
-//       <div className="leading-4">
-//         <p className="text-2xl">{companyName}</p>
-//         <p className="font-bold text-2xl">{designation}</p>
-//         <p className="text-2xl">{general}</p>
-//         <p className=" text-2xl">{location}</p>
-//         <p className=" text-2xl">{country}</p>
-//       </div>
-//       <div>
-//         <ButtonCmp text="Apply" />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default JobCard;
-
 import React from "react";
-import ButtonCmp from "./ButtonCmp";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 
 const JobCard = (data) => {

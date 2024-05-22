@@ -61,10 +61,9 @@ const WebsiteTemplate = () => {
     },
   ];
   return (
-    <div className="w-full h-screen relative">
-      
+    <div className="w-full relative">
       <div className="pt-24 bg-white"></div>
-      <div className="blogCardCont  grid grid-cols-3 px-96 py-28  place-items-center  bg-coral-light ">
+      <div className="blogCardCont  grid grid-cols-3 gap-[2rem_20rem] px-96 py-28  place-items-center  bg-coral-light ">
         {WebsiteTemplateData.map((prop) => (
           <WebsiteTemplateComp
             imgUrl={prop.imgUrl}
@@ -72,19 +71,16 @@ const WebsiteTemplate = () => {
             desc={prop.desc}
           />
         ))}
-        
-      
-         
       </div>
       <div className="flex justify-center bg-coral-light pb-10">
-      <button className="text-[1.6rem] leading-[1.6rem] relative z-10 bg-theme-red text-white px-[2rem] py-[1.2rem] rounded-lg transition-all overflow-hidden before:content-[''] before:absolute before:z-[-1] before:top-0 before:left-0 before:w-full before:h-full before:bg-theme-yellow before:translate-x-[-100%] before:translate-y-[100%] before:rounded-lg hover:before:translate-x-[0%] hover:before:translate-y-[0%] before:transition-all before:duration-300">
+        <button className="text-[1.6rem] leading-[1.6rem] relative z-10 bg-theme-red text-white px-[2rem] py-[1.2rem] rounded-lg transition-all overflow-hidden before:content-[''] before:absolute before:z-[-1] before:top-0 before:left-0 before:w-full before:h-full before:bg-theme-yellow before:translate-x-[-100%] before:translate-y-[100%] before:rounded-lg hover:before:translate-x-[0%] hover:before:translate-y-[0%] before:transition-all before:duration-300">
           Load More
         </button>
       </div>
-      <GetAheadBanner/>
+      <GetAheadBanner />
     </div>
   );
 };
 
 export default WebsiteTemplate;
-// 
+//

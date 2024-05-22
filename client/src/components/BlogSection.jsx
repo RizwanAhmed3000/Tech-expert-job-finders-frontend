@@ -1,5 +1,5 @@
 import React from "react";
-import blogCardData from "../dummyData";
+import { blogCardData } from "../dummyData";
 import BlogCard from "./BlogCard";
 
 const BlogSection = () => {
