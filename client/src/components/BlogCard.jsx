@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import blogImg1 from "../assets/images/blogImg1.jpeg";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import blogCardData from "../dummyData";
+import { blogCardData } from "../dummyData";
 
 const BlogCard = () => {
   return (
