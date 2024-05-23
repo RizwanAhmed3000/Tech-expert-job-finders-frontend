@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import person from "../../assets/person.png"
 
 const DashSidebar = () => {
+
   const menus = [
     { name: "Dashboard", link: "/", icon: MdOutlineDashboard },
     { name: "My Resume", link: "/", icon: IoDocument },
@@ -67,6 +68,9 @@ const DashSidebar = () => {
       </div>
 
   );
+
+ 
+
 };
 
 export default DashSidebar;
