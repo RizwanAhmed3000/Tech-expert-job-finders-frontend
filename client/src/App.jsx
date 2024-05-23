@@ -55,7 +55,9 @@ const DashboardRoutes = () => {
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
         />
+
         <div className="subDashCont min-h-dvh flex">
+
           <DashSidebar
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}

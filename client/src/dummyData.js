@@ -138,4 +138,23 @@ export const jobCardData = [
     country: "USA",
   },
 ];
+
+export  const  dummyPost = {
+  profileImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_AF0yCaFana-pzjMgZa-xF3cBmIxvzaUStH6IzcAiCg&s',
+  name: 'John Doe',
+  timeAgo: '2 hours ago',
+  title: 'Sample Post Title',
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_AF0yCaFana-pzjMgZa-xF3cBmIxvzaUStH6IzcAiCg&s',
+  comments: [
+    {
+      name: 'Jane Smith',
+      text: 'This is a sample comment.',
+    },
+    {
+      name: 'Alice Johnson',
+      text: 'Another sample comment.',
+    },
+  ],
+};
+
 export default TestimonialCardData;
