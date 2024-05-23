@@ -19,7 +19,7 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <header className="header w-full h-[7rem] absolute top-0 left-0 flex items-center bg-black">
+    <header className="header w-full h-[7rem] absolute z-[50] top-0 left-0 flex items-center bg-black">
       <div className="headerWrapper w-full mx-[2%] flex items-center justify-between">
         {/* Header Left */}
         <div className="headerLeft flex items-center gap-[2.5rem]">

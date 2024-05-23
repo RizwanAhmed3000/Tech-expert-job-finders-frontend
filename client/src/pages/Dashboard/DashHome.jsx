@@ -3,7 +3,7 @@ import DashHomeSlider from "../../components/Dashboard/DashHomeSlider";
 
 const DashHome = () => {
   return (
-    <div className="flex-1 bg-coral-light">
+    <div className="min-w-[80%] pt-[7rem] flex-1 bg-coral-light">
       <DashHomeSlider />
     </div>
   );
