@@ -14,9 +14,8 @@ import { PiSignOutBold } from "react-icons/pi";
 
 // Import Images
 import Logo from "../../assets/logo.png";
-import ProfileAvatar from "../../assets/profile-avatar.jpg";
 
-const DashNavbar = () => {
+const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
@@ -30,7 +29,10 @@ const DashNavbar = () => {
           </div>
 
           {/* Toggle Btn */}
-          <div className="toggleBtn text-theme-red text-[3.4rem] cursor-pointer hover:text-red-400">
+          <div
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="toggleBtn text-theme-red text-[3.4rem] cursor-pointer hover:text-red-400"
+          >
             <RiMenu4Fill />
           </div>
 
