@@ -16,7 +16,7 @@ const DashHomeSlider = () => {
           >
             <figure className="w-[8rem] overflow-hidden">
               <img
-                src={TrainerPic}
+                src=""
                 alt="Trainer"
                 className="border-gray-900 border-[0.3rem] rounded-full object-cover"
               />

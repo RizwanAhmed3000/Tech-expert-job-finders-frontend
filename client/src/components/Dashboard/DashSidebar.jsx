@@ -29,7 +29,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       onMouseOver={() => setIsSidebarOpen(true)}
       className={`bg-white ${
         isSidebarOpen ? "w-[25rem]" : "w-[16rem]"
-      } duration-500  text-theme-red h-full scrollbar-light  overflow-auto`}
+      } duration-500  text-theme-red max-h-dvh scrollbar-light  overflow-auto`}
     >
       <div
         className={`flex  items-center ${
