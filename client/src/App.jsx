@@ -20,6 +20,9 @@ import CoverLetter from "./pages/CoverLetter";
 import WebsiteTemplate from "./pages/WebsiteTemplate";
 import OrderAResumeService from "./pages/OrderAResumeService";
 import JobAlert from "./pages/JobAlert";
+import DashNavbar from "./components/Dashboard/DashNavbar";
+import DashHome from "./pages/Dashboard/DashHome";
+import DashSidebar from "./components/Dashboard/DashSidebar";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -34,6 +37,16 @@ const AuthenticatedRoutes = () => {
 // Define routes for unauthenticated users without layout
 const UnauthenticatedRoutes = () => {
   return <Outlet />;
+};
+
+const AccountRoutes = () => {
+  return (
+    <>
+      <DashNavbar />
+      <DashSidebar />
+      <Outlet />
+    </>
+  );
 };
 
 const router = createBrowserRouter([
@@ -83,6 +96,17 @@ const router = createBrowserRouter([
         path: "/register",
         element: <SignUp />,
       },
+    ],
+  },
+  {
+    path: "/",
+    element: <AccountRoutes />,
+    children: [
+      {
+        path: "/app",
+        element: <DashHome />,
+      },
+      ,
     ],
   },
 ]);
