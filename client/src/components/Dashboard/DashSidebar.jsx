@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoDocument } from "react-icons/io5";
 import { BiWorld } from "react-icons/bi";
@@ -28,11 +27,8 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     <div
       onMouseOver={() => setIsSidebarOpen(true)}
       className={`bg-white ${
-        isSidebarOpen ? "w-[25rem]" : "w-[16rem]"
-
-
-      } duration-500 text-theme-red max-h-dvh pt-[7rem] scrollbar-light overflow-auto`}
-
+        isSidebarOpen ? "w-[20%]" : "w-[10%]"
+      } duration-500 text-theme-red fixed top-0 left-0 max-h-dvh pt-[7rem] scrollbar-light overflow-auto`}
     >
       <div
         className={`flex items-center ${
