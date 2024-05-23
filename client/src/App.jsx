@@ -57,12 +57,17 @@ const DashboardRoutes = () => {
         />
 
         <div className="subDashCont min-h-dvh flex">
-
           <DashSidebar
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
           />
-          <Outlet />
+          <div
+            className={` ${
+              isSidebarOpen ? "w-[80%] ps-[20%]" : "w-[90%] ps-[10%]"
+            } pt-[7rem] flex-1 bg-coral-light transition-all duration-500`}
+          >
+            <Outlet />
+          </div>
         </div>
       </div>
     </>
