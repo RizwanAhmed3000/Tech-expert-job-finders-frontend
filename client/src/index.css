@@ -33,4 +33,22 @@
   .signup:hover::before {
     transform: translate(-8%, -25%);
   }
+  .scrollbar-light::-webkit-scrollbar {
+    width: 0.8rem;
+    display: none;
+  }
+
+  .scrollbar-light:hover::-webkit-scrollbar {
+    display: block;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-light::-webkit-scrollbar-thumb {
+    background-color: rgba(75, 85, 99, 0.151);
+    border-radius: 10px;
+    cursor: grab;
+  }
 }
