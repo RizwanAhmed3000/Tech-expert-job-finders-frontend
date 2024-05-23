@@ -39,12 +39,16 @@ const UnauthenticatedRoutes = () => {
   return <Outlet />;
 };
 
-const AccountRoutes = () => {
+const DashboardRoutes = () => {
   return (
     <>
-      <DashNavbar />
-      <DashSidebar />
-      <Outlet />
+      <div className="mainDashboardCont">
+        <DashNavbar />
+        <div className="subDashCont flex mt-[7rem]">
+          <DashSidebar />
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };
@@ -100,7 +104,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <AccountRoutes />,
+    element: <DashboardRoutes />,
     children: [
       {
         path: "/app",
