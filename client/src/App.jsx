@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -23,6 +23,7 @@ import JobAlert from "./pages/JobAlert";
 import DashNavbar from "./components/Dashboard/DashNavbar";
 import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
+import DashOverlay from "./components/Dashboard/DashOverlay";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -40,12 +41,25 @@ const UnauthenticatedRoutes = () => {
 };
 
 const DashboardRoutes = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
-      <div className="mainDashboardCont">
-        <DashNavbar />
-        <div className="subDashCont flex mt-[7rem]">
-          <DashSidebar />
+      <div className="mainDashboardCont relative">
+        <DashOverlay
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+        <DashNavbar
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
+        <div className="subDashCont h-dvh flex pt-[7rem]">
+          <DashSidebar
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+          />
           <Outlet />
         </div>
       </div>
