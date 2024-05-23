@@ -139,6 +139,7 @@ const DashHomeSlider = () => {
             key={index}
             className="card min-w-[20rem] min-h-[20rem] relative z-[10] flex flex-col justify-center items-center gap-[2rem] bg-gray-400 rounded-xl cursor-pointer hover:scale-[1.02] group/trainerCard transition-all overflow-hidden"
           >
+
             {cardTitle !== "New Resume" && cardTitle !== "New Letter" && (
               <div className="cardBgImage absolute z-[-1] top-0 left-0 w-full h-full">
                 <img
@@ -170,6 +171,7 @@ const DashHomeSlider = () => {
                 {cardTitle}
               </span>
             </div>
+
           </div>
         ))}
       </div>
