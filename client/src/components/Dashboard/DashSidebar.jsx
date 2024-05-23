@@ -29,16 +29,19 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       onMouseOver={() => setIsSidebarOpen(true)}
       className={`bg-white ${
         isSidebarOpen ? "w-[25rem]" : "w-[16rem]"
-      } duration-500  text-theme-red max-h-dvh scrollbar-light  overflow-auto`}
+
+
+      } duration-500 text-theme-red max-h-dvh pt-[7rem] scrollbar-light overflow-auto`}
+
     >
       <div
-        className={`flex  items-center ${
+        className={`flex items-center ${
           !isSidebarOpen ? "flex-col" : ""
         } px-10 pt-5 justify-start`}
       >
         <img
           src={person}
-          className=" h-[5rem]  rounded-full border p-2 object-cover"
+          className=" h-[5rem] rounded-full border p-2 object-cover"
           alt="kdsfesfksd"
         />
         <p className="text-2xl px-4">Salik Sheikh</p>
