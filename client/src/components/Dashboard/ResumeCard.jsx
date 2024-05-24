@@ -46,3 +46,4 @@ const DashResumeCard = ({data}) => {
 }
 
 export default DashResumeCard
+

@@ -28,6 +28,10 @@ import DashResumeCard from "./components/Dashboard/ResumeCard";
 import ResumeCardListing from "./components/Dashboard/ResumeCardListing";
 import DashTemplate from "./pages/Dashboard/DashTemplate";
 
+import DashMyResume from "./components/Dashboard/DashMyResume";
+import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
+
+
 const AuthenticatedRoutes = () => {
   return (
     <>
@@ -45,15 +49,10 @@ const UnauthenticatedRoutes = () => {
 
 const DashboardRoutes = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div className="mainDashboardCont relative">
-        <DashOverlay
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
         <DashNavbar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
@@ -134,11 +133,9 @@ const router = createBrowserRouter([
         path: "/app",
         element: <DashHome />,
       },
-      {
-        path: "/card",
-        element: <DashTemplate />,
-      },
-      ,
+   
+
+
     ],
   },
 ]);

@@ -28,7 +28,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       onMouseOver={() => setIsSidebarOpen(true)}
       className={`bg-white ${
         isSidebarOpen ? "w-[20%]" : "w-[10%]"
-      } duration-500 text-theme-red fixed top-0 left-0 max-h-dvh pt-[7rem] scrollbar-light overflow-auto`}
+      } duration-500 text-theme-red fixed top-0 left-0 max-h-dvh pt-[7rem] pb-[4rem] scrollbar-light overflow-auto`}
     >
       <div
         className={`flex items-center ${
@@ -38,7 +38,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <img
           src={person}
           className=" h-[5rem] rounded-full border p-2 object-cover"
-          alt="kdsfesfksd"
+          alt="user"
         />
         <p className="text-2xl px-4">Salik Sheikh</p>
       </div>
@@ -47,18 +47,13 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to={menu?.link}
             key={i}
-            className={`${
-              menu?.margin ? "" : ""
-            } group flex items-center text-2xl border-t px-10 py-7 border-theme-red gap-3.5 font-medium hover:bg-theme-red hover:text-white transition-all duration-500 ${
-              isSidebarOpen ? "" : "justify-center flex-col"
+            className={`group flex items-center text-2xl border-t px-10 py-7 border-theme-red gap-3.5 font-medium hover:bg-theme-red hover:text-white transition-all duration-500 ${
+              isSidebarOpen ? "items-center" : "justify-center flex-col"
             }`}
           >
             {React.createElement(menu?.Icon, { size: "24" })}
             <h2
-              style={{
-                transitionDelay: `${i + 3}00ms`,
-              }}
-              className={`whitespace-pre duration-500 ${
+              className={`whitespace-pre duration-100 ${
                 isSidebarOpen ? "ml-3" : "mt-2 text-center"
               }`}
             >
