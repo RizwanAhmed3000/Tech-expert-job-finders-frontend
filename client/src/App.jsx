@@ -24,6 +24,10 @@ import DashNavbar from "./components/Dashboard/DashNavbar";
 import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
 import DashOverlay from "./components/Dashboard/DashOverlay";
+import DashTools from "./pages/Dashboard/DashTools";
+import WebPageToPDF from "./pages/Dashboard/WebPageToPDF";
+import WebPageToImage from "./pages/Dashboard/WebPageToImage";
+import WebsiteScreenshots from "./pages/Dashboard/WebsiteScreenshots";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -130,6 +134,22 @@ const router = createBrowserRouter([
       {
         path: "/app",
         element: <DashHome />,
+      },
+      {
+        path: "/app/tools",
+        element: <DashTools />,
+      },
+      {
+        path: "/app/tools/web-to-pdf",
+        element: <WebPageToPDF />,
+      },
+      {
+        path: "/app/tools/web-to-image",
+        element: <WebPageToImage />,
+      },
+      {
+        path: "/app/tools/website-screenshots",
+        element: <WebsiteScreenshots />,
       },
       ,
     ],
