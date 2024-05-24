@@ -23,11 +23,20 @@ import JobAlert from "./pages/JobAlert";
 import DashNavbar from "./components/Dashboard/DashNavbar";
 import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
-import DashOverlay from "./components/Dashboard/DashOverlay";
 import DashTools from "./pages/Dashboard/DashTools";
 import WebPageToPDF from "./pages/Dashboard/WebPageToPDF";
 import WebPageToImage from "./pages/Dashboard/WebPageToImage";
 import WebsiteScreenshots from "./pages/Dashboard/WebsiteScreenshots";
+
+import DashTemplate from "./pages/Dashboard/DashTemplate";
+import DashResume from "./pages/Dashboard/DashResume";
+import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
+
+import BlogsPage from "./pages/Dashboard/BlogsPage";
+import JobsAlert from "./pages/Dashboard/JobsAlert";
+
+import ResumeForm from "./components/Dashboard/ResumeForm";
+
 
 const AuthenticatedRoutes = () => {
   return (
@@ -46,15 +55,10 @@ const UnauthenticatedRoutes = () => {
 
 const DashboardRoutes = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div className="mainDashboardCont relative">
-        <DashOverlay
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
         <DashNavbar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
@@ -67,7 +71,7 @@ const DashboardRoutes = () => {
           />
           <div
             className={` ${
-              isSidebarOpen ? "w-[80%] ps-[20%]" : "w-[90%] ps-[10%]"
+              isSidebarOpen ? "w-[82%] ps-[18%]" : "w-[90%] ps-[10%]"
             } pt-[7rem] flex-1 bg-coral-light transition-all duration-500`}
           >
             <Outlet />
@@ -151,7 +155,32 @@ const router = createBrowserRouter([
         path: "/app/tools/website-screenshots",
         element: <WebsiteScreenshots />,
       },
-      ,
+      
+{
+        path: "/app/myresume",
+        element: <DashResume />,
+      },
+      {
+        path: "/app/template",
+        element: <DashTemplate />,
+      },
+      {
+        path: "/app/coverletter",
+        element: <DashCoverLetter />,
+      },
+{
+        path: "/app/blogspage",
+        element: <BlogsPage/>,
+      },
+      { 
+        path: "/app/jobsalert",
+        element: <JobsAlert/>,
+},{
+        path: "/app/myresume/details",
+        element: <ResumeForm />,
+
+      },
+
     ],
   },
 ]);

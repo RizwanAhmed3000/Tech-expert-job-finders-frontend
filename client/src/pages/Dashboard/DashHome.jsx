@@ -3,7 +3,6 @@ import DashHomeSlider from "../../components/Dashboard/DashHomeSlider";
 import DashQuestion from "../../components/Dashboard/DashQuestion";
 
 const DashHome = ({ isSidebarOpen }) => {
-  console.log(isSidebarOpen);
   return (
     <>
       <DashHomeSlider />
