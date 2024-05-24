@@ -24,7 +24,7 @@ import DashNavbar from "./components/Dashboard/DashNavbar";
 import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
 import DashOverlay from "./components/Dashboard/DashOverlay";
-import DashResume from "./pages/Dashboard/DashResume";
+import DashMyResume from "./components/Dashboard/DashMyResume";
 import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
 
 const AuthenticatedRoutes = () => {
@@ -44,15 +44,10 @@ const UnauthenticatedRoutes = () => {
 
 const DashboardRoutes = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
       <div className="mainDashboardCont relative">
-        <DashOverlay
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
         <DashNavbar
           isSidebarOpen={isSidebarOpen}
           setIsSidebarOpen={setIsSidebarOpen}
@@ -134,6 +129,11 @@ const router = createBrowserRouter([
         element: <DashHome />,
       },
       {
+
+        path: "/app/myresume",
+        element: <DashMyResume />,
+      },
+
         path: "/dashboard/resume",
         element: <DashResume />,
       },
@@ -141,7 +141,7 @@ const router = createBrowserRouter([
         path: "/dashboard/coverletter",
         element: <DashCoverLetter />,
       },
-      
+
       ,
     ],
   },
