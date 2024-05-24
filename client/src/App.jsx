@@ -37,7 +37,6 @@ import JobsAlert from "./pages/Dashboard/JobsAlert";
 
 import ResumeForm from "./components/Dashboard/ResumeForm";
 
-
 const AuthenticatedRoutes = () => {
   return (
     <>
@@ -155,10 +154,13 @@ const router = createBrowserRouter([
         path: "/app/tools/website-screenshots",
         element: <WebsiteScreenshots />,
       },
-      
-{
+      {
         path: "/app/myresume",
         element: <DashResume />,
+      },
+      {
+        path: "/app/myresume/details",
+        element: <ResumeForm />,
       },
       {
         path: "/app/template",
@@ -168,19 +170,14 @@ const router = createBrowserRouter([
         path: "/app/coverletter",
         element: <DashCoverLetter />,
       },
-{
-        path: "/app/blogspage",
-        element: <BlogsPage/>,
+      {
+        path: "/app/blogs",
+        element: <BlogsPage />,
       },
-      { 
+      {
         path: "/app/jobsalert",
-        element: <JobsAlert/>,
-},{
-        path: "/app/myresume/details",
-        element: <ResumeForm />,
-
+        element: <JobsAlert />,
       },
-
     ],
   },
 ]);
