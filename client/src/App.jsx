@@ -23,10 +23,20 @@ import JobAlert from "./pages/JobAlert";
 import DashNavbar from "./components/Dashboard/DashNavbar";
 import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
+import DashTools from "./pages/Dashboard/DashTools";
+import WebPageToPDF from "./pages/Dashboard/WebPageToPDF";
+import WebPageToImage from "./pages/Dashboard/WebPageToImage";
+import WebsiteScreenshots from "./pages/Dashboard/WebsiteScreenshots";
+
 import DashTemplate from "./pages/Dashboard/DashTemplate";
 import DashResume from "./pages/Dashboard/DashResume";
 import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
+
+import BlogsPage from "./pages/Dashboard/BlogsPage";
+import JobsAlert from "./pages/Dashboard/JobsAlert";
+
 import ResumeForm from "./components/Dashboard/ResumeForm";
+
 
 const AuthenticatedRoutes = () => {
   return (
@@ -130,6 +140,23 @@ const router = createBrowserRouter([
         element: <DashHome />,
       },
       {
+        path: "/app/tools",
+        element: <DashTools />,
+      },
+      {
+        path: "/app/tools/web-to-pdf",
+        element: <WebPageToPDF />,
+      },
+      {
+        path: "/app/tools/web-to-image",
+        element: <WebPageToImage />,
+      },
+      {
+        path: "/app/tools/website-screenshots",
+        element: <WebsiteScreenshots />,
+      },
+      
+{
         path: "/app/myresume",
         element: <DashResume />,
       },
@@ -141,10 +168,19 @@ const router = createBrowserRouter([
         path: "/app/coverletter",
         element: <DashCoverLetter />,
       },
-      {
+{
+        path: "/app/blogspage",
+        element: <BlogsPage/>,
+      },
+      { 
+        path: "/app/jobsalert",
+        element: <JobsAlert/>,
+},{
         path: "/app/myresume/details",
         element: <ResumeForm />,
+
       },
+
     ],
   },
 ]);
