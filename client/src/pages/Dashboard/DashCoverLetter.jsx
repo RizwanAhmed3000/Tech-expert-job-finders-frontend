@@ -1,8 +1,6 @@
 import React from "react";
-import DashHomeSlider from "../../components/Dashboard/DashHomeSlider";
-import DashQuestion from "../../components/Dashboard/DashQuestion";
 import CreateButton from "../../components/Dashboard/CreateButton";
-import ResumeCard from "../../components/Dashboard/ResumeCard";
+import DashUserResumeCard from "../../components/Dashboard/DashUserResumeCard";
 
 const DashCoverLetter = () => {
   return (
@@ -17,9 +15,9 @@ const DashCoverLetter = () => {
           </p>
         </div>
 
-        <CreateButton btnText='Create Cover Letter'/>
+        <CreateButton btnText="Create Cover Letter" />
       </div>
-      <ResumeCard cardName='Name'/>
+      <DashUserResumeCard cardName="Name" />
     </div>
   );
 };

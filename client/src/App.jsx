@@ -23,14 +23,11 @@ import JobAlert from "./pages/JobAlert";
 import DashNavbar from "./components/Dashboard/DashNavbar";
 import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
-import DashOverlay from "./components/Dashboard/DashOverlay";
-import DashResumeCard from "./components/Dashboard/ResumeCard";
-import ResumeCardListing from "./components/Dashboard/ResumeCardListing";
 import DashTemplate from "./pages/Dashboard/DashTemplate";
-
-import DashMyResume from "./components/Dashboard/DashMyResume";
+import DashResume from "./pages/Dashboard/DashResume";
 import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
-
+// import ResumeCardListing from "./components/Dashboard/ResumeCardListing";
+// import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -133,9 +130,18 @@ const router = createBrowserRouter([
         path: "/app",
         element: <DashHome />,
       },
-   
-
-
+      {
+        path: "/app/myresume",
+        element: <DashResume />,
+      },
+      {
+        path: "/app/template",
+        element: <DashTemplate />,
+      },
+      {
+        path: "/app/coverletter",
+        element: <DashCoverLetter />,
+      },
     ],
   },
 ]);
