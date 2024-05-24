@@ -27,7 +27,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     <div
       onMouseOver={() => setIsSidebarOpen(true)}
       className={`bg-white ${
-        isSidebarOpen ? "w-[20%]" : "w-[10%]"
+        isSidebarOpen ? "w-[18%]" : "w-[10%]"
       } duration-500 text-theme-red fixed top-0 left-0 max-h-dvh pt-[7rem] pb-[4rem] scrollbar-light overflow-auto`}
     >
       <div
@@ -47,7 +47,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <Link
             to={menu?.link}
             key={i}
-            className={`group flex items-center text-2xl border-t px-10 py-7 border-theme-red gap-3.5 font-medium hover:bg-theme-red hover:text-white transition-all duration-500 ${
+            className={`group flex items-center text-2xl border-t px-10 py-7 border-neutral-300 gap-3.5 font-medium hover:bg-theme-red hover:text-white transition-all duration-500 ${
               isSidebarOpen ? "items-center" : "justify-center flex-col"
             }`}
           >

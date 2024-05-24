@@ -26,10 +26,12 @@ import DashSidebar from "./components/Dashboard/DashSidebar";
 import DashTemplate from "./pages/Dashboard/DashTemplate";
 import DashResume from "./pages/Dashboard/DashResume";
 import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
+
 import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
-// import ResumeCardListing from "./components/Dashboard/ResumeCardListing";
-// import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
+
+import ResumeForm from "./components/Dashboard/ResumeForm";
+
 
 const AuthenticatedRoutes = () => {
   return (
@@ -64,7 +66,7 @@ const DashboardRoutes = () => {
           />
           <div
             className={` ${
-              isSidebarOpen ? "w-[80%] ps-[20%]" : "w-[90%] ps-[10%]"
+              isSidebarOpen ? "w-[82%] ps-[18%]" : "w-[90%] ps-[10%]"
             } pt-[7rem] flex-1 bg-coral-light transition-all duration-500`}
           >
             <Outlet />
@@ -144,13 +146,17 @@ const router = createBrowserRouter([
         path: "/app/coverletter",
         element: <DashCoverLetter />,
       },
-      {
+
         path: "/app/blogspage",
         element: <BlogsPage/>,
       },
       { 
         path: "/app/jobsalert",
         element: <JobsAlert/>,
+},{
+        path: "/app/myresume/details",
+        element: <ResumeForm />,
+
       },
     ],
   },
