@@ -12,15 +12,20 @@ import person from "../../assets/person.png";
 
 const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const menus = [
-    { name: "Dashboard", link: "/", Icon: MdOutlineDashboard },
-    { name: "My Resume", link: "/", Icon: IoDocument },
-    { name: "My Cover Letter", link: "/", Icon: IoDocument },
-    { name: "Website", link: "/", Icon: BiWorld, margin: true },
-    { name: "Template", link: "/", Icon: FiShoppingCart },
-    { name: "Tools", link: "/", Icon: RiToolsLine },
-    { name: "Job Alert", link: "/", Icon: PiBagFill, margin: true },
-    { name: "Blog", link: "/", Icon: RiNewsLine },
-    { name: "Feedback", link: "/", Icon: FaComments },
+    { name: "Dashboard", link: "/app", Icon: MdOutlineDashboard },
+    { name: "My Resume", link: "/app/myresume", Icon: IoDocument },
+    { name: "My Cover Letter", link: "/app/coverletter", Icon: IoDocument },
+    { name: "Website", link: "", Icon: BiWorld, margin: true },
+    { name: "Template", link: "/app/template", Icon: FiShoppingCart },
+    { name: "Tools", link: "/app/tools", Icon: RiToolsLine },
+    {
+      name: "Job Alert",
+      link: "/app/jobsalert",
+      Icon: PiBagFill,
+      margin: true,
+    },
+    { name: "Blog", link: "/app/blogs", Icon: RiNewsLine },
+    { name: "Feedback", link: "", Icon: FaComments },
   ];
 
   return (
