@@ -25,6 +25,7 @@ import DashHome from "./pages/Dashboard/DashHome";
 import DashSidebar from "./components/Dashboard/DashSidebar";
 import DashOverlay from "./components/Dashboard/DashOverlay";
 import DashMyResume from "./components/Dashboard/DashMyResume";
+import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -128,9 +129,19 @@ const router = createBrowserRouter([
         element: <DashHome />,
       },
       {
+
         path: "/app/myresume",
         element: <DashMyResume />,
       },
+
+        path: "/dashboard/resume",
+        element: <DashResume />,
+      },
+      {
+        path: "/dashboard/coverletter",
+        element: <DashCoverLetter />,
+      },
+
       ,
     ],
   },
