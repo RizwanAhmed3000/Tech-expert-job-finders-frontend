@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import BlogCard from "../../components/BlogCard";
+
 import { blogCardData } from "../../dummyData";
+import DashBlogCard from "../../components/Dashboard/DashBlogCard";
+import DashViewBlog from "../../components/Dashboard/DashViewBlog";
 
 
 const BlogsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+
+  const openModal = (a , b ,c) => {
+      setSelectedTemplate(a ,b ,c);
+      setIsModalOpen(true);
+      
+  };
+
+  console.log(selectedTemplate)
+
+
+  const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedTemplate(null);
+  };
   return (
     <div className="p-10">
       <div className=" w-[90%] shadow-lg mx-10 searchBar flex items-center gap-10 bg-white px-5 py-1 rounded-lg">
@@ -25,9 +43,12 @@ const BlogsPage = () => {
       </div>
       <div className="mt-10">
         <div className="blogCardCont p-8 flex flex-wrap items-center justify-between ">
-          {blogCardData.map(({ name, desc, imgUrl }) => (
-            <BlogCard name={name} desc={desc} imgUrl={imgUrl} />
+          {blogCardData.map(( data , i ) => (
+            <DashBlogCard name={data.name} desc={data.desc} imgUrl={data.imgUrl} openModal={openModal} onClick={() => openModal(data)} />
           ))}
+              {isModalOpen && (
+                <DashViewBlog openModal={isModalOpen} closeModal={closeModal} template={selectedTemplate} />
+            )}
         </div>
       </div>
       
