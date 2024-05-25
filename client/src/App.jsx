@@ -27,15 +27,15 @@ import DashTools from "./pages/Dashboard/DashTools";
 import WebPageToPDF from "./pages/Dashboard/WebPageToPDF";
 import WebPageToImage from "./pages/Dashboard/WebPageToImage";
 import WebsiteScreenshots from "./pages/Dashboard/WebsiteScreenshots";
-
 import DashTemplate from "./pages/Dashboard/DashTemplate";
 import DashResume from "./pages/Dashboard/DashResume";
 import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
-
 import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
-
 import ResumeForm from "./components/Dashboard/ResumeForm";
+import UserProfile from "./pages/Dashboard/Account/UserProfile";
+import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
+import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -139,6 +139,18 @@ const router = createBrowserRouter([
         element: <DashHome />,
       },
       {
+        path: "/app/profile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/app/edit-profile",
+        element: <EditUserProfile />,
+      },
+      {
+        path: "/app/password",
+        element: <ChangeUserPassword />,
+      },
+      {
         path: "/app/tools",
         element: <DashTools />,
       },
@@ -183,9 +195,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
