@@ -3,12 +3,14 @@ import Card from "react-bootstrap/Card";
 import { PiShoppingCartSimpleFill } from "react-icons/pi";
 import { FaEye } from "react-icons/fa";
 
-const DashResumeCard = ({ data }) => {
+const DashResumeCard = ({ data , onClick }) => {
   const { amount, name, src } = data;
+  
 
   return (
     <Card
       style={{ width: "200px", height: "" }}
+      onClick={onClick}
       className="group/item overflow-hidden relative justify-center  rounded-lg cursor-pointer bg-white drop-shadow-lg m-[2rem]"
     >
       <div className=" object-contain overflow-hidden">
