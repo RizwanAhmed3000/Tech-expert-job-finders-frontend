@@ -1,9 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Import Icons
 import { TfiSave } from "react-icons/tfi";
-
+import Swal from "sweetalert2";
+import axios from "axios";
+import { UPDATE_USER_PASSWORD } from "../../../constants/apis.js";
+import { useSelector } from "react-redux";
+// import { updatePasswordSuccess } from "../../../constants/apis.js";
 const EditUserProfile = () => {
+  const user = useSelector((state) => state?.user?.currentUser);
+  // console.log(user);
+  const [currentPassword, setCurrentPassword] = useState();
+  const [newPassword, setNewPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  console.log(currentPassword);
+  console.log(newPassword);
+  console.log(confirmPassword);
+
+  const updatePasswordHandler = async (e) => {
+    e.preventDefault();
+    if (currentPassword == "" && newPassword == "" && confirmPassword == "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "First Fill All the Fields!",
+      });
+    } else if (newPassword !== confirmPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "New Password & Confirm Password are not Matched",
+      });
+    } else {
+      // console.log("update password handler is working");
+      const updatePassword = {
+        password: newPassword,
+        userId: user._id,
+      };
+      try {
+        const res = await axios.put(
+          `/api/${UPDATE_USER_PASSWORD}/${user._id}`,
+          updatePassword
+        );
+        console.log(res);
+        if (res.statusText === "OK") {
+          Swal.fire({
+            title: "Good job!",
+            text: "user Updated successfully!",
+            icon: "success",
+          });
+        } else {
+          console.error("Error Araha hai ");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div className="p-[3rem]">
       {/* Row First */}
@@ -29,6 +84,9 @@ const EditUserProfile = () => {
                   Current Password
                 </label>
                 <input
+                  onChange={(newValue) =>
+                    setCurrentPassword(newValue.target.value)
+                  }
                   type="password"
                   name="currentPassword"
                   id="currentPassword"
@@ -45,7 +103,8 @@ const EditUserProfile = () => {
                   New Password
                 </label>
                 <input
-                  type="newPassword"
+                  onChange={(newValue) => setNewPassword(newValue.target.value)}
+                  type="password"
                   name="newPassword"
                   id="newPassword"
                   className="w-[70%] py-[0.6rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.1rem] outline-none rounded-md"
@@ -61,6 +120,9 @@ const EditUserProfile = () => {
                   Confirm Password
                 </label>
                 <input
+                  onChange={(newValue) =>
+                    setConfirmPassword(newValue.target.value)
+                  }
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
@@ -69,7 +131,10 @@ const EditUserProfile = () => {
               </div>
 
               <div className="rowFifth flex justify-end">
-                <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[1rem] rounded-md">
+                <button
+                  onClick={updatePasswordHandler}
+                  className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[1rem] rounded-md"
+                >
                   <TfiSave className="text-[1.7rem] leading-[1.6rem]" />
                   <span className="tracking-[0.05rem]">Change password</span>
                 </button>
