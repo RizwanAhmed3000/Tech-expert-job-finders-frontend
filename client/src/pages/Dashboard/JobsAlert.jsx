@@ -37,7 +37,7 @@ const JobsAlert = () => {
       </div>
       <div className="w-[88%] flex mx-14 max-h-[35rem]">
         {/* Left Div */}
-        <div className="w-1/2 border  max-h-full overflow-y-auto">
+        <div className="w-1/2 border  max-h-full scrollbar-light overflow-y-auto">
           <div>
             <h1 className="text-2xl font-bold border p-5">
               Most Recent Jobs
