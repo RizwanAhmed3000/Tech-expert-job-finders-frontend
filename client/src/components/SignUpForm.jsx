@@ -1,9 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 // import ReCAPTCHA from "react-google-recaptcha";
 
 import { SIGNUP_URL } from "../constants/apis.js";
+import Swal from "sweetalert2";
+import axios from "axios";
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useDispatch } from "react-redux";
@@ -61,14 +63,13 @@ function SignUpForm() {
     } else {
       // console.log("signup handler is working");
       const userCredential = {
-        username : fullName,
+        username: fullName,
         email,
         password,
       };
       // console.log(userCredential);
-      
-      try {
 
+      try {
         const response = await axios.post(`/api/${SIGNUP_URL}`, userCredential);
         console.log(response.data.data);
         // .data.data
