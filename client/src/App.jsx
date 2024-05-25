@@ -37,6 +37,7 @@ import JobsAlert from "./pages/Dashboard/JobsAlert";
 
 import ResumeForm from "./components/Dashboard/ResumeForm";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
+import CoverMain from "./pages/Dashboard/CoverMain";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -182,6 +183,10 @@ const router = createBrowserRouter([
       {
         path: "/app/feedback",
         element: <DashFeedback />,
+      },
+      {
+        path: "/app/cover",
+        element: <CoverMain />,
       },
     ],
   },

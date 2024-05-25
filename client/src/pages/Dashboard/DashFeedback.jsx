@@ -60,7 +60,7 @@ const DashFeedback = () => {
                 content_style:
                   ".tox-tinymce { border: 1px solid #ddd; padding: 10px; border-radius: 0px; }",
               }}
-              initialValue="Insert content form administration panel"
+              initialValue="Insert FeedBack"
             />
           </div>
         </div>
