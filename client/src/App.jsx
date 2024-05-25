@@ -37,7 +37,7 @@ import JobsAlert from "./pages/Dashboard/JobsAlert";
 
 import ResumeForm from "./components/Dashboard/ResumeForm";
 import { useSelector } from "react-redux";
-import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser))
