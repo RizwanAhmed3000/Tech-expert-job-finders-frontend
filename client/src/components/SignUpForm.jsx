@@ -1,10 +1,86 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
+import { Link, useNavigate } from "react-router-dom";
+// import ReCAPTCHA from "react-google-recaptcha";
+import { useDispatch } from "react-redux";
+import { SIGNUP_URL } from "../constants/apis.js";
+import Swal from 'sweetalert2'
+import axios from 'axios'
+
+
 function SignUpForm() {
-  const [capVal, setCapVal] = useState(null);
-  const myVariable = import.meta.env.VITE_SITE_KEY;
+  // register forms states ==>
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
+  const [cPassword, setCPassword] = useState("");
+
+  console.log(fullName);
+  console.log(email);
+  console.log(password);
+  console.log(cPassword);
+
+  const signupHandlerWithMongoDb = async (e) => {
+    e.preventDefault();
+    if (
+      email === "" ||
+      fullName === "" ||
+      password === "" ||
+      cPassword === ""
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Missing Fields!",
+      });
+    } else if (password.length < 8) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must be at least 8 characters long!",
+      });
+    } else if (password !== cPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password does not match!",
+      });
+    } else {
+      // console.log("signup handler is working");
+      const userCredential = {
+        username : fullName,
+        email,
+        password,
+      };
+      // console.log(userCredential);
+      
+      try {
+
+        const response = await axios.post(`/api/${SIGNUP_URL}`, userCredential);
+        console.log(response);
+        // console.log(response.response.data);
+
+        if (response.statusText === "OK") {
+          Swal.fire({
+            title: "Good job!",
+            text: "user signup successfully!",
+            icon: "success",
+          });
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  // const [capVal, setCapVal] = useState(null);
+  // const myVariable = import.meta.env.VITE_SITE_KEY;
 
   return (
     <div className="bg-login-bg-image w-[60%] flex justify-center">
@@ -22,6 +98,7 @@ function SignUpForm() {
               Full Name
             </label>
             <input
+              onChange={(name) => setFullName(name.target.value)}
               type="text"
               className=" w-full text-xl border mt-4 px-4  py-6 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-lg"
               placeholder=""
@@ -35,7 +112,9 @@ function SignUpForm() {
               Email
             </label>
             <input
-              type="text"
+              onChange={(email) => setEmail(email.target.value)}
+              type="email"
+              required
               className=" w-full text-xl border mt-4 px-4  py-6 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-lg"
               placeholder=""
             />
@@ -49,7 +128,9 @@ function SignUpForm() {
               Password
             </label>
             <input
+              onChange={(pass) => setPassword(pass.target.value)}
               type="password"
+              required
               className=" w-full text-xl border  mt-4  py-6 px-2 rounded-lg focus:outline-none focus:ring-0 focus:border-gray-600"
               placeholder=""
             />
@@ -62,25 +143,29 @@ function SignUpForm() {
               Comfirm Password
             </label>
             <input
+              onChange={(cPass) => setCPassword(cPass.target.value)}
               type="password"
+              required
               className=" w-full text-xl border mt-4 px-4  py-6 focus:outline-none focus:ring-0 focus:border-gray-600 rounded-lg"
               placeholder=""
             />
           </div>
 
           <div className="captcha w-full mt-8 mb-8">
-            <ReCAPTCHA
+            {/* <ReCAPTCHA
               className="flex justify-center mt-2 rounded-lg"
               sitekey={myVariable}
               onChange={(val) => setCapVal(val)}
-            />
+            /> */}
           </div>
 
           <div className="mb-8">
             <button
-              disabled={!capVal}
+              onClick={signupHandlerWithMongoDb}
+              // disabled={!capVal}
               type="submit"
-              className='border-2 text-3xl overflow-hidden  w-full   font-semibold className="text-[1.6rem] leading-[1.6rem] relative z-10 bg-theme-red text-white px-[2rem] py-[1.2rem] rounded-lg transition-all before:content-[""] before:absolute before:z-[-1] before:top-0 before:left-0 before:w-full before:h-full before:bg-theme-yellow before:translate-x-[-100%] before:translate-y-[100%] before:rounded-lg hover:before:translate-x-[0%] hover:before:translate-y-[0%] before:transition-all before:duration-300 disabled:cursor-not-allowed '
+              className='border-2 text-3xl overflow-hidden  w-full   font-semibold className="text-[1.6rem] leading-[1.6rem] relative z-10 bg-theme-red text-white px-[2rem] py-[1.2rem] rounded-lg transition-all before:content-[""] before:absolute before:z-[-1] before:top-0 before:left-0 before:w-full before:h-full before:bg-theme-yellow before:translate-x-[-100%] before:translate-y-[100%] before:rounded-lg hover:before:translate-x-[0%] hover:before:translate-y-[0%] before:transition-all before:duration-300  '
+              // disabled:cursor-not-allowed
             >
               Sign Up
             </button>
@@ -113,5 +198,4 @@ function SignUpForm() {
     </div>
   );
 }
-
 export default SignUpForm;
