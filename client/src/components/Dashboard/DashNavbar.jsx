@@ -23,7 +23,7 @@ import {  useNavigate } from "react-router-dom";
 const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useSelector((state) =>  state?.user?.currentUser);
-  console.log(user)
+  // console.log(user)
   const dispatch = useDispatch();
   const navigate = useNavigate()
 

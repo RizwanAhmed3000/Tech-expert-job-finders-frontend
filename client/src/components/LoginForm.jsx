@@ -45,6 +45,7 @@ function LoginForm() {
       try {
         const response = await axios.post(`/api/${LOGIN_URL}`, userCredential);
         console.log(response?.data);
+        // dispatch(loginSuccess(response?.data));
         if(response.data.status === 400) {
           Swal.fire({
             icon: "error",
@@ -53,7 +54,7 @@ function LoginForm() {
           });
           
         } else {
-          dispatch(loginSuccess(response?.data));
+          dispatch(loginSuccess(response?.data?.data));
           navigate("/app");
         }
         
