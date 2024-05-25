@@ -30,11 +30,14 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = false;
     },
-    signupPending: (state) => {
+
+    signupPending: (state , action) => {
       state.loading = true;
+      
     },
-    signupSuccess: (state, { payload }) => {
+    signupSuccess: (state, action) => {
       state.loading = false;
+      state.currentUser = action.payload;
     },
     signupFailed: (state, { payload }) => {
       state.loading = false;

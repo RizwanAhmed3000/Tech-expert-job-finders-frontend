@@ -4,10 +4,12 @@ import DashQuestion from "../../components/Dashboard/DashQuestion";
 
 const DashHome = ({ isSidebarOpen }) => {
   return (
+   
     <>
       <DashHomeSlider />
       <DashQuestion />
-    </>
+      </>
+    
   );
 };
 
