@@ -36,9 +36,14 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 
 import ResumeForm from "./components/Dashboard/ResumeForm";
+import { useSelector } from "react-redux";
+import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute'
 
 const AuthenticatedRoutes = () => {
+  const user = useSelector((state) => console.log(state.user.currentUser))
+  console.log(user)
   return (
+
     <>
       <Navbar />
       <Outlet />
@@ -56,7 +61,7 @@ const DashboardRoutes = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <>
+    <ProtectedRoute>
       <div className="mainDashboardCont relative">
         <DashNavbar
           isSidebarOpen={isSidebarOpen}
@@ -77,7 +82,7 @@ const DashboardRoutes = () => {
           </div>
         </div>
       </div>
-    </>
+    </ProtectedRoute>
   );
 };
 
