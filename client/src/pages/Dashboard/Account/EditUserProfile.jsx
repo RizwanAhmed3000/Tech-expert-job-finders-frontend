@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Import Icons
 import { IoCloudUpload } from "react-icons/io5";
@@ -6,8 +6,72 @@ import { TfiSave } from "react-icons/tfi";
 
 // Import Image
 import UserProfileAvatar from "../../../assets/profile-avatar.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { UPDATE_USER } from "../../../constants/apis.js";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { updateSuccess } from "../../../Redux/Slices/userSlices";
 
 const EditUserProfile = () => {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state?.user?.currentUser);
+  // console.log(user);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [about, setAbout] = useState("");
+
+  // console.log(name);
+  // console.log(email);
+  // console.log(phone);
+  // console.log(about);
+
+  const editIntgerationHandler = async (e) => {
+    e.preventDefault();
+
+    if (phone === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Phone is Empty!",
+      });
+    } else if (about === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "About is Empty!",
+      });
+    } else {
+      // console.log("signup handler is working");
+      const updateUser = {
+        username: name,
+        email,
+        phoneNumber: phone,
+        aboutMe: about,
+        userId: user._id,
+      };
+      try {
+        const res = await axios.put(
+          `/api/${UPDATE_USER}/${user._id} `,
+          updateUser
+        );
+        console.log(res);
+        dispatch(updateSuccess(res.data.data));
+        if (res.statusText === "OK") {
+          Swal.fire({
+            title: "Good job!",
+            text: "user Updated successfully!",
+            icon: "success",
+          });
+        } else {
+          console.error("Error Araha hai ");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
     <div className="p-[3rem]">
       {/* Row First */}
@@ -26,7 +90,7 @@ const EditUserProfile = () => {
           </button>
 
           <h4 className="text-[2rem] leading-[2rem] font-normal text-neutral-600 mt-[1rem]">
-            Muhammad Nabeel
+            {user.username}
           </h4>
         </div>
 
@@ -53,6 +117,8 @@ const EditUserProfile = () => {
                 <input
                   type="text"
                   name="profilename"
+                  placeholder={user.username}
+                  onChange={(newValue) => setName(newValue.target.value)}
                   id="profilename"
                   className="w-[70%] py-[0.6rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.2rem] outline-none rounded-md"
                 />
@@ -70,6 +136,8 @@ const EditUserProfile = () => {
                   type="email"
                   name="email"
                   id="email"
+                  placeholder={user.email}
+                  onChange={(newValue) => setEmail(newValue.target.value)}
                   className="w-[70%] py-[0.6rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.2rem] outline-none rounded-md"
                 />
               </div>
@@ -86,6 +154,7 @@ const EditUserProfile = () => {
                   type="number"
                   name="phonenumber"
                   id="phonenumber"
+                  onChange={(newValue) => setPhone(newValue.target.value)}
                   className="w-[70%] py-[0.6rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.2rem] outline-none rounded-md"
                 />
               </div>
@@ -102,13 +171,17 @@ const EditUserProfile = () => {
                   rows={2}
                   name="aboutme"
                   id="aboutme"
+                  onChange={(newValue) => setAbout(newValue.target.value)}
                   className="w-[70%] py-[1rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.2rem] outline-none rounded-md"
                 ></textarea>
               </div>
 
               {/* Update Button */}
               <div className="rowFifth flex justify-end">
-                <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
+                <button
+                  onClick={editIntgerationHandler}
+                  className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md"
+                >
                   <TfiSave className="text-[1.7rem] leading-[1.6rem]" />
                   <span className="tracking-[0.05rem]">Update</span>
                 </button>

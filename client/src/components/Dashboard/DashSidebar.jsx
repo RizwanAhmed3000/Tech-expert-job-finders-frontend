@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const user = useSelector((state) => state?.user?.currentUser)
-  console.log(user);
+  // console.log(user);
   const menus = [
     { name: "Dashboard", link: "/app", Icon: MdOutlineDashboard },
     { name: "My Resume", link: "/app/myresume", Icon: IoDocument },
