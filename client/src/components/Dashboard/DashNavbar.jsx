@@ -14,10 +14,23 @@ import { PiSignOutBold } from "react-icons/pi";
 
 // Import Images
 import Logo from "../../assets/logo.png";
+import ProfileAvatar from "../../assets/profile-avatar.jpg";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Redux/Slices/userSlices";
+import {  useNavigate } from "react-router-dom";
 
 const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const user = useSelector((state) =>  state?.user?.currentUser);
+  // console.log(user)
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/register')
+  };
   return (
     <header className="header w-full h-[7rem] fixed z-[50] top-0 left-0 flex items-center bg-black">
       <div className="headerWrapper w-full mx-[2%] flex items-center justify-between">
@@ -69,19 +82,10 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             className="accountProfile relative flex items-center gap-[1rem] cursor-pointer"
           >
             {/* Profile Image */}
-            {/* <img
+            <img
               src={ProfileAvatar}
               alt="Profile"
-              className="w-[2rem] rounded-full"
-            /> */}
-
-            {/* Profile Icon */}
-            <FaUser
-              className={`text-[2.5rem] p-[0.4rem] cursor-pointer transition-all rounded-full ${
-                isDropdownOpen
-                  ? "bg-theme-red text-white"
-                  : "bg-white text-neutral-800"
-              }`}
+              className="w-[2.7rem] rounded-full"
             />
 
             {/* Profile Name */}
@@ -90,7 +94,7 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 isDropdownOpen ? "text-theme-red" : "text-white"
               } text-[1.6rem] font-medium transition-all duration-500`}
             >
-              Kamran Jameel
+              {user?.username}
             </span>
 
             {/* Dropdown Arrow */}
@@ -112,11 +116,15 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="min-w-[20rem] absolute top-[3.4rem] left-[0rem] bg-white z-[100] flex flex-col py-[0.5rem] border-theme-red border-t-[0.3rem] shadow-lg"
               >
                 {[
-                  { LinkIcon: FaUser, linkTitle: "Profile", linkURL: "" },
+                  {
+                    LinkIcon: FaUser,
+                    linkTitle: "Profile",
+                    linkURL: "/app/profile",
+                  },
                   {
                     LinkIcon: FaUserEdit,
                     linkTitle: "Edit Account",
-                    linkURL: "",
+                    linkURL: "/app/edit-profile",
                   },
                   {
                     LinkIcon: MdEmail,
@@ -127,12 +135,17 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   {
                     LinkIcon: IoLockClosed,
                     linkTitle: "Password",
-                    LinkURL: "",
+                    linkURL: "/app/password",
                   },
                   { LinkIcon: PiSignOutBold, linkTitle: "Logout", linkURL: "" },
                 ].map(({ LinkIcon, linkTitle, linkURL }, index) => (
                   <li key={index} className="relative flex w-full">
-                    <a className="w-full flex items-center justify-start gap-[1.5rem] px-[1rem] py-[0.8rem] transition-all text-neutral-800 hover:bg-theme-red hover:text-white">
+                    <Link
+                      to={linkURL}
+                      onClick={() => linkTitle === "Logout" &&  handleLogout()}
+                      className="w-full flex items-center justify-start gap-[1.5rem] px-[1rem] py-[0.8rem] transition-all text-neutral-700 hover:bg-theme-red hover:text-white"
+                    >
+                  
                       <span
                         className={`${
                           linkTitle === "Profile"
@@ -145,7 +158,7 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                       <span className="text-[1.5rem] leading-[1.5rem]">
                         {linkTitle}
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

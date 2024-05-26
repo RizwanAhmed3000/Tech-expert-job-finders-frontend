@@ -9,8 +9,11 @@ import { RiNewsLine } from "react-icons/ri";
 import { FaComments } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import person from "../../assets/person.png";
+import { useSelector } from "react-redux";
 
 const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const user = useSelector((state) => state?.user?.currentUser)
+  // console.log(user);
   const menus = [
     { name: "Dashboard", link: "/app", Icon: MdOutlineDashboard },
     { name: "My Resume", link: "/app/myresume", Icon: IoDocument },
@@ -29,6 +32,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   ];
 
   return (
+  
     <div
       onMouseOver={() => setIsSidebarOpen(true)}
       className={`bg-white ${
@@ -45,7 +49,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           className=" h-[5rem] rounded-full border p-2 object-cover"
           alt="user"
         />
-        <p className="text-2xl px-4">Salik Sheikh</p>
+        <p className="text-2xl px-4">{user?.username }</p>
       </div>
       <div className="mt-4 flex flex-col relative">
         {menus?.map((menu, i) => (

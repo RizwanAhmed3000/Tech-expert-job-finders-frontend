@@ -3,8 +3,8 @@ import DashResumeCard from './ResumeCard';
 import cvImg2 from "../../assets/templates/cv-template-02.png";
 import cvImg3 from "../../assets/templates/cv-template-03.png";
 import websiteimg from "../../assets/website-template/WEBSITE.jpg"
-function ResumeCardListing({ activeTab }) {
-    console.log(activeTab)
+function ResumeCardListing({ activeTab , openModal }) {
+    console.log(activeTab ,openModal )
     const resume = [{
         amount: "5$",
         name: "Graphic",
@@ -133,15 +133,15 @@ function ResumeCardListing({ activeTab }) {
 
         <div className='grid grid-cols-4 place-items-center' >
             {activeTab == 'resume' ? resume.map((data, i) => (
-                <DashResumeCard data={data} key={i} />
+                <DashResumeCard data={data} key={i} onClick={() => openModal(data)} />
 
             )
 
             ) : activeTab ==  "cover" ? coverletter.map((data, i) => (
-                <DashResumeCard data={data} key={i} />
+                <DashResumeCard data={data} key={i} onClick={() => openModal(data)} />
 
             )) : activeTab ==  "website" && website.map((data, i) => (
-                <DashResumeCard data={data} key={i} />
+                <DashResumeCard data={data} key={i}  onClick={() => openModal(data)}/>
 
             ))
             }
