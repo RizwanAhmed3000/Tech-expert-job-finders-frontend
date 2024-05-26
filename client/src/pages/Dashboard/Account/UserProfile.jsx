@@ -6,6 +6,7 @@ import { HiOutlineUpload } from "react-icons/hi";
 import { IoMdSettings } from "react-icons/io";
 import { FaBriefcase } from "react-icons/fa";
 import { IoCloudUpload, IoTimeOutline } from "react-icons/io5";
+import { PiArrowBendUpRightBold } from "react-icons/pi";
 import { FaEarthAmericas } from "react-icons/fa6";
 
 // Import Image
@@ -109,45 +110,53 @@ const UserProfile = () => {
 
         {/* Jobs Trending */}
         <div className="jobsTrending col-span-5 flex flex-col gap-[1rem]">
-          <h4 className="text-[1.8rem] text-theme-red font-semibold">
+          <h4 className="ml-[1rem] text-[2rem] text-theme-red font-semibold">
             Job / <span className="opacity-[0.8]">Trending</span>
           </h4>
 
-          {/* Jobs Trending Card */}
-          <div className="profileJobsCard w-full bg-white p-[2rem] rounded-lg">
-            {/* Card Top */}
-            <div className="cardTop relative w-full flex items-center gap-[1rem] px-[1rem] py-[1rem] border-b-[0.1rem] border-neutral-300">
-              {/* Job Icon */}
-              <div className="icon text-[1.8rem] leading-[1.8rem] bg-theme-red text-white p-[0.8rem] rounded-full">
-                <FaBriefcase />
+          {/* Jobs Trending Cards */}
+          <div className="jobCardsCont flex flex-col gap-[3rem]">
+            {[1, 2, 3, 4].map((data, index) => (
+              <div
+                key={index}
+                className="profileJobsCard w-full bg-white p-[2rem] rounded-lg"
+              >
+                {/* Card Top */}
+                <div className="cardTop relative w-full flex items-center gap-[1rem] px-[1rem] py-[1rem] border-b-[0.1rem] border-neutral-300">
+                  {/* Job Icon */}
+                  <div className="icon text-[1.8rem] leading-[1.8rem] bg-theme-red text-white p-[0.8rem] rounded-full">
+                    <FaBriefcase />
+                  </div>
+
+                  {/* Job Company */}
+                  <h5 className="w-full pr-[3rem] text-[1.8rem] leading-[2rem] text-neutral-800 font-medium">
+                    Energy Department Punjab
+                  </h5>
+
+                  <div className="time absolute right-0 flex items-center gap-[0.2rem] text-[1.2rem] leading-[1.2rem]">
+                    <IoTimeOutline />
+                    <span>3 min</span>
+                  </div>
+                </div>
+
+                {/* Card Bottom */}
+                <div className="cardBottom w-full flex flex-col gap-[1rem] px-[1rem] py-[1rem]">
+                  <p className="text-[2rem] leading-[2.4rem] font-medium">
+                    Archaeology Department Latest Jobs
+                  </p>
+
+                  <div className="text-[1.4rem] leading-[1.4rem] flex items-center gap-[0.2rem] text-neutral-500">
+                    <FaEarthAmericas />
+                    <span>Pakistan</span>
+                  </div>
+
+                  <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex justify-center gap-[1rem] text-white px-[2rem] py-[1.2rem] rounded-md  font-medium mt-[1rem] shadow-lg">
+                    <PiArrowBendUpRightBold className="text-[1.7rem] leading-[1.6rem]" />
+                    <span className="tracking-[0.05rem]">Apply Now</span>
+                  </button>
+                </div>
               </div>
-
-              {/* Job Company */}
-              <h5 className="w-full pr-[3rem] text-[1.8rem] leading-[2rem] text-neutral-800 font-medium">
-                Energy Department Punjab
-              </h5>
-
-              <div className="time absolute right-0 flex items-center gap-[0.2rem] text-[1.2rem] leading-[1.2rem]">
-                <IoTimeOutline />
-                <span>3 min</span>
-              </div>
-            </div>
-
-            {/* Card Bottom */}
-            <div className="cardBottom w-full flex flex-col gap-[1rem] px-[1rem] py-[1rem]">
-              <p className="text-[2rem] leading-[2.4rem] font-medium">
-                Archaeology Department Latest Jobs
-              </p>
-              <div className="text-[1.4rem] leading-[1.4rem] flex items-center gap-[0.2rem] text-neutral-500">
-                <FaEarthAmericas />
-                <span>Pakistan</span>
-              </div>
-
-              <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
-                <IoCloudUpload className="text-[1.7rem] leading-[1.6rem]" />
-                <span className="tracking-[0.05rem]">PROFILE PHOTO</span>
-              </button>
-            </div>
+            ))}
           </div>
         </div>
       </div>

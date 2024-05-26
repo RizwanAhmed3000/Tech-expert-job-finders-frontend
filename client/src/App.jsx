@@ -32,19 +32,17 @@ import DashResume from "./pages/Dashboard/DashResume";
 import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
 import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
-import ResumeForm from "./components/Dashboard/ResumeForm";
+import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 import { useSelector } from "react-redux";
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 const AuthenticatedRoutes = () => {
-  const user = useSelector((state) => console.log(state.user.currentUser))
-  console.log(user)
+  const user = useSelector((state) => console.log(state.user.currentUser));
+  console.log(user);
   return (
-
     <>
       <Navbar />
       <Outlet />
@@ -177,8 +175,8 @@ const router = createBrowserRouter([
         element: <DashResume />,
       },
       {
-        path: "/app/myresume/details",
-        element: <ResumeForm />,
+        path: "/app/resume-details",
+        element: <CreateNewResume />,
       },
       {
         path: "/app/template",

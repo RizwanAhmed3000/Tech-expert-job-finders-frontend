@@ -5,7 +5,10 @@ import { IoMdAdd } from "react-icons/io";
 import { GiIciclesFence } from "react-icons/gi";
 import { PiLightbulbFilamentBold } from "react-icons/pi";
 import { HiMiniXMark } from "react-icons/hi2";
-import ProfileForm from "./CreateResumeForms/ProfileForm";
+
+// Components
+import ProfileForm from "../../components/Dashboard/CreateResumeForms/ProfileForm";
+import ExperienceForm from "../../components/Dashboard/CreateResumeForms/ExperienceForm";
 
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -67,9 +70,26 @@ const ResumeForm = () => {
               <PiLightbulbFilamentBold />
             </div>
 
-            <div className="textCont flex flex-col gap-[0.4rem] text-[1.5rem] leading-[1.7rem]">
-              <span>What's the best way for Employers to contact you?</span>
-              <span>We suggest including an email and phone number.</span>
+            <div className="textCont flex flex-col gap-[0.4rem] text-[1.4rem] leading-[1.7rem]">
+              {activeTab === "Profile" ? (
+                <>
+                  <span>What's the best way for Employers to contact you?</span>
+                  <span>We suggest including an email and phone number.</span>
+                </>
+              ) : (
+                activeTab === "Experience" && (
+                  <>
+                    <span>Now, let's fill out your work history</span>
+                    <span>
+                      Here's what you need to know: Employers scan your resume
+                      for six seconds to decide if you're a match
+                    </span>
+                    <span>
+                      We'll suggest bullet points that make a great impression
+                    </span>
+                  </>
+                )
+              )}
             </div>
 
             <button className="absolute top-[1rem] right-[1.5rem] text-white text-[2rem]">
@@ -78,7 +98,11 @@ const ResumeForm = () => {
           </div>
 
           {/* Create Resume Forms */}
-          <ProfileForm />
+          {activeTab === "Profile" ? (
+            <ProfileForm />
+          ) : (
+            activeTab === "Experience" && <ExperienceForm />
+          )}
         </div>
       </div>
     </div>
