@@ -33,6 +33,8 @@ import DashCoverLetter from "./pages/Dashboard/DashCoverLetter";
 import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import ResumeForm from "./components/Dashboard/ResumeForm";
+import DashFeedback from "./pages/Dashboard/DashFeedback";
+import CoverMain from "./pages/Dashboard/CoverMain";
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -195,6 +197,14 @@ const router = createBrowserRouter([
       {
         path: "/app/jobsalert",
         element: <JobsAlert />,
+      },
+      {
+        path: "/app/feedback",
+        element: <DashFeedback />,
+      },
+      {
+        path: "/app/cover",
+        element: <CoverMain />,
       },
     ],
   },

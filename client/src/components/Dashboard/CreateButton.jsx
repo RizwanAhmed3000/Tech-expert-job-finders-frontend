@@ -5,10 +5,10 @@ const CreateButton = ({ btnText, isModalOpen, setIsModalOpen }) => {
   return (
     <div
       onClick={() => setIsModalOpen(true)}
-      className="flex w-2/6 h-56 m-10 items-center justify-between p-8 bg-white rounded-lg shadow-lg"
+      className="flex w-2/6 h-full m-10 items-center justify-between p-8 bg-white rounded-lg shadow-lg"
     >
       <BsFillPlusCircleFill className="text-theme-red text-6xl" />
-      <span className="text-3xl"> {btnText}</span>
+      <span className="text-2xl"> {btnText}</span>
     </div>
   );
 };
