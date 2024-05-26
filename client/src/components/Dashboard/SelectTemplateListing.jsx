@@ -4,7 +4,11 @@ import cvImg2 from "../../assets/templates/cv-template-02.png";
 import cvImg3 from "../../assets/templates/cv-template-03.png";
 import websiteimg from "../../assets/website-template/WEBSITE.jpg"
 import SelectTempCard from './SelectTempCard';
+import DashViewProduct from './DashViewProduct';
 function SelectTemplateListing({ activeTab }) {
+
+   
+
     console.log(activeTab)
     const free = [{
        name:'BELA',
@@ -44,7 +48,7 @@ function SelectTemplateListing({ activeTab }) {
 
         <div className='grid grid-cols-3 place-items-center' >
             {activeTab == 'free' ? free.map((data, i) => (
-                <SelectTempCard data={data} key={i} />
+                <SelectTempCard data={data} key={i}  />
 
             )
 

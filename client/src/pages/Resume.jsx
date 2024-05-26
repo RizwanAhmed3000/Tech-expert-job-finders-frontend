@@ -8,7 +8,7 @@ import ResumeTemplate from "../assets/templates/cv-template-04.png";
 
 const Resume = () => {
   return (
-    <div className="w-full relative">
+    <div className="w-full relative ">
       <div className="resumeCont flex flex-col px-[4%]">
         {/* Content Side 01 */}
         <div className="w-full flex flex-col items-center gap-[0.5rem] mt-[8rem] py-[5rem]">
