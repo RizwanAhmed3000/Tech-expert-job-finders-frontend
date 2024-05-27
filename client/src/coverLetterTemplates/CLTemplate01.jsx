@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const CLTemplate01 = () => {
+    const templateId = "6655085ce595b205733d8e95"
     const [data, setData] = useState({})
     const { title, firstName, lastName, middleName, profession, address, phone, email, recipient, companyName, streetAdress, city, state } = data
     const getCoverLetter = async () => {
@@ -23,7 +24,7 @@ const CLTemplate01 = () => {
                 <div>
                     <div className='text-white bg-blue-500 w-80'>
                         <div >
-                            <img className='w-80' src='https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg' alt="" />
+                            <img className='w-80' src='https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352010-stock-illustration-default-placeholder-man-and-woman.jpg' alt='' />
                             <h1 className='text-3xl text-center font-medium'>{`${firstName} ${lastName}`}</h1>
                             <h3 className='text-2xl text-center mt-2'>{profession}</h3>
                             <h4 className='text-2xl ml-2 mt-8'>TO</h4>
@@ -35,16 +36,16 @@ const CLTemplate01 = () => {
                         <div>
                             <h4 className='text-2xl ml-2 mt-8'>CONTACT</h4>
                             <hr className=' w-72 ml-4 mt-2' />
-                            <p className='text-gl ml-2  mt-2'><i class="ri-phone-line mr-2 "></i>{phone}</p>
-                            <p className='text-lg ml-2'><i class="ri-mail-line  mr-2"></i>{email}</p>
-                            <p className='text-lg ml-2'><i class="ri-map-pin-line  mr-2"></i>{address}</p>
+                            <p className='text-gl ml-2  mt-2'><i class='ri-phone-line mr-2'></i>{phone}</p>
+                            <p className='text-lg ml-2'><i class='ri-mail-line  mr-2'></i>{email}</p>
+                            <p className='text-lg ml-2'><i class='ri-map-pin-line  mr-2'></i>{address}</p>
                         </div>
                         <div>
                             <h4 className='text-2xl ml-2 mt-8'>SOCIAL LINKS</h4>
                             <hr className=' w-72 ml-4 mt-2' />
-                            <p className='text-lg ml-2  mt-2'><i class="ri-facebook-circle-line  mr-2"></i> https://www.facebook.com/</p>
-                            <p className='text-lg ml-2'><i class="ri-twitter-line  mr-2"></i>https://www.twitter.com/</p>
-                            <p className='text-lg ml-2 '><i class="ri-linkedin-box-line  mr-2 "></i>https://www.linkedIn.com/</p>
+                            <p className='text-lg ml-2  mt-2'><i class='ri-facebook-circle-line  mr-2'></i> https://www.facebook.com/</p>
+                            <p className='text-lg ml-2'><i class='ri-twitter-line  mr-2'></i>https://www.twitter.com/</p>
+                            <p className='text-lg ml-2 '><i class='ri-linkedin-box-line  mr-2 '></i>https://www.linkedIn.com/</p>
                         </div>
                     </div>
                 </div>
