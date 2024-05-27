@@ -17,8 +17,8 @@ const EditUserProfile = () => {
 
   const user = useSelector((state) => state?.user?.currentUser);
   // console.log(user);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState("");
   const [about, setAbout] = useState("");
 
@@ -26,7 +26,7 @@ const EditUserProfile = () => {
   // console.log(email);
   // console.log(phone);
   // console.log(about);
-
+  // console.log(user._id);
   const editIntgerationHandler = async (e) => {
     e.preventDefault();
 
@@ -36,11 +36,28 @@ const EditUserProfile = () => {
         title: "Oops...",
         text: "Phone is Empty!",
       });
-    } else if (about === "") {
+    } else if (name === "") {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "About is Empty!",
+        text: "Name is Required!",
+      });
+    } else if (email != '' && !email.toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email is Not Valid!",
+      });
+
+  } else if ( email === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email is Required!",
       });
     } else {
       // console.log("signup handler is working");
@@ -51,9 +68,10 @@ const EditUserProfile = () => {
         aboutMe: about,
         userId: user._id,
       };
+
       try {
         const res = await axios.put(
-          `/api/${UPDATE_USER}/${user._id} `,
+          `/api${UPDATE_USER}/${user._id} `,
           updateUser
         );
         console.log(res);
@@ -69,6 +87,13 @@ const EditUserProfile = () => {
         }
       } catch (error) {
         console.log(error);
+        if (error.response.data.message.includes("duplicate key")) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Email Already Registered`,
+          });
+        }
       }
     }
   };
@@ -90,7 +115,7 @@ const EditUserProfile = () => {
           </button>
 
           <h4 className="text-[2rem] leading-[2rem] font-normal text-neutral-600 mt-[1rem]">
-            {user.username}
+            {name}
           </h4>
         </div>
 
@@ -117,7 +142,7 @@ const EditUserProfile = () => {
                 <input
                   type="text"
                   name="profilename"
-                  placeholder={user.username}
+                  value={name}
                   onChange={(newValue) => setName(newValue.target.value)}
                   id="profilename"
                   className="w-[70%] py-[0.6rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.2rem] outline-none rounded-md"
@@ -136,7 +161,7 @@ const EditUserProfile = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder={user.email}
+                  value={email}
                   onChange={(newValue) => setEmail(newValue.target.value)}
                   className="w-[70%] py-[0.6rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 border-neutral-300 focus:border-theme-red border-[0.2rem] outline-none rounded-md"
                 />
