@@ -6,6 +6,8 @@ import { GiIciclesFence } from "react-icons/gi";
 import { TfiSave } from "react-icons/tfi";
 import { FaPlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
+import { TbPlayerTrackNextFilled } from "react-icons/tb";
+import { ImBackward2 } from "react-icons/im";
 
 const ExperienceForm = () => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
@@ -157,7 +159,7 @@ const ExperienceForm = () => {
         {/* Experience About Textarea */}
         <div className="w-full flex justify-between">
           {/* Textarea Side */}
-          <div className="w-[45%] flex flex-col gap-[1.2rem]">
+          <div className="w-[50%] flex flex-col gap-[1.2rem]">
             <div className="w-full">
               <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-red text-white shadow-md rounded-md whitespace-nowrap">
                 <GiIciclesFence />
@@ -200,7 +202,7 @@ const ExperienceForm = () => {
           </div>
 
           {/* Select Experience Side */}
-          <div className="w-[50%] shadow-lg rounded-md overflow-hidden">
+          <div className="w-[47%] max-h-[50rem] shadow-lg rounded-md overflow-hidden">
             {/* Experience List Header */}
             <div className="w-full flex flex-col gap-[1.2rem] bg-theme-yellow p-[1.5rem]">
               <span className="text-[2rem] leading-[2rem] text-white font-medium">
