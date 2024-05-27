@@ -47,8 +47,12 @@
   }
 
   .scrollbar-light::-webkit-scrollbar-thumb {
-    background-color: rgba(75, 85, 99, 0.151);
+    background-color: rgba(61, 61, 61, 0.39);
     border-radius: 10px;
     cursor: grab;
+  }
+
+  #searchExp::-webkit-search-cancel-button {
+    display: none;
   }
 }
