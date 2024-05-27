@@ -40,8 +40,8 @@ import CoverMain from "./pages/Dashboard/CoverMain";
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
-
 import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
+import EditFinish from "./pages/Dashboard/EditFinish";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -210,7 +210,10 @@ const router = createBrowserRouter([
         path: "/app/cover",
         element: <CoverMain />,
       },
-    
+      {
+        path: "/app/finish",
+        element: <EditFinish />,
+      },
     ],
   },
 ]);
