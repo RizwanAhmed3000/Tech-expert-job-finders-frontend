@@ -35,10 +35,20 @@ const UserProfile = () => {
             ))}
           </span>
 
-          <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
+          <label
+            htmlFor="selectImage"
+            className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md cursor-pointer"
+          >
             <HiOutlineUpload className="text-[1.7rem] leading-[1.6rem]" />
             <span>Edit Photo</span>
-          </button>
+          </label>
+          <input
+            type="file"
+            name="selectImage"
+            accept=".jpg, .png, .jpeg"
+            id="selectImage"
+            className="hidden"
+          />
         </div>
 
         {/* User Profile Info */}
