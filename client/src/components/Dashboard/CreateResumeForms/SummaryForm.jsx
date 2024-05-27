@@ -8,9 +8,9 @@ import { FaPlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
 import { ImBackward2, ImForward3 } from "react-icons/im";
 
-const ExperienceForm = () => {
+const SummaryForm = () => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
-  const [selectExperienceText, setSelectExperienceText] = useState([]);
+  const [selectSummaryText, setSelectSummaryText] = useState([]);
 
   const editorRef = useRef(null);
 
@@ -22,142 +22,19 @@ const ExperienceForm = () => {
   // Use effect to set the initial content of the editor
   useEffect(() => {
     if (editorRef.current) {
-      const listHTML = generateListHTML(selectExperienceText);
+      const listHTML = generateListHTML(selectSummaryText);
       editorRef.current.setContent(listHTML);
     }
-  }, [selectExperienceText]);
+  }, [selectSummaryText]);
 
   return (
     <div className="w-full">
-      {/* Experience Form FIelds */}
+      {/* Summary Form */}
       <form action="#" className="w-full flex flex-col gap-[2rem]">
-        {/* Row First */}
-        <div className="rowFirst grid grid-cols-2 gap-[2rem]">
-          {/* Job Title */}
-          <div className="jobTitleInput flex flex-col gap-[1rem]">
-            <label
-              htmlFor="jobTitle"
-              className="text-[1.5rem] leading-[1.5rem] text-theme-red"
-            >
-              Job Title
-            </label>
-            <input
-              type="text"
-              name="jobTitle"
-              id="jobTitle"
-              className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
-            />
-          </div>
-
-          {/* Employer */}
-          <div className="employerInput flex flex-col gap-[1rem]">
-            <label
-              htmlFor="employer"
-              className="text-[1.5rem] leading-[1.5rem] text-theme-red"
-            >
-              Employer
-            </label>
-            <input
-              type="text"
-              name="employer"
-              id="employer"
-              className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
-            />
-          </div>
-        </div>
-
-        {/* Row Second */}
-        <div className="rowSecond grid grid-cols-2 gap-[2rem]">
-          {/* City */}
-          <div className="cityInput flex flex-col gap-[0.8rem]">
-            <label
-              htmlFor="city"
-              className="text-[1.5rem] leading-[1.5rem] text-theme-red"
-            >
-              City
-            </label>
-            <input
-              type="text"
-              name="city"
-              id="city"
-              className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
-            />
-          </div>
-
-          {/* State */}
-          <div className="stateInput flex flex-col gap-[0.8rem]">
-            <label
-              htmlFor="state"
-              className="text-[1.5rem] leading-[1.5rem] text-theme-red"
-            >
-              State
-            </label>
-            <input
-              type="text"
-              name="state"
-              id="state"
-              className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
-            />
-          </div>
-        </div>
-
-        {/* Row Third */}
-        <div className="rowThird grid grid-cols-2 gap-[2rem] mb-[6rem]">
-          {/* Start Date */}
-          <div className="startDateInput flex flex-col gap-[0.8rem]">
-            <label
-              htmlFor="startDate"
-              className="text-[1.5rem] leading-[1.5rem] text-theme-red"
-            >
-              Start Date:
-            </label>
-            <input
-              type="date"
-              name="startDate"
-              id="startDate"
-              className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
-            />
-          </div>
-
-          {/* End Date */}
-          <div className="endDateInput relative flex flex-col gap-[0.8rem]">
-            <label
-              htmlFor="endDate"
-              className="text-[1.5rem] leading-[1.5rem] text-theme-red"
-            >
-              End Date:
-            </label>
-            <input
-              type={isCheckCurrentWork ? "text" : "date"}
-              name="endDate"
-              id="endDate"
-              defaultValue={isCheckCurrentWork ? "I currently work here" : ""}
-              disabled={isCheckCurrentWork}
-              className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
-            />
-
-            <div className="currentWorkingCheckbox absolute bottom-[-3.2rem] left-0 flex items-center gap-[1rem] px-[0.5rem]">
-              <input
-                type="checkbox"
-                name="CurrentWorking"
-                id="currentWorking"
-                onChange={() => setIsCheckCurrentWork(!isCheckCurrentWork)}
-                className="w-7 h-7 border-2 border-gray-300 rounded-full accent-theme-red ring-2 ring-offset-2 ring-theme-red"
-              />
-              <label
-                htmlFor="currentWorking"
-                className="text-[1.5rem] leading-[1.4rem]"
-              >
-                I currently work here
-              </label>
-            </div>
-          </div>
-        </div>
-
-        {/* Experience About Textarea */}
+        {/* Summary About Textarea */}
         <div className="w-full flex justify-between">
           {/* Textarea Side */}
-          <div className="w-[50%] flex flex-col gap-[1.2rem]">
+          <div className="w-[53%] flex flex-col gap-[1.2rem]">
             <div className="w-full">
               <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-red text-white shadow-md rounded-md whitespace-nowrap">
                 <GiIciclesFence />
@@ -199,9 +76,9 @@ const ExperienceForm = () => {
             />
           </div>
 
-          {/* Select Experience Side */}
-          <div className="w-[47%] max-h-[50rem] shadow-xl rounded-md overflow-hidden">
-            {/* Experience List Header */}
+          {/* Select Summary Side */}
+          <div className="w-[42%] max-h-[50rem] shadow-xl rounded-md overflow-hidden">
+            {/* Summary List Header */}
             <div className="w-full flex flex-col gap-[1.2rem] bg-theme-yellow p-[1.5rem]">
               <span className="text-[2rem] leading-[2rem] text-white font-medium">
                 Showing examples for:
@@ -215,7 +92,7 @@ const ExperienceForm = () => {
               />
             </div>
 
-            {/* Experience List */}
+            {/* Summary List */}
             <div className="w-full">
               <ul className="w-full flex flex-col h-[40rem] overflow-auto scrollbar-light">
                 {[
@@ -233,10 +110,10 @@ const ExperienceForm = () => {
                   <li
                     key={index}
                     onClick={() =>
-                      setSelectExperienceText(
-                        !selectExperienceText.includes(listText)
-                          ? [...selectExperienceText, listText]
-                          : selectExperienceText.filter(
+                      setSelectSummaryText(
+                        !selectSummaryText.includes(listText)
+                          ? [...selectSummaryText, listText]
+                          : selectSummaryText.filter(
                               (texts) => texts !== listText
                             )
                       )
@@ -244,7 +121,7 @@ const ExperienceForm = () => {
                     className="w-full flex items-start gap-[1.5rem] border-t-[0.1rem] border-neutral-400 px-[1.5rem] pt-[1.5rem] pb-[3rem] cursor-pointer"
                   >
                     <span className="listIcon text-[2.4rem] p-[0.5rem] bg-neutral-800 text-white rounded-full">
-                      {!selectExperienceText.includes(listText) ? (
+                      {!selectSummaryText.includes(listText) ? (
                         <FaPlus />
                       ) : (
                         <FaCheck />
@@ -291,4 +168,4 @@ const ExperienceForm = () => {
   );
 };
 
-export default ExperienceForm;
+export default SummaryForm;

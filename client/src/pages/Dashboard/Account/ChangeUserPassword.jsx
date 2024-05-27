@@ -10,13 +10,14 @@ import { useSelector } from "react-redux";
 const EditUserProfile = () => {
   const user = useSelector((state) => state?.user?.currentUser);
   // console.log(user);
+
   const [currentPassword, setCurrentPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
-  console.log(currentPassword);
-  console.log(newPassword);
-  console.log(confirmPassword);
+  // console.log(currentPassword);
+  // console.log(newPassword);
+  // console.log(confirmPassword);
 
   const updatePasswordHandler = async (e) => {
     e.preventDefault();
@@ -35,12 +36,14 @@ const EditUserProfile = () => {
     } else {
       // console.log("update password handler is working");
       const updatePassword = {
-        password: newPassword,
+        password: currentPassword,
+        newPassword: newPassword,
         userId: user._id,
       };
+
       try {
         const res = await axios.put(
-          `/api/${UPDATE_USER_PASSWORD}/${user._id}`,
+          `/api${UPDATE_USER_PASSWORD}/${user._id}`,
           updatePassword
         );
         console.log(res);
@@ -50,11 +53,19 @@ const EditUserProfile = () => {
             text: "user Updated successfully!",
             icon: "success",
           });
-        } else {
-          console.error("Error Araha hai ");
+          //   setNewPassword("")
+          // setCurrentPassword("")
+          // setConfirmPassword("")
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error.response.data.status)
+        if (error.response.data.status === 400) {
+          Swal.fire({
+            title: "Oops!",
+            text: "Current password doesn't match!",
+            icon: "error",
+          });
+        }
       }
     }
   };

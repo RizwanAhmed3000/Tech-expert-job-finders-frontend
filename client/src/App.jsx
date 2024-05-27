@@ -7,8 +7,10 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-// Import Pages
+// Import Pages & Components
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -35,12 +37,14 @@ import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
 import CoverMain from "./pages/Dashboard/CoverMain";
-
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
+
 import { useSelector } from "react-redux";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
+
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -188,6 +192,10 @@ const router = createBrowserRouter([
       {
         path: "/app/coverletter",
         element: <DashCoverLetter />,
+      },
+      {
+        path: "/app/coverletter/01",
+        element: <CLTemplate01 />,
       },
       {
         path: "/app/blogs",
