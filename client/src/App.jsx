@@ -210,6 +210,7 @@ const router = createBrowserRouter([
         path: "/app/cover",
         element: <CoverMain />,
       },
+    
     ],
   },
 ]);

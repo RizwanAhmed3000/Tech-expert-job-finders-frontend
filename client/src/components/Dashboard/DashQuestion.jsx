@@ -10,7 +10,7 @@ const DashQuestion = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleUploadPhotoClick = () => {
+  const handleUploadPhotoClick = () => {  
     document.getElementById("fileInput").click();
   };
 
