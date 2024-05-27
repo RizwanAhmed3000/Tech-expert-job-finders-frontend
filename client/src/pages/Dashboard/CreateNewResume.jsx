@@ -20,6 +20,7 @@ const ResumeForm = () => {
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
+
   return (
     <div className="mainCont w-full h-full p-[3rem]">
       <div className="wrapper w-full h-full bg-white py-[1.5rem] px-[1.5rem] shadow-2xl rounded-2xl">
