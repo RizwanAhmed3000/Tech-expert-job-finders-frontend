@@ -57,7 +57,18 @@ function SignUpForm() {
         title: "Oops...",
         text: "Password does not match!",
       });
-    } else {
+    } else if (email != '' && !email.toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email is Not Valid!",
+      });
+
+  } else {
       // console.log("signup handler is working");
       const userCredential = {
         username: fullName,
@@ -85,6 +96,14 @@ function SignUpForm() {
         }
       } catch (error) {
         console.log(error);
+        console.log(error.response.data.message.includes('duplicate key'));
+        if(error.response.data.message.includes('duplicate key')){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Email Already Registered`,
+          });
+        }
       }
     }
   };

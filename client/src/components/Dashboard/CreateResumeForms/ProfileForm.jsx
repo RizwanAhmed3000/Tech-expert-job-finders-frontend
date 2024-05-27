@@ -262,7 +262,10 @@ const ProfileForm = () => {
         </div>
 
         <div className="btnRow w-full flex justify-end">
-          <button className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+          >
             <TfiSave />
             <span>Save</span>
           </button>
