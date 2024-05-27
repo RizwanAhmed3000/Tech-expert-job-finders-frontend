@@ -195,7 +195,7 @@ const ExperienceForm = () => {
                 content_style:
                   ".tox-tinymce { border: 1px solid #ddd; padding: 10px; border-radius: 0px; }",
               }}
-              initialValue="Insert FeedBack"
+              initialValue="Insert Experience"
             />
           </div>
 
