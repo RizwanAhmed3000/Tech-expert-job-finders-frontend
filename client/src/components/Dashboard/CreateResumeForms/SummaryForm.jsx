@@ -9,14 +9,13 @@ import { FaCheck } from "react-icons/fa6";
 import { ImBackward2, ImForward3 } from "react-icons/im";
 
 const SummaryForm = () => {
-  const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
   const [selectSummaryText, setSelectSummaryText] = useState([]);
 
   const editorRef = useRef(null);
 
   // Function to generate unordered list HTML from the array
   const generateListHTML = (items) => {
-    return `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+    return `${items.map((item) => `<p>${item}</p>`).join(" ")}`;
   };
 
   // Use effect to set the initial content of the editor
@@ -87,7 +86,7 @@ const SummaryForm = () => {
                 type="search"
                 name="searchExp"
                 id="searchExp"
-                placeholder="Ex: Cashier.."
+                placeholder="Ex: Accountant.."
                 className="py-[0.7rem] px-[1rem] text-[1.5rem] leading-[1.5rem] text-neutral-700 outline-none rounded-md"
               />
             </div>
@@ -96,16 +95,16 @@ const SummaryForm = () => {
             <div className="w-full">
               <ul className="w-full flex flex-col h-[40rem] overflow-auto scrollbar-light">
                 {[
-                  "Manage and archive quality documentation and participate in internal and external quality audits",
-                  "Resolved conflicts and negotiated agreements between parties in order to reach win-win solutions to disagreements and clarify misunderstandings",
-                  "Presented metric reporting and [Timeframe] account reviews to [Type] team and clients",
-                  "Developed, updated and maintained database of existing and potential customers in [Software]",
-                  "Tracked customer shipment requirements to improve customer satisfaction while increasing service efficiencies",
-                  "Tracked customer shipment requirements to improve customer satisfaction while increasing service efficiencies",
-                  "Developed and executed plans to monitor standard process adherence",
-                  "Initiated outbound administrative requests by phone and in writing to accomplish [Result]",
-                  "Identified and resolved process issues to encourage smoother procedures, more efficient workflow and overall business growth",
-                  "Evaluated quality problems and performed [Action] to identify and resolve issues",
+                  "Experienced Job Title with over Number years of experience in Industry. Excellent reputation for resolving problems, improving customer satisfaction, and driving overall operational improvements. Consistently saved costs while increasing profits.",
+                  "[Job Title] with over [Number] years of successful experience in [Skill] and [Skill]. Recognised consistently for performance excellence and contributions to success in [Industry] industry. Strengths in [Skill] and [Skill] backed by training in [Area of study].",
+                  "Multi-talented [Job Title] consistently rewarded for success in planning and operational improvements. Experience in policy development and staff management procedures positively impacting overall morale and productivity.",
+                  "Enthusiastic [Job Title] eager to contribute to team success through hard work, attention to detail and excellent organizational skills. Clear understanding of [Task] and [Task] and training in [Skill]. Motivated to learn, grow and excel in [Industry].",
+                  "Senior [Job Title] and outstanding performer in [Skill] and [Skill] within [Industry]. Proven success in leadership, operational excellence and organizational development with keen understanding of elements of [Type] business. Recognized for inspiring management team members to excel and encouraging creative work environments.",
+                  "Energetic [Type] Manager offering a proven history of success in overseeing [Type] operations with an efficient, performance-driven approach. Manage business effectively through proactive operational and team oversight. Sustain revenue growth with continuous attention to customer and market demands.",
+                  "Gifted [Job Title] with excellent team building and leadership abilities honed over a career in [Type] industry. Deliver high-quality service and consistent business results with a resourceful approach to handling routine and complex challenges.",
+                  "Resourceful [Type] Manager is able to handle fast-paced [Industry] demands while keeping operations in line with regulatory requirements.",
+                  "Focused on exceeding profitability targets through skilled management of available personnel and inventory resources. Expert in identifying and capitalizing on business opportunities.",
+                  "Accomplished in translating high-level directives into actionable front-line policies and achieving consistent results. Strong track record of keeping costs low.",
                 ].map((listText, index) => (
                   <li
                     key={index}

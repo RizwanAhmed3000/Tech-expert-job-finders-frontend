@@ -12,6 +12,8 @@ import ExperienceForm from "../../components/Dashboard/CreateResumeForms/Experie
 import EducationForm from "../../components/Dashboard/CreateResumeForms/EducationForm";
 import SkillsForm from "../../components/Dashboard/CreateResumeForms/SkillsForm";
 import SummaryForm from "../../components/Dashboard/CreateResumeForms/SummaryForm";
+import LanguageForm from "../../components/Dashboard/CreateResumeForms/LanguageForm";
+import CertificationForm from "../../components/Dashboard/CreateResumeForms/CertificationForm";
 
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -30,14 +32,15 @@ const ResumeForm = () => {
         {/* Create Resume Form Tabs */}
         <div className="tabCont flex items-center gap-[1.5rem] border-b-[0.2rem] border-neutral-200 py-[2rem] px-[1rem]">
           {/* Tabs */}
-          <div className="flex items-center gap-[0.5rem]">
+          <div className="flex flex-wrap items-center gap-[0.5rem]">
             {[
               "Profile",
               "Experience",
               "Education",
               "Skills",
               "Summary",
-              "Interests",
+              "Languages",
+              "Certifications",
               "Photo",
             ].map((tabname, index) => (
               <span
@@ -121,6 +124,16 @@ const ResumeForm = () => {
                     immediately see the value that you bring.
                   </span>
                 </>
+              ) : activeTab === "Languages" ? (
+                <>
+                  <span>What languages do you Speak?</span>
+                  <span>.....</span>
+                </>
+              ) : activeTab === "Certifications" ? (
+                <>
+                  <span>Certifications</span>
+                  <span>Showcase your certifications to an employer</span>
+                </>
               ) : (
                 ""
               )}
@@ -140,8 +153,12 @@ const ResumeForm = () => {
             <EducationForm />
           ) : activeTab === "Skills" ? (
             <SkillsForm />
+          ) : activeTab === "Summary" ? (
+            <SummaryForm />
+          ) : activeTab === "Languages" ? (
+            <LanguageForm />
           ) : (
-            activeTab === "Summary" && <SummaryForm />
+            activeTab === "Certifications" && <CertificationForm />
           )}
         </div>
       </div>
