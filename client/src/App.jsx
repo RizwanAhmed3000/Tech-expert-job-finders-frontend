@@ -41,6 +41,7 @@ import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -188,6 +189,10 @@ const router = createBrowserRouter([
       {
         path: "/app/coverletter",
         element: <DashCoverLetter />,
+      },
+      {
+        path: "/app/coverletter/01",
+        element: <CLTemplate01 />,
       },
       {
         path: "/app/blogs",
