@@ -35,52 +35,67 @@ const UserProfile = () => {
             ))}
           </span>
 
-          <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
+          <label
+            htmlFor="selectImage"
+            className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md cursor-pointer"
+          >
             <HiOutlineUpload className="text-[1.7rem] leading-[1.6rem]" />
             <span>Edit Photo</span>
-          </button>
+          </label>
+          <input
+            type="file"
+            name="selectImage"
+            accept=".jpg, .png, .jpeg"
+            id="selectImage"
+            className="hidden"
+          />
         </div>
 
         {/* User Profile Info */}
         <div className="userProfileInfo col-span-8 bg-white shadow-2xl rounded-2xl p-[2rem]">
-          <div className="subCont flex justify-between pb-[1.5rem] border-b-[0.1rem] border-neutral-300">
-            <div className="LeftSide flex gap-[3rem] text-neutral-800">
-              {/* Followers */}
-              <div className="followers flex flex-col gap-[0.6rem]">
-                <span className="text-[2.2rem] leading-[2.2rem] font-medium">
-                  0
-                </span>
-                <span className="text-[1.3rem] leading-[1.3rem] font-normal text-neutral-500">
-                  Followers
-                </span>
+          <div className="subCont flex flex-col">
+            <div className="topInfo pb-[1.5rem] flex justify-between border-b-[0.1rem] border-neutral-300">
+              <div className="LeftSide flex gap-[3rem] text-neutral-800">
+                {/* Followers */}
+                <div className="followers flex flex-col gap-[0.6rem]">
+                  <span className="text-[2.2rem] leading-[2.2rem] font-medium">
+                    0
+                  </span>
+                  <span className="text-[1.3rem] leading-[1.3rem] font-normal text-neutral-500">
+                    Followers
+                  </span>
+                </div>
+
+                {/* Following */}
+                <div className="following flex flex-col gap-[0.6rem]">
+                  <span className="text-[2.2rem] leading-[2.2rem] font-medium">
+                    0
+                  </span>
+                  <span className="text-[1.3rem] leading-[1.3rem] font-normal text-neutral-500">
+                    Following
+                  </span>
+                </div>
+
+                {/* Questions */}
+                <div className="question flex flex-col gap-[0.6rem]">
+                  <span className="text-[2.2rem] leading-[2.2rem] font-medium">
+                    0
+                  </span>
+                  <span className="text-[1.3rem] leading-[1.3rem] font-normal text-neutral-500">
+                    Question
+                  </span>
+                </div>
               </div>
 
-              {/* Following */}
-              <div className="following flex flex-col gap-[0.6rem]">
-                <span className="text-[2.2rem] leading-[2.2rem] font-medium">
-                  0
-                </span>
-                <span className="text-[1.3rem] leading-[1.3rem] font-normal text-neutral-500">
-                  Following
-                </span>
-              </div>
-
-              {/* Questions */}
-              <div className="question flex flex-col gap-[0.6rem]">
-                <span className="text-[2.2rem] leading-[2.2rem] font-medium">
-                  0
-                </span>
-                <span className="text-[1.3rem] leading-[1.3rem] font-normal text-neutral-500">
-                  Question
-                </span>
+              <div className="rightSide">
+                <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
+                  <IoMdSettings className="text-[1.7rem] leading-[1.6rem]" />
+                  <span>Settins</span>
+                </button>
               </div>
             </div>
-
-            <div className="rightSide">
-              <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
-                <IoMdSettings className="text-[1.7rem] leading-[1.6rem]" />
-                <span>Settins</span>
-              </button>
+            <div className="desc py-[1rem]">
+              <p className="text-[1.5rem]">nabeel</p>
             </div>
           </div>
         </div>

@@ -84,10 +84,21 @@ const EditUserProfile = () => {
             className="w-full h-[25rem] px-[2rem] rounded-lg object-cover shadow-lg border-neutral-300 border-[0.6rem] border-double"
           />
 
-          <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
+          <label
+            htmlFor="selectProfilePic"
+            className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md cursor-pointer"
+          >
             <IoCloudUpload className="text-[1.7rem] leading-[1.6rem]" />
             <span className="tracking-[0.05rem]">PROFILE PHOTO</span>
-          </button>
+          </label>
+
+          <input
+            type="file"
+            name="selectProfilePic"
+            accept=".jpg, .png, .jpeg"
+            id="selectProfilePic"
+            className="hidden"
+          />
 
           <h4 className="text-[2rem] leading-[2rem] font-normal text-neutral-600 mt-[1rem]">
             {user.username}
