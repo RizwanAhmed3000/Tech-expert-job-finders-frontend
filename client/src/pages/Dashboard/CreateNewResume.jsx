@@ -9,6 +9,9 @@ import { HiMiniXMark } from "react-icons/hi2";
 // Components
 import ProfileForm from "../../components/Dashboard/CreateResumeForms/ProfileForm";
 import ExperienceForm from "../../components/Dashboard/CreateResumeForms/ExperienceForm";
+import EducationForm from "../../components/Dashboard/CreateResumeForms/EducationForm";
+import SkillsForm from "../../components/Dashboard/CreateResumeForms/SkillsForm";
+import SummaryForm from "../../components/Dashboard/CreateResumeForms/SummaryForm";
 
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -77,19 +80,49 @@ const ResumeForm = () => {
                   <span>What's the best way for Employers to contact you?</span>
                   <span>We suggest including an email and phone number.</span>
                 </>
+              ) : activeTab === "Experience" ? (
+                <>
+                  <span>Now, let's fill out your work history</span>
+                  <span>
+                    Here's what you need to know: Employers scan your resume for
+                    six seconds to decide if you're a match
+                  </span>
+                  <span>
+                    We'll suggest bullet points that make a great impression
+                  </span>
+                </>
+              ) : activeTab === "Education" ? (
+                <>
+                  <span>Tell us about your education</span>
+                  <span>
+                    Include every school, even if you're still there or didn't
+                    graduate.
+                  </span>
+                </>
+              ) : activeTab === "Skills" ? (
+                <>
+                  <span>Next, let's take care of your skills</span>
+                  <span>
+                    Here's what you need to know: Employers scan skills for
+                    relevant keywords,
+                  </span>
+                  <span>
+                    Enter 4-6 skills that are most relevant to your desired job.
+                  </span>
+                </>
+              ) : activeTab === "Summary" ? (
+                <>
+                  <span>
+                    Briefly describe the value that you bring through your
+                    skills, background and experience
+                  </span>
+                  <span>
+                    Write a career overview so that hiring managers can
+                    immediately see the value that you bring.
+                  </span>
+                </>
               ) : (
-                activeTab === "Experience" && (
-                  <>
-                    <span>Now, let's fill out your work history</span>
-                    <span>
-                      Here's what you need to know: Employers scan your resume
-                      for six seconds to decide if you're a match
-                    </span>
-                    <span>
-                      We'll suggest bullet points that make a great impression
-                    </span>
-                  </>
-                )
+                ""
               )}
             </div>
 
@@ -101,8 +134,14 @@ const ResumeForm = () => {
           {/* Create Resume Forms */}
           {activeTab === "Profile" ? (
             <ProfileForm />
+          ) : activeTab === "Experience" ? (
+            <ExperienceForm />
+          ) : activeTab === "Education" ? (
+            <EducationForm />
+          ) : activeTab === "Skills" ? (
+            <SkillsForm />
           ) : (
-            activeTab === "Experience" && <ExperienceForm />
+            activeTab === "Summary" && <SummaryForm />
           )}
         </div>
       </div>
