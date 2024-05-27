@@ -30,9 +30,9 @@ const ResumeForm = () => {
     <div className="mainCont w-full h-full p-[3rem]">
       <div className="wrapper w-full h-full bg-white py-[1.5rem] px-[1.5rem] shadow-2xl rounded-2xl">
         {/* Create Resume Form Tabs */}
-        <div className="tabCont flex items-center gap-[1.5rem] border-b-[0.2rem] border-neutral-200 py-[2rem] px-[1rem]">
+        <div className="tabCont flex flex-wrap items-center gap-[1.5rem] border-b-[0.2rem] border-neutral-200 py-[2rem] px-[1rem]">
           {/* Tabs */}
-          <div className="flex flex-wrap items-center gap-[0.5rem]">
+          <div className="flex items-center gap-[0.5rem]">
             {[
               "Profile",
               "Experience",
@@ -45,10 +45,10 @@ const ResumeForm = () => {
             ].map((tabname, index) => (
               <span
                 key={index}
+                onClick={() => handleTabClick(tabname)}
                 className={`text-[1.6rem] leading-[1.6rem] px-6 py-4 cursor-pointer ${getTabClassNames(
                   tabname
                 )} text-theme-red`}
-                onClick={() => handleTabClick(tabname)}
               >
                 {tabname}
               </span>
@@ -57,10 +57,10 @@ const ResumeForm = () => {
 
           {/* Buttons */}
           <div className="flex items-center gap-[1rem]">
-            <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-red text-white shadow-md rounded-md whitespace-nowrap">
+            {/* <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-red text-white shadow-md rounded-md whitespace-nowrap">
               <IoMdAdd />
               <span>Add Section</span>
-            </button>
+            </button> */}
 
             <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-black text-white shadow-md rounded-md whitespace-nowrap">
               <GiIciclesFence />
