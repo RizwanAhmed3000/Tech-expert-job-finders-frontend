@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import CreateButton from "../../components/Dashboard/CreateButton";
 import DashUserResumeCard from "../../components/Dashboard/DashUserResumeCard";
-import EnterModal from "../../components/Dashboard/EnterModal";
+import EnterResumeTitleModal from "../../components/Dashboard/EnterResumeTitleModal";
 
 const DashResume = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTitleModalOpen, setIsTitleModalOpen] = useState(false);
 
   return (
     <>
@@ -20,14 +20,15 @@ const DashResume = () => {
 
           <CreateButton
             btnText="Create New Resume"
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-            
+            setIsTitleModalOpen={setIsTitleModalOpen}
           />
         </div>
         <DashUserResumeCard cardName="Name" />
       </div>
-      <EnterModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <EnterResumeTitleModal
+        isTitleModalOpen={isTitleModalOpen}
+        setIsTitleModalOpen={setIsTitleModalOpen}
+      />
     </>
   );
 };

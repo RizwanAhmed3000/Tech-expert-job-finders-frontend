@@ -1,40 +1,45 @@
-
-
 import React, { useState, useEffect } from "react";
 
-import SelectTemplateModal from "./SelectTemplateModal";
-import SelectCoverTemplateModal from "./SelectCoverTemplateModal";
+import SelectResumeTemplateModal from "./SelectResumeTemplateModal";
+import Swal from "sweetalert2";
 
-
-const EnterCoverLetterModal = ({ isModalOpen, setIsModalOpen }) => {
-  const [isSelectTemplateOpen, setIsSelectTemplateOpen] = useState(false);
+const EnterResumeTitleModal = ({ isTitleModalOpen, setIsTitleModalOpen }) => {
+  const [isResumeTemplateModalOpen, setIsResumeTemplateModalOpen] =
+    useState(false);
+  const [resumeTitle, setResumeTitle] = useState("");
 
   useEffect(() => {
-    if (isSelectTemplateOpen) {
+    if (isResumeTemplateModalOpen) {
       // Set the initial state for the second modal if the first one is closed
-      setIsModalOpen(false);
+      setIsTitleModalOpen(false);
     }
-  }, [isSelectTemplateOpen, setIsModalOpen]);
+  }, [isResumeTemplateModalOpen, setIsTitleModalOpen]);
 
   const handleCreateClick = () => {
-    // First close the main modal
-    setIsModalOpen(false);
-    // Then, after a short delay, open the second modal
-    setTimeout(() => {
-      setIsSelectTemplateOpen(true);
-    }, 300); // Adjust the delay as needed
+    if (resumeTitle) {
+      setIsTitleModalOpen(false);
+      setTimeout(() => {
+        setIsResumeTemplateModalOpen(true);
+      }, 300);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please! Enter the Resume Title",
+      });
+    }
   };
 
   return (
     <div>
       <div
         className={`w-full fixed z-50 top-0 left-0 h-dvh flex justify-center ${
-          isModalOpen ? "block" : "hidden"
+          isTitleModalOpen ? "block" : "hidden"
         }`}
       >
         {/* Overlay */}
         <div
-          onClick={() => setIsModalOpen(false)}
+          onClick={() => setIsTitleModalOpen(false)}
           className={`overlay absolute z-50 top-0 left-0 w-full h-full bg-[#222222a0]`}
         ></div>
 
@@ -43,7 +48,7 @@ const EnterCoverLetterModal = ({ isModalOpen, setIsModalOpen }) => {
           className={`w-[50rem] p-[2rem] absolute z-[100] top-[8rem] bg-white modal flex flex-col items-center gap-[2rem] self-center text-black rounded-md`}
         >
           <h2 className="text-[2rem] leading-[2rem] font-medium">
-            Enter Cover Letter Title
+            Enter Resume Title
           </h2>
           <p className="text-[1.5rem] leading-[1.5rem] font-normal">
             This name will be used to save your resume.
@@ -53,6 +58,7 @@ const EnterCoverLetterModal = ({ isModalOpen, setIsModalOpen }) => {
             type="text"
             name="ResumeTitle"
             id="ResumeTitle"
+            onChange={(e) => setResumeTitle(e.target.value)}
             placeholder="Enter Resume Title"
             className="w-full px-[1rem] py-[0.5rem] text-[1.5rem] outline-none border-[0.2rem] border-neutral-300"
           />
@@ -60,7 +66,7 @@ const EnterCoverLetterModal = ({ isModalOpen, setIsModalOpen }) => {
           <div className="buttons w-full flex justify-end items-center gap-[1rem]">
             <button
               className="text-[1.5rem] leading-[1.5rem] py-[0.8rem] px-[1rem] bg-theme-red text-white rounded-sm"
-              onClick={() => setIsModalOpen(false)}
+              onClick={() => setIsTitleModalOpen(false)}
             >
               Close
             </button>
@@ -74,18 +80,15 @@ const EnterCoverLetterModal = ({ isModalOpen, setIsModalOpen }) => {
         </div>
       </div>
 
-      {isSelectTemplateOpen && (<div>
-        
-       <SelectCoverTemplateModal setIsSelectTemplateOpen={setIsSelectTemplateOpen}/>
-       </div>
+      {isResumeTemplateModalOpen && (
+        <div>
+          <SelectResumeTemplateModal
+            setIsResumeTemplateModalOpen={setIsResumeTemplateModalOpen}
+          />
+        </div>
       )}
     </div>
   );
 };
 
-export default EnterCoverLetterModal;
-
-
-
-
-
+export default EnterResumeTitleModal;

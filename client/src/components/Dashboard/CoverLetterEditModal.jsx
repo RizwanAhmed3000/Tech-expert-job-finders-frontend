@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { FiX } from "react-icons/fi";
 import Card from "react-bootstrap/Card";
 import cvImg3 from "../../assets/templates/cv-template-03.png";
-import SelectTemplateListing from "./SelectTemplateListing";
+import SelectTemplateListing from "./SelectResumeTemplateListing";
 import { TfiSave } from "react-icons/tfi";
 import { FaFloppyDisk } from "react-icons/fa6";
 function CoverLetterEditModal({ setIsSelectTemplateOpen, handleCreateClick }) {
-
   return (
     <div className="fixed z-[100] inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[600px] relative">
@@ -147,7 +146,7 @@ function CoverLetterEditModal({ setIsSelectTemplateOpen, handleCreateClick }) {
             <div className="btnRow w-full flex justify-end">
               <button className="flex gap-1 items-center m-5 bg-[#18da35] px-3 py-2 rounded-lg opacity-80 text-lg text-white hover:opacity-100 hover:cursor-pointer">
                 <FaFloppyDisk />
-                <span onClick={()=>handleCreateClick()}>Save & Continue</span>
+                <span onClick={() => handleCreateClick()}>Save & Continue</span>
               </button>
             </div>
           </form>
@@ -159,9 +158,7 @@ function CoverLetterEditModal({ setIsSelectTemplateOpen, handleCreateClick }) {
 
 export default CoverLetterEditModal;
 
-export const CoverLetterSecondEditor = ({setIsSecondModalOpen}) => {
-
-
+export const CoverLetterSecondEditor = ({ setIsSecondModalOpen }) => {
   return (
     <div className="fixed z-[100] inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[600px] relative">
@@ -186,7 +183,7 @@ export const CoverLetterSecondEditor = ({setIsSecondModalOpen}) => {
                   htmlFor="recipient"
                   className="text-[1.2rem] leading-[1.5rem] text-theme-red"
                 >
-                 Recipient
+                  Recipient
                 </label>
                 <input
                   type="text"
@@ -267,8 +264,6 @@ export const CoverLetterSecondEditor = ({setIsSecondModalOpen}) => {
                   className="outline-none px-[1rem] py-[0.4rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
                 />
               </div>
-
-              
             </div>
 
             <div className="btnRow w-full flex justify-end">
