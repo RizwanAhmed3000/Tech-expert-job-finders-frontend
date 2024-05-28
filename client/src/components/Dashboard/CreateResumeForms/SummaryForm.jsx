@@ -10,7 +10,12 @@ import { ImBackward2, ImForward3 } from "react-icons/im";
 
 const SummaryForm = () => {
   const [selectSummaryText, setSelectSummaryText] = useState([]);
+  const [summary, setSummary] = useState('');
 
+  // console.log(summary);
+  const handleEditorChange = (content, editor) => {
+    setSummary(content);
+  };
   const editorRef = useRef(null);
 
   // Function to generate unordered list HTML from the array
@@ -72,6 +77,7 @@ const SummaryForm = () => {
                   ".tox-tinymce { border: 1px solid #ddd; padding: 10px; border-radius: 0px; }",
               }}
               initialValue="Insert Summary"
+              onEditorChange={handleEditorChange}
             />
           </div>
 

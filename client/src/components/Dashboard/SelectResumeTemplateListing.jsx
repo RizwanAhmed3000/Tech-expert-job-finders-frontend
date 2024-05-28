@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cvImg from "../../assets/templates/cv-template-04.png";
 import cvImg3 from "../../assets/templates/cv-template-03.png";
 import SelectResumeTemplateCard from "./SelectResumeTemplateCard";
+import { GET_RESUME_TEMP } from "../../constants/apis.js";
+import axios from "axios";
+
+
 function SelectResumeTemplateModal({ activeTab }) {
+  const [freeResumeTemplate, setFreeResumeTemplate] = useState([]);
+// console.log(freeResumeTemplate)
+  const apiCalling = async () => {
+    try {
+      const res = await axios.get(`/api${GET_RESUME_TEMP}`);
+      // console.log(res?.data?.data);
+      setFreeResumeTemplate(res?.data?.data)
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+  useEffect(() => {
+    apiCalling();
+  }, []);
   const free = [
     {
       name: "BELA",
@@ -36,7 +56,7 @@ function SelectResumeTemplateModal({ activeTab }) {
   return (
     <div className="grid grid-cols-3 gap-[1rem] place-items-center">
       {activeTab == "free"
-        ? free.map((data, i) => (
+        ? freeResumeTemplate.map((data, i) => (
             <SelectResumeTemplateCard
               data={data}
               route={"/app/resume-details"}

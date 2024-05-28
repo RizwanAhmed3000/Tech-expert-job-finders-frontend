@@ -9,6 +9,12 @@ import { FaPlus } from "react-icons/fa6";
 const LanguageForm = () => {
   const [addLanguage, setAddLanguage] = useState([1, 2, 3]);
 
+  const [language, setLanguage] = useState("");
+  const [level, setLevel] = useState("");
+
+  // console.log(language);
+  // console.log(level);
+
   return (
     <div className="w-full">
       {/* Language Form FIelds */}
@@ -25,6 +31,7 @@ const LanguageForm = () => {
                 Language
               </label>
               <input
+              onChange={(e) => setLanguage(e.target.value)}
                 type="text"
                 name="language"
                 id="language"
@@ -41,6 +48,7 @@ const LanguageForm = () => {
                 Level
               </label>
               <select
+              onChange={(e) => setLevel(e.target.value)}
                 name="languageStatus"
                 id="languageStatus"
                 className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
