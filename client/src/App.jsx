@@ -36,7 +36,9 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
+
 import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
+
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -219,10 +221,6 @@ const router = createBrowserRouter([
       {
         path: "/app/finish",
         element: <EditFinish />,
-      },
-      {
-        path: "/app/errorpage",
-        element: <CoverPhoto />,
       },
     ],
   },

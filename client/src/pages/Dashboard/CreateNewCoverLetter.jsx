@@ -8,7 +8,6 @@ import CoverLetterEditModal, {
 } from "../../components/Dashboard/CoverLetterEditModal";
 import { FiX } from "react-icons/fi";
 import CoverPhoto from "../../components/Dashboard/CreateResumeForms/CoverPhoto";
-import { ToggleButton } from "react-bootstrap";
 
 function CoverForm() {
   const [activeButton, setActiveButton] = useState("coverLetter");
