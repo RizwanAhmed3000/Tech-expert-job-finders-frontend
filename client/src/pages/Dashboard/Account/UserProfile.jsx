@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 // Import Icons
 import { MdOutlineStarPurple500 } from "react-icons/md";
@@ -8,11 +8,59 @@ import { FaBriefcase } from "react-icons/fa";
 import { IoCloudUpload, IoTimeOutline } from "react-icons/io5";
 import { PiArrowBendUpRightBold } from "react-icons/pi";
 import { FaEarthAmericas } from "react-icons/fa6";
-
+import { UPDATE_USER, UPLOAD_SINGLE_IMAGE } from "../../../constants/apis.js";
 // Import Image
 import UserProfileAvatar from "../../../assets/profile-avatar.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { uploadImgSuccess } from "../../../Redux/Slices/userSlices";
 
 const UserProfile = () => {
+  const user = useSelector((state) => state.user.currentUser);
+  // console.log(user._id)
+  const dispatch = useDispatch();
+  const [selectedImage, setSelectedImage] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
+  // const updateUserProfilePic = async (imgUrl) => {
+  //   try {
+  //     const res = axios.put(`/api${UPDATE_USER}`, imgUrl);
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const handleImageChange = async (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const image = e.target.files[0];
+      setSelectedImage(image);
+
+      const formData = new FormData();
+      formData.append("photo", image);
+
+      try {
+        const response = await axios.post(
+          `/api${UPLOAD_SINGLE_IMAGE}`,
+          formData
+        );
+        const { data } = response;
+        setProfilePhoto(data.results[0].secure_url);
+        if (data.results[0].secure_url) {
+          // updateUserProfilePic(data.results[0].secure_url);
+          // dispatch(uploadImgSuccess(data.results[0].secure_url));
+        }
+        if (response.status === 200) {
+          console.log("Image uploaded successfully:");
+        } else {
+          console.error("Failed to upload image");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+  };
+
   return (
     <div className="px-[4rem] py-[4rem]">
       {/* Row First */}
@@ -20,13 +68,13 @@ const UserProfile = () => {
         {/* User Profile Card */}
         <div className="userProfileCard col-span-4 flex flex-col items-center justify-center gap-[1.2rem] py-[3rem] px-[1rem] bg-white shadow-2xl rounded-2xl">
           <img
-            src={UserProfileAvatar}
+            src={profilePhoto || UserProfileAvatar}
             alt="UserProfilePic"
             className="w-[10rem] h-[10rem] rounded-full object-cover shadow-lg"
           />
 
           <h4 className="text-[2rem] leading-[2rem] font-normal">
-            Muhammad Nabeel
+            {user.username}
           </h4>
 
           <span className="text-[2rem] leading-[2rem] text-theme-yellow flex">
@@ -40,9 +88,13 @@ const UserProfile = () => {
             className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md cursor-pointer"
           >
             <HiOutlineUpload className="text-[1.7rem] leading-[1.6rem]" />
-            <span>Edit Photo</span>
+            <span>
+              {/* // onClick={editProfileWorkWithCloud} */}
+              Edit Photo
+            </span>
           </label>
           <input
+            onChange={handleImageChange}
             type="file"
             name="selectImage"
             accept=".jpg, .png, .jpeg"
@@ -90,12 +142,12 @@ const UserProfile = () => {
               <div className="rightSide">
                 <button className="bg-theme-red text-[1.6rem] leading-[1.6rem] flex items-center gap-[1rem] text-white px-[2rem] py-[0.9rem] rounded-md">
                   <IoMdSettings className="text-[1.7rem] leading-[1.6rem]" />
-                  <span>Settins</span>
+                  <span>Settings</span>
                 </button>
               </div>
             </div>
             <div className="desc py-[1rem]">
-              <p className="text-[1.5rem]">nabeel</p>
+              <p className="text-[1.5rem]">{user.aboutMe}</p>
             </div>
           </div>
         </div>
