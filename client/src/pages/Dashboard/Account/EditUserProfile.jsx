@@ -277,27 +277,6 @@
 
 // export default EditUserProfile;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { IoCloudUpload } from "react-icons/io5";
 import { TfiSave } from "react-icons/tfi";
@@ -306,12 +285,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_USER, UPLOAD_SINGLE_IMAGE } from "../../../constants/apis.js"; // Make sure UPLOAD_SINGLE_IMAGE is imported
 import Swal from "sweetalert2";
 import axios from "axios";
-import { updateSuccess, uploadImgSuccess } from "../../../Redux/Slices/userSlices"; // Ensure these are imported
+import {
+  updateSuccess,
+  uploadImgSuccess,
+} from "../../../Redux/Slices/userSlices"; // Ensure these are imported
 
 const EditUserProfile = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.user?.currentUser);
-  
+
   const [name, setName] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState("");
@@ -321,7 +303,9 @@ const EditUserProfile = () => {
 
   const updateUserProfilePic = async (imgUrl) => {
     try {
-      const res = await axios.put(`/api${UPDATE_USER}/${user._id}`, { profileImg: imgUrl });
+      const res = await axios.put(`/api${UPDATE_USER}/${user._id}`, {
+        profileImg: imgUrl,
+      });
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -337,7 +321,10 @@ const EditUserProfile = () => {
       formData.append("photo", image);
 
       try {
-        const response = await axios.post(`/api${UPLOAD_SINGLE_IMAGE}`, formData);
+        const response = await axios.post(
+          `/api${UPLOAD_SINGLE_IMAGE}`,
+          formData
+        );
         const { data } = response;
         setProfilePhoto(data.results[0].secure_url);
         if (data.results[0].secure_url) {
@@ -370,9 +357,17 @@ const EditUserProfile = () => {
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )
     ) {
-      Swal.fire({ icon: "error", title: "Oops...", text: "Email is Not Valid!" });
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email is Not Valid!",
+      });
     } else if (email === "") {
-      Swal.fire({ icon: "error", title: "Oops...", text: "Email is Required!" });
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Email is Required!",
+      });
     } else {
       const updateUser = {
         username: name,
@@ -383,7 +378,10 @@ const EditUserProfile = () => {
       };
 
       try {
-        const res = await axios.put(`/api${UPDATE_USER}/${user._id}`, updateUser);
+        const res = await axios.put(
+          `/api${UPDATE_USER}/${user._id}`,
+          updateUser
+        );
         console.log(res);
         dispatch(updateSuccess(res.data.data));
         if (res.statusText === "OK") {
@@ -398,7 +396,11 @@ const EditUserProfile = () => {
       } catch (error) {
         console.log(error);
         if (error.response?.data?.message?.includes("duplicate key")) {
-          Swal.fire({ icon: "error", title: "Oops...", text: `Email Already Registered` });
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Email Already Registered`,
+          });
         }
       }
     }
@@ -442,7 +444,9 @@ const EditUserProfile = () => {
         <div className="userProfileInfo col-span-8 bg-white shadow-2xl rounded-2xl">
           <form action="#" className="w-full">
             <header className="w-full px-[3rem] py-[2rem] border-b-[0.1rem] border-neutral-300">
-              <span className="text-[2.4rem] leading-[2.4rem] font-normal">Edit Profile</span>
+              <span className="text-[2.4rem] leading-[2.4rem] font-normal">
+                Edit Profile
+              </span>
             </header>
 
             <div className="inputFieldsCont w-full flex flex-col gap-[2rem] px-[3rem] py-[2rem]">
