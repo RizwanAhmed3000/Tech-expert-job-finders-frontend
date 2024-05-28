@@ -46,7 +46,7 @@ const EditUserProfile = () => {
           `/api${UPDATE_USER_PASSWORD}/${user._id}`,
           updatePassword
         );
-        console.log(res);
+        // console.log(res);
         if (res.statusText === "OK") {
           Swal.fire({
             title: "Good job!",

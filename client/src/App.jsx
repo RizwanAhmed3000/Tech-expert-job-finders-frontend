@@ -36,12 +36,16 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
-import CoverMain from "./pages/Dashboard/CreateNewCoverLetter";
+
+import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
+
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
 import EditFinish from "./pages/Dashboard/EditFinish";
+import CLTemplate02 from "./coverLetterTemplates/CLTemplate02";
+import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -183,16 +187,24 @@ const router = createBrowserRouter([
         element: <CreateNewResume />,
       },
       {
-        path: "/app/template",
-        element: <DashTemplate />,
-      },
-      {
         path: "/app/coverletter",
         element: <DashCoverLetter />,
       },
       {
-        path: "/app/coverletter/01",
+        path: "/app/cover-details",
+        element: <CreateNewCoverLetter />,
+      },
+      {
+        path: "/app/template",
+        element: <DashTemplate />,
+      },
+      {
+        path: "/app/coverletter/6655085ce595b205733d8e95",
         element: <CLTemplate01 />,
+      },
+      {
+        path: "/app/coverletter/665615890b66a45697909b58",
+        element: <CLTemplate02 />,
       },
       {
         path: "/app/blogs",
@@ -207,12 +219,12 @@ const router = createBrowserRouter([
         element: <DashFeedback />,
       },
       {
-        path: "/app/cover",
-        element: <CoverMain />,
-      },
-      {
         path: "/app/finish",
         element: <EditFinish />,
+      },
+      {
+        path: "/app/errorpage",
+        element: <CoverPhoto />,
       },
     ],
   },
