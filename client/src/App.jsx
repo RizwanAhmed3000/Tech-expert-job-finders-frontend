@@ -183,6 +183,10 @@ const router = createBrowserRouter([
         element: <DashResume />,
       },
       {
+        path: "/app/coverletter",
+        element: <DashCoverLetter />,
+      },
+      {
         path: "/app/resume-details",
         element: <CreateNewResume />,
       },
@@ -197,6 +201,10 @@ const router = createBrowserRouter([
       {
         path: "/app/template",
         element: <DashTemplate />,
+      },
+      {
+        path: "/app/coverletter/create",
+        element: <CreateNewCoverLetter />,
       },
       {
         path: "/app/coverletter/6655085ce595b205733d8e95",
