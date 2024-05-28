@@ -19,6 +19,8 @@ import PhotoAndLinksForm from "../../components/Dashboard/CreateResumeForms/Phot
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
 
+  const [profileFields, setProfileFields] = useState({})
+
   const getTabClassNames = (tabName) => {
     return activeTab === tabName ? "bg-red-500 text-white rounded-full" : "";
   };
@@ -159,7 +161,7 @@ const ResumeForm = () => {
 
           {/* Create Resume Forms */}
           {activeTab === "Profile" ? (
-            <ProfileForm />
+            <ProfileForm setProfileFields={setProfileFields} />
           ) : activeTab === "Experience" ? (
             <ExperienceForm />
           ) : activeTab === "Education" ? (

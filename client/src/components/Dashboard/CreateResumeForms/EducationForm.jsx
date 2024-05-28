@@ -7,6 +7,21 @@ import { TfiSave } from "react-icons/tfi";
 const EducationForm = () => {
   const [isCheckCurrentStudy, setIsCheckCurrentStudy] = useState(false);
 
+  const [schoolName, setSchoolName] = useState("");
+  const [schoolCity, setSchoolCity] = useState("");
+  const [lastQualification, setLastQualification] = useState("");
+  const [schoolState, setSchoolState] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [fieldOfStudy, setFieldOfStudy] = useState("");
+
+  // console.log(schoolName)
+  // console.log(schoolCity)
+  // console.log(lastQualification)
+  // console.log(schoolState)
+  // console.log(startDate)
+  // console.log(endDate)
+  // console.log(fieldOfStudy)
   return (
     <div className="w-full">
       {/* Education Form FIelds */}
@@ -22,6 +37,7 @@ const EducationForm = () => {
               School Name
             </label>
             <input
+            onChange={(e)=> setSchoolName(e.target.value)}
               type="text"
               name="schoolName"
               id="schoolName"
@@ -38,6 +54,7 @@ const EducationForm = () => {
               City
             </label>
             <input
+            onChange={(e)=> setSchoolCity(e.target.value)}
               type="text"
               name="city"
               id="city"
@@ -57,6 +74,7 @@ const EducationForm = () => {
               State
             </label>
             <input
+            onChange={(e)=> setSchoolState(e.target.value)}
               type="text"
               name="state"
               id="state"
@@ -73,6 +91,7 @@ const EducationForm = () => {
               Last Qualification / Degree
             </label>
             <input
+            onChange={(e)=> setLastQualification(e.target.value)}
               type="text"
               name="qualification"
               id="qualification"
@@ -92,6 +111,7 @@ const EducationForm = () => {
               Field Of Study
             </label>
             <input
+            onChange={(e)=> setFieldOfStudy(e.target.value)}
               type="text"
               name="fieldOfStudy"
               id="fieldOfStudy"
@@ -108,6 +128,7 @@ const EducationForm = () => {
               Start Date:
             </label>
             <input
+            onChange={(e)=> setStartDate(e.target.value)}
               type="date"
               name="startDate"
               id="startDate"
@@ -124,6 +145,7 @@ const EducationForm = () => {
               End Date:
             </label>
             <input
+            onChange={(e)=> setEndDate(e.target.value)}
               type={isCheckCurrentStudy ? "text" : "date"}
               name="endDate"
               id="endDate"

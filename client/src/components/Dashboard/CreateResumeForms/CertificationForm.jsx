@@ -9,6 +9,12 @@ import { FaPlus } from "react-icons/fa6";
 const CertificationForm = () => {
   const [addCertificates, setAddCertificates] = useState([1, 2, 3]);
 
+  const [certificate, setCertificate] = useState("")
+  const [year, setYear] = useState("")
+
+  console.log(certificate);
+  console.log(year);
+
   return (
     <div className="w-full">
       {/* Certification Form FIelds */}
@@ -25,6 +31,7 @@ const CertificationForm = () => {
                 Certificate
               </label>
               <input
+              onChange={(e) => setCertificate(e.target.value)}
                 type="text"
                 name="Certificate"
                 id="Certificate"
@@ -41,6 +48,7 @@ const CertificationForm = () => {
                 Year
               </label>
               <input
+              onChange={(e) => setYear(e.target.value)}
                 type="date"
                 name="certificateStatus"
                 id="certificateStatus"

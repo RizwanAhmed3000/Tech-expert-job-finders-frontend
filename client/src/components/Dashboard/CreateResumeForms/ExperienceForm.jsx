@@ -12,6 +12,28 @@ const ExperienceForm = () => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
   const [selectExperienceText, setSelectExperienceText] = useState([]);
 
+  const [jobTitle, setJobTitle] = useState("")
+  const [employer, setEmployer] = useState("")
+  const [expCity, setExpCity] = useState("")
+  const [expState, setExpState] = useState("")
+  const [startDate, setStartDate] = useState("")
+  const [endDate, setEndDate] = useState("")
+  const [responsibilities, setResponsibilities] = useState("")
+
+  console.log(responsibilities);
+  const handleEditorChange = (content, editor) => {
+    setResponsibilities(content);
+  };
+
+
+  // console.log(jobTitle)
+  // console.log(employer)
+  // console.log(expCity)
+  // console.log(expState)
+  // console.log(startDate)
+  // console.log(endDate)
+
+
   const editorRef = useRef(null);
 
   // Function to generate unordered list HTML from the array
@@ -42,6 +64,7 @@ const ExperienceForm = () => {
               Job Title
             </label>
             <input
+            onChange={(e) => setJobTitle(e.target.value)}
               type="text"
               name="jobTitle"
               id="jobTitle"
@@ -58,6 +81,7 @@ const ExperienceForm = () => {
               Employer
             </label>
             <input
+             onChange={(e) => setEmployer(e.target.value)}
               type="text"
               name="employer"
               id="employer"
@@ -77,6 +101,7 @@ const ExperienceForm = () => {
               City
             </label>
             <input
+            onChange={(e) => setExpCity(e.target.value)}
               type="text"
               name="city"
               id="city"
@@ -93,6 +118,7 @@ const ExperienceForm = () => {
               State
             </label>
             <input
+            onChange={(e) => setExpState(e.target.value)}
               type="text"
               name="state"
               id="state"
@@ -112,6 +138,7 @@ const ExperienceForm = () => {
               Start Date:
             </label>
             <input
+            onChange={(e) => setStartDate(e.target.value)}
               type="date"
               name="startDate"
               id="startDate"
@@ -128,6 +155,7 @@ const ExperienceForm = () => {
               End Date:
             </label>
             <input
+            onChange={(e) => setEndDate(e.target.value)}
               type={isCheckCurrentWork ? "text" : "date"}
               name="endDate"
               id="endDate"
@@ -174,6 +202,7 @@ const ExperienceForm = () => {
             </h6>
 
             <Editor
+            onEditorChange={handleEditorChange}
               apiKey="ar9rz3ek138ri8zqmmjy1ver1c4xksfbzi3illv7sk37tojq"
               onInit={(evt, editor) => (editorRef.current = editor)}
               init={{

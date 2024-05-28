@@ -1,9 +1,12 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-
+import resumeTwo from "../../assets/templates/cv-template-02.png";
 const SelectResumeTemplateCard = ({ data, route, key }) => {
-  const { name, src } = data;
+  // const { name, src } = data;
+  console.log(data);
+
+  const { resumeTemplateName, category, price } = data;
 
   return (
     <Card
@@ -15,14 +18,14 @@ const SelectResumeTemplateCard = ({ data, route, key }) => {
         <div className="wrapper bg-white p-4 object-cover">
           <Card.Img
             variant="top"
-            src={src}
+            src={resumeTwo}
             className="object-contain rounded-lg"
           />
         </div>
       </div>
       <div className="relative flex justify-center">
         <div className="relative text-center">
-          <p className="text-3xl pt-2 text-yellow-300">{name}</p>
+          <p className="text-3xl pt-2 text-yellow-300">{resumeTemplateName}</p>
         </div>
       </div>
 
