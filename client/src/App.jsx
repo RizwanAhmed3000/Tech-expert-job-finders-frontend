@@ -222,10 +222,6 @@ const router = createBrowserRouter([
         path: "/app/finish",
         element: <EditFinish />,
       },
-      {
-        path: "/app/errorpage",
-        element: <CoverPhoto />,
-      },
     ],
   },
 ]);

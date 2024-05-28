@@ -8,12 +8,9 @@ import CoverLetterEditModal, {
 } from "../../components/Dashboard/CoverLetterEditModal";
 import { FiX } from "react-icons/fi";
 import CoverPhoto from "../../components/Dashboard/CreateResumeForms/CoverPhoto";
-import { ToggleButton } from "react-bootstrap";
 
 function CoverForm() {
-
-  const [activeButton, setActiveButton] = useState('coverLetter');
-
+  const [activeButton, setActiveButton] = useState("coverLetter");
   const [isSelectTemplateOpen, setIsSelectTemplateOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -82,7 +79,6 @@ function CoverForm() {
                 >
                   <span></span>
                   <span className="bg-theme-red text-white px-2 py-1 my-3">
-
                     Add Recipient Information
                   </span>
                   <button className="invisible group-hover:visible flex items-center gap-1">
@@ -93,7 +89,6 @@ function CoverForm() {
                   onClick={() => setIsSecondModalOpen(true)}
                   className="flex justify-between mb-5 group hover:cursor-pointer hover:border-b-2 border-slate-300"
                 >
-
                   <span className="bg-theme-red text-white px-2 py-1 my-3">
                     Add Recipient
                   </span>
@@ -224,10 +219,6 @@ function CoverForm() {
           handleCreateClick={handleCreateClick}
         />
       )}
-
-      {/* AI Assistance modal show */}
-
-
       {isModalOpen && component && (
         <div className="fixed z-[100] inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[500px] relative">
