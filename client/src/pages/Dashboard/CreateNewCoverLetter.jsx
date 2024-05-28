@@ -10,7 +10,7 @@ import { FiX } from "react-icons/fi";
 import CoverPhoto from "../../components/Dashboard/CreateResumeForms/CoverPhoto";
 import { ToggleButton } from "react-bootstrap";
 
-function ToggleButtons() {
+function CoverForm() {
   const [activeButton, setActiveButton] = useState('coverLetter');
   const [isSelectTemplateOpen, setIsSelectTemplateOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
@@ -252,4 +252,4 @@ function ToggleButtons() {
   );
 }
 
-export default ToggleButtons;
+export default CoverForm;
