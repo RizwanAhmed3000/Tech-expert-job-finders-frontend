@@ -24,6 +24,7 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useSelector((state) =>  state?.user?.currentUser);
   // console.log(user)
+  const [profilePhoto, setProfilePhoto] = useState(user.profileImg)
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -83,11 +84,11 @@ const DashNavbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           >
             {/* Profile Image */}
             <img
-              src={ProfileAvatar}
+              src={profilePhoto || ProfileAvatar}
               alt="Profile"
               className="w-[2.7rem] rounded-full"
             />
-
+  
             {/* Profile Name */}
             <span
               className={`${

@@ -49,7 +49,7 @@ export const userSlice = createSlice({
     },
     uploadImgSuccess: (state, action) => {
       state.loading = false;
-      state.currentUser = action.payload;
+      state.currentUser.profileImg = action.payload;
     },
     updatePasswordSuccess: (state, action) => {
       state.loading = false;

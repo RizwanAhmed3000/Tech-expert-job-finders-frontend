@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const user = useSelector((state) => state?.user?.currentUser)
   // console.log(user);
+  const [profilePhoto , setProfilePhoto] = useState(user.profileImg)
   const menus = [
     { name: "Dashboard", link: "/app", Icon: MdOutlineDashboard },
     { name: "My Resume", link: "/app/myresume", Icon: IoDocument },
@@ -45,7 +46,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         } px-10 pt-5 justify-start`}
       >
         <img
-          src={person}
+          src={profilePhoto || person}
           className=" h-[5rem] rounded-full border p-2 object-cover"
           alt="user"
         />
