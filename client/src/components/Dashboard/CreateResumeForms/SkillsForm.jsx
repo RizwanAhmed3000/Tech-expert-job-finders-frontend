@@ -9,6 +9,12 @@ import { FaPlus } from "react-icons/fa6";
 const SkillsForm = () => {
   const [addSkills, setAddSkills] = useState([1, 2, 3]);
 
+  const [skills, setSkills] = useState("");
+  const [level, setLevel] = useState("");
+
+  console.log(skills);
+  console.log(level);
+
   return (
     <div className="w-full">
       {/* Skills Form FIelds */}
@@ -25,6 +31,7 @@ const SkillsForm = () => {
                 Skill
               </label>
               <input
+              onChange={(e) => setSkills(e.target.value)}
                 type="text"
                 name="skillName"
                 id="skillName"
@@ -41,6 +48,7 @@ const SkillsForm = () => {
                 Level
               </label>
               <select
+              onChange={(e) => setLevel(e.target.value)}
                 name="skillStatus"
                 id="skillStatus"
                 className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
