@@ -9,6 +9,8 @@ import CoverLetterEditModal, {
 import { FiX } from "react-icons/fi";
 import CoverPhoto from "../../components/Dashboard/CreateResumeForms/CoverPhoto";
 import { ToggleButton } from "react-bootstrap";
+import { Editor } from "@tinymce/tinymce-react";
+import { useDispatch, useSelector } from "react-redux";
 
 function CoverForm() {
   const [activeButton, setActiveButton] = useState("coverLetter");
@@ -16,16 +18,21 @@ function CoverForm() {
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [component, SetComponent] = useState(true);
+  const [responsibilities, setResponsibilities] = useState("")
 
-  useEffect(() => {
-    if (isSelectTemplateOpen) {
-      // Set the initial state for the second modal if the first one is closed
-      setIsSecondModalOpen(false);
-    }
-  }, [isSelectTemplateOpen, isSecondModalOpen]);
+  const dispatch = useDispatch()
+  const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
+
+  // useEffect(() => {
+  //   if (isSelectTemplateOpen) {
+  //     // Set the initial state for the second modal if the first one is closed
+  //     setIsSecondModalOpen(false);
+  //   }
+  // }, [isSelectTemplateOpen, isSecondModalOpen]);
 
   const handleCreateClick = () => {
     // First close the main modal
+    // console.log("first")
     setIsSelectTemplateOpen(false);
 
     // Then, after a short delay, open the second modal
@@ -37,6 +44,11 @@ function CoverForm() {
   const handleClick = (button) => {
     setActiveButton(button);
     button == "coverLetter" ? SetComponent(true) : SetComponent(false);
+  };
+
+  // console.log(responsibilities);
+  const handleEditorChange = (content, editor) => {
+    setResponsibilities(content);
   };
 
   return (
@@ -70,7 +82,7 @@ function CoverForm() {
         <hr className="my-10" />
         {/* Body */}
         {component ? (
-          <div className="flex  h-[50rem] ">
+          <div className="flex  h-[60rem] ">
             {/* Left Container */}
             <div className="w-3/5">
               <div className="border borer-slate-400 p-8">
@@ -98,7 +110,7 @@ function CoverForm() {
                   </button>
                 </div>
                 <span className=" text-lg ml-2 font-semibold">15/05/2024</span>
-                <div className="border border-slate-500 p-3 font-semibold">
+                {/* <div className="border border-slate-500 p-3 font-semibold">
                   <h1 className="py-1">Dear [First Name] [Last Name],</h1>
                   <p className="py-1">
                     I am writing today in application to the [Target Job Title]
@@ -128,7 +140,43 @@ function CoverForm() {
                     <span>[Phone Number]</span>
                     <span>[Email Address]</span>
                   </div>
-                </div>
+                </div> */}
+                <Editor
+                  apiKey="ar9rz3ek138ri8zqmmjy1ver1c4xksfbzi3illv7sk37tojq"
+                  // onInit={(evt, editor) => (editorRef.current = editor)}
+                  init={{
+                    plugins:
+                      "anchor autolink charmap codesample image link advlist lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown preview",
+                    toolbar:
+                      "",
+                    menubar: false,
+                    tinycomments_mode: "embedded",
+                    tinycomments_author: "Author name",
+                    mergetags_list: [
+                      { value: "First.Name", title: "First Name" },
+                      { value: "Email", title: "Email" },
+                    ],
+                    ai_request: (request, respondWith) =>
+                      respondWith.string(() =>
+                        Promise.reject("See docs to implement AI Assistant")
+                      ),
+                    content_style:
+                      ".tox-tinymce { border: 1px solid #ddd; padding: 10px; border-radius: 0px; }",
+                  }}
+                  initialValue={`Dear [Ms.] [Miss] [Mr.] [Dr.] [Last Name],</br>
+
+I am writing today in application to the [Target Job Title] position with [Target Company Name]. I am confident that my [Skill 1] and [Skill 2], as well as my experience in [Industry] make me an excellent fit for this position.</br>
+
+As my attached resume outlines, I have [Number] years of experience working in the [Industry] field. I have achieved [accomplishment], with [describe results], and I am confident I can achieve similar results for [Target Company Name]. I am [Quality 1] and [Quality 2], attributes I know are important to your organization. I am looking for an opportunity to [outline goal], and develop [Skill 3] and [Skill 4], while offering expertise in [Skill 5].</br>
+
+I greatly appreciate you taking the time to consider my application. I look forward to the opportunity to speak with you further regarding how I can contribute to the continued success of [Target Company Name]. Thank you again. </br>
+
+Regards,</br>
+[First Name] [Last Name] </br> 
+[Phone Number]</br>
+[Email Address]`}
+                  onEditorChange={handleEditorChange}
+                />
               </div>
               <div className="px-3 py-1 flex justify-end ">
                 <span className="flex gap-1 items-center m-5 bg-[#18da35] px-3 py-2 rounded-lg opacity-80 text-lg text-white hover:opacity-100 hover:cursor-pointer">

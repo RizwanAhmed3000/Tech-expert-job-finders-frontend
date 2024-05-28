@@ -5,7 +5,8 @@ import img from "../../assets/templates/cv-template-02.png"
 
 const SelectCoverTempCard = ({ data }) => {
   // console.log(data, "===>>>> data")
-  const { templateName, category } = data;
+  const { templateName, category, _id } = data;
+  // console.log(_id)
 
   return (
     <Card

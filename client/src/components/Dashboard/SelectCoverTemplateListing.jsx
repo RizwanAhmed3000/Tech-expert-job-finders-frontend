@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import DashResumeCard from './ResumeCard';
-import cvImg2 from "../../assets/templates/cv-template-02.png";
 import cvImg3 from "../../assets/templates/cv-template-03.png";
-import websiteimg from "../../assets/website-template/WEBSITE.jpg"
-import SelectTempCard from './SelectTempCard';
 import SelectCoverTempCard from './SelectCoverTempCard';
 import axios from 'axios';
 import { COVERLETTER_TEMP } from '../../constants/apis';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { letterSuccess } from '../../Redux/Slices/coverLetterSlices';
 function SelectCoverTemplateListing({ activeTab }) {
     // console.log(activeTab)
     // let free = [];
     const [freeTemplate, setFreeTemplate] = useState([])
+    const [selectedTemp, setSelectedTemp] = useState('')
+    const dispatch = useDispatch()
     const getCoverletterTempApi = async () => {
         const res = await axios.get(`/api${COVERLETTER_TEMP}`);
-        console.log(res?.data?.data)
+        // console.log(res?.data?.data)
         setFreeTemplate(res?.data?.data)
-        console.log(freeTemplate, "===>>> free")
+        // console.log(freeTemplate, "===>>> free")
     }
 
     useEffect(() => {
         getCoverletterTempApi()
     }, [])
+
+    // const idToRedux = ()=>{
+    //     dispatch(letterSuccess())
+    // }
 
     // const free = [{
     //     name: 'NOVA COVER LETTTER',
@@ -73,7 +77,7 @@ function SelectCoverTemplateListing({ activeTab }) {
 
         <div className='grid grid-cols-3 place-items-center' >
             {activeTab == 'free' ? freeTemplate.map((data, i) => (
-                <Link to={`/app/coverletter/${data._id}`}>
+                <Link to={`/app/coverletter/create`} onClick={() => dispatch(letterSuccess({templateId: data._id}))}>
                     <SelectCoverTempCard data={data} key={i} />
                 </Link>
 
