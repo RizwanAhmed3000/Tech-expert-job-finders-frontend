@@ -43,6 +43,7 @@ import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
 import EditFinish from "./pages/Dashboard/EditFinish";
 import CLTemplate02 from "./coverLetterTemplates/CLTemplate02";
+import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -184,6 +185,14 @@ const router = createBrowserRouter([
         element: <CreateNewResume />,
       },
       {
+        path: "/app/coverletter",
+        element: <DashCoverLetter />,
+      },
+      {
+        path: "/app/cover-details",
+        element: <CreateNewCoverLetter />,
+      },
+      {
         path: "/app/template",
         element: <DashTemplate />,
       },
@@ -210,6 +219,10 @@ const router = createBrowserRouter([
       {
         path: "/app/finish",
         element: <EditFinish />,
+      },
+      {
+        path: "/app/errorpage",
+        element: <CoverPhoto />,
       },
     ],
   },

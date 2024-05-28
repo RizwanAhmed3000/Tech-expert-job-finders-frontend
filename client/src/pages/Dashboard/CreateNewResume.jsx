@@ -14,6 +14,7 @@ import SkillsForm from "../../components/Dashboard/CreateResumeForms/SkillsForm"
 import SummaryForm from "../../components/Dashboard/CreateResumeForms/SummaryForm";
 import LanguageForm from "../../components/Dashboard/CreateResumeForms/LanguageForm";
 import CertificationForm from "../../components/Dashboard/CreateResumeForms/CertificationForm";
+import PhotoAndLinksForm from "../../components/Dashboard/CreateResumeForms/PhotoAndLinksForm";
 
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -77,7 +78,7 @@ const ResumeForm = () => {
               <PiLightbulbFilamentBold />
             </div>
 
-            <div className="textCont flex flex-col gap-[0.4rem] text-[1.4rem] leading-[1.7rem]">
+            <div className="textCont flex flex-col gap-[0.4rem] text-[1.4rem] leading-[1.7rem] pr-[3rem]">
               {activeTab === "Profile" ? (
                 <>
                   <span>What's the best way for Employers to contact you?</span>
@@ -135,7 +136,19 @@ const ResumeForm = () => {
                   <span>Showcase your certifications to an employer</span>
                 </>
               ) : (
-                ""
+                activeTab === "Photo" && (
+                  <>
+                    <span>Photo / Social Links</span>
+                    <span>
+                      Including a photo with your CV is not recommended when
+                      applying for jobs in the United Kingdom, the United States
+                      or Canada. Only use this template if you intend to apply
+                      for jobs outside these areas or have a specific need for a
+                      CV that includes a photo. Otherwise, please click the
+                      Finish button to Finish button to Download Resume.
+                    </span>
+                  </>
+                )
               )}
             </div>
 
@@ -157,8 +170,10 @@ const ResumeForm = () => {
             <SummaryForm />
           ) : activeTab === "Languages" ? (
             <LanguageForm />
+          ) : activeTab === "Certifications" ? (
+            <CertificationForm />
           ) : (
-            activeTab === "Certifications" && <CertificationForm />
+            activeTab === "Photo" && <PhotoAndLinksForm />
           )}
         </div>
       </div>
