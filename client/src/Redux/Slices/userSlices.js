@@ -47,6 +47,10 @@ export const userSlice = createSlice({
       state.loading = false;
       state.currentUser = action.payload;
     },
+    uploadImgSuccess: (state, action) => {
+      state.loading = false;
+      state.currentUser.profileImg = action.payload;
+    },
     updatePasswordSuccess: (state, action) => {
       state.loading = false;
       state.currentUser = action.payload;
@@ -63,6 +67,7 @@ export const {
   signupPending,
   signupSuccess,
   signupFailed,
+  uploadImgSuccess
 } = userSlice.actions;
 
 export default userSlice.reducer;
