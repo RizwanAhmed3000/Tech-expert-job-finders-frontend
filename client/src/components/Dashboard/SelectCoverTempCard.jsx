@@ -1,9 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import img from "../../assets/templates/cv-template-02.png"
 
 
 const SelectCoverTempCard = ({ data }) => {
-  const { name, src  , amount} = data;
+  // console.log(data, "===>>>> data")
+  const { templateName, category } = data;
 
   return (
     <Card
@@ -14,8 +16,8 @@ const SelectCoverTempCard = ({ data }) => {
         <div className="wrapper bg-white p-4 object-cover">
           <Card.Img
             variant="top"
-            src={src}
-           
+            src={img}
+
             className="object-contain rounded-lg  "
           />
         </div>
@@ -24,9 +26,9 @@ const SelectCoverTempCard = ({ data }) => {
 
 
         <div className="relative text-center">
-          <p className="text-3xl pt-2 text-yellow-300">{name}</p>
-          <p className="text-3xl pt-2 text-theme-black">{amount}</p>
-         
+          <p className="text-3xl pt-2 text-yellow-300">{templateName}</p>
+          <p className="text-3xl pt-2 text-theme-black">{`amount`}</p>
+
         </div>
       </div>
     </Card>

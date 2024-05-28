@@ -9,6 +9,11 @@ import { HiMiniXMark } from "react-icons/hi2";
 // Components
 import ProfileForm from "../../components/Dashboard/CreateResumeForms/ProfileForm";
 import ExperienceForm from "../../components/Dashboard/CreateResumeForms/ExperienceForm";
+import EducationForm from "../../components/Dashboard/CreateResumeForms/EducationForm";
+import SkillsForm from "../../components/Dashboard/CreateResumeForms/SkillsForm";
+import SummaryForm from "../../components/Dashboard/CreateResumeForms/SummaryForm";
+import LanguageForm from "../../components/Dashboard/CreateResumeForms/LanguageForm";
+import CertificationForm from "../../components/Dashboard/CreateResumeForms/CertificationForm";
 
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -25,7 +30,7 @@ const ResumeForm = () => {
     <div className="mainCont w-full h-full p-[3rem]">
       <div className="wrapper w-full h-full bg-white py-[1.5rem] px-[1.5rem] shadow-2xl rounded-2xl">
         {/* Create Resume Form Tabs */}
-        <div className="tabCont flex items-center gap-[1.5rem] border-b-[0.2rem] border-neutral-200 py-[2rem] px-[1rem]">
+        <div className="tabCont flex flex-wrap items-center gap-[1.5rem] border-b-[0.2rem] border-neutral-200 py-[2rem] px-[1rem]">
           {/* Tabs */}
           <div className="flex items-center gap-[0.5rem]">
             {[
@@ -34,15 +39,16 @@ const ResumeForm = () => {
               "Education",
               "Skills",
               "Summary",
-              "Interests",
+              "Languages",
+              "Certifications",
               "Photo",
             ].map((tabname, index) => (
               <span
                 key={index}
+                onClick={() => handleTabClick(tabname)}
                 className={`text-[1.6rem] leading-[1.6rem] px-6 py-4 cursor-pointer ${getTabClassNames(
                   tabname
                 )} text-theme-red`}
-                onClick={() => handleTabClick(tabname)}
               >
                 {tabname}
               </span>
@@ -51,10 +57,10 @@ const ResumeForm = () => {
 
           {/* Buttons */}
           <div className="flex items-center gap-[1rem]">
-            <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-red text-white shadow-md rounded-md whitespace-nowrap">
+            {/* <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-red text-white shadow-md rounded-md whitespace-nowrap">
               <IoMdAdd />
               <span>Add Section</span>
-            </button>
+            </button> */}
 
             <button className="text-[1.7rem] leading-[1.7rem] px-[1.2rem] py-[1rem] flex items-center gap-[0.6rem] bg-theme-black text-white shadow-md rounded-md whitespace-nowrap">
               <GiIciclesFence />
@@ -77,19 +83,59 @@ const ResumeForm = () => {
                   <span>What's the best way for Employers to contact you?</span>
                   <span>We suggest including an email and phone number.</span>
                 </>
+              ) : activeTab === "Experience" ? (
+                <>
+                  <span>Now, let's fill out your work history</span>
+                  <span>
+                    Here's what you need to know: Employers scan your resume for
+                    six seconds to decide if you're a match
+                  </span>
+                  <span>
+                    We'll suggest bullet points that make a great impression
+                  </span>
+                </>
+              ) : activeTab === "Education" ? (
+                <>
+                  <span>Tell us about your education</span>
+                  <span>
+                    Include every school, even if you're still there or didn't
+                    graduate.
+                  </span>
+                </>
+              ) : activeTab === "Skills" ? (
+                <>
+                  <span>Next, let's take care of your skills</span>
+                  <span>
+                    Here's what you need to know: Employers scan skills for
+                    relevant keywords,
+                  </span>
+                  <span>
+                    Enter 4-6 skills that are most relevant to your desired job.
+                  </span>
+                </>
+              ) : activeTab === "Summary" ? (
+                <>
+                  <span>
+                    Briefly describe the value that you bring through your
+                    skills, background and experience
+                  </span>
+                  <span>
+                    Write a career overview so that hiring managers can
+                    immediately see the value that you bring.
+                  </span>
+                </>
+              ) : activeTab === "Languages" ? (
+                <>
+                  <span>What languages do you Speak?</span>
+                  <span>.....</span>
+                </>
+              ) : activeTab === "Certifications" ? (
+                <>
+                  <span>Certifications</span>
+                  <span>Showcase your certifications to an employer</span>
+                </>
               ) : (
-                activeTab === "Experience" && (
-                  <>
-                    <span>Now, let's fill out your work history</span>
-                    <span>
-                      Here's what you need to know: Employers scan your resume
-                      for six seconds to decide if you're a match
-                    </span>
-                    <span>
-                      We'll suggest bullet points that make a great impression
-                    </span>
-                  </>
-                )
+                ""
               )}
             </div>
 
@@ -101,8 +147,18 @@ const ResumeForm = () => {
           {/* Create Resume Forms */}
           {activeTab === "Profile" ? (
             <ProfileForm />
+          ) : activeTab === "Experience" ? (
+            <ExperienceForm />
+          ) : activeTab === "Education" ? (
+            <EducationForm />
+          ) : activeTab === "Skills" ? (
+            <SkillsForm />
+          ) : activeTab === "Summary" ? (
+            <SummaryForm />
+          ) : activeTab === "Languages" ? (
+            <LanguageForm />
           ) : (
-            activeTab === "Experience" && <ExperienceForm />
+            activeTab === "Certifications" && <CertificationForm />
           )}
         </div>
       </div>

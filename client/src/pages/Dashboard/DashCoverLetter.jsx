@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import CreateButton from "../../components/Dashboard/CreateButton";
 import DashUserResumeCard from "../../components/Dashboard/DashUserResumeCard";
-import EnterCoverLetterModal from "../../components/Dashboard/EnterCoverLetterModal";
+import EnterCoverLetterTitleModal from "../../components/Dashboard/EnterCoverLetterTitleModal";
 
 const DashCoverLetter = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTitleModalOpen, setIsTitleModalOpen] = useState(false);
   return (
     <>
-      <div className="min-w-[80%] pt-[7rem] flex-1 bg-coral-light m-10">
-        <div className="flex  px-8 items-center">
-          <div className="bg-theme-red w-2/6 h-56  p-8 rounded-lg">
-            <p className="text-3xl text-white">
-              {" "}
+      <div className=" flex-1 bg-coral-light m-10">
+        <div className="flex pr-8 items-center h-[10rem]  mb-5">
+          <div className="bg-theme-red w-2/6 p-8 h-full rounded-lg">
+            <p className="text-xl text-white">
               <span className="text-2xl font-bold">Pro Tip: </span> It's
               important to create a custom resume tailored to each job
               application to increase your chances of success!
@@ -19,16 +18,15 @@ const DashCoverLetter = () => {
           </div>
 
           <CreateButton
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
+            setIsTitleModalOpen={setIsTitleModalOpen}
             btnText="Create Cover Letter"
           />
         </div>
         <DashUserResumeCard cardName="Name" />
       </div>
-      <EnterCoverLetterModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
+      <EnterCoverLetterTitleModal
+        isTitleModalOpen={isTitleModalOpen}
+        setIsTitleModalOpen={setIsTitleModalOpen}
       />
     </>
   );

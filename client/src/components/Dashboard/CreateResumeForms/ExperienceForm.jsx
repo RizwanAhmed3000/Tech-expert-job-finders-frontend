@@ -6,13 +6,11 @@ import { GiIciclesFence } from "react-icons/gi";
 import { TfiSave } from "react-icons/tfi";
 import { FaPlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
-import { TbPlayerTrackNextFilled } from "react-icons/tb";
-import { ImBackward2 } from "react-icons/im";
+import { ImBackward2, ImForward3 } from "react-icons/im";
 
 const ExperienceForm = () => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
   const [selectExperienceText, setSelectExperienceText] = useState([]);
-  console.log(selectExperienceText);
 
   const editorRef = useRef(null);
 
@@ -104,7 +102,7 @@ const ExperienceForm = () => {
         </div>
 
         {/* Row Third */}
-        <div className="rowThird grid grid-cols-2 gap-[2rem] mb-[5rem]">
+        <div className="rowThird grid grid-cols-2 gap-[2rem] mb-[6rem]">
           {/* Start Date */}
           <div className="startDateInput flex flex-col gap-[0.8rem]">
             <label
@@ -197,12 +195,12 @@ const ExperienceForm = () => {
                 content_style:
                   ".tox-tinymce { border: 1px solid #ddd; padding: 10px; border-radius: 0px; }",
               }}
-              initialValue="Insert FeedBack"
+              initialValue="Insert Experience"
             />
           </div>
 
           {/* Select Experience Side */}
-          <div className="w-[47%] max-h-[50rem] shadow-lg rounded-md overflow-hidden">
+          <div className="w-[47%] max-h-[50rem] shadow-xl rounded-md overflow-hidden">
             {/* Experience List Header */}
             <div className="w-full flex flex-col gap-[1.2rem] bg-theme-yellow p-[1.5rem]">
               <span className="text-[2rem] leading-[2rem] text-white font-medium">
@@ -263,10 +261,29 @@ const ExperienceForm = () => {
         </div>
 
         {/* Buttons Row */}
-        <div className="btnRow w-full flex justify-end">
-          <button className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
+        <div className="btnRow w-full flex justify-between py-[1rem]">
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+          >
+            <ImBackward2 size={20} />
+            <span>Previous</span>
+          </button>
+
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+          >
             <TfiSave />
             <span>Save</span>
+          </button>
+
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+          >
+            <span>Next</span>
+            <ImForward3 size={20} />
           </button>
         </div>
       </form>

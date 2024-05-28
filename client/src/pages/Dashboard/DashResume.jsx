@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import CreateButton from "../../components/Dashboard/CreateButton";
 import DashUserResumeCard from "../../components/Dashboard/DashUserResumeCard";
-import EnterModal from "../../components/Dashboard/EnterModal";
+import EnterResumeTitleModal from "../../components/Dashboard/EnterResumeTitleModal";
 
 const DashResume = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTitleModalOpen, setIsTitleModalOpen] = useState(false);
 
   return (
     <>
@@ -12,7 +12,6 @@ const DashResume = () => {
         <div className="flex pr-8 items-center h-[10rem]  mb-5">
           <div className="bg-theme-red w-2/6 p-8 h-full rounded-lg">
             <p className="text-xl text-white">
-              {" "}
               <span className="text-2xl font-bold">Pro Tip: </span> It's
               important to create a custom resume tailored to each job
               application to increase your chances of success!
@@ -21,14 +20,15 @@ const DashResume = () => {
 
           <CreateButton
             btnText="Create New Resume"
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-            
+            setIsTitleModalOpen={setIsTitleModalOpen}
           />
         </div>
         <DashUserResumeCard cardName="Name" />
       </div>
-      <EnterModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <EnterResumeTitleModal
+        isTitleModalOpen={isTitleModalOpen}
+        setIsTitleModalOpen={setIsTitleModalOpen}
+      />
     </>
   );
 };
