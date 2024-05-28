@@ -10,8 +10,8 @@ import { FiX } from "react-icons/fi";
 import CoverPhoto from "../../components/Dashboard/CreateResumeForms/CoverPhoto";
 import { ToggleButton } from "react-bootstrap";
 
-function ToggleButtons() {
-  const [activeButton, setActiveButton] = useState('coverLetter');
+function CoverForm() {
+  const [activeButton, setActiveButton] = useState("coverLetter");
   const [isSelectTemplateOpen, setIsSelectTemplateOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,19 +74,22 @@ function ToggleButtons() {
             {/* Left Container */}
             <div className="w-3/5">
               <div className="border borer-slate-400 p-8">
-                <div onClick={() => setIsSelectTemplateOpen(true)} className="flex justify-between mb-12 group hover:cursor-pointer hover:border-b-2 border-slate-300">
+                <div
+                  onClick={() => setIsSelectTemplateOpen(true)}
+                  className="flex justify-between mb-12 group hover:cursor-pointer hover:border-b-2 border-slate-300"
+                >
                   <span></span>
-                  <span
-                    className="bg-theme-red text-white px-2 py-1 my-3"
-                    
-                  >
+                  <span className="bg-theme-red text-white px-2 py-1 my-3">
                     Add Recipient Information
                   </span>
                   <button className="invisible group-hover:visible flex items-center gap-1">
                     <FaRegEdit /> Edit
                   </button>
                 </div>
-                <div onClick={()=> setIsSecondModalOpen(true)} className="flex justify-between mb-5 group hover:cursor-pointer hover:border-b-2 border-slate-300">
+                <div
+                  onClick={() => setIsSecondModalOpen(true)}
+                  className="flex justify-between mb-5 group hover:cursor-pointer hover:border-b-2 border-slate-300"
+                >
                   <span className="bg-theme-red text-white px-2 py-1 my-3">
                     Add Recipient
                   </span>
@@ -251,4 +254,4 @@ function ToggleButtons() {
   );
 }
 
-export default ToggleButtons;
+export default CoverForm;

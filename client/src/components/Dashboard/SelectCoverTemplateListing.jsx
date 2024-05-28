@@ -95,4 +95,4 @@ function SelectCoverTemplateListing({ activeTab }) {
     )
 }
 
-export default SelectCoverTemplateListing
+export default SelectCoverTemplateListing;

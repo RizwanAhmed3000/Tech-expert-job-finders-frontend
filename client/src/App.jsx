@@ -36,7 +36,7 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
-import CoverMain from "./pages/Dashboard/CoverMain";
+import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -188,10 +188,6 @@ const router = createBrowserRouter([
         element: <DashTemplate />,
       },
       {
-        path: "/app/coverletter",
-        element: <DashCoverLetter />,
-      },
-      {
         path: "/app/coverletter/6655085ce595b205733d8e95",
         element: <CLTemplate01 />,
       },
@@ -210,10 +206,6 @@ const router = createBrowserRouter([
       {
         path: "/app/feedback",
         element: <DashFeedback />,
-      },
-      {
-        path: "/app/cover",
-        element: <CoverMain />,
       },
       {
         path: "/app/finish",

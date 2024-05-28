@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import CreateButton from "../../components/Dashboard/CreateButton";
 import DashUserResumeCard from "../../components/Dashboard/DashUserResumeCard";
-import EnterCoverLetterModal from "../../components/Dashboard/EnterCoverLetterModal";
+import EnterCoverLetterTitleModal from "../../components/Dashboard/EnterCoverLetterTitleModal";
 
 const DashCoverLetter = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTitleModalOpen, setIsTitleModalOpen] = useState(false);
   return (
     <>
       <div className=" flex-1 bg-coral-light m-10">
@@ -18,16 +18,15 @@ const DashCoverLetter = () => {
           </div>
 
           <CreateButton
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
+            setIsTitleModalOpen={setIsTitleModalOpen}
             btnText="Create Cover Letter"
           />
         </div>
         <DashUserResumeCard cardName="Name" />
       </div>
-      <EnterCoverLetterModal
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
+      <EnterCoverLetterTitleModal
+        isTitleModalOpen={isTitleModalOpen}
+        setIsTitleModalOpen={setIsTitleModalOpen}
       />
     </>
   );
