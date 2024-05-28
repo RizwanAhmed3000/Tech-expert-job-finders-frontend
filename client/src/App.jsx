@@ -36,13 +36,16 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
+
 import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
+
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
 import EditFinish from "./pages/Dashboard/EditFinish";
 import CLTemplate02 from "./coverLetterTemplates/CLTemplate02";
+import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -180,12 +183,28 @@ const router = createBrowserRouter([
         element: <DashResume />,
       },
       {
+        path: "/app/coverletter",
+        element: <DashCoverLetter />,
+      },
+      {
         path: "/app/resume-details",
         element: <CreateNewResume />,
       },
       {
+        path: "/app/coverletter",
+        element: <DashCoverLetter />,
+      },
+      {
+        path: "/app/cover-details",
+        element: <CreateNewCoverLetter />,
+      },
+      {
         path: "/app/template",
         element: <DashTemplate />,
+      },
+      {
+        path: "/app/coverletter/create",
+        element: <CreateNewCoverLetter />,
       },
       {
         path: "/app/coverletter/6655085ce595b205733d8e95",
