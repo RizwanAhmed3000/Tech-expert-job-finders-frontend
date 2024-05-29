@@ -7,6 +7,7 @@ import axios from "axios";
 
 
 function SelectResumeTemplateModal({ activeTab }) {
+  console.log(activeTab)
   const [freeResumeTemplate, setFreeResumeTemplate] = useState([]);
 // console.log(freeResumeTemplate)
   const apiCalling = async () => {
@@ -65,7 +66,9 @@ function SelectResumeTemplateModal({ activeTab }) {
           ))
         : activeTab == "premium"
         ? premium.map((data, i) => (
-            <SelectResumeTemplateCard
+            <SelectResumeTemplateCard 
+            activeTab={activeTab}
+
               data={data}
               route={"/app/resume-details"}
               key={i}
@@ -74,6 +77,7 @@ function SelectResumeTemplateModal({ activeTab }) {
         : activeTab == "my" &&
           my?.map((data, i) => (
             <SelectResumeTemplateCard
+            
               data={data}
               route={"/app/resume-details"}
               key={i}
