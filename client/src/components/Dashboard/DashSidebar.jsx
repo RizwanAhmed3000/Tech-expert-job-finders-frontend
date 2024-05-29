@@ -19,7 +19,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     { name: "Dashboard", link: "/app", Icon: MdOutlineDashboard },
     { name: "My Resume", link: "/app/myresume", Icon: IoDocument },
     { name: "My Cover Letter", link: "/app/coverletter", Icon: IoDocument },
-    { name: "Website", link: "", Icon: BiWorld, margin: true },
+    { name: "Website", link: "#", Icon: BiWorld, margin: true },
     { name: "Template", link: "/app/template", Icon: FiShoppingCart },
     { name: "Tools", link: "/app/tools", Icon: RiToolsLine },
     {
@@ -40,10 +40,11 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         isSidebarOpen ? "w-[18%]" : "w-[10%]"
       } duration-500 text-theme-red fixed top-0 left-0 max-h-dvh pt-[7rem] pb-[4rem] scrollbar-light overflow-auto`}
     >
+      <Link to={'/app/profile'}>
       <div
         className={`flex items-center ${
           !isSidebarOpen ? "flex-col" : ""
-        } px-10 pt-5 justify-start`}
+        } px-10 pt-5 justify-start hover:cursor-pointer`}
       >
         <img
           src={profilePhoto || person}
@@ -52,6 +53,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         />
         <p className="text-2xl px-4">{user?.username }</p>
       </div>
+      </Link>
       <div className="mt-4 flex flex-col relative">
         {menus?.map((menu, i) => (
           <Link
