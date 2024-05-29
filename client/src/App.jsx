@@ -46,6 +46,7 @@ import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
 import EditFinish from "./pages/Dashboard/EditFinish";
 import CLTemplate02 from "./coverLetterTemplates/CLTemplate02";
 import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
+import ResumeTemplate01 from "./resumeTemplates/resumeTemplate01";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => console.log(state.user.currentUser));
@@ -229,6 +230,10 @@ const router = createBrowserRouter([
       {
         path: "/app/finish",
         element: <EditFinish />,
+      },
+      {
+        path: "/app/resumeTemplate01",
+        element: <ResumeTemplate01 />,
       },
     ],
   },
