@@ -16,6 +16,23 @@ import { IoIosSend } from "react-icons/io";
 import { FaFloppyDisk } from "react-icons/fa6";
 import { ImAttachment } from "react-icons/im";
 import { TiSocialFacebook } from "react-icons/ti";
+import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
+import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
+import { useDispatch, useSelector } from "react-redux";
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
+
+const coverLetterTemplates = [
+  {
+    id: "6655085ce595b205733d8e95",
+    template: <CLTemplate01 />
+  },
+  {
+    templateId: "665615890b66a45697909b58",
+    template: <CLTemplate02 />
+  },
+]
+
 const EditFinish = () => {
   const [activeButton, setActiveButton] = useState("coverLetter");
   const [changeComponent, SetChangeComponent] = useState("coverLetter");
@@ -23,6 +40,24 @@ const EditFinish = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Share Button Click Modal useSate
   const [shareModal, setShareModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
+  // console.log(templateId, "===>>> template")
+
+  const downloadPdf = () => {
+    const capture = document.querySelector('.template')
+    setIsLoading(true);
+    html2canvas(capture).then((canvas)=> {
+      const imgData = canvas.toDataURL('img/png');
+      const doc = new jsPDF('p', 'mm', 'a4')
+      const componentWidth = doc.internal.pageSize.getWidth();
+      const componentHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      setIsLoading(false)
+      doc.save('CoverLetter.pdf')
+    })
+  }
+
 
   const handleClick = (button) => {
     setActiveButton(button);
@@ -59,17 +94,30 @@ const EditFinish = () => {
       {/* Left Div */}
       {/* Left Main Div */}
       <div
-        className="w-8/12 shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
+        className="templateDiv w-8/12 shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
         style={{ fontSize: selectedOption1, fontFamily: selectedOption }}
       >
+
+        {
+          coverLetterTemplates.map((template) => {
+            // console.log(template.template)
+            if (templateId === template.id) {
+              return (
+                template.template
+              )
+            }
+          })
+        }
+
+
         {/* Left left 20 Div */}
-        <div
+        {/* <div
           className="w-1/12  max-h-full "
           style={{ backgroundColor: themeColor }}
-        ></div>
+        ></div> */}
         {/* Left Right Half Div */}
 
-        <div className="w-4/5 h-full">
+        {/* <div className="w-4/5 h-full">
           <h1
             className="text-theme-red text-center text-3xl"
             style={{ color: themeColor }}
@@ -84,7 +132,7 @@ const EditFinish = () => {
             <p>Sksadjf j</p>
             <p>Sksadjf j</p>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* Right Div */}
       <div className="w-4/12  ">
@@ -126,9 +174,15 @@ const EditFinish = () => {
               {/* Export Options */}
               <div>
                 <h1 className="text-2xl font-bold mb-3">Export Options</h1>
-                <button className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg">
+                <button className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg" onClick={downloadPdf} disabled={!(isLoading === false)}>
                   <FaCloudDownloadAlt className="text-3xl" />
-                  <span>Download PDF</span>
+                  {
+                    isLoading ? (
+                      <span>Downloading PDF</span>
+                    ) : (
+                      <span>Download PDF</span>
+                    )
+                  }
                 </button>
                 <button className="bg-[#01b8ff] w-full mt-3  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg">
                   <FaPrint className="text-3xl" />
@@ -454,29 +508,29 @@ const EditFinish = () => {
             {/* Share Button Div */}
             <div className="flex flex-wrap px-10 gap-5 justify-center">
               <button className="flex gap-1 items-center my-1 bg-[#5458b3] px-3 py-2 rounded-md  text-xl text-white ">
-              <TiSocialFacebook className="mx-1"/>                
+                <TiSocialFacebook className="mx-1" />
                 <span className="w-[80% ] border-s-2 px-2">Facebook</span>
               </button>
               <button className="flex gap-1 items-center my-1 bg-[#01b8ff] px-3 py-2 rounded-md  text-xl text-white ">
-              <FaTwitter  className="mx-1"/>                
+                <FaTwitter className="mx-1" />
                 <span className="w-[80% ] border-s-2 px-2">Twitter</span>
               </button>
               <button className="flex gap-1 items-center my-1 bg-[#18da35] px-3 py-2 rounded-md  text-xl text-white ">
-              <FaWhatsapp className="mx-1"/>                
+                <FaWhatsapp className="mx-1" />
                 <span className="w-[80% ] border-s-2 px-2">Whatsapp</span>
               </button>
               <button className="flex gap-1 items-center my-1 bg-[#5458b3] px-3 py-2 rounded-md  text-xl text-white ">
-              <FaLinkedinIn className="mx-1"/>                
+                <FaLinkedinIn className="mx-1" />
                 <span className="w-[80% ] border-s-2 px-2">Linkedin</span>
               </button>
               <button className="flex gap-1 items-center my-1 bg-theme-red px-3 py-2 rounded-md  text-xl text-white ">
-              <FaReddit className="mx-1"/>                
+                <FaReddit className="mx-1" />
                 <span className="w-[80% ] border-s-2 px-2">Reddit</span>
               </button>
-              
-              
-            
-             
+
+
+
+
             </div>
             <h3 className="text-center text-lg font-semibold mt-10">Thanks for choosing My Cv Creator</h3>
           </div>
