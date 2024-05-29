@@ -5,21 +5,18 @@ import SelectResumeTemplateCard from "./SelectResumeTemplateCard";
 import { GET_RESUME_TEMP } from "../../constants/apis.js";
 import axios from "axios";
 
-
 function SelectResumeTemplateModal({ activeTab }) {
   console.log(activeTab)
   const [freeResumeTemplate, setFreeResumeTemplate] = useState([]);
-// console.log(freeResumeTemplate)
+  // console.log(freeResumeTemplate)
   const apiCalling = async () => {
     try {
       const res = await axios.get(`/api${GET_RESUME_TEMP}`);
       // console.log(res?.data?.data);
-      setFreeResumeTemplate(res?.data?.data)
-      
+      setFreeResumeTemplate(res?.data?.data);
     } catch (error) {
       console.log(error);
     }
-
   };
   useEffect(() => {
     apiCalling();
@@ -57,7 +54,7 @@ function SelectResumeTemplateModal({ activeTab }) {
   return (
     <div className="grid grid-cols-3 gap-[1rem] place-items-center">
       {activeTab == "free"
-        ? freeResumeTemplate.map((data, i) => (
+        ? free.map((data, i) => (
             <SelectResumeTemplateCard
               data={data}
               route={"/app/resume-details"}
