@@ -35,6 +35,11 @@ const EducationForm = () => {
   // console.log(fieldOfStudy);
   // console.log(educationStartDate);
   // console.log(endEducationDate);
+  
+const dualFunctionHandler =(e) => {
+  // onClick={(e) => saveContent(e)}
+  saveEducationDataHandler()
+}
 
   const saveEducationDataHandler = (e) => {
     e.preventDefault();
@@ -55,6 +60,7 @@ const EducationForm = () => {
   };
 
   const saveContent = (e) => {
+
     e.preventDefault();
     if (
       schoolName &&
@@ -64,7 +70,11 @@ const EducationForm = () => {
       educationStartDate &&
       endEducationDate &&
       fieldOfStudy
-    ) {
+
+    ) 
+    
+    {
+      saveEducationDataHandler()
       setSchoolName("");
       setSchoolCity("");
       setLastQualification("");
@@ -337,7 +347,7 @@ const EducationForm = () => {
           {!isSaveContent && (
             <button
               // onClick={saveEducationDataHandler}
-              onClick={(e) => saveContent(e)}
+              onClick={(e) => saveContent()}
               className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
             >
               <TfiSave />
