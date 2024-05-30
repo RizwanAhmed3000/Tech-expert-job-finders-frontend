@@ -291,7 +291,7 @@ const ProfileForm = ({ setProfileFields }) => {
               htmlFor="passport"
               className="text-[1.5rem] leading-[1.5rem] text-theme-red"
             >
-              Passport Number
+              Passport Number (Optional)
             </label>
             <input
               onChange={(e) => setPassportNo(e.target.value)}
