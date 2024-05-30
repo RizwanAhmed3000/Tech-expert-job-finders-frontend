@@ -8,10 +8,12 @@ import CoverLetterEditModal, {
 } from "../../components/Dashboard/CoverLetterEditModal";
 import { FiX } from "react-icons/fi";
 import CoverPhoto from "../../components/Dashboard/CreateResumeForms/CoverPhoto";
-
 import { ToggleButton } from "react-bootstrap";
 import { Editor } from "@tinymce/tinymce-react";
 import { useDispatch, useSelector } from "react-redux";
+import { htmlToText } from 'html-to-text';
+import { letterSuccess } from "../../Redux/Slices/coverLetterSlices";
+import { useNavigate } from "react-router-dom";
 
 
 function CoverForm() {
@@ -21,16 +23,41 @@ function CoverForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [component, SetComponent] = useState(true);
   const [responsibilities, setResponsibilities] = useState("")
-
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
 
+  const convertHtmlToText = (html) => {
+    return htmlToText(html, {
+      wordwrap: 130,
+      selectors: [
+        { selector: 'a', format: 'inline' },
+        { selector: 'img', format: 'inline' },
+      ],
+    });
+  };
+
+
+  const saveCoverLetter = () => {
+    console.log("hello")
+    const payload = {
+      currentData: {
+        ...currentData,
+        letter: responsibilities
+      },
+      templateId
+    }
+    dispatch(letterSuccess(payload))
+
+    setTimeout(()=>{
+      navigate(`/app/finish`)
+    }, 500)
+  }
+
   // useEffect(() => {
-  //   if (isSelectTemplateOpen) {
-  //     // Set the initial state for the second modal if the first one is closed
-  //     setIsSecondModalOpen(false);
-  //   }
-  // }, [isSelectTemplateOpen, isSecondModalOpen]);
+  //   console.log(responsibilities, "====>>>>> responsibilities")
+  // }
+  //   , [responsibilities])
 
   const handleCreateClick = () => {
     // First close the main modal
@@ -50,7 +77,8 @@ function CoverForm() {
 
   // console.log(responsibilities);
   const handleEditorChange = (content, editor) => {
-    setResponsibilities(content);
+    const plainText = convertHtmlToText(content);
+    setResponsibilities(plainText);
   };
 
   return (
@@ -174,13 +202,13 @@ As my attached resume outlines, I have [Number] years of experience working in t
 I greatly appreciate you taking the time to consider my application. I look forward to the opportunity to speak with you further regarding how I can contribute to the continued success of [Target Company Name]. Thank you again. </br>
 
 Regards,</br>
-[First Name] [Last Name] </br> 
-[Phone Number]</br>
-[Email Address]`}
+${currentData?.firstName} ${currentData?.lastName} </br> 
+${currentData?.phone}</br>
+${currentData?.email}`}
                   onEditorChange={handleEditorChange}
                 />
               </div>
-              <div className="px-3 py-1 flex justify-end ">
+              <div className="px-3 py-1 flex justify-end " onClick={saveCoverLetter}>
                 <span className="flex gap-1 items-center m-5 bg-[#18da35] px-3 py-2 rounded-lg opacity-80 text-lg text-white hover:opacity-100 hover:cursor-pointer">
                   {" "}
                   <FaFloppyDisk className="text" /> Save & Continue
@@ -244,7 +272,7 @@ Regards,</br>
                   </button>
                 </div>
               </div>
-              <button className="flex gap-1 items-center m-5 bg-[#18da35] px-3 py-2 rounded-lg opacity-80 text-lg text-white hover:opacity-100 hover:cursor-pointer">
+              <button className="flex gap-1 items-center m-5 bg-[#18da35] px-3 py-2 rounded-lg opacity-80 text-lg text-white hover:opacity-100 hover:cursor-pointer" onClick={saveCoverLetter}>
                 {" "}
                 <FaFloppyDisk className="text" /> Save & Continue
               </button>

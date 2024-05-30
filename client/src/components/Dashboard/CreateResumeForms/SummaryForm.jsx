@@ -1,20 +1,41 @@
 import { Editor } from "@tinymce/tinymce-react";
 import React, { useEffect, useRef, useState } from "react";
-
+import { htmlToText } from "html-to-text";
 // Import React Icons
 import { GiIciclesFence } from "react-icons/gi";
 import { TfiSave } from "react-icons/tfi";
 import { FaPlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
 import { ImBackward2, ImForward3 } from "react-icons/im";
+import { useDispatch, useSelector } from "react-redux";
+import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 
 const SummaryForm = () => {
   const [selectSummaryText, setSelectSummaryText] = useState([]);
-  const [summary, setSummary] = useState('');
+  const [summary, setSummary] = useState("");
 
-  // console.log(summary);
+  const dispatch = useDispatch();
+  const resumeData = useSelector(
+    (state) => state.resume.currentData.resumeData
+  );
+  console.log(resumeData);
+
   const handleEditorChange = (content, editor) => {
-    setSummary(content);
+    const plainText = convertHtmlToText(content);
+    setSummary(plainText);
+  };
+  // console.log(summary);
+
+  const saveExperienceDataHandler = (e) => {
+    e.preventDefault();
+    console.log("save Experience handler is working");
+    const payload = {
+      resumeData: {
+        ...resumeData,
+        summary,
+      },
+    };
+    dispatch(resumeSuccess(payload));
   };
   const editorRef = useRef(null);
 
@@ -23,6 +44,15 @@ const SummaryForm = () => {
     return `${items.map((item) => `<p>${item}</p>`).join(" ")}`;
   };
 
+  const convertHtmlToText = (html) => {
+    return htmlToText(html, {
+      wordwrap: 130,
+      selectors: [
+        { selector: "a", format: "inline" },
+        { selector: "img", format: "inline" },
+      ],
+    });
+  };
   // Use effect to set the initial content of the editor
   useEffect(() => {
     if (editorRef.current) {
@@ -153,11 +183,14 @@ const SummaryForm = () => {
           </button>
 
           <button
+            
             onClick={(e) => e.preventDefault()}
             className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <TfiSave />
-            <span>Save</span>
+            <span
+            onClick={saveExperienceDataHandler}
+            >Save</span>
           </button>
 
           <button

@@ -49,8 +49,8 @@ import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
 import ResumeTemplate01 from "./resumeTemplates/resumeTemplate01";
 
 const AuthenticatedRoutes = () => {
-  const user = useSelector((state) => console.log(state.user.currentUser));
-  console.log(user);
+  const user = useSelector((state) => state.user.currentUser);
+  // console.log(user);
   return (
     <>
       <Navbar />

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 // Import Images
 import MyResumeBg from "../../assets/slider/resume.jpg";
@@ -24,9 +24,14 @@ import { MdFeedback } from "react-icons/md";
 import { BsAndroid2 } from "react-icons/bs";
 import { FaGooglePlay } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import EnterCoverLetterTitleModal from "./EnterCoverLetterTitleModal";
+import EnterResumeTitleModal from "./EnterResumeTitleModal";
+import { Link, Navigate } from "react-router-dom";
 
 const DashHomeSlider = () => {
   const sliderRef = useRef();
+  const [isTitleModalOpen, setIsTitleModalOpen] = useState(false);
+  const [isResumeTitleModalOpen, setIsResumeTitleModalOpen] = useState(false);
 
   // Function to scroll left
   const scrollingLeft = (scrollAmount) => {
@@ -39,6 +44,13 @@ const DashHomeSlider = () => {
   const scrollingRight = (scrollAmount) => {
     if (sliderRef.current) {
       sliderRef.current.scrollLeft += scrollAmount;
+    }
+  };
+  const CardClickHandler = (cardTitleName) => {
+    if (cardTitleName == "New Resume") {
+      setIsResumeTitleModalOpen(true);
+    } else if (cardTitleName == "New Letter") {
+      setIsTitleModalOpen(true);
     }
   };
 
@@ -79,12 +91,14 @@ const DashHomeSlider = () => {
             cardTitle: "My Resume",
             cardBgImage: MyResumeBg,
             badge: true,
+            link: "/app/myresume",
           },
           {
             CardIcon: FiFileText,
             cardTitle: "My Letter",
             cardBgImage: MyLetterBg,
             badge: true,
+            link: "/app/coverletter",
           },
           {
             CardIcon: IoEarth,
@@ -97,18 +111,21 @@ const DashHomeSlider = () => {
             cardTitle: "Template",
             cardBgImage: Template,
             badge: false,
+            link: "/app/template",
           },
           {
             CardIcon: ImBriefcase,
             cardTitle: "Job Alert",
             cardBgImage: JobAlert,
             badge: false,
+            link: "/app/jobsalert",
           },
           {
             CardIcon: PiListDashesFill,
             cardTitle: "Blog",
             cardBgImage: Blog,
             badge: false,
+            link: "/app/blogs",
           },
           {
             CardIcon: BiSolidMessage,
@@ -121,6 +138,7 @@ const DashHomeSlider = () => {
             cardTitle: "Feedback",
             cardBgImage: Feedback,
             badge: false,
+            link: "/app/feedback",
           },
           {
             CardIcon: BsAndroid2,
@@ -134,47 +152,57 @@ const DashHomeSlider = () => {
             cardBgImage: Games,
             badge: false,
           },
-        ].map(({ CardIcon, cardTitle, cardBgImage, badge }, index) => (
-          <div
-            key={index}
-            className="card min-w-[20rem] min-h-[20rem] relative z-[10] flex flex-col justify-center items-center gap-[2rem] bg-gray-400 rounded-xl cursor-pointer hover:scale-[1.02] group/trainerCard transition-all overflow-hidden"
-          >
+        ].map(({ CardIcon, cardTitle, cardBgImage, badge, link }, index) => (
+          <Link to={link ? link : ""}>
+            <div
+              key={index}
+              className="card min-w-[20rem] min-h-[20rem] relative z-[10] flex flex-col justify-center items-center gap-[2rem] bg-gray-400 rounded-xl cursor-pointer hover:scale-[1.02] group/trainerCard transition-all overflow-hidden"
+              onClick={() => CardClickHandler(cardTitle)}
+            >
+              {cardTitle !== "New Resume" && cardTitle !== "New Letter" && (
+                <div className="cardBgImage absolute z-[-1] top-0 left-0 w-full h-full">
+                  <img
+                    src={cardBgImage}
+                    alt={cardTitle}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
 
-            {cardTitle !== "New Resume" && cardTitle !== "New Letter" && (
-              <div className="cardBgImage absolute z-[-1] top-0 left-0 w-full h-full">
-                <img
-                  src={cardBgImage}
-                  alt={cardTitle}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            )}
-
-            <div className="flex flex-col justify-center items-center gap-[2rem]">
-              <div className="cardIcon relative">
-                {cardTitle === "My Resume" ? (
-                  <span className="text-[1.5rem] leading-[1.5rem] absolute top-0 right-0 bg-theme-red text-white font-semibold p-2 rounded-full">
-                    0
-                  </span>
-                ) : (
-                  cardTitle === "My Letter" && (
+              <div className="flex flex-col justify-center items-center gap-[2rem]">
+                <div className="cardIcon relative">
+                  {cardTitle === "My Resume" ? (
                     <span className="text-[1.5rem] leading-[1.5rem] absolute top-0 right-0 bg-theme-red text-white font-semibold p-2 rounded-full">
                       0
                     </span>
-                  )
-                )}
+                  ) : (
+                    cardTitle === "My Letter" && (
+                      <span className="text-[1.5rem] leading-[1.5rem] absolute top-0 right-0 bg-theme-red text-white font-semibold p-2 rounded-full">
+                        0
+                      </span>
+                    )
+                  )}
 
-                <CardIcon className="text-white text-[6rem]" />
+                  <CardIcon className="text-white text-[6rem]" />
+                </div>
+
+                <span className="text-white flex flex-col gap-[1rem] text-[2.2rem] leading-[2rem] font-medium text-center">
+                  {cardTitle}
+                </span>
               </div>
-
-              <span className="text-white flex flex-col gap-[1rem] text-[2.2rem] leading-[2rem] font-medium text-center">
-                {cardTitle}
-              </span>
             </div>
-
-          </div>
+          </Link>
         ))}
       </div>
+
+      <EnterCoverLetterTitleModal
+        isTitleModalOpen={isTitleModalOpen}
+        setIsTitleModalOpen={setIsTitleModalOpen}
+      />
+      <EnterResumeTitleModal
+        isTitleModalOpen={isResumeTitleModalOpen}
+        setIsTitleModalOpen={setIsResumeTitleModalOpen}
+      />
     </div>
   );
 };
