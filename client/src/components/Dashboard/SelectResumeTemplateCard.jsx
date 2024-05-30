@@ -2,7 +2,19 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import resumeTwo from "../../assets/templates/cv-template-02.png";
+
+import { useDispatch, useSelector } from "react-redux";
+import { resumeSuccess } from "../../Redux/Slices/resumeSlices";
+const SelectResumeTemplateCard = ({ data, route, key }) => {
+  const dispatch = useDispatch()
+  // const resumeData = useSelector(resume.)
+  // const { name, src } = data;
+  // console.log(route);
+  console.log(data);
+  const {_id} = data
+
 import { FiX } from "react-icons/fi";
+
 
 import axios from "axios";
 import { loadStripe } from '@stripe/stripe-js';
@@ -64,6 +76,12 @@ const [isModalOpen, setIsModalOpen] = useState(false);
       </div>
 
       <div className="selectTemplateButton group-hover/item:flex hidden absolute top-0 left-0 w-full h-full border-[0.2rem] border-neutral-700 items-center justify-center">
+
+        <Link to={route}>
+          <button 
+          onClick={dispatch(resumeSuccess({templateId: _id}))}
+          className="selectTemplateButton bg-neutral-700 py-[0.8rem] px-[1.5rem] text-[1.6rem] leading-[1.6rem] text-white rounded-md ">
+
       { !activeTab == "permium" ? ( <Link    to={route}>
           <button  className="selectTemplateButton bg-neutral-700 py-[0.8rem] px-[1.5rem] text-[1.6rem] leading-[1.6rem] text-white rounded-md ">
             Select
@@ -71,6 +89,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
         </Link> ) :  ( <Link onClick={openModal}>
        
           <button className="selectTemplateButton bg-neutral-700 py-[0.8rem] px-[1.5rem] text-[1.6rem] leading-[1.6rem] text-white rounded-md ">
+
             Select
           </button>
      

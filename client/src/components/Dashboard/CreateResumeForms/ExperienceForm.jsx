@@ -7,6 +7,9 @@ import { TfiSave } from "react-icons/tfi";
 import { FaPlus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
 import { ImBackward2, ImForward3 } from "react-icons/im";
+import { useDispatch, useSelector } from "react-redux";
+import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
+import {htmlToText} from 'html-to-text'
 
 const ExperienceForm = () => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
@@ -20,19 +23,52 @@ const ExperienceForm = () => {
   const [endDate, setEndDate] = useState("")
   const [responsibilities, setResponsibilities] = useState("")
 
-  console.log(responsibilities);
+  const dispatch = useDispatch()
+  const resumeData = useSelector((state) => state.resume.currentData.resumeData)
+  console.log(resumeData);
+
   const handleEditorChange = (content, editor) => {
-    setResponsibilities(content);
+    const plainText = convertHtmlToText(content);
+    setResponsibilities(plainText);
   };
-
-
+  
+  
   // console.log(jobTitle)
   // console.log(employer)
   // console.log(expCity)
   // console.log(expState)
   // console.log(startDate)
   // console.log(endDate)
+  // console.log(responsibilities);
+  
+  const saveExperienceDataHandler = (e) => {
+    e.preventDefault();
+    console.log("save Experience handler is working");
+    const payload = {
+      resumeData: {
+        ...resumeData,
+        jobTitle,
+        employer,
+        expCity,
+        expState,
+        startDate,
+        endDate,
+        responsibilities,
+        
+      }
+    };
+    dispatch(resumeSuccess(payload));
+  };
 
+  const convertHtmlToText = (html) => {
+    return htmlToText(html, {
+      wordwrap: 130,
+      selectors: [
+        { selector: 'a', format: 'inline' },
+        { selector: 'img', format: 'inline' },
+      ],
+    });
+  };
 
   const editorRef = useRef(null);
 
@@ -304,7 +340,7 @@ const ExperienceForm = () => {
             className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <TfiSave />
-            <span>Save</span>
+            <span onClick={saveExperienceDataHandler}>Save</span>
           </button>
 
           <button
