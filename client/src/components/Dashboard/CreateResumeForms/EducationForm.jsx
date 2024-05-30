@@ -1,32 +1,166 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 // React Icons
 import { ImBackward2, ImForward3 } from "react-icons/im";
+import { MdEdit } from "react-icons/md";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { AiOutlineDrag } from "react-icons/ai";
 import { TfiSave } from "react-icons/tfi";
+import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
+import { useDispatch, useSelector } from "react-redux";
 
 const EducationForm = () => {
   const [isCheckCurrentStudy, setIsCheckCurrentStudy] = useState(false);
+  const [isSaveContent, setIsSaveContent] = useState(false);
 
   const [schoolName, setSchoolName] = useState("");
   const [schoolCity, setSchoolCity] = useState("");
   const [lastQualification, setLastQualification] = useState("");
   const [schoolState, setSchoolState] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [educationStartDate, setEducationStartDate] = useState("");
+  const [endEducationDate, setEndEducationDate] = useState("");
   const [fieldOfStudy, setFieldOfStudy] = useState("");
 
-  // console.log(schoolName)
-  // console.log(schoolCity)
-  // console.log(lastQualification)
-  // console.log(schoolState)
-  // console.log(startDate)
-  // console.log(endDate)
-  // console.log(fieldOfStudy)
+<
+  const dispatch = useDispatch();
+  const resumeData = useSelector(
+    (state) => state.resume.currentData.resumeData
+  );
+  console.log(resumeData);
+
+  console.log(schoolName);
+  console.log(schoolCity);
+  console.log(lastQualification);
+  console.log(schoolState);
+  console.log(educationStartDate);
+  console.log(endEducationDate);
+  console.log(fieldOfStudy);
+
+  const saveEducationDataHandler = (e) => {
+    e.preventDefault();
+    console.log("save Education handler is working");
+    const payload = {
+      resumeData: {
+        ...resumeData,
+        schoolName,
+        schoolCity,
+        lastQualification,
+        educationStartDate,
+        endEducationDate,
+        // endDate,
+        fieldOfStudy,
+      },
+    };
+    dispatch(resumeSuccess(payload));
+  };
+
+  const saveContent = (e) => {
+    e.preventDefault();
+    if (
+      schoolName &&
+      schoolCity &&
+      lastQualification &&
+      schoolState &&
+      startDate &&
+      endDate &&
+      fieldOfStudy
+    ) {
+      setSchoolName("");
+      setSchoolCity("");
+      setLastQualification("");
+      setSchoolState("");
+      setStartDate("");
+      setEndDate("");
+      setFieldOfStudy("");
+
+      setIsSaveContent(true);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please! Enter the All Fields",
+      });
+    }
+  };
+
+  const onEndDateHandler = () => {
+    if (!isCheckCurrentStudy) {
+      setEndDate("I currently study here");
+    } else {
+      setEndDate("");
+    }
+  };
+
+  // console.log(schoolName);
+  // console.log(schoolCity);
+  // console.log(lastQualification);
+  // console.log(schoolState);
+  // console.log(startDate);
+  console.log(endDate);
+  // console.log(fieldOfStudy);
+
   return (
     <div className="w-full">
+      {/* Education Info Cont */}
+      <div className="educationInfoCont w-full px-[2rem] pb-[4rem]">
+        <div className="educationInfoContWrap w-full border-[0.2rem] border-neutral-200">
+          {/* Header Row */}
+          <div className="infoRowheader grid grid-cols-12">
+            <div className="headerLeft py-[1.4rem] px-[1rem] col-span-8 border-r-[0.2rem]">
+              <h2 className="text-[1.6rem] leading-[1.6rem] font-semibold text-neutral-800">
+                Education
+              </h2>
+            </div>
+            <div className="headerRight py-[1.4rem] px-[1rem] col-span-4">
+              <h2 className="text-[1.6rem] leading-[1.6rem] font-semibold text-neutral-800">
+                Action
+              </h2>
+            </div>
+          </div>
+
+          {/* Education Row */}
+          <div className="infoRowEducation grid grid-cols-12">
+            <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem]">
+              {/* degree and fieldOfStudy  */}
+              <h4 className="text-[1.4rem] font-normal text-neutral-800">
+                Bachelor of Science - Computer Science
+              </h4>
+
+              {/* From and To */}
+              <p className="text-[1.4rem] font-normal text-neutral-800">
+                <span className="font-semibold">From : </span>July 2022{" "}
+                <span className="font-semibold">To : </span>august 2024
+              </p>
+            </div>
+            <div className="eduRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
+              <abbr
+                title="Edit"
+                className="bg-blue-500 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+              >
+                <MdEdit />
+              </abbr>
+              <abbr
+                title="Delete"
+                className="bg-red-600 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+              >
+                <RiDeleteBin5Line />
+              </abbr>
+              <abbr
+                title="Drag"
+                className="bg-theme-yellow p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+              >
+                <AiOutlineDrag />
+              </abbr>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Education Form FIelds */}
       <form action="#" className="w-full flex flex-col gap-[2rem]">
         {/* Row First */}
+
         <div className="rowFirst grid grid-cols-2 gap-[2rem]">
           {/* School Name */}
           <div className="schoolNameInput flex flex-col gap-[1rem]">
@@ -37,7 +171,7 @@ const EducationForm = () => {
               School Name
             </label>
             <input
-            onChange={(e)=> setSchoolName(e.target.value)}
+              onChange={(e) => setSchoolName(e.target.value)}
               type="text"
               name="schoolName"
               id="schoolName"
@@ -54,16 +188,54 @@ const EducationForm = () => {
               City
             </label>
             <input
-            onChange={(e)=> setSchoolCity(e.target.value)}
+              onChange={(e) => setSchoolCity(e.target.value)}
               type="text"
               name="city"
               id="city"
               className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
             />
+
+        {!isSaveContent && (
+          <div className="rowFirst grid grid-cols-2 gap-[2rem]">
+            {/* School Name */}
+            <div className="schoolNameInput flex flex-col gap-[1rem]">
+              <label
+                htmlFor="schoolName"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
+              >
+                School Name
+              </label>
+              <input
+                onChange={(e) => setSchoolName(e.target.value)}
+                type="text"
+                name="schoolName"
+                id="schoolName"
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+            </div>
+
+            {/* City */}
+            <div className="cityInput flex flex-col gap-[0.8rem]">
+              <label
+                htmlFor="city"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
+              >
+                City
+              </label>
+              <input
+                onChange={(e) => setSchoolCity(e.target.value)}
+                type="text"
+                name="city"
+                id="city"
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+            </div>
+
           </div>
-        </div>
+        )}
 
         {/* Row Second */}
+
         <div className="rowSecond grid grid-cols-2 gap-[2rem]">
           {/* State */}
           <div className="stateInput flex flex-col gap-[0.8rem]">
@@ -74,7 +246,7 @@ const EducationForm = () => {
               State
             </label>
             <input
-            onChange={(e)=> setSchoolState(e.target.value)}
+              onChange={(e) => setSchoolState(e.target.value)}
               type="text"
               name="state"
               id="state"
@@ -91,16 +263,54 @@ const EducationForm = () => {
               Last Qualification / Degree
             </label>
             <input
-            onChange={(e)=> setLastQualification(e.target.value)}
+              onChange={(e) => setLastQualification(e.target.value)}
               type="text"
               name="qualification"
               id="qualification"
               className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
             />
+
+        {!isSaveContent && (
+          <div className="rowSecond grid grid-cols-2 gap-[2rem]">
+            {/* State */}
+            <div className="stateInput flex flex-col gap-[0.8rem]">
+              <label
+                htmlFor="state"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
+              >
+                State
+              </label>
+              <input
+                onChange={(e) => setSchoolState(e.target.value)}
+                type="text"
+                name="state"
+                id="state"
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+            </div>
+
+            {/* Last Qualification */}
+            <div className="qualificationInput flex flex-col gap-[0.8rem]">
+              <label
+                htmlFor="qualification"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
+              >
+                Last Qualification / Degree
+              </label>
+              <input
+                onChange={(e) => setLastQualification(e.target.value)}
+                type="text"
+                name="qualification"
+                id="qualification"
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+            </div>
+
           </div>
-        </div>
+        )}
 
         {/* Row Third */}
+
         <div className="rowThird grid grid-cols-12 gap-[2rem] mb-[6rem]">
           {/* Field Of Study */}
           <div className="fieldOfStudyInput col-span-6 flex flex-col gap-[0.8rem]">
@@ -111,7 +321,7 @@ const EducationForm = () => {
               Field Of Study
             </label>
             <input
-            onChange={(e)=> setFieldOfStudy(e.target.value)}
+              onChange={(e) => setFieldOfStudy(e.target.value)}
               type="text"
               name="fieldOfStudy"
               id="fieldOfStudy"
@@ -128,7 +338,7 @@ const EducationForm = () => {
               Start Date:
             </label>
             <input
-            onChange={(e)=> setStartDate(e.target.value)}
+              onChange={(e) => setEducationStartDate(e.target.value)}
               type="date"
               name="startDate"
               id="startDate"
@@ -145,7 +355,7 @@ const EducationForm = () => {
               End Date:
             </label>
             <input
-            onChange={(e)=> setEndDate(e.target.value)}
+              onChange={(e) => setEndEducationDate(e.target.value)}
               type={isCheckCurrentStudy ? "text" : "date"}
               name="endDate"
               id="endDate"
@@ -155,22 +365,83 @@ const EducationForm = () => {
             />
 
             <div className="currentWorkingCheckbox absolute bottom-[-3.2rem] left-0 flex items-center gap-[1rem] px-[0.5rem]">
-              <input
-                type="checkbox"
-                name="CurrentWorking"
-                id="currentWorking"
-                onChange={() => setIsCheckCurrentStudy(!isCheckCurrentStudy)}
-                className="w-7 h-7 border-2 border-gray-300 rounded-full accent-theme-red ring-2 ring-offset-2 ring-theme-red"
-              />
+
+        {!isSaveContent && (
+          <div className="rowThird grid grid-cols-12 gap-[2rem] mb-[6rem]">
+            {/* Field Of Study */}
+            <div className="fieldOfStudyInput col-span-6 flex flex-col gap-[0.8rem]">
               <label
-                htmlFor="currentWorking"
-                className="text-[1.5rem] leading-[1.4rem]"
+                htmlFor="fieldOfStudy"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
               >
-                I currently study here
+                Field Of Study
               </label>
+              <input
+                onChange={(e) => setFieldOfStudy(e.target.value)}
+                type="text"
+                name="fieldOfStudy"
+                id="fieldOfStudy"
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+            </div>
+
+            {/* Start Date */}
+            <div className="startDateInput col-span-3 flex flex-col gap-[0.8rem]">
+              <label
+                htmlFor="startDate"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
+              >
+                Start Date:
+              </label>
+
+              <input
+                onChange={(e) => setStartDate(e.target.value)}
+                type="date"
+                name="startDate"
+                id="startDate"
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+            </div>
+
+            {/* End Date */}
+            <div className="endDateInput col-span-3 relative flex flex-col gap-[0.8rem]">
+              <label
+                htmlFor="endDate"
+                className="text-[1.5rem] leading-[1.5rem] text-theme-red"
+              >
+                End Date:
+              </label>
+              <input
+                onChange={(e) => setEndDate(e.target.value)}
+                type={isCheckCurrentStudy ? "text" : "date"}
+                name="endDate"
+                id="endDate"
+                value={isCheckCurrentStudy && "I currently study here"}
+                disabled={isCheckCurrentStudy}
+                className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
+              />
+
+              <div className="currentWorkingCheckbox absolute bottom-[-3.2rem] left-0 flex items-center gap-[1rem] px-[0.5rem]">
+                <input
+                  type="checkbox"
+                  name="CurrentWorking"
+                  id="currentWorking"
+                  onChange={() => {
+                    setIsCheckCurrentStudy(!isCheckCurrentStudy);
+                    onEndDateHandler();
+                  }}
+                  className="w-7 h-7 border-2 border-gray-300 rounded-full accent-theme-red ring-2 ring-offset-2 ring-theme-red"
+                />
+                <label
+                  htmlFor="currentWorking"
+                  className="text-[1.5rem] leading-[1.4rem]"
+                >
+                  I currently study here
+                </label>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Buttons Row */}
         <div className="btnRow w-full flex justify-between py-[1rem]">
@@ -182,13 +453,38 @@ const EducationForm = () => {
             <span>Previous</span>
           </button>
 
+
           <button
             onClick={(e) => e.preventDefault()}
             className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <TfiSave />
-            <span>Save</span>
+            <span onClick={saveEducationDataHandler}>Save</span>
           </button>
+
+          {!isSaveContent && (
+            <button
+              onClick={(e) => saveContent(e)}
+              className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+            >
+              <TfiSave />
+              <span>Save</span>
+            </button>
+          )}
+
+          {isSaveContent && (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setIsSaveContent(false);
+              }}
+              className="bg-blue-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+            >
+              <TfiSave />
+              <span>Add Education</span>
+            </button>
+          )}
+
 
           <button
             onClick={(e) => e.preventDefault()}

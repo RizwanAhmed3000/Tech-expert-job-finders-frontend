@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { getNames } from "country-list";
 import { TfiSave } from "react-icons/tfi";
+import { resumeSuccess } from "../../../Redux/Slices/resumeSlices.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProfileForm = ({ setProfileFields }) => {
   const [firstName, setFirstName] = useState("");
@@ -18,41 +20,51 @@ const ProfileForm = ({ setProfileFields }) => {
   const [mobNum, setMobNum] = useState("");
   const [email, setEmail] = useState("");
 
+  console.log(firstName);
+  console.log(middleName);
+  console.log(lastName);
+  console.log(gender);
+  console.log(dob);
+  console.log(marital);
+  console.log(profession);
+  console.log(streetAddress);
+  console.log(city);
+  console.log(state);
+  console.log(nationality);
+  console.log(passportNo);
+  console.log(mobNum);
+  console.log(email);
 
-  // console.log(firstName);
-  // console.log(middleName);
-  // console.log(lastName);
-  // console.log(gender);
-  // console.log(dob);
-  // console.log(marital);
-  // console.log(profession);
-  // console.log(streetAddress);
-  // console.log(city);
-  // console.log(state);
-  // console.log(nationality);
-  // console.log(passportNo);
-  // console.log(mobNum);
-  // console.log(email);
+  const dispatch = useDispatch();
+  const resumeData = useSelector(
+    (state) => state.resume.currentData.resumeData
+  );
+  console.log(resumeData);
 
-
-  // const getFields = () => {
-  //   const data = {
-  //     firstName,
-  //     middleName,
-  //     lastName,
-  //     gender,
-  //     dob,
-  //     marital,
-  //     profession,
-  //     streetAddress,
-  //     city,
-  //     state,
-  //     nationality,
-  //     passportNo,
-  //     mobNum,
-  //     email,
-  //   };
-  // };
+  const saveProfileDataHandler = (e) => {
+    e.preventDefault();
+    console.log("save profile handler is working");
+    const payload = {
+      resumeData: {
+        firstName,
+        middleName,
+        lastName,
+        gender,
+        dob,
+        marital,
+        profession,
+        streetAddress,
+        city,
+        state,
+        nationality,
+        passportNo,
+        mobNum,
+        email,
+      },
+      //  templateId
+    };
+    dispatch(resumeSuccess(payload));
+  };
   return (
     <div className="w-full">
       <form action="#" className="w-full flex flex-col gap-[2rem]">
@@ -84,7 +96,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Middle Name (Optional)
             </label>
             <input
-            onChange={(e) => setMiddleName(e.target.value)}
+              onChange={(e) => setMiddleName(e.target.value)}
               type="text"
               name="middleName"
               id="middleName"
@@ -101,7 +113,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Last Name
             </label>
             <input
-            onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => setLastName(e.target.value)}
               type="text"
               name="lastName"
               id="lastName"
@@ -121,7 +133,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Gender (Optional)
             </label>
             <select
-            onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => setGender(e.target.value)}
               name="gender"
               id="gender"
               className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
@@ -143,7 +155,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Date of Birth (Optional)
             </label>
             <input
-            onChange={(e) => setDob(e.target.value)}
+              onChange={(e) => setDob(e.target.value)}
               type="date"
               name="dateOfBirth"
               id="dateOfBirth"
@@ -160,7 +172,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Marital Status (Optional)
             </label>
             <select
-            onChange={(e) => setMarital(e.target.value)}
+              onChange={(e) => setMarital(e.target.value)}
               name="marital"
               id="marital"
               className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
@@ -186,7 +198,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Profession
             </label>
             <input
-            onChange={(e) => setProfession(e.target.value)}
+              onChange={(e) => setProfession(e.target.value)}
               type="text"
               name="dateOfBirth"
               id="dateOfBirth"
@@ -204,7 +216,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Street Address
             </label>
             <input
-            onChange={(e) => setStreetAddress(e.target.value)}
+              onChange={(e) => setStreetAddress(e.target.value)}
               type="text"
               name="address"
               id="address"
@@ -224,7 +236,7 @@ const ProfileForm = ({ setProfileFields }) => {
               City
             </label>
             <input
-            onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
               type="text"
               name="city"
               id="city"
@@ -241,7 +253,7 @@ const ProfileForm = ({ setProfileFields }) => {
               State/Province
             </label>
             <input
-            onChange={(e) => setState(e.target.value)}
+              onChange={(e) => setState(e.target.value)}
               type="text"
               name="province"
               id="province"
@@ -258,7 +270,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Nationality (Optional)
             </label>
             <select
-            onChange={(e) => setNationality(e.target.value)}
+              onChange={(e) => setNationality(e.target.value)}
               name="nationality"
               id="nationality"
               className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
@@ -282,7 +294,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Passport Number
             </label>
             <input
-            onChange={(e) => setPassportNo(e.target.value)}
+              onChange={(e) => setPassportNo(e.target.value)}
               type="number"
               name="passport"
               id="passport"
@@ -299,7 +311,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Mobile Number
             </label>
             <input
-            onChange={(e) => setMobNum(e.target.value)}
+              onChange={(e) => setMobNum(e.target.value)}
               type="number"
               name="mobile"
               id="mobile"
@@ -316,7 +328,7 @@ const ProfileForm = ({ setProfileFields }) => {
               Email
             </label>
             <input
-            onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"
               id="email"
@@ -331,7 +343,7 @@ const ProfileForm = ({ setProfileFields }) => {
             className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <TfiSave />
-            <span>Save</span>
+            <span onClick={saveProfileDataHandler}>Save</span>
           </button>
         </div>
       </form>
