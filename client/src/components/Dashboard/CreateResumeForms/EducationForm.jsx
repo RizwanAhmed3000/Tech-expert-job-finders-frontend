@@ -62,6 +62,7 @@ const dualFunctionHandler =(e) => {
   const saveContent = (e) => {
 
     e.preventDefault();
+
     if (
       schoolName &&
       schoolCity &&
@@ -71,10 +72,11 @@ const dualFunctionHandler =(e) => {
       endEducationDate &&
       fieldOfStudy
 
-    ) 
-    
-    {
-      saveEducationDataHandler()
+
+    ) {
+      saveEducationDataHandler(e);
+
+
       setSchoolName("");
       setSchoolCity("");
       setLastQualification("");
@@ -82,8 +84,8 @@ const dualFunctionHandler =(e) => {
       setEducationStartDate("");
       setEndEducationDate("");
       setFieldOfStudy("");
-      setIsCheckCurrentStudy(false);
 
+      setIsCheckCurrentStudy(false);
       setIsSaveContent(true);
     } else {
       Swal.fire({
@@ -94,16 +96,10 @@ const dualFunctionHandler =(e) => {
     }
   };
 
-  const onEndDateHandler = () => {
-    if (!isCheckCurrentStudy) {
-      setEndEducationDate("I currently study here");
-    }
-  };
-
   const handleCheckboxChange = (event) => {
     setIsCheckCurrentStudy(event.target.checked);
     if (event.target.checked) {
-      setEndEducationDate("Sorry");
+      setEndEducationDate("I currently study here");
     } else {
       setEndEducationDate("");
     }
@@ -144,7 +140,7 @@ const dualFunctionHandler =(e) => {
 
           {/* Education Row */}
           <div className="infoRowEducation grid grid-cols-12">
-            <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem]">
+            <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
               {/* degree and fieldOfStudy  */}
               <h4 className="text-[1.4rem] font-normal text-neutral-800">
                 Bachelor of Science - Computer Science
@@ -316,15 +312,16 @@ const dualFunctionHandler =(e) => {
                 className="outline-none px-[1rem] py-[0.8rem] text-neutral-800 text-[1.4rem] leading-[1.4rem] border-neutral-300 border-[0.2rem] rounded-md focus:border-theme-red"
               />
 
-              <div className="currentWorkingCheckbox absolute bottom-[-3.2rem] left-0 flex items-center gap-[1rem] px-[0.5rem]">
+              <div className="currentStudyCheckbox absolute bottom-[-3.2rem] left-0 flex items-center gap-[1rem] px-[0.5rem]">
                 <input
                   type="checkbox"
                   checked={isCheckCurrentStudy}
                   onChange={handleCheckboxChange}
+                  id="currentStudy"
                   className="w-7 h-7 border-2 border-gray-300 rounded-full accent-theme-red ring-2 ring-offset-2 ring-theme-red"
                 />
                 <label
-                  htmlFor="currentWorking"
+                  htmlFor="currentStudy"
                   className="text-[1.5rem] leading-[1.4rem]"
                 >
                   I currently study here
