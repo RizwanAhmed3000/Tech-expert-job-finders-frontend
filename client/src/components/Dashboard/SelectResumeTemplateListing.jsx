@@ -6,7 +6,7 @@ import { GET_RESUME_TEMP } from "../../constants/apis.js";
 import axios from "axios";
 
 function SelectResumeTemplateModal({ activeTab }) {
-  console.log(activeTab)
+  console.log(activeTab);
   const [freeResumeTemplate, setFreeResumeTemplate] = useState([]);
   // console.log(freeResumeTemplate)
   const apiCalling = async () => {
@@ -14,19 +14,17 @@ function SelectResumeTemplateModal({ activeTab }) {
       const res = await axios.get(`/api${GET_RESUME_TEMP}`);
       // console.log(res?.data?.data);
 
-      const {_id} = res?.data?.data
-      setFreeResumeTemplate(res?.data?.data)
-      
-
+      const { _id } = res?.data?.data;
       setFreeResumeTemplate(res?.data?.data);
-
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     apiCalling();
   }, []);
+
   const free = [
     {
       name: "BELA",
@@ -41,6 +39,7 @@ function SelectResumeTemplateModal({ activeTab }) {
       src: cvImg,
     },
   ];
+
   const premium = [
     {
       name: "Rizwan",
@@ -48,7 +47,6 @@ function SelectResumeTemplateModal({ activeTab }) {
     },
     {
       name: "Salik",
-
       src: cvImg3,
     },
     {
@@ -62,28 +60,28 @@ function SelectResumeTemplateModal({ activeTab }) {
       {activeTab == "free"
         ? free.map((data, i) => (
             <SelectResumeTemplateCard
+              key={i}
               data={data}
               route={"/app/resume-details"}
-              key={i}
+              activeTab={activeTab}
             />
           ))
         : activeTab == "premium"
         ? premium.map((data, i) => (
-            <SelectResumeTemplateCard 
-            activeTab={activeTab}
-
+            <SelectResumeTemplateCard
+              key={i}
               data={data}
               route={"/app/resume-details"}
-              key={i}
+              activeTab={activeTab}
             />
           ))
         : activeTab == "my" &&
           my?.map((data, i) => (
             <SelectResumeTemplateCard
-            
+              key={i}
               data={data}
               route={"/app/resume-details"}
-              key={i}
+              activeTab={activeTab}
             />
           ))}
     </div>
