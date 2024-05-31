@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { cloneElement, useRef, useState } from "react";
 import {
   FaCloudDownloadAlt,
   FaLinkedinIn,
@@ -19,8 +19,7 @@ import { TiSocialFacebook } from "react-icons/ti";
 import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
 import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
 import { useDispatch, useSelector } from "react-redux";
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
+import { useReactToPrint } from 'react-to-print';
 
 const coverLetterTemplates = [
   {
@@ -36,14 +35,19 @@ const coverLetterTemplates = [
 const EditFinish = () => {
   const [activeButton, setActiveButton] = useState("coverLetter");
   const [changeComponent, SetChangeComponent] = useState("coverLetter");
-  // Email Buttom Click Modal useState
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Share Button Click Modal useSate
   const [shareModal, setShareModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption1, setSelectedOption1] = useState("");
+  const [activeTab, setActiveTab] = useState("free");
+  const [themeColor, setThemeColor] = useState("#ffffff");
   const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
-  // console.log(templateId, "===>>> template")
   const templateRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => templateRef.current,
+  });
 
   const downloadPdf = () => {
     setIsLoading(true);
@@ -85,16 +89,6 @@ const EditFinish = () => {
     setActiveTab(tabName);
   };
 
-  // DropDown Use State and Function
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedOption1, setSelectedOption1] = useState("");
-  const [activeTab, setActiveTab] = useState("free");
-
-  // Theme Color Chnage useState
-  const [themeColor, setThemeColor] = useState("#ffffff");
-  // console.log(selectedOption1);
-
-  // Font Style Changes handler function
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -110,46 +104,22 @@ const EditFinish = () => {
       {/* Left Div */}
       {/* Left Main Div */}
       <div
-        className="templateDiv w-8/12 shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
-        ref={templateRef}
+        className="templateDiv w-fit h-[100%] shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
+        
         style={{ fontSize: selectedOption1, fontFamily: selectedOption }}
       >
-
         {
           coverLetterTemplates.map((template) => {
             // console.log(template.template)
             if (templateId === template.id) {
               return (
-                template.template
+                <div ref={templateRef}>
+                  {cloneElement(template.template, {bgColor: "red"})}
+                </div>
               )
             }
           })
         }
-
-
-        {/* Left left 20 Div */}
-        {/* <div
-          className="w-1/12  max-h-full "
-          style={{ backgroundColor: themeColor }}
-        ></div> */}
-        {/* Left Right Half Div */}
-
-        {/* <div className="w-4/5 h-full">
-          <h1
-            className="text-theme-red text-center text-3xl"
-            style={{ color: themeColor }}
-          >
-            Hello World
-          </h1>
-          <p className="text-center">hello world</p>
-          <hr className="my-10" />
-          <div className="px-10">
-            <p>Sksadjf j</p>
-            <p>Sksadjf j</p>
-            <p>Sksadjf j</p>
-            <p>Sksadjf j</p>
-          </div>
-        </div> */}
       </div>
       {/* Right Div */}
       <div className="w-4/12  ">
@@ -191,7 +161,7 @@ const EditFinish = () => {
               {/* Export Options */}
               <div>
                 <h1 className="text-2xl font-bold mb-3">Export Options</h1>
-                <button className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg" onClick={downloadPdf} disabled={!(isLoading === false)}>
+                <button className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg" onClick={handlePrint} disabled={!(isLoading === false)}>
                   <FaCloudDownloadAlt className="text-3xl" />
                   {
                     isLoading ? (
