@@ -37,31 +37,36 @@ const ProfileForm = ({ setProfileFields }) => {
 
   const dispatch = useDispatch();
   const resumeData = useSelector(
-    (state) => state.resume.currentData.resumeData
+    (state) => state.resume.resumeAllData
   );
-  console.log(resumeData);
+  const templateId = useSelector(
+    (state) => state.resume.templateId
+  );
+  console.log(templateId);
+
+const profileData= {
+  firstName,
+  middleName,
+  lastName,
+  gender,
+  dob,
+  marital,
+  profession,
+  streetAddress,
+  city,
+  state,
+  nationality,
+  passportNo,
+  mobNum,
+  email
+}
 
   const saveProfileDataHandler = (e) => {
     e.preventDefault();
     console.log("save profile handler is working");
     const payload = {
-      resumeData: {
-        firstName,
-        middleName,
-        lastName,
-        gender,
-        dob,
-        marital,
-        profession,
-        streetAddress,
-        city,
-        state,
-        nationality,
-        passportNo,
-        mobNum,
-        email,
-      },
-      //  templateId
+      profileData,
+       templateId
     };
     dispatch(resumeSuccess(payload));
   };

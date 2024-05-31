@@ -58,7 +58,7 @@ function SelectResumeTemplateModal({ activeTab }) {
   return (
     <div className="grid grid-cols-3 gap-[1rem] place-items-center">
       {activeTab == "free"
-        ? free.map((data, i) => (
+        ? freeResumeTemplate.map((data, i) => (
             <SelectResumeTemplateCard
               key={i}
               data={data}

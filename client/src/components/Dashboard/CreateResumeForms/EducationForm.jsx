@@ -11,9 +11,148 @@ import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 import { useDispatch, useSelector } from "react-redux";
 
 const EducationForm = () => {
+  // const [isCheckCurrentStudy, setIsCheckCurrentStudy] = useState(false);
+  // const [isSaveContent, setIsSaveContent] = useState(false);
+  // const [schoolName, setSchoolName] = useState("");
+  // const [schoolCity, setSchoolCity] = useState("");
+  // const [lastQualification, setLastQualification] = useState("");
+  // const [schoolState, setSchoolState] = useState("");
+  // const [educationStartDate, setEducationStartDate] = useState("");
+  // const [endEducationDate, setEndEducationDate] = useState("");
+  // const [fieldOfStudy, setFieldOfStudy] = useState("");
+
+  // // const [educationList, setEducationList] = useState([]);
+  
+  // const dispatch = useDispatch();
+  // const resumeData = useSelector((state) => state.resume.resumeAllData);
+  // console.log(resumeData);
+  // const educationDataList = useSelector((state) => state.resume.resumeAllData);
+  // console.log(educationDataList);
+  // let educationArray = educationDataList.hasOwnProperty("educationData") ? [...educationArray.educationData] : [0];
+
+  // // const educationDataList = useSelector(
+  // //   (state) => state.resume.resumeAllData.educationObj
+  // // );
+  // // console.log(educationDataList);
+  // // // console.log(educationData);
+  // // console.log(schoolName);
+  // // console.log(schoolCity);
+  // // console.log(lastQualification);
+  // // console.log(schoolState);
+  // // console.log(fieldOfStudy);
+  // // console.log(educationStartDate);
+  // // console.log(endEducationDate);
+
+  // // const dualFunctionHandler =(e) => {
+  // //   // onClick={(e) => saveContent(e)}
+  // //   saveEducationDataHandler()
+  // // }
+
+  // // const handleLanguageChange = (index, key, value) => {
+  // //   const updatedLanguagesList = languagesList.map((languageItem, i) =>
+  // //     i === index ? { ...languageItem, [key]: value } : languageItem
+  // //   );
+  // //   setLanguagesList(updatedLanguagesList);
+  // // };
+  // const educationObj = {
+  //   schoolName,
+  //   schoolCity,
+  //   lastQualification,
+  //   schoolState,
+  //   educationStartDate,
+  //   endEducationDate,
+  //   fieldOfStudy,
+  // };
+
+  
+  // const saveEducationDataHandler = (e) => {
+  //   e.preventDefault();
+  //   console.log("save Education handler is working");
+  //   educationArray.push( educationObj);
+  //   console.log(educationArray, "====>>>> education array");
+  //   const payload = {
+  //     ...resumeData,
+  //     educationData: educationArray,
+  //     //  educationObj,
+
+  //     // educationDataList: [...educationData],
+  //     // resumeData: {
+  //     //   ...resumeData,
+  //     //   educationList: [
+  //     //     ...educationData,
+  //     //     educationObj
+
+  //     //     // schooification,
+  //     //     // educationStartDate,
+  //     //     // endEducationDate,
+  //     //     // // endDate,
+  //     //     // fieldOfStudy,lName,
+  //     //     // schoolCity,
+  //     //     // lastQual
+  //     //   ],
+  //     // },
+  //   };
+  //   dispatch(resumeSuccess(payload));
+  // };
+
+  // const saveContent = (e) => {
+  //   e.preventDefault();
+
+  //   if (
+  //     schoolName &&
+  //     schoolCity &&
+  //     lastQualification &&
+  //     schoolState &&
+  //     educationStartDate &&
+  //     endEducationDate &&
+  //     fieldOfStudy
+  //   ) {
+  //     saveEducationDataHandler(e);
+
+  //     setSchoolName("");
+  //     setSchoolCity("");
+  //     setLastQualification("");
+  //     setSchoolState("");
+  //     setEducationStartDate("");
+  //     setEndEducationDate("");
+  //     setFieldOfStudy("");
+
+  //     setIsCheckCurrentStudy(false);
+  //     setIsSaveContent(true);
+  //   } else {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops...",
+  //       text: "Please! Enter the All Fields",
+  //     });
+  //   }
+  // };
+
+  // const handleCheckboxChange = (event) => {
+  //   setIsCheckCurrentStudy(event.target.checked);
+  //   if (event.target.checked) {
+  //     setEndEducationDate("I currently study here");
+  //   } else {
+  //     setEndEducationDate("");
+  //   }
+  // };
+
+  // const handleInputChange = (event) => {
+  //   if (!isCheckCurrentStudy) {
+  //     setEndEducationDate(event.target.value);
+  //   }
+  // };
+
+  // // console.log(schoolName);
+  // // console.log(schoolCity);
+  // // console.log(lastQualification);
+  // // console.log(schoolState);
+  // // console.log(startDate);
+  // // console.log(endDate);
+  // // console.log(fieldOfStudy);
+
   const [isCheckCurrentStudy, setIsCheckCurrentStudy] = useState(false);
   const [isSaveContent, setIsSaveContent] = useState(false);
-
   const [schoolName, setSchoolName] = useState("");
   const [schoolCity, setSchoolCity] = useState("");
   const [lastQualification, setLastQualification] = useState("");
@@ -23,44 +162,36 @@ const EducationForm = () => {
   const [fieldOfStudy, setFieldOfStudy] = useState("");
 
   const dispatch = useDispatch();
-  const resumeData = useSelector(
-    (state) => state.resume.currentData.resumeData
-  );
-  // console.log(resumeData);
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
+  const educationDataList = useSelector((state) => state.resume.resumeAllData);
+  const educationDataMap = useSelector((state) => state.resume.resumeAllData.educationData);
 
-  // console.log(schoolName);
-  // console.log(schoolCity);
-  // console.log(lastQualification);
-  // console.log(schoolState);
-  // console.log(fieldOfStudy);
-  // console.log(educationStartDate);
-  // console.log(endEducationDate);
-  
-const dualFunctionHandler =(e) => {
-  // onClick={(e) => saveContent(e)}
-  saveEducationDataHandler()
-}
+  // Corrected initialization of educationArray
+  let educationArray = educationDataList.hasOwnProperty("educationData")
+    ? [...educationDataList.educationData]
+    : [];
+
+  const educationObj = {
+    schoolName,
+    schoolCity,
+    lastQualification,
+    schoolState,
+    educationStartDate,
+    endEducationDate,
+    fieldOfStudy,
+  };
 
   const saveEducationDataHandler = (e) => {
     e.preventDefault();
-    console.log("save Education handler is working");
+    educationArray.push(educationObj);
     const payload = {
-      resumeData: {
-        ...resumeData,
-        schoolName,
-        schoolCity,
-        lastQualification,
-        educationStartDate,
-        endEducationDate,
-        // endDate,
-        fieldOfStudy,
-      },
+      ...resumeData,
+      educationData: educationArray,
     };
     dispatch(resumeSuccess(payload));
   };
 
   const saveContent = (e) => {
-
     e.preventDefault();
 
     if (
@@ -71,11 +202,8 @@ const dualFunctionHandler =(e) => {
       educationStartDate &&
       endEducationDate &&
       fieldOfStudy
-
-
     ) {
       saveEducationDataHandler(e);
-
 
       setSchoolName("");
       setSchoolCity("");
@@ -91,7 +219,7 @@ const dualFunctionHandler =(e) => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Please! Enter the All Fields",
+        text: "Please! Enter All Fields",
       });
     }
   };
@@ -110,14 +238,6 @@ const dualFunctionHandler =(e) => {
       setEndEducationDate(event.target.value);
     }
   };
-
-  // console.log(schoolName);
-  // console.log(schoolCity);
-  // console.log(lastQualification);
-  // console.log(schoolState);
-  // console.log(startDate);
-  // console.log(endDate);
-  // console.log(fieldOfStudy);
 
   return (
     <div className="w-full">
@@ -139,17 +259,18 @@ const dualFunctionHandler =(e) => {
           </div>
 
           {/* Education Row */}
-          <div className="infoRowEducation grid grid-cols-12">
+          {educationDataMap.map((edu,index) =>(
+            <div className="infoRowEducation grid grid-cols-12">
             <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
-              {/* degree and fieldOfStudy  */}
+              degree and fieldOfStudy 
               <h4 className="text-[1.4rem] font-normal text-neutral-800">
-                Bachelor of Science - Computer Science
+               {`${edu.fieldOfStudy} -  ${edu.schoolName}`}
               </h4>
 
               {/* From and To */}
               <p className="text-[1.4rem] font-normal text-neutral-800">
-                <span className="font-semibold">From : </span>July 2022{" "}
-                <span className="font-semibold">To : </span>august 2024
+                <span className="font-semibold">From : </span>{edu.educationStartDate}{" "}
+                <span className="font-semibold">To : </span>{edu.endEducationDate}
               </p>
             </div>
             <div className="eduRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
@@ -165,14 +286,9 @@ const dualFunctionHandler =(e) => {
               >
                 <RiDeleteBin5Line />
               </abbr>
-              <abbr
-                title="Drag"
-                className="bg-theme-yellow p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
-              >
-                <AiOutlineDrag />
-              </abbr>
             </div>
           </div>
+          ))}
         </div>
       </div>
 
@@ -344,7 +460,7 @@ const dualFunctionHandler =(e) => {
           {!isSaveContent && (
             <button
               // onClick={saveEducationDataHandler}
-              onClick={(e) => saveContent()}
+              onClick={(e) => saveContent(e)}
               className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
             >
               <TfiSave />

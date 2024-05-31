@@ -29,10 +29,27 @@ const ExperienceForm = () => {
   const [responsibilities, setResponsibilities] = useState("");
 
   const dispatch = useDispatch();
-  const resumeData = useSelector(
-    (state) => state.resume.currentData.resumeData
-  );
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
   console.log(resumeData);
+
+  const experienceDataList = useSelector((state) => state.resume.resumeAllData);
+  const experienceDataListMap = useSelector((state) => state.resume.resumeAllData.experienceData);
+
+  // Corrected initialization of educationArray
+  let experienceArray = experienceDataList.hasOwnProperty("experienceData")
+    ? [...experienceDataList.experienceData]
+    : [];
+
+  const experienceObj = {
+    jobTitle,
+    employer,
+    expCity,
+    expState,
+    startDate,
+    endDate,
+    responsibilities,
+  };
+
 
   const handleEditorChange = (content, editor) => {
     const plainText = convertHtmlToText(content);
@@ -50,17 +67,10 @@ const ExperienceForm = () => {
   const saveExperienceDataHandler = (e) => {
     e.preventDefault();
     console.log("save Experience handler is working");
+    experienceArray.push(experienceObj);
     const payload = {
-      resumeData: {
-        ...resumeData,
-        jobTitle,
-        employer,
-        expCity,
-        expState,
-        startDate,
-        endDate,
-        responsibilities,
-      },
+      ...resumeData,
+      experienceData: experienceArray,
     };
     dispatch(resumeSuccess(payload));
   };
@@ -144,7 +154,7 @@ const ExperienceForm = () => {
       <div className="educationInfoCont w-full px-[2rem] pb-[4rem]">
         <div className="educationInfoContWrap w-full border-[0.2rem] border-neutral-200">
           {/* Header Row */}
-          <div className="infoRowheader grid grid-cols-12">
+            <div className="infoRowheader grid grid-cols-12">
             <div className="headerLeft py-[1.4rem] px-[1rem] col-span-8 border-r-[0.2rem]">
               <h2 className="text-[1.6rem] leading-[1.6rem] font-semibold text-neutral-800">
                 Work History
@@ -156,19 +166,19 @@ const ExperienceForm = () => {
               </h2>
             </div>
           </div>
-
-          {/* Experience Row */}
+          {experienceDataListMap.map((itemsExp)=> (
+            <>
           <div className="infoRowExperience grid grid-cols-12">
             <div className="expRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
               {/* Job Title */}
               <h4 className="text-[1.4rem] font-normal text-neutral-800">
-                Assitant Manager
+              {itemsExp.jobTitle}
               </h4>
 
               {/* From and To */}
               <p className="text-[1.4rem] font-normal text-neutral-800">
-                <span className="font-semibold">From : </span>July 2022{" "}
-                <span className="font-semibold">To : </span>august 2024
+                <span className="font-semibold">From : {itemsExp.startDate} </span>
+                <span className="font-semibold">To : {itemsExp.endDate} </span>
               </p>
             </div>
             <div className="expRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
@@ -184,14 +194,19 @@ const ExperienceForm = () => {
               >
                 <RiDeleteBin5Line />
               </abbr>
-              <abbr
+              {/* <abbr
                 title="Drag"
                 className="bg-theme-yellow p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
               >
                 <AiOutlineDrag />
-              </abbr>
+              </abbr> */}
             </div>
           </div>
+          </>
+          ))}
+          
+
+          {/* Experience Row */}
         </div>
       </div>
 
