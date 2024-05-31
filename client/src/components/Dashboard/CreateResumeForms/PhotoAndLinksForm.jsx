@@ -8,7 +8,7 @@ import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 
 const PhotoAndLinksForm = () => {
   const dispatch = useDispatch()
-  const resumeData = useSelector((state) => state.resume.currentData.resumeData)
+  const resumeData = useSelector((state) => state.resume.resumeAllData)
   console.log(resumeData);
   // const [userImage, setUserImage] = useState("");
   // const [profileImg, setProfileImg] = useState("");
@@ -26,7 +26,6 @@ const PhotoAndLinksForm = () => {
     e.preventDefault();
     console.log("save Links handler is working");
     const payload ={
-        ...resumeData,
         fbUserName,
         twitterUserName,
         linkedinUserName,
