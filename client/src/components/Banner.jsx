@@ -25,12 +25,12 @@ const Banner = () => {
       <img
         src={BannerParticle02}
         alt="Particle-02"
-        className="absolute top-[65%] left-[1%] w-[5.5rem]"
+        className="absolute top-[55%] left-[2%] w-[15rem]"
       />
       <img
         src={BannerParticle03}
         alt="Particle-03"
-        className="absolute top-[20%] left-[12%] w-[2.2rem]"
+        className="absolute top-[17%] left-[12%] w-[2.2rem]"
       />
 
       <div className="bannerWrapper relative z-[40] h-full flex items-center justify-between mx-[5%]">
@@ -57,7 +57,7 @@ const Banner = () => {
             fine-tuning expert content to match your individuality.
           </p>
 
-          <button className="text-[1.4rem] leading-[1.4rem] bg-theme-red text-white px-[1rem] py-[1rem] rounded-lg mt-[2.5rem]">
+          <button className="text-[1.6rem] leading-[1.6rem] bg-theme-red text-white px-[1.5rem] py-[1.4rem] rounded-lg mt-[2.5rem]">
             Get Started
           </button>
         </div>
@@ -73,12 +73,12 @@ const Banner = () => {
             <img
               src={BannerTablet}
               alt="Tablet"
-              className="w-[26rem] absolute z-[2] bottom-0 right-0 object-cover"
+              className="w-[26rem] absolute z-[2] bottom-0 right-0 object-cover animate-moveDown"
             />
             <img
               src={BannerMobile}
               alt="Mobile"
-              className="w-[11rem] absolute z-[2] bottom-0 left-0 object-cover"
+              className="w-[11rem] absolute z-[2] bottom-0 left-0 object-cover animate-moveDown"
             />
           </div>
         </div>

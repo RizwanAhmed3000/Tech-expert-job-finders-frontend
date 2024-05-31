@@ -25,6 +25,21 @@ export default {
         "solution-bg-image": "url('/src/assets/solution-bg.jpg')",
         "login-bg-image": "url('/src/assets/loginbg.jpg')",
       },
+      animation: {
+        moveDown: "moveDown 0.7s ease-out 1",
+      },
+      keyframes: {
+        moveDown: {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(-150%)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
+        },
+      },
     },
   },
   plugins: [],

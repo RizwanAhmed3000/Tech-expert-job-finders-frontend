@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
     <header className="header absolute z-50 top-0 left-0 right-0 bg-theme-black">
       <div className="headerWrapper py-[1.8rem] mx-[3%] flex justify-between items-center">

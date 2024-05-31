@@ -45,8 +45,13 @@ import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
 import CLTemplate01 from "./coverLetterTemplates/CLTemplate01";
 import EditFinish from "./pages/Dashboard/EditFinish";
 import CLTemplate02 from "./coverLetterTemplates/CLTemplate02";
-import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
-import ResumeTemplate01 from "./resumeTemplates/resumeTemplate01";
+// import CoverPhoto from "./components/Dashboard/CreateResumeForms/CoverPhoto";
+// import ResumeTemplate01 from "./resumeTemplates/resumeTemplate01";
+import ResumeTemp01 from "./resumeTemplates/resumeTemp01";
+import ResumeTemp02 from "./resumeTemplates/resumeTemp02";
+import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
+import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
+import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -232,8 +237,24 @@ const router = createBrowserRouter([
         element: <EditFinish />,
       },
       {
-        path: "/app/resumeTemplate01",
-        element: <ResumeTemplate01 />,
+        path: "/app/resumeTemp01",
+        element: <ResumeTemp01 />,
+      },
+      {
+        path: "/app/resumeTemp02",
+        element: <ResumeTemp02 />,
+      },
+      {
+        path: "/app/resumeTemp03",
+        element: <ResumeTemp03 />,
+      },
+      {
+        path: "/app/resumeTemp04",
+        element: <ResumeTemp04 />,
+      },
+      {
+        path: "/app/resumeFinish",
+        element: <ResumeEditFinish />,
       },
     ],
   },
