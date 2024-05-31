@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios'
 import { FaFloppyDisk } from "react-icons/fa6";
 import { GiIciclesFence } from "react-icons/gi";
 import { FaRegEdit } from "react-icons/fa";
@@ -14,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { htmlToText } from 'html-to-text';
 import { letterSuccess } from "../../Redux/Slices/coverLetterSlices";
 import { useNavigate } from "react-router-dom";
+import { ADD_COVERLETTER_DATA } from "../../constants/apis";
+import Swal from "sweetalert2";
 
 
 function CoverForm() {
@@ -26,6 +29,7 @@ function CoverForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
+  console.log(currentData, "===>>> current data ")
 
   const convertHtmlToText = (html) => {
     return htmlToText(html, {
@@ -36,9 +40,12 @@ function CoverForm() {
       ],
     });
   };
+  // console.log(`/api${ADD_COVERLETTER_DATA}`)
+  const saveDataToDB = async () => {
+    const response = await axios.post(`/api${ADD_COVERLETTER_DATA}`,)
+  }
 
-
-  const saveCoverLetter = () => {
+  const saveCoverLetter = async () => {
     console.log("hello")
     const payload = {
       currentData: {
@@ -49,9 +56,40 @@ function CoverForm() {
     }
     dispatch(letterSuccess(payload))
 
-    setTimeout(()=>{
-      navigate(`/app/finish`)
-    }, 500)
+    console.log(payload.templateId)
+
+    const sendToDB = {
+      ...payload.currentData,
+      templateId: payload.templateId,
+      letter: responsibilities
+    }
+
+    console.log(sendToDB, "===>>>> send to db")
+
+    const response = await axios.post(`/api${ADD_COVERLETTER_DATA}`, sendToDB)
+
+    console.log(response.data, "=====>>>>> response here")
+
+    if (response.data.status === 'Success') {
+      Swal.fire({
+        title: "Good job!",
+        text: "Cover Letter Created successfully!",
+        icon: "success",
+      });
+
+      setTimeout(() => {
+        navigate(`/app/finish`)
+      }, 3500)
+      
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Something went wrong`,
+      });
+    }
+
+
   }
 
   // useEffect(() => {
@@ -140,37 +178,6 @@ function CoverForm() {
                   </button>
                 </div>
                 <span className=" text-lg ml-2 font-semibold">15/05/2024</span>
-                {/* <div className="border border-slate-500 p-3 font-semibold">
-                  <h1 className="py-1">Dear [First Name] [Last Name],</h1>
-                  <p className="py-1">
-                    I am writing today in application to the [Target Job Title]
-                    position with [Target Company Name]. I am confident that my
-                    [Skill 1] and [Skill 2], as well as my experience in
-                    [Industry] make me an excellent fit for this position.
-                  </p>
-                  <p className="py-1">
-                    As my attached resume outlines, I have [Number] years of
-                    experience working in the [Industry] field. I have achieved
-                    [accomplishment], with [describe results], and I am
-                    confident I can achieve similar results for [Target Company
-                    Name]. I am [Quality 1] and [Quality 2], attributes I know
-                    are important to your organization. I am looking for an
-                    opportunity to [outline goal], and develop [Skill 3] and
-                    [Skill 4], while offering expertise in [Skill 5].
-                  </p>
-                  <p className="py-1">
-                    I greatly appreciate you taking the time to consider my
-                    application. I look forward to the opportunity to speak with
-                    you further regarding how I can contribute to the continued
-                    success of [Target Company Name]. Thank you again.
-                  </p>
-                  <div className="flex flex-col py-1">
-                    <span>Regards,</span>
-                    <span>[First Name] [Last Name]</span>
-                    <span>[Phone Number]</span>
-                    <span>[Email Address]</span>
-                  </div>
-                </div> */}
                 <Editor
                   apiKey="ar9rz3ek138ri8zqmmjy1ver1c4xksfbzi3illv7sk37tojq"
                   // onInit={(evt, editor) => (editorRef.current = editor)}

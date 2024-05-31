@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentData: null,
+  resumeAllData: null,
   templateId: null,
   loading: false,
   error: false,
@@ -17,7 +17,7 @@ export const resumeSlice = createSlice({
 
     resumeSuccess: (state, action) => {
       state.loading = false;
-      state.currentData = action.payload;
+      state.resumeAllData = action.payload;
       state.templateId = action.payload.templateId;
     },
 

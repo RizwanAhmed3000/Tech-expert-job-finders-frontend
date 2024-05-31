@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 
 import SelectResumeTemplateModal from "./SelectResumeTemplateModal";
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { resumeSuccess } from "../../Redux/Slices/resumeSlices";
 
+
+// const dispatch = useDispatch()
+// const [title, setTitle] = useState("")
+// const resumedData = useSelector()
 const EnterResumeTitleModal = ({ isTitleModalOpen, setIsTitleModalOpen }) => {
   const [isResumeTemplateModalOpen, setIsResumeTemplateModalOpen] =
     useState(false);
@@ -16,7 +22,9 @@ const EnterResumeTitleModal = ({ isTitleModalOpen, setIsTitleModalOpen }) => {
   }, [isResumeTemplateModalOpen, setIsTitleModalOpen]);
 
   const handleCreateClick = () => {
+
     if (resumeTitle) {
+      // dispatch(resumeSuccess(resumeTitle))
       setIsTitleModalOpen(false);
       setTimeout(() => {
         setIsResumeTemplateModalOpen(true);
@@ -56,6 +64,7 @@ const EnterResumeTitleModal = ({ isTitleModalOpen, setIsTitleModalOpen }) => {
 
           <input
             type="text"
+            // onChange={(e) => setTitle(e.target.value) }
             name="ResumeTitle"
             id="ResumeTitle"
             onChange={(e) => setResumeTitle(e.target.value)}

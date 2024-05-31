@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { cloneElement, useRef, useState } from "react";
 import {
   FaCloudDownloadAlt,
   FaLinkedinIn,
@@ -19,8 +19,7 @@ import { TiSocialFacebook } from "react-icons/ti";
 import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
 import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
 import { useDispatch, useSelector } from "react-redux";
-import html2canvas from 'html2canvas'
-import jsPDF from 'jspdf'
+import { useReactToPrint } from 'react-to-print';
 
 const coverLetterTemplates = [
   {
@@ -28,7 +27,7 @@ const coverLetterTemplates = [
     template: <CLTemplate01 />
   },
   {
-    templateId: "665615890b66a45697909b58",
+    id: "665615890b66a45697909b58",
     template: <CLTemplate02 />
   },
 ]
@@ -36,23 +35,44 @@ const coverLetterTemplates = [
 const EditFinish = () => {
   const [activeButton, setActiveButton] = useState("coverLetter");
   const [changeComponent, SetChangeComponent] = useState("coverLetter");
-  // Email Buttom Click Modal useState
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Share Button Click Modal useSate
   const [shareModal, setShareModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption1, setSelectedOption1] = useState("");
+  const [activeTab, setActiveTab] = useState("free");
+  const [themeColor, setThemeColor] = useState("#ffffff");
   const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
-  // console.log(templateId, "===>>> template")
+  const templateRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => templateRef.current,
+  });
 
   const downloadPdf = () => {
-    const capture = document.querySelector('.template')
     setIsLoading(true);
-    html2canvas(capture).then((canvas)=> {
-      const imgData = canvas.toDataURL('img/png');
-      const doc = new jsPDF('p', 'mm', 'a4')
+    // const doc = new jsPDF({
+    //   orientation: 'landscape',
+    //   unit: 'in',
+    //   format: [4, 2],
+    // });
+    // console.log(templateRef.current, "====>>>> templateRef.current")
+
+    const capture = document.querySelector('.template')
+    const scale = 2.5;
+    html2canvas(capture, { scale }).then((canvas) => {
+      const imgData = canvas.toDataURL('img/jpeg', 1.0);
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: [canvas.width / scale, canvas.height / scale],
+      });
+      const imgProps = doc.getImageProperties(imgData);
       const componentWidth = doc.internal.pageSize.getWidth();
       const componentHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      // const componentHeight = (imgProps.height * componentWidth) / imgProps.width;
+      console.log(componentHeight, "===>>> height")
+      doc.addImage(imgData, 'JPEG', 0, 0, componentWidth, componentHeight);
       setIsLoading(false)
       doc.save('CoverLetter.pdf')
     })
@@ -69,16 +89,6 @@ const EditFinish = () => {
     setActiveTab(tabName);
   };
 
-  // DropDown Use State and Function
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedOption1, setSelectedOption1] = useState("");
-  const [activeTab, setActiveTab] = useState("free");
-
-  // Theme Color Chnage useState
-  const [themeColor, setThemeColor] = useState("#ffffff");
-  console.log(selectedOption1);
-
-  // Font Style Changes handler function
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -94,45 +104,22 @@ const EditFinish = () => {
       {/* Left Div */}
       {/* Left Main Div */}
       <div
-        className="templateDiv w-8/12 shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
+        className="templateDiv w-fit h-[100%] shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
+        
         style={{ fontSize: selectedOption1, fontFamily: selectedOption }}
       >
-
         {
           coverLetterTemplates.map((template) => {
             // console.log(template.template)
             if (templateId === template.id) {
               return (
-                template.template
+                <div ref={templateRef}>
+                  {cloneElement(template.template, {bgColor: "red"})}
+                </div>
               )
             }
           })
         }
-
-
-        {/* Left left 20 Div */}
-        {/* <div
-          className="w-1/12  max-h-full "
-          style={{ backgroundColor: themeColor }}
-        ></div> */}
-        {/* Left Right Half Div */}
-
-        {/* <div className="w-4/5 h-full">
-          <h1
-            className="text-theme-red text-center text-3xl"
-            style={{ color: themeColor }}
-          >
-            Hello World
-          </h1>
-          <p className="text-center">hello world</p>
-          <hr className="my-10" />
-          <div className="px-10">
-            <p>Sksadjf j</p>
-            <p>Sksadjf j</p>
-            <p>Sksadjf j</p>
-            <p>Sksadjf j</p>
-          </div>
-        </div> */}
       </div>
       {/* Right Div */}
       <div className="w-4/12  ">
@@ -174,7 +161,7 @@ const EditFinish = () => {
               {/* Export Options */}
               <div>
                 <h1 className="text-2xl font-bold mb-3">Export Options</h1>
-                <button className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg" onClick={downloadPdf} disabled={!(isLoading === false)}>
+                <button className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg" onClick={handlePrint} disabled={!(isLoading === false)}>
                   <FaCloudDownloadAlt className="text-3xl" />
                   {
                     isLoading ? (

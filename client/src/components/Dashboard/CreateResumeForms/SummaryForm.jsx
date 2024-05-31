@@ -16,7 +16,7 @@ const SummaryForm = () => {
 
   const dispatch = useDispatch();
   const resumeData = useSelector(
-    (state) => state.resume.currentData.resumeData
+    (state) => state.resume.resumeAllData
   );
   console.log(resumeData);
 
@@ -30,10 +30,9 @@ const SummaryForm = () => {
     e.preventDefault();
     console.log("save Experience handler is working");
     const payload = {
-      resumeData: {
         ...resumeData,
         summary,
-      },
+      
     };
     dispatch(resumeSuccess(payload));
   };

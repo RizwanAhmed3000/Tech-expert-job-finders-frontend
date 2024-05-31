@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FiX } from "react-icons/fi";
 import SelectResumeTemplateListing from "./SelectResumeTemplateListing";
+
 function SelectResumeTemplateModal({ setIsResumeTemplateModalOpen }) {
   const [activeTab, setActiveTab] = useState("free");
 

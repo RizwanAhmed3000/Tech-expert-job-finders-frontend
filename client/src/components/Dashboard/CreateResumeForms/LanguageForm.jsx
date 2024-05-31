@@ -167,7 +167,7 @@ const LanguageForm = () => {
   console.log(languagesList)
 
   const dispatch = useDispatch();
-  const resumeData = useSelector((state) => state.resume.currentData.resumeData);
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
 
   const handleLanguageChange = (index, key, value) => {
     const updatedLanguagesList = languagesList.map((languageItem, i) =>
@@ -180,10 +180,10 @@ const LanguageForm = () => {
     e.preventDefault();
     console.log('save language data is working');
     const payload = {
-      resumeData: {
+    
         ...resumeData,
         languages: languagesList,
-      },
+    
     };
     dispatch(resumeSuccess(payload));
   };

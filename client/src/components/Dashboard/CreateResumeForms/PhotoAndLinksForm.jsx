@@ -8,7 +8,7 @@ import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 
 const PhotoAndLinksForm = () => {
   const dispatch = useDispatch()
-  const resumeData = useSelector((state) => state.resume.currentData.resumeData)
+  const resumeData = useSelector((state) => state.resume.resumeAllData)
   console.log(resumeData);
   // const [userImage, setUserImage] = useState("");
   // const [profileImg, setProfileImg] = useState("");
@@ -25,12 +25,12 @@ const PhotoAndLinksForm = () => {
   const saveLinksDataHandler = (e) => {
     e.preventDefault();
     console.log("save Links handler is working");
-    const payload ={
-        ...resumeData,
-        fbUserName,
-        twitterUserName,
-        linkedinUserName,
-        websiteLink,
+    const payload = {
+      ...resumeData,
+      fbUserName,
+      twitterUserName,
+      linkedinUserName,
+      websiteLink,
     };
     dispatch(resumeSuccess(payload));
   };
@@ -136,8 +136,8 @@ const PhotoAndLinksForm = () => {
         </button>
 
         <button
-        onClick={saveLinksDataHandler}
-        className="bg-[#18da35] text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
+          onClick={saveLinksDataHandler}
+          className="bg-[#18da35] text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
           <TfiSave />
           <span>Save</span>
         </button>

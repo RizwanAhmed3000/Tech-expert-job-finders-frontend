@@ -166,7 +166,7 @@ const CertificationForm = () => {
   ]);
 
   const dispatch = useDispatch();
-  const resumeData = useSelector((state) => state.resume.currentData.resumeData);
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
 
   const handleCertificateChange = (index, key, value) => {
     const updatedCertificatesList = certificatesList.map((certificateItem, i) =>
@@ -178,10 +178,10 @@ const CertificationForm = () => {
   const saveCertificatesDataHandler = (e) => {
     e.preventDefault();
     const payload = {
-      resumeData: {
+  
         ...resumeData,
         certificates: certificatesList,
-      },
+  
     };
     dispatch(resumeSuccess(payload));
   };

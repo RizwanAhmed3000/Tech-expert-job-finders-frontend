@@ -1,39 +1,8 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-const CLTemplate01 = () => {
-  const templateId = "6655085ce595b205733d8e95";
-  const [data, setData] = useState({});
-  const {
-    title,
-    firstName,
-    lastName,
-    middleName,
-    profession,
-    address,
-    phone,
-    email,
-    recipient,
-    companyName,
-    streetAdress,
-    city,
-    state,
-  } = data;
-  // const getCoverLetter = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `/api/coverLetter/getletter/6654d3dd359cd9a456e5bd2d`
-  //     );
-  //     console.log(response?.data?.data);
-  //     setData(response?.data?.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getCoverLetter();
-  // }, []);
+const CLTemplate01 = ({bgColor}) => {
+  // console.log(bgColor)
 
   const { currentData } = useSelector((state) => state.coverLetter.currentData)
   // console.log(currentData)
@@ -42,10 +11,10 @@ const CLTemplate01 = () => {
   // console.log(textArray)
 
   return (
-    <div className="bg-slate-300 p-8 rounded-lg shadow-lg w-[100%] ">
-      <div className=" bg-white flex flex-row px-2 py-2 font-serif template">
+    <div className="bg-slate-300 p-8 rounded-lg shadow-lg w-[100%] h-[100%]">
+      <div className=" bg-white flex flex-row px-2 py-2 font-serif template h-[100%]">
         <div>
-          <div className="text-white bg-blue-500 w-80">
+          <div className="text-white bg-blue-500 w-80 h-[90vh]" style={{backgroundColor: `${bgColor ? bgColor : "lightBlue"}`}}>
             <div>
               <img
                 className="w-80"
@@ -101,40 +70,12 @@ const CLTemplate01 = () => {
               <h3 className="text-2xl text-end mt-14">22 January 2021</h3>
               <div className="ml-6 mt-10 text-xl">
                 {
-                  textArray.map((item)=> (
+                  textArray.map((item) => (
                     <p className="">
                       {item}
                     </p>
                   ))
                 }
-                {/* <p>Dear Mr,</p>
-                <p className="mt-6">
-                  I am writing today in application to the Target Job Title
-                  position with Target Company Name. I am confident that my
-                  Skill 1 and Skill 2, as well as my experience in Industry make
-                  me an excellent fit for this position.
-                </p>
-                <p className="mt-6">
-                  As my attached resume outlines, I have Number years of
-                  experience working in the Industry field. I have achieved
-                  accomplishment, with describe results, and I am confident I
-                  can achieve similar results for Target Company Name. I am
-                  Quality 1 and Quality 2, attributes I know are important to
-                  your organization. I am looking for an opportunity to outline
-                  goal, and develop Skill 3 and Skill 4, while offering
-                  expertise in Skill 5.
-                </p>
-                <p className="mt-6">
-                  {" "}
-                  I greatly appreciate you taking the time to consider my
-                  application. I look forward to the opportunity to speak with
-                  you further regarding how I can contribute to the continued
-                  success of Target Company Name. Thank you again.
-                </p> */}
-                <p className="mt-4">Regards,</p>
-                <p className="mt-1">{firstName}</p>
-                <p className="mt-1">{phone}</p>
-                <p className="mt-1">{email}</p>
               </div>
             </div>
           </div>

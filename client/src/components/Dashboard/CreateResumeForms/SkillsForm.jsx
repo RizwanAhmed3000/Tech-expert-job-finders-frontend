@@ -218,7 +218,7 @@ const SkillsForm = () => {
   console.log(skillsList);
 
   const dispatch = useDispatch();
-  const resumeData = useSelector((state) => state.resume.currentData.resumeData);
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
   console.log(resumeData);
 
   const handleSkillChange = (index, key, value) => {
@@ -232,11 +232,10 @@ const SkillsForm = () => {
     e.preventDefault();
     console.log("save Skills handler is working");
     const payload = {
-      resumeData: {
+    
         ...resumeData,
         skills: skillsList,
-        
-      },
+  
     };
     dispatch(resumeSuccess(payload));
   };
