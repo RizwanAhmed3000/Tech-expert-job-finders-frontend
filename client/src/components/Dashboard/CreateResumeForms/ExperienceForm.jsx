@@ -166,7 +166,7 @@ const ExperienceForm = () => {
               </h2>
             </div>
           </div>
-          {experienceDataListMap.map((itemsExp)=> (
+          {experienceDataListMap?.map((itemsExp)=> (
             <>
           <div className="infoRowExperience grid grid-cols-12">
             <div className="expRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">

@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../Redux/Slices/resumeSlices";
 
 
-const dispatch = useDispatch()
-const [title, setTitle] = useState("")
+// const dispatch = useDispatch()
+// const [title, setTitle] = useState("")
 // const resumedData = useSelector()
 const EnterResumeTitleModal = ({ isTitleModalOpen, setIsTitleModalOpen }) => {
   const [isResumeTemplateModalOpen, setIsResumeTemplateModalOpen] =
