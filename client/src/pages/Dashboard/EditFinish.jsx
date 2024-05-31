@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FaCloudDownloadAlt,
   FaLinkedinIn,
@@ -28,7 +28,7 @@ const coverLetterTemplates = [
     template: <CLTemplate01 />
   },
   {
-    templateId: "665615890b66a45697909b58",
+    id: "665615890b66a45697909b58",
     template: <CLTemplate02 />
   },
 ]
@@ -43,16 +43,32 @@ const EditFinish = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { templateId, currentData } = useSelector((state) => state.coverLetter.currentData)
   // console.log(templateId, "===>>> template")
+  const templateRef = useRef();
 
   const downloadPdf = () => {
-    const capture = document.querySelector('.template')
     setIsLoading(true);
-    html2canvas(capture).then((canvas)=> {
-      const imgData = canvas.toDataURL('img/png');
-      const doc = new jsPDF('p', 'mm', 'a4')
+    // const doc = new jsPDF({
+    //   orientation: 'landscape',
+    //   unit: 'in',
+    //   format: [4, 2],
+    // });
+    // console.log(templateRef.current, "====>>>> templateRef.current")
+
+    const capture = document.querySelector('.template')
+    const scale = 2.5;
+    html2canvas(capture, { scale }).then((canvas) => {
+      const imgData = canvas.toDataURL('img/jpeg', 1.0);
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: [canvas.width / scale, canvas.height / scale],
+      });
+      const imgProps = doc.getImageProperties(imgData);
       const componentWidth = doc.internal.pageSize.getWidth();
       const componentHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+      // const componentHeight = (imgProps.height * componentWidth) / imgProps.width;
+      console.log(componentHeight, "===>>> height")
+      doc.addImage(imgData, 'JPEG', 0, 0, componentWidth, componentHeight);
       setIsLoading(false)
       doc.save('CoverLetter.pdf')
     })
@@ -76,7 +92,7 @@ const EditFinish = () => {
 
   // Theme Color Chnage useState
   const [themeColor, setThemeColor] = useState("#ffffff");
-  console.log(selectedOption1);
+  // console.log(selectedOption1);
 
   // Font Style Changes handler function
   const handleChange = (event) => {
@@ -95,6 +111,7 @@ const EditFinish = () => {
       {/* Left Main Div */}
       <div
         className="templateDiv w-8/12 shadow-lg flex min-h-[50rem] p-10 bg-white text-sm"
+        ref={templateRef}
         style={{ fontSize: selectedOption1, fontFamily: selectedOption }}
       >
 
