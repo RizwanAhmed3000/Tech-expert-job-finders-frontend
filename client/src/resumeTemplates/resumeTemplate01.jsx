@@ -15,6 +15,10 @@ function ResumeTemplate01() {
     certificates,
     languages,
     skills,
+    fbUserName,
+    twitterUserName,
+    linkedinUserName,
+    websiteLink,
   } = resumeData;
 
   console.log(profileData);
@@ -78,7 +82,7 @@ function ResumeTemplate01() {
               </span>
             </h1>
             <p className="uppercase font-light text-xl">Software Developer</p>
-            {/* <p className="mt-4 text-xl text-[#727171]">{summary}</p> */}
+            <p className="mt-4 text-xl text-[#727171]">{summary}</p>
             {/* <a
               className="block underline mt-4 text-xl hover:text-[#ff7613]"
               href="./cv.pdf"
@@ -97,7 +101,7 @@ function ResumeTemplate01() {
           </h3>
           <ul className="mt-4 ml-8 leading-8 text-xl text-[#727171]">
             {/* <li>{skills.skill}</li> */}
-            {skills.map((item, index) => (
+            {skills?.map((item, index) => (
               <li key={index}>{item.skill}</li>
             ))}
 
@@ -133,7 +137,7 @@ function ResumeTemplate01() {
             Education
           </h3>
           {/* {} */}
-          {educationData.map((eduItems, index) => (
+          {educationData?.map((eduItems, index) => (
             <div className="mt-8">
               <p className="text-xl font-light text-[#727171]">
                 {eduItems.educationStartDate}
@@ -160,7 +164,7 @@ function ResumeTemplate01() {
           <h3 className="text-[#ff7613] font-bold text-2xl uppercase">
             Certification
           </h3>
-          {certificates.map((item) => (
+          {certificates?.map((item) => (
             <div className="mt-8">
               <p className="text-xl font-light text-[#727171]">{item.year}</p>
               <h4 className="text-xl font-medium my-2">{item.certificate}</h4>
@@ -174,7 +178,7 @@ function ResumeTemplate01() {
           <h3 className="text-[#ff7613] font-bold text-2xl uppercase">
             Experience
           </h3>
-          {experienceData.map((item) => (
+          {experienceData?.map((item) => (
             <div className="mt-8">
               <p className="text-xl font-light text-[#727171]">
                 {`${item.startDate} - ${item.endDate}`}
@@ -256,7 +260,7 @@ function ResumeTemplate01() {
               className="flex items-center gap-2 mt-6 text-xl text-[#727171] hover:text-[#ff7613]"
             >
               <i data-feather="github"></i>
-              <span>{fbUsername}</span>
+              <span>{fbUserName}</span>
             </a>
             <a
               href="#"
@@ -264,7 +268,7 @@ function ResumeTemplate01() {
               className="flex items-center gap-2 mt-6 text-xl text-[#727171] hover:text-[#ff7613]"
             >
               <i data-feather="twitter"></i>
-              <span>{twitterLink}</span>
+              <span>{twitterUserName}</span>
             </a>
             <a
               href="#"
@@ -272,7 +276,7 @@ function ResumeTemplate01() {
               className="flex items-center gap-2 mt-6 text-xl text-[#727171] hover:text-[#ff7613]"
             >
               <i data-feather="linkedin"></i>
-              <span>{linkedinUsername}</span>
+              <span>{linkedinUserName}</span>
             </a>
             <a
               href="#"
@@ -280,7 +284,7 @@ function ResumeTemplate01() {
               className="flex items-center gap-2 mt-6 text-xl text-[#727171] hover:text-[#ff7613]"
             >
               <i data-feather="linkedin"></i>
-              <span>{linkedinUsername}</span>
+              <span>{websiteLink}</span>
             </a>
           </div>
         </div>

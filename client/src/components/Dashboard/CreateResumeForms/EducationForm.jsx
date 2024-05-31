@@ -259,7 +259,7 @@ const EducationForm = () => {
           </div>
 
           {/* Education Row */}
-          {educationDataMap.map((edu,index) =>(
+          {educationDataMap?.map((edu,index) =>(
             <div className="infoRowEducation grid grid-cols-12">
             <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
               degree and fieldOfStudy 
