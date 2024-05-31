@@ -3,17 +3,17 @@ import React from "react";
 const CLTemplate02 = () => {
   return (
     <>
-      <div className="text-center bg-pink-700 text-pink-700 w-[1123] ">
+      <div className="text-center bg-pink-700 text-pink-700 w-[100%] ">
         hello
       </div>
-      <div className=" ml-28">
+      <div className="w-[100%] h-[100vh]">
         <div className="flex flex-row mt-16 text-[17px]">
           <div>
-            <img
+            {/* <img
               className="rounded-full w-[250px]"
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAzwEBnO8-VjXsByouarq5dMpXjUaeMXwpvRpd0DO9Ww&s"
               alt=""
-            />
+            /> */}
             <div className="mt-[320px] text-2xl text-pink-700">
               <p className="ml-8 mb-3">
                 <i class="ri-map-pin-line mr-2 text-pink-900"></i>Recipient
@@ -31,7 +31,7 @@ const CLTemplate02 = () => {
             </div>
           </div>
 
-          <div className=" w-[650px] ml-40">
+          <div className=" w-[100%] h-[100vh] ml-40">
             <h1 className="text-4xl text-pink-700 font-medium">First Name</h1>
 
             <h1 className="text-4xl text-pink-700 font-medium mt-3">
