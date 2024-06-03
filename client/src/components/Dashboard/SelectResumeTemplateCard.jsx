@@ -10,8 +10,8 @@ import { FiX } from "react-icons/fi";
 
 const SelectResumeTemplateCard = ({ data, route, activeTab }) => {
   const dispatch = useDispatch();
-  const { _id } = data;
-
+  const { _id , previewImage} = data;
+console.log(_id);
   console.log(data);
   console.log(route);
   console.log(activeTab);
@@ -61,7 +61,7 @@ const SelectResumeTemplateCard = ({ data, route, activeTab }) => {
           <div className="wrapper bg-white p-4 object-cover">
             <Card.Img
               variant="top"
-              src={resumeTwo}
+              src={previewImage}
               className="object-contain rounded-lg"
             />
           </div>
