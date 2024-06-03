@@ -52,6 +52,7 @@ import ResumeTemp02 from "./resumeTemplates/resumeTemp02";
 import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
 import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
 import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
+import DashWebsite from "./pages/Dashboard/DashWebsite";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -211,6 +212,10 @@ const router = createBrowserRouter([
       {
         path: "/app/coverletter/create",
         element: <CreateNewCoverLetter />,
+      },
+      {
+        path: "/app/website",
+        element: <DashWebsite />,
       },
       {
         path: "/app/coverletter/6655085ce595b205733d8e95",

@@ -19,8 +19,6 @@ import { TiSocialFacebook } from "react-icons/ti";
 import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
 import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
 import { useDispatch, useSelector } from "react-redux";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import ResumeTemp01 from "../../resumeTemplates/resumeTemp01";
 import ResumeTemp02 from "../../resumeTemplates/resumeTemp02";
 

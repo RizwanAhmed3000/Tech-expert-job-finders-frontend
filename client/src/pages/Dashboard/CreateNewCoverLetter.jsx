@@ -80,7 +80,7 @@ function CoverForm() {
       setTimeout(() => {
         navigate(`/app/finish`)
       }, 3500)
-      
+
     } else {
       Swal.fire({
         icon: "error",
@@ -158,25 +158,45 @@ function CoverForm() {
                   onClick={() => setIsSelectTemplateOpen(true)}
                   className="flex justify-between mb-12 group hover:cursor-pointer hover:border-b-2 border-slate-300"
                 >
-                  <span></span>
-                  <span className="bg-theme-red text-white px-2 py-1 my-3">
-                    Add Recipient Information
-                  </span>
+                  {!currentData ? (
+                    <>
+                      <span></span>
+                      <span className="bg-theme-red text-white px-2 py-1 my-3">
+                        Add Recipient Information
+                      </span>
+                      </>) : (
+                    <div className="text-center my-[2rem] w-[100%]">
+                      <h1 className="text-[2rem] font-semibold">{`${currentData.firstName} ${currentData.middleName} ${currentData.lastName}`}</h1>
+                      <h1 className="text-[1.3rem] ">{`${currentData.email}, ${currentData.phone}, ${currentData.address}`}</h1>
+                    </div>
+                  )}
                   <button className="invisible group-hover:visible flex items-center gap-1">
                     <FaRegEdit /> Edit
                   </button>
                 </div>
+
+
                 <div
                   onClick={() => setIsSecondModalOpen(true)}
                   className="flex justify-between mb-5 group hover:cursor-pointer hover:border-b-2 border-slate-300"
                 >
-                  <span className="bg-theme-red text-white px-2 py-1 my-3">
+                  {!currentData ? (<span className="bg-theme-red text-white px-2 py-1 my-3">
                     Add Recipient
-                  </span>
+                  </span>) : (
+                    <div className="">
+                        <p className="text-[1.3rem]">{`${currentData.recipient}`}</p>
+                        <p className="text-[1.3rem]">{`${currentData.companyName}`}</p>
+                        <p className="text-[1.3rem]">{`${currentData.streetAddress}`}</p>
+                        <p className="text-[1.3rem]">{`${currentData.city}`}</p>
+                        <p className="text-[1.3rem]">{`${currentData.state}`}</p>
+                    </div>
+                  )}
                   <button className="invisible group-hover:visible flex items-center gap-1">
                     <FaRegEdit /> Edit
                   </button>
                 </div>
+
+
                 <span className=" text-lg ml-2 font-semibold">15/05/2024</span>
                 <Editor
                   apiKey="ar9rz3ek138ri8zqmmjy1ver1c4xksfbzi3illv7sk37tojq"

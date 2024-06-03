@@ -5,14 +5,14 @@ import SelectResumeTemplateCard from "./SelectResumeTemplateCard";
 import { GET_RESUME_TEMP } from "../../constants/apis.js";
 import axios from "axios";
 
-function SelectResumeTemplateModal({ activeTab }) {
+function SelectResumeTemplateModal({ activeTab, setIsWebsiteResumeTitleModal }) {
   console.log(activeTab);
   const [freeResumeTemplate, setFreeResumeTemplate] = useState([]);
   // console.log(freeResumeTemplate)
   const apiCalling = async () => {
     try {
       const res = await axios.get(`/api${GET_RESUME_TEMP}`);
-      // console.log(res?.data?.data);
+      console.log(res?.data?.data);
 
       const { _id } = res?.data?.data;
       setFreeResumeTemplate(res?.data?.data);
@@ -64,6 +64,7 @@ function SelectResumeTemplateModal({ activeTab }) {
               data={data}
               route={"/app/resume-details"}
               activeTab={activeTab}
+              setIsWebsiteResumeTitleModal={setIsWebsiteResumeTitleModal}
             />
           ))
         : activeTab == "premium"
