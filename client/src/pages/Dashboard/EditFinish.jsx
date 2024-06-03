@@ -21,11 +21,12 @@ import { useSelector } from "react-redux";
 import { useReactToPrint } from 'react-to-print';
 import CLTemplate03 from "../../coverLetterTemplates/CLTemplate03";
 import CLTemplate04 from "../../coverLetterTemplates/CLTemplate04";
+import CLTemplate05 from "../../coverLetterTemplates/CLTemplate05";
 
 const coverLetterTemplates = [
   {
     id: "6655085ce595b205733d8e95",
-    template: <CLTemplate04 />
+    template: <CLTemplate05 />
   },
   {
     id: "665615890b66a45697909b58",
