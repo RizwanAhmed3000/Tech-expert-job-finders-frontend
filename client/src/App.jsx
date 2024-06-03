@@ -50,11 +50,15 @@ import ResumeTemp02 from "./resumeTemplates/resumeTemp02";
 import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
 import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
 import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
+<<<<<<< HEAD
 // {
 //   {
 //     user ? <DashboardRoutes /> : <AuthenticatedRoutes />;
 //   }
 // }
+=======
+import DashWebsite from "./pages/Dashboard/DashWebsite";
+>>>>>>> 0609d8ce6ce60bb662e3cbb8f4659c23ef207821
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -214,6 +218,10 @@ const router = createBrowserRouter([
       {
         path: "/app/coverletter/create",
         element: <CreateNewCoverLetter />,
+      },
+      {
+        path: "/app/website",
+        element: <DashWebsite />,
       },
       {
         path: "/app/coverletter/6655085ce595b205733d8e95",
