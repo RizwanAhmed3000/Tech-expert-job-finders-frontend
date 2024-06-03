@@ -1,6 +1,31 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ResumeTemp01 = () => {
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
+  console.log(resumeData);
+
+  const {
+    profileData,
+    experienceData,
+    educationData,
+    summary,
+    certificates,
+    languages,
+    skills,
+    fbUserName,
+    twitterUserName,
+    linkedinUserName,
+    websiteLink,
+  } = resumeData;
+
+  console.log(profileData);
+  console.log(experienceData);
+  console.log(educationData);
+  console.log(summary);
+  console.log(certificates);
+  console.log(languages);
+  console.log(skills);
   return (
     <div className="w-[90%] max-w-[750px] bg-white shadow-md flex justify-center">
       <div className="cvCont w-[full] flex">
@@ -14,54 +39,48 @@ const ResumeTemp01 = () => {
             <div className="text-[1.7rem] font-bold mb-2 tracking-widest">
               CONTACT
             </div>
-            <div className="text-[1.2rem] mb-1">+41 458 2356</div>
-            <div className="text-[1.2rem] mb-1">smithwill@gmail.com</div>
-            <div className="text-[1.2rem] mb-1">01 Street, New York, USA</div>
-            <div className="text-[1.2rem] mb-1">www.smithwilliam.com</div>
+            <div className="text-[1.2rem] mb-1">{profileData?.mobNum}</div>
+            <div className="text-[1.2rem] mb-1">{profileData?.email}</div>
+            <div className="text-[1.2rem] mb-1">{profileData?.streetAddress}</div>
+            <div className="text-[1.2rem] mb-1">{websiteLink}</div>
           </div>
           <div className="mt-10">
             <div className="text-[1.7rem] font-bold mb-2 tracking-widest">
               SOCIAL
             </div>
             <div className=" text-[1.2rem] mb-1">
-              Facebook: facebook/smithwill
+              {fbUserName}
             </div>
             <div className="text-[1.2rem] mb-1 ">
-              Twitter: twitter/smithwill
+              {twitterUserName}
             </div>
             <div className="text-[1.2rem] mb-1 ">
-              LinkedIn: linkedin/smithwill
+              {linkedinUserName}
             </div>
           </div>
           <div className="mt-10">
             <div className="text-[1.7rem] font-bold mb-2 tracking-widest">
               SKILLS
             </div>
-            <div className="mb-2 text-[1.2rem] ">Graphic Design</div>
-            <div className="mb-2 text-[1.2rem]">Web Design</div>
-            <div className="mb-2 text-[1.2rem]">Visual Art</div>
-            <div className="mb-2 text-[1.2rem]">Web development</div>
-            <div className="mb-2 text-[1.2rem]">User Experience Design</div>
+            {skills.map((item) =>(
+              <div className="mb-2 text-[1.2rem] ">{item?.skill}</div>
+            ))}
+            
+            
           </div>
           <div className="mt-10">
             <div className="text-[1.7rem] font-bold mb-2 tracking-widest">
               CERTIFICATE
             </div>
-            <div className="mb-2 text-[1.2rem]">
-              Graphic Design <br /> (2023-2024)
+            {certificates.map((item, index) =>(
+              <div key={index} className="mb-2 text-[1.2rem]">
+              {item?.certificate}<br /> {item?.year}
             </div>
-            <div className="mb-2 text-[1.2rem]">
-              Web Design <br /> (2023-2024)
-            </div>
-            <div className="mb-2 text-[1.2rem]">
-              Visual Art <br /> (2023-2024)
-            </div>
-            <div className="mb-2 text-[1.2rem]">
-              Web development <br /> (2023-2024)
-            </div>
-            <div className="mb-2 text-[1.2rem]">
-              User Experience Design (2023-2024)
-            </div>
+            ))}
+            
+            
+            
+            
           </div>
         </div>
 
@@ -69,108 +88,60 @@ const ResumeTemp01 = () => {
           <div className="flex flex-col items-start w-full bg-gray-200 p-6">
             <div className="flex items-center gap-[1rem]">
               <h2 className=" text-[3rem] leading-[3rem] font-bold tracking-widest">
-                Mariana
+              { ` ${profileData?.firstName} ${profileData?.middleName}`}
               </h2>
               <h2 className="text-[3rem] leading-[3rem] font-normal tracking-widest">
-                Anderson
+                {profileData?.lastName}
               </h2>
             </div>
             <h3 className="mb-1.5 text-[2rem]">Web developer</h3>
-            <p className="text-[1.2rem]">
-              {" "}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, hic,
-              laudantium quod asperiores unde voluptatibus totam architecto
-              iusto, ut debitis{" "}
-            </p>
+            <p className="text-[1.2rem]">{summary}</p>
           </div>
           <div className="p-6">
             <h1 className="text-[2rem] font-bold tracking-widest mb-2">
               EXPERIENCE
             </h1>
-            <div>
-              <div className="text-[1.2rem] mb-1">
-                <span>Start Date </span>
-                <span>- End Date</span>
+            {experienceData.map((item, index) => (
+              <div>
+                <div className="text-[1.2rem] mb-1">
+                  <span>{item?.startDate}</span>
+                  <span>- {item?.startDate}</span>
+                </div>
+                <div className="text-[1.4rem] font-semibold">
+                  {item?.jobTitle}
+                </div>
+                <div className="text-[1.3rem] font-medium mb-1">
+                  {item?.employer}
+                </div>
+                <span className="text-[1.1rem] font-medium mb-1">
+                  {`${item?.expCity}, ${item?.expState}`}
+                </span>
               </div>
-              <div className="text-[1.4rem] font-semibold">Job Title</div>
-              <div className="text-[1.3rem] font-medium mb-1">Employment</div>
-              <span className="text-[1.1rem] font-medium mb-1">
-                City, State
-              </span>
-              <div className="text-[1.2rem] mb-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-                ex quisquam consequatur voluptates, optio ducimus quia eveniet,
-                in earum necessitatibus quaerat porro hic quibusdam a!
-              </div>
-            </div>
-            <div className="mt-6">
-              <div className="text-[1.2rem] mb-1">
-                <span>Start Date </span>
-                <span>- End Date</span>
-              </div>
-              <div className="text-[1.4rem] font-semibold">Job Title</div>
-              <div className="text-[1.3rem] font-medium mb-1">Employment</div>
-              <span className="text-[1.1rem] font-medium mb-1">
-                City, State
-              </span>
-              <div className="text-[1.2rem] mb-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-                ex quisquam consequatur voluptates, optio ducimus quia eveniet.
-              </div>
-            </div>
+            ))}
           </div>
           <div className="px-6 py-0">
             <h1 className="text-[2rem] font-bold tracking-widest mb-2">
               EDUCATION
             </h1>
-            <div className="mb-4">
-              <div className="text-[1.2rem] mb-1">
-                <span>2020 </span>
-                <span>- 2020</span>
+            {educationData.map((item, index) => (
+              <div>
+                <div className="text-[1.2rem] mb-1">
+                  <span>{item?.educationStartDate} </span>
+                  <span>- {item?.endEducationDate}</span>
+                </div>
+                <div className="text-[1.4rem] font-semibold mb-2">
+                  {item?.fieldOfStudy}
+                </div>
+                <div className="text-[1.3rem] font-medium mb-1">
+                {`${item?.schoolName} | ${item?.schoolCity}`}
+                  {/* UNIVERSITY NAME | CITY NAME */}
+                </div>
+                <div className="text-[1.2rem] mb-1">
+                  Sed ut perspiciatis unde omnis iste natus error sit
+                  voluptatem...
+                </div>
               </div>
-              <div className="text-[1.4rem] font-semibold mb-2">
-                MASTER'S OF ARTS, MAJOR IN COMMUNICATION
-              </div>
-              <div className="text-[1.3rem] font-medium mb-1">
-                UNIVERSITY NAME | CITY NAME
-              </div>
-              <div className="text-[1.2rem] mb-1">
-                Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem...
-              </div>
-            </div>
-            <div className="mb-4">
-              <div className="text-[1.2rem] mb-1">
-                <span>2020 </span>
-                <span>- 2020</span>
-              </div>
-              <div className="text-[1.4rem] font-semibold mb-2">
-                BACHELOR OF ARTS, MAJOR IN COMMUNICATION
-              </div>
-              <div className="text-[1.3rem] font-medium mb-1">
-                UNIVERSITY NAME | CITY NAME
-              </div>
-              <div className="text-[1.2rem] mb-1">
-                Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem...
-              </div>
-            </div>
-            <div>
-              <div className="text-[1.2rem] mb-1">
-                <span>2020 </span>
-                <span>- 2020</span>
-              </div>
-              <div className="text-[1.4rem] font-semibold mb-2">
-                SCHOOL OF ARTS, MAJOR IN COMMUNICATION
-              </div>
-              <div className="text-[1.3rem] font-medium mb-1">
-                UNIVERSITY NAME | CITY NAME
-              </div>
-              <div className="text-[1.2rem] mb-1">
-                Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem...
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

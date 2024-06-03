@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 import {
   FaCloudDownloadAlt,
   FaLinkedinIn,
@@ -13,29 +13,37 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import FinishTemplateTabBar from "../../components/Dashboard/FinishTemplateTabBar";
 import { FiX } from "react-icons/fi";
 import { IoIosSend } from "react-icons/io";
-import { FaFloppyDisk } from "react-icons/fa6";
 import { ImAttachment } from "react-icons/im";
 import { TiSocialFacebook } from "react-icons/ti";
-import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
-import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
 import { useDispatch, useSelector } from "react-redux";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import ResumeTemp01 from "../../resumeTemplates/resumeTemp01";
 import ResumeTemp02 from "../../resumeTemplates/resumeTemp02";
+import ResumeTemp03 from "../../resumeTemplates/resumeTemp03";
+import ResumeTemp04 from "../../resumeTemplates/resumeTemp04";
 
-// const coverLetterTemplates = [
-//   {
-//     id: "6655085ce595b205733d8e95",
-//     template: <CLTemplate01 />,
-//   },
-//   {
-//     templateId: "665615890b66a45697909b58",
-//     template: <CLTemplate02 />,
-//   },
-// ];
+
+
+const ResumeTemplates = [
+  {
+    id: "665e02b125b8c193e9d9bb56",
+    template: <ResumeTemp01 />,
+  },
+  {
+    templateId: "665e020925b8c193e9d9bb53",
+    template: <ResumeTemp02 />,
+  },
+  {
+    templateId: "665e045a25b8c193e9d9bb5d",
+    template: <ResumeTemp03 />,
+  },
+  {
+    templateId: "665e048025b8c193e9d9bb5f",
+    template: <ResumeTemp04 />,
+  },
+];
 
 const ResumeEditFinish = () => {
+  const tempRef = useRef()
   const [activeButton, setActiveButton] = useState("coverLetter");
   const [changeComponent, SetChangeComponent] = useState("coverLetter");
   // Email Buttom Click Modal useState
@@ -43,8 +51,8 @@ const ResumeEditFinish = () => {
   // Share Button Click Modal useSate
   const [shareModal, setShareModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { templateId, currentData } = useSelector(
-    (state) => state.coverLetter.currentData
+  const { templateId } = useSelector(
+    (state) => state.resume.resumeAllData
   );
   // console.log(templateId, "===>>> template")
 
@@ -100,15 +108,18 @@ const ResumeEditFinish = () => {
         className="templateDiv w-[68%] shadow-lg flex justify-center px-5 py-10 bg-white"
         style={{ fontSize: selectedOption1, fontFamily: selectedOption }}
       >
-        {/* {coverLetterTemplates.map((template) => {
+        {ResumeTemplates.map((template) => {
           // console.log(template.template)
           if (templateId === template.id) {
-            return template.template;
+            return (
+              <div ref={tempRef}>
+                {cloneElement(template.template, {bgColor: "red"})}
+              </div>
+            )
           }
-        })} */}
+        })}
 
-        <ResumeTemp01 />
-        {/* <ResumeTemp02 /> */}
+       
       </div>
 
       {/* Right Div */}
