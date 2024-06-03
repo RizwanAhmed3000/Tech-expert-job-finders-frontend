@@ -36,9 +36,7 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
-
 import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
-
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -52,10 +50,15 @@ import ResumeTemp02 from "./resumeTemplates/resumeTemp02";
 import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
 import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
 import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
+// {
+//   {
+//     user ? <DashboardRoutes /> : <AuthenticatedRoutes />;
+//   }
+// }
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <Navbar />

@@ -1,18 +1,29 @@
 import React from "react";
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import {} from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
 
-const ResumeTemp02 = () => {
+const ResumeTemp02 = ({ themeColor }) => {
+  console.log(themeColor);
+
   return (
-    <div className="w-[90%] max-w-[750px] bg-white shadow-xl border-[0.2rem] border-orange-400 flex justify-center">
+    <div
+      className={`w-[95%] max-w-[750px] bg-white shadow-xl border-[0.2rem] border-[#${themeColor}] flex justify-center`}
+    >
       <div className="cvCont w-[full] flex">
-        <div className="bg-orange-400 w-[35%] text-black p-8">
+        <div
+          className={`bg-[#${themeColor}] ${
+            themeColor !== "ffffff" ? "text-neutral-100" : "text-neutral-800"
+          } w-[35%] p-8`}
+        >
           <h1 className="text-[3.3rem] leading-[3.3rem] font-light ">SMITH</h1>
           <h2 className="text-[2.2rem] font-semibold ">WILLIAM</h2>
           <h3 className=" text-[1.6rem]">VISUAL ARTIST</h3>
-          <div className="h-[2px] w-[100%] bg-black mt-5"></div>
+          <div
+            className={`h-[2px] w-[100%] ${
+              themeColor !== "ffffff" ? "bg-neutral-100" : "bg-neutral-800"
+            } mt-5`}
+          ></div>
           <div className="mb-4">
             <div className="font-bold mb-2 text-[1.8rem] tracking-widest mt-10">
               CONTACT
@@ -89,7 +100,7 @@ const ResumeTemp02 = () => {
               laudantium quod asperiores unde voluptatibus totam architecto
               iusto, ut debitis{" "}
             </p>
-            <div className="h-[2px] w-[100%] bg-black mt-6"></div>
+            <div className="h-[2px] w-[100%] bg-neutral-800 mt-6"></div>
           </div>
           <div className="p-6">
             <h1 className="text-[2rem] font-bold tracking-widest mb-2">
