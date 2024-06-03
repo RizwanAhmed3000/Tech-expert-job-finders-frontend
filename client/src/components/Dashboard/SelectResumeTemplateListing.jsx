@@ -5,7 +5,7 @@ import SelectResumeTemplateCard from "./SelectResumeTemplateCard";
 import { GET_RESUME_TEMP } from "../../constants/apis.js";
 import axios from "axios";
 
-function SelectResumeTemplateModal({ activeTab }) {
+function SelectResumeTemplateModal({ activeTab, setIsWebsiteResumeTitleModal }) {
   console.log(activeTab);
   const [freeResumeTemplate, setFreeResumeTemplate] = useState([]);
   // console.log(freeResumeTemplate)
@@ -64,6 +64,7 @@ function SelectResumeTemplateModal({ activeTab }) {
               data={data}
               route={"/app/resume-details"}
               activeTab={activeTab}
+              setIsWebsiteResumeTitleModal={setIsWebsiteResumeTitleModal}
             />
           ))
         : activeTab == "premium"
