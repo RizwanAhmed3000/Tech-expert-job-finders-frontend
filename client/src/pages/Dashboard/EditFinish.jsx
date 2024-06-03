@@ -13,23 +13,27 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import FinishTemplateTabBar from "../../components/Dashboard/FinishTemplateTabBar";
 import { FiX } from "react-icons/fi";
 import { IoIosSend } from "react-icons/io";
-import { FaFloppyDisk } from "react-icons/fa6";
 import { ImAttachment } from "react-icons/im";
 import { TiSocialFacebook } from "react-icons/ti";
 import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
 import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useReactToPrint } from 'react-to-print';
 import CLTemplate03 from "../../coverLetterTemplates/CLTemplate03";
+import CLTemplate04 from "../../coverLetterTemplates/CLTemplate04";
 
 const coverLetterTemplates = [
   {
     id: "6655085ce595b205733d8e95",
-    template: <CLTemplate03 />
+    template: <CLTemplate04 />
   },
   {
     id: "665615890b66a45697909b58",
     template: <CLTemplate02 />
+  },
+  {
+    id: "665615890b66a45697909b58",
+    template: <CLTemplate03 />
   },
 ]
 
@@ -48,6 +52,7 @@ const EditFinish = () => {
 
   const handlePrint = useReactToPrint({
     content: () => templateRef.current,
+    // pageStyle: "{ size: a4, scale: 170 }"
   });
 
   const downloadPdf = () => {
