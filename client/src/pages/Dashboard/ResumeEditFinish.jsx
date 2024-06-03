@@ -21,6 +21,7 @@ import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
 import { useDispatch, useSelector } from "react-redux";
 import ResumeTemp01 from "../../resumeTemplates/resumeTemp01";
 import ResumeTemp02 from "../../resumeTemplates/resumeTemp02";
+import ResumeTemp03 from "../../resumeTemplates/resumeTemp03";
 
 // const coverLetterTemplates = [
 //   {
@@ -76,8 +77,9 @@ const ResumeEditFinish = () => {
   const [activeTab, setActiveTab] = useState("free");
 
   // Theme Color Chnage useState
-  const [themeColor, setThemeColor] = useState("#ffffff");
-  console.log(selectedOption1);
+  const [themeColor, setThemeColor] = useState("002b5b");
+  console.log(themeColor);
+  // console.log(selectedOption1);
 
   // Font Style Changes handler function
   const handleChange = (event) => {
@@ -105,8 +107,9 @@ const ResumeEditFinish = () => {
           }
         })} */}
 
-        <ResumeTemp01 />
-        {/* <ResumeTemp02 /> */}
+        {/* <ResumeTemp01 themeColor={themeColor} /> */}
+        {/* <ResumeTemp02 themeColor={themeColor} /> */}
+        <ResumeTemp03 themeColor={themeColor} />
       </div>
 
       {/* Right Div */}
@@ -120,7 +123,7 @@ const ResumeEditFinish = () => {
         <div className=" h-full w-full mt-4 p-10 bg-white shadow-lg">
           <div className="w-full pb-5">
             <span
-              className={` p-4 cursor-pointer rounded-full font-semibold`}
+              className={`p-4 cursor-pointer rounded-full font-semibold`}
               onClick={() => handleClick("coverLetter")}
               style={{
                 backgroundColor:
@@ -150,7 +153,7 @@ const ResumeEditFinish = () => {
               <div>
                 <h1 className="text-2xl font-bold mb-3">Export Options</h1>
                 <button
-                  className="bg-[#18da35] w-full  text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg"
+                  className="bg-[#18da35] w-full text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center  justify-center gap-[0.6rem] rounded-lg"
                   onClick={downloadPdf}
                   disabled={!(isLoading === false)}
                 >
@@ -253,7 +256,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="white"
-                      value="#ffffff"
+                      value="ffffff"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -266,7 +269,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="black"
-                      value="#000000"
+                      value="18181b"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -279,7 +282,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="grey"
-                      value="#373d48"
+                      value="373d48"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -292,7 +295,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="navyBlue"
-                      value="#002b5b"
+                      value="002b5b"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -305,7 +308,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="darkRed"
-                      value="#d50000"
+                      value="d50000"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -318,7 +321,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="orange"
-                      value="#ff851b"
+                      value="ff851b"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -331,7 +334,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="pink"
-                      value="#ff007f"
+                      value="ff007f"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />
@@ -344,7 +347,7 @@ const ResumeEditFinish = () => {
                     <input
                       type="text"
                       id="skyBlue"
-                      value="#409bf9"
+                      value="409bf9"
                       onClick={(e) => setThemeColor(e.target.value)}
                       className="hidden"
                     />

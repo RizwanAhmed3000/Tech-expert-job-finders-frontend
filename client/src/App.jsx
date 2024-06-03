@@ -36,9 +36,7 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
-
 import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
-
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -56,7 +54,7 @@ import DashWebsite from "./pages/Dashboard/DashWebsite";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <Navbar />
