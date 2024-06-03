@@ -20,11 +20,12 @@ import CLTemplate01 from "../../coverLetterTemplates/CLTemplate01";
 import CLTemplate02 from "../../coverLetterTemplates/CLTemplate02";
 import { useDispatch, useSelector } from "react-redux";
 import { useReactToPrint } from 'react-to-print';
+import CLTemplate03 from "../../coverLetterTemplates/CLTemplate03";
 
 const coverLetterTemplates = [
   {
     id: "6655085ce595b205733d8e95",
-    template: <CLTemplate01 />
+    template: <CLTemplate03 />
   },
   {
     id: "665615890b66a45697909b58",
@@ -114,7 +115,7 @@ const EditFinish = () => {
             if (templateId === template.id) {
               return (
                 <div ref={templateRef}>
-                  {cloneElement(template.template, {bgColor: "red"})}
+                  {cloneElement(template.template, {bgColor: "blue"})}
                 </div>
               )
             }

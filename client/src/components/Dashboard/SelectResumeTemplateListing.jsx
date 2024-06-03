@@ -12,7 +12,7 @@ function SelectResumeTemplateModal({ activeTab }) {
   const apiCalling = async () => {
     try {
       const res = await axios.get(`/api${GET_RESUME_TEMP}`);
-      // console.log(res?.data?.data);
+      console.log(res?.data?.data);
 
       const { _id } = res?.data?.data;
       setFreeResumeTemplate(res?.data?.data);

@@ -34,6 +34,7 @@ function CoverLetterEditModal({ setIsSelectTemplateOpen, handleCreateClick }) {
       templateId
     }
     dispatch(letterSuccess(payload))
+    setIsSelectTemplateOpen(false)
     // setTimeout(() => {
     //   handleCreateClick();
     // }, 300);
@@ -228,6 +229,7 @@ export const CoverLetterSecondEditor = ({ setIsSecondModalOpen }) => {
       templateId
     }
     dispatch(letterSuccess(payload))
+    setIsSecondModalOpen(false)
     // setTimeout(() => {
     //   handleCreateClick();
     // }, 300);
