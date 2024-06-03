@@ -19,7 +19,7 @@ const DashSidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     { name: "Dashboard", link: "/app", Icon: MdOutlineDashboard },
     { name: "My Resume", link: "/app/myresume", Icon: IoDocument },
     { name: "My Cover Letter", link: "/app/coverletter", Icon: IoDocument },
-    { name: "Website", link: "#", Icon: BiWorld, margin: true },
+    { name: "Website", link: "/app/website", Icon: BiWorld, margin: true },
     { name: "Template", link: "/app/template", Icon: FiShoppingCart },
     { name: "Tools", link: "/app/tools", Icon: RiToolsLine },
     {

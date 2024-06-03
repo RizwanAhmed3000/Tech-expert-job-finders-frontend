@@ -36,9 +36,7 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
-
 import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
-
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -52,10 +50,11 @@ import ResumeTemp02 from "./resumeTemplates/resumeTemp02";
 import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
 import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
 import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
+import DashWebsite from "./pages/Dashboard/DashWebsite";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <Navbar />
@@ -211,6 +210,10 @@ const router = createBrowserRouter([
       {
         path: "/app/coverletter/create",
         element: <CreateNewCoverLetter />,
+      },
+      {
+        path: "/app/website",
+        element: <DashWebsite />,
       },
       {
         path: "/app/coverletter/6655085ce595b205733d8e95",
