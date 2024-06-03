@@ -4,10 +4,6 @@ import { MdAlternateEmail } from "react-icons/md";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiPhone } from "react-icons/ci";
 
-
-
-
-
 const CLTemplate05 = () => {
     const { currentData } = useSelector((state) => state.coverLetter.currentData)
     // console.log(currentData)
