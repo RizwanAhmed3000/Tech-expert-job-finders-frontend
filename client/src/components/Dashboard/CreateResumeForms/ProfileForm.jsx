@@ -3,8 +3,9 @@ import { getNames } from "country-list";
 import { TfiSave } from "react-icons/tfi";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices.js";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
-const ProfileForm = ({ setProfileFields }) => {
+const ProfileForm = ({ setActiveTab }) => {
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,55 +21,78 @@ const ProfileForm = ({ setProfileFields }) => {
   const [mobNum, setMobNum] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log(firstName);
-  console.log(middleName);
-  console.log(lastName);
-  console.log(gender);
-  console.log(dob);
-  console.log(marital);
-  console.log(profession);
-  console.log(streetAddress);
-  console.log(city);
-  console.log(state);
-  console.log(nationality);
-  console.log(passportNo);
-  console.log(mobNum);
-  console.log(email);
+  // console.log(firstName);
+  // console.log(middleName);
+  // console.log(lastName);
+  // console.log(gender);
+  // console.log(dob);
+  // console.log(marital);
+  // console.log(profession);
+  // console.log(streetAddress);
+  // console.log(city);
+  // console.log(state);
+  // console.log(nationality);
+  // console.log(passportNo);
+  // console.log(mobNum);
+  // console.log(email);
 
   const dispatch = useDispatch();
-  const resumeData = useSelector(
-    (state) => state.resume.resumeAllData
-  );
-  const templateId = useSelector(
-    (state) => state.resume.templateId
-  );
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
+  const templateId = useSelector((state) => state.resume.templateId);
   console.log(templateId);
 
-const profileData= {
-  firstName,
-  middleName,
-  lastName,
-  gender,
-  dob,
-  marital,
-  profession,
-  streetAddress,
-  city,
-  state,
-  nationality,
-  passportNo,
-  mobNum,
-  email
-}
+  const profileData = {
+    firstName,
+    middleName,
+    lastName,
+    gender,
+    dob,
+    marital,
+    profession,
+    streetAddress,
+    city,
+    state,
+    nationality,
+    passportNo,
+    mobNum,
+    email,
+  };
 
   const saveProfileDataHandler = (e) => {
     e.preventDefault();
-    console.log("save profile handler is working");
-    const payload = {
-      profileData,
-       templateId
-    };
-    dispatch(resumeSuccess(payload));
+
+    if 
+      (firstName,
+      // middleName,
+      lastName,
+      profession,
+      streetAddress,
+      city,
+      state,
+      // nationality,
+      mobNum,
+      email === ""
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Fill required Fields!",
+      });
+    } else {
+      // console.log("save profile handler is working");
+      const payload = {
+        profileData,
+        templateId,
+      };
+      dispatch(resumeSuccess(payload));
+      Swal.fire({
+        icon: "success",
+        title: "Good Job",
+        text: "Your Profile Data Saved Successfully!",
+      });
+      setActiveTab('Experience')
+     
+    }
   };
   return (
     <div className="w-full">
@@ -84,6 +108,7 @@ const profileData= {
               First Name
             </label>
             <input
+              required
               type="text"
               name="firstName"
               id="firstName"
@@ -119,6 +144,7 @@ const profileData= {
             </label>
             <input
               onChange={(e) => setLastName(e.target.value)}
+              required
               type="text"
               name="lastName"
               id="lastName"
@@ -203,6 +229,7 @@ const profileData= {
               Profession
             </label>
             <input
+              required
               onChange={(e) => setProfession(e.target.value)}
               type="text"
               name="dateOfBirth"
@@ -221,6 +248,7 @@ const profileData= {
               Street Address
             </label>
             <input
+              required
               onChange={(e) => setStreetAddress(e.target.value)}
               type="text"
               name="address"
@@ -241,6 +269,7 @@ const profileData= {
               City
             </label>
             <input
+              required
               onChange={(e) => setCity(e.target.value)}
               type="text"
               name="city"
@@ -258,6 +287,7 @@ const profileData= {
               State/Province
             </label>
             <input
+              required
               onChange={(e) => setState(e.target.value)}
               type="text"
               name="province"
@@ -316,6 +346,7 @@ const profileData= {
               Mobile Number
             </label>
             <input
+              required
               onChange={(e) => setMobNum(e.target.value)}
               type="number"
               name="mobile"
@@ -333,6 +364,7 @@ const profileData= {
               Email
             </label>
             <input
+              required
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               name="email"

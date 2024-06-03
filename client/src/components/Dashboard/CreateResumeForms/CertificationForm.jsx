@@ -158,7 +158,7 @@ import { FaPlus } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 
-const CertificationForm = () => {
+const CertificationForm = ({setActiveTab}) => {
   const [certificatesList, setCertificatesList] = useState([
     { certificate: "", year: "" },
     { certificate: "", year: "" },
@@ -174,6 +174,15 @@ const CertificationForm = () => {
     );
     setCertificatesList(updatedCertificatesList);
   };
+
+
+  const handlePrevious = () => {
+    setActiveTab('Languages')
+  }
+  const handleNext = () => {
+    setActiveTab('Links')
+  }
+
 
   const saveCertificatesDataHandler = (e) => {
     e.preventDefault();

@@ -15,7 +15,7 @@ function SelectResumeTemplateModal({ setIsResumeTemplateModalOpen }) {
 
   return (
     <div className="fixed z-[100] inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[700px] relative">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[700px] relative scrollbar-light overflow-y-auto max-h-[90%]">
         <button
           className="absolute top-4 right-4"
           onClick={() => setIsResumeTemplateModalOpen(false)}

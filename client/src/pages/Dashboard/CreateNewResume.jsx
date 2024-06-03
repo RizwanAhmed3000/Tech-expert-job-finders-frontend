@@ -159,21 +159,23 @@ const ResumeForm = () => {
 
           {/* Create Resume Forms */}
           {activeTab === "Profile" ? (
-            <ProfileForm />
+            <ProfileForm setActiveTab={setActiveTab} />
           ) : activeTab === "Experience" ? (
-            <ExperienceForm />
+            <ExperienceForm setActiveTab={setActiveTab} />
           ) : activeTab === "Education" ? (
-            <EducationForm />
+            <EducationForm setActiveTab={setActiveTab} />
           ) : activeTab === "Skills" ? (
-            <SkillsForm />
+            <SkillsForm setActiveTab={setActiveTab} />
           ) : activeTab === "Summary" ? (
-            <SummaryForm />
+            <SummaryForm setActiveTab={setActiveTab} />
           ) : activeTab === "Languages" ? (
-            <LanguageForm />
+            <LanguageForm setActiveTab={setActiveTab} />
           ) : activeTab === "Certifications" ? (
-            <CertificationForm />
+            <CertificationForm setActiveTab={setActiveTab} />
           ) : (
-            activeTab === "Photo" && <PhotoAndLinksForm />
+            activeTab === "Photo" && (
+              <PhotoAndLinksForm setActiveTab={setActiveTab} />
+            )
           )}
         </div>
       </div>

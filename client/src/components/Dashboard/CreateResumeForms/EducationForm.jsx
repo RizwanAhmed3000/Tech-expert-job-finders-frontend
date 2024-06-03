@@ -10,7 +10,7 @@ import { TfiSave } from "react-icons/tfi";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 import { useDispatch, useSelector } from "react-redux";
 
-const EducationForm = () => {
+const EducationForm = ({setActiveTab}) => {
   // const [isCheckCurrentStudy, setIsCheckCurrentStudy] = useState(false);
   // const [isSaveContent, setIsSaveContent] = useState(false);
   // const [schoolName, setSchoolName] = useState("");
@@ -181,6 +181,13 @@ const EducationForm = () => {
     fieldOfStudy,
   };
 
+  const handlePrevious = () => {
+    setActiveTab('Experience')
+  }
+  const handleNext = () => {
+    setActiveTab('Skills')
+  }
+
   const saveEducationDataHandler = (e) => {
     e.preventDefault();
     educationArray.push(educationObj);
@@ -189,6 +196,12 @@ const EducationForm = () => {
       educationData: educationArray,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Education Data Saved Successfully!",
+    });
+    
   };
 
   const saveContent = (e) => {
@@ -454,7 +467,7 @@ const EducationForm = () => {
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
-            <span>Previous</span>
+            <span onClick={handlePrevious}>Previous</span>
           </button>
 
           {!isSaveContent && (
@@ -485,7 +498,7 @@ const EducationForm = () => {
             onClick={(e) => e.preventDefault()}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
-            <span>Next</span>
+            <span onClick={handleNext}>Next</span>
             <ImForward3 size={20} />
           </button>
         </div>
