@@ -10,7 +10,7 @@ import { ImBackward2, ImForward3 } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 
-const SummaryForm = () => {
+const SummaryForm = ({setActiveTab}) => {
   const [selectSummaryText, setSelectSummaryText] = useState([]);
   const [summary, setSummary] = useState("");
 
@@ -25,6 +25,14 @@ const SummaryForm = () => {
     setSummary(plainText);
   };
   // console.log(summary);
+
+  const handlePrevious = () => {
+    setActiveTab('Skills')
+  }
+  const handleNext = () => {
+    setActiveTab('Languages')
+  }
+
 
   const saveExperienceDataHandler = (e) => {
     e.preventDefault();
@@ -178,7 +186,7 @@ const SummaryForm = () => {
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
-            <span>Previous</span>
+            <span onClick={handlePrevious}>Previous</span>
           </button>
 
           <button
@@ -196,7 +204,7 @@ const SummaryForm = () => {
             onClick={(e) => e.preventDefault()}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
-            <span>Next</span>
+            <span onClick={handleNext}>Next</span>
             <ImForward3 size={20} />
           </button>
         </div>

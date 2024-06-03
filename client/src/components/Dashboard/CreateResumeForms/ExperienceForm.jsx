@@ -15,7 +15,7 @@ import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { AiOutlineDrag } from "react-icons/ai";
 
-const ExperienceForm = () => {
+const ExperienceForm = ({setActiveTab}) => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
   const [isSaveContent, setIsSaveContent] = useState(false);
   const [selectExperienceText, setSelectExperienceText] = useState([]);
@@ -63,7 +63,12 @@ const ExperienceForm = () => {
   // console.log(startDate)
   // console.log(endDate)
   // console.log(responsibilities);
-
+const handlePrevious = () => {
+  setActiveTab('Profile')
+}
+const handleNext = () => {
+  setActiveTab('Education')
+}
   const saveExperienceDataHandler = (e) => {
     e.preventDefault();
     console.log("save Experience handler is working");
@@ -73,6 +78,11 @@ const ExperienceForm = () => {
       experienceData: experienceArray,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Experience Data Saved Successfully!",
+    });
   };
 
   const convertHtmlToText = (html) => {
@@ -463,7 +473,7 @@ const ExperienceForm = () => {
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
-            <span>Previous</span>
+            <span onClick={handlePrevious}>Previous</span>
           </button>
 
           {!isSaveContent && (
@@ -494,7 +504,7 @@ const ExperienceForm = () => {
             onClick={(e) => e.preventDefault()}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
-            <span>Next</span>
+            <span onClick={handleNext}>Next</span>
             <ImForward3 size={20} />
           </button>
         </div>

@@ -198,7 +198,7 @@
 
 
 import React, { useState } from "react";
-
+import Swal from "sweetalert2"
 // React Icons
 import { ImBackward2, ImForward3 } from "react-icons/im";
 import { TfiSave } from "react-icons/tfi";
@@ -207,7 +207,7 @@ import { FaPlus } from "react-icons/fa6";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 import { useDispatch, useSelector } from "react-redux";
 
-const SkillsForm = () => {
+const SkillsForm = ({setActiveTab}) => {
 
   const [skillsList, setSkillsList] = useState([
     { skill: "", level: "" },
@@ -228,16 +228,37 @@ const SkillsForm = () => {
     setSkillsList(updatedSkillsList);
   };
 
+  const handlePrevious = () => {
+    setActiveTab('Education')
+  }
+  const handleNext = () => {
+    setActiveTab('Summary')
+  }
+
   const saveSkillsDataHandler = (e) => {
     e.preventDefault();
-    console.log("save Skills handler is working");
-    const payload = {
+    if(skillsList[0].skill === ""){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter At least 1 Skill!",
+      });
+    } else {
+      console.log("save Skills handler is working");
+      const payload = {
+      
+          ...resumeData,
+          skills: skillsList,
     
-        ...resumeData,
-        skills: skillsList,
-  
-    };
-    dispatch(resumeSuccess(payload));
+      };
+      dispatch(resumeSuccess(payload));
+      Swal.fire({
+        icon: "success",
+        title: "Good Job",
+        text: "Skill Data Saved Successfully!",
+      });
+
+    }
   };
 
   return (
@@ -326,7 +347,7 @@ const SkillsForm = () => {
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
-            <span>Previous</span>
+            <span onClick={handlePrevious}>Previous</span>
           </button>
 
           <button
@@ -341,7 +362,7 @@ const SkillsForm = () => {
             onClick={(e) => e.preventDefault()}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
-            <span>Next</span>
+            <span onClick={handleNext}>Next</span>
             <ImForward3 size={20} />
           </button>
         </div>

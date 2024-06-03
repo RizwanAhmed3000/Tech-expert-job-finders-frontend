@@ -157,7 +157,7 @@ import { FaPlus } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices.js";
 
-const LanguageForm = () => {
+const LanguageForm = ({setActiveTab}) => {
   const [languagesList, setLanguagesList] = useState([
     { language: "", level: "" },
     { language: "", level: "" },
@@ -175,6 +175,14 @@ const LanguageForm = () => {
     );
     setLanguagesList(updatedLanguagesList);
   };
+
+  
+  const handlePrevious = () => {
+    setActiveTab('Languages')
+  }
+  const handleNext = () => {
+    setActiveTab('Certifications')
+  }
 
   const saveLanguagesDataHandler = (e) => {
     e.preventDefault();
@@ -274,7 +282,7 @@ const LanguageForm = () => {
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
-            <span>Previous</span>
+            <span onClick={handlePrevious}>Previous</span>
           </button>
 
           <button
@@ -289,7 +297,7 @@ const LanguageForm = () => {
             onClick={(e) => e.preventDefault()}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
-            <span>Next</span>
+            <span onClick={handleNext}>Next</span>
             <ImForward3 size={20} />
           </button>
         </div>
