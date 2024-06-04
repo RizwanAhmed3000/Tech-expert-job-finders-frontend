@@ -39,7 +39,7 @@ const ProfileForm = ({ setActiveTab }) => {
   const dispatch = useDispatch();
   const resumeData = useSelector((state) => state.resume.resumeAllData);
   const templateId = useSelector((state) => state.resume.templateId);
-  console.log(templateId);
+  // console.log(templateId);
 
   const profileData = {
     firstName,

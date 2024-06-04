@@ -9,7 +9,7 @@ import { FaCheck } from "react-icons/fa6";
 import { ImBackward2, ImForward3 } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
-
+import Swal from 'sweetalert2'
 const SummaryForm = ({setActiveTab}) => {
   const [selectSummaryText, setSelectSummaryText] = useState([]);
   const [summary, setSummary] = useState("");
@@ -43,6 +43,11 @@ const SummaryForm = ({setActiveTab}) => {
       
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Summary Data Saved Successfully!",
+    });
   };
   const editorRef = useRef(null);
 
