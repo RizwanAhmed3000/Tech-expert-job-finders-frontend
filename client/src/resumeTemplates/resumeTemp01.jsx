@@ -52,34 +52,27 @@ const ResumeTemp01 = ({ themeColor }) => {
             </div>
             <div className="text-[1.2rem] mb-1">{websiteLink}</div>
 
-            <div className="text-[1.3rem] mb-1">+41 458 2356</div>
-            <div className="text-[1.3rem] mb-1">smithwill@gmail.com</div>
-            <div className="text-[1.3rem] mb-1">01 Street, New York, USA</div>
-            <div className="text-[1.3rem] mb-1">www.smithwilliam.com</div>
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               SOCIAL
             </div>
 
+
             <div className=" text-[1.2rem] mb-1">{fbUserName}</div>
             <div className="text-[1.2rem] mb-1 ">{twitterUserName}</div>
             <div className="text-[1.2rem] mb-1 ">{linkedinUserName}</div>
 
-            <div className=" text-[1.3rem] mb-1">Facebook: {fbUserName}</div>
-            <div className="text-[1.3rem] mb-1 ">
-              Twitter: {twitterUserName}
-            </div>
-            <div className="text-[1.3rem] mb-1 ">
-              LinkedIn: {linkedinUserName}
-            </div>
+       
+
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               SKILLS
             </div>
 
-            {skills.map((item) => (
+            {skills?.map((item) => (
+
               <div className="mb-2 text-[1.2rem] ">{item?.skill}</div>
             ))}
           </div>
@@ -88,7 +81,8 @@ const ResumeTemp01 = ({ themeColor }) => {
               CERTIFICATE
             </div>
 
-            {certificates.map((item, index) => (
+            {certificates?.map((item, index) => (
+
               <div key={index} className="mb-2 text-[1.2rem]">
                 {item?.certificate}
                 <br /> {item?.year}
@@ -114,7 +108,7 @@ const ResumeTemp01 = ({ themeColor }) => {
             <h1 className="text-[2rem] text-gray-800 font-bold tracking-widest mb-2">
               EXPERIENCE
             </h1>
-            {experienceData.map((item, index) => (
+            {experienceData?.map((item, index) => (
               <div>
                 <div className="text-[1.2rem] mb-1">
                   <span>{item?.startDate}</span>
@@ -147,6 +141,7 @@ const ResumeTemp01 = ({ themeColor }) => {
                 </div>
                 <div className="text-[1.3rem] font-medium mb-1">
                   {`${item?.schoolName} | ${item?.schoolCity}`}
+
                 </div>
                 <div className="text-[1.2rem] mb-1">
                   {item?.responsibilities}

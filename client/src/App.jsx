@@ -128,7 +128,7 @@ const router = createBrowserRouter([
         element: <CoverLetter />,
       },
       {
-        path: "/websiteTemplate",
+        path: "/website",
         element: <WebsiteTemplate />,
       },
     ],

@@ -13,9 +13,8 @@ import { htmlToText } from "html-to-text";
 import Swal from "sweetalert2";
 import { MdEdit } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { AiOutlineDrag } from "react-icons/ai";
 
-const ExperienceForm = ({setActiveTab}) => {
+const ExperienceForm = ({ setActiveTab }) => {
   const [isCheckCurrentWork, setIsCheckCurrentWork] = useState(false);
   const [isSaveContent, setIsSaveContent] = useState(false);
   const [selectExperienceText, setSelectExperienceText] = useState([]);
@@ -33,7 +32,9 @@ const ExperienceForm = ({setActiveTab}) => {
   console.log(resumeData);
 
   const experienceDataList = useSelector((state) => state.resume.resumeAllData);
-  const experienceDataListMap = useSelector((state) => state.resume.resumeAllData.experienceData);
+  const experienceDataListMap = useSelector(
+    (state) => state.resume.resumeAllData.experienceData
+  );
 
   // Corrected initialization of educationArray
   let experienceArray = experienceDataList.hasOwnProperty("experienceData")
@@ -50,7 +51,6 @@ const ExperienceForm = ({setActiveTab}) => {
     responsibilities,
   };
 
-
   const handleEditorChange = (content, editor) => {
     const plainText = convertHtmlToText(content);
     setResponsibilities(plainText);
@@ -63,12 +63,15 @@ const ExperienceForm = ({setActiveTab}) => {
   // console.log(startDate)
   // console.log(endDate)
   // console.log(responsibilities);
-const handlePrevious = () => {
-  setActiveTab('Profile')
-}
-const handleNext = () => {
-  setActiveTab('Education')
-}
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    setActiveTab("Profile");
+  };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    setActiveTab("Education");
+  };
   const saveExperienceDataHandler = (e) => {
     e.preventDefault();
     console.log("save Experience handler is working");
@@ -164,7 +167,7 @@ const handleNext = () => {
       <div className="educationInfoCont w-full px-[2rem] pb-[4rem]">
         <div className="educationInfoContWrap w-full border-[0.2rem] border-neutral-200">
           {/* Header Row */}
-            <div className="infoRowheader grid grid-cols-12">
+          <div className="infoRowheader grid grid-cols-12">
             <div className="headerLeft py-[1.4rem] px-[1rem] col-span-8 border-r-[0.2rem]">
               <h2 className="text-[1.6rem] leading-[1.6rem] font-semibold text-neutral-800">
                 Work History
@@ -176,45 +179,48 @@ const handleNext = () => {
               </h2>
             </div>
           </div>
-          {experienceDataListMap?.map((itemsExp)=> (
+          {experienceDataListMap?.map((itemsExp) => (
             <>
-          <div className="infoRowExperience grid grid-cols-12">
-            <div className="expRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
-              {/* Job Title */}
-              <h4 className="text-[1.4rem] font-normal text-neutral-800">
-              {itemsExp.jobTitle}
-              </h4>
+              <div className="infoRowExperience grid grid-cols-12">
+                <div className="expRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
+                  {/* Job Title */}
+                  <h4 className="text-[1.4rem] font-normal text-neutral-800">
+                    {itemsExp.jobTitle}
+                  </h4>
 
-              {/* From and To */}
-              <p className="text-[1.4rem] font-normal text-neutral-800">
-                <span className="font-semibold">From : {itemsExp.startDate} </span>
-                <span className="font-semibold">To : {itemsExp.endDate} </span>
-              </p>
-            </div>
-            <div className="expRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
-              <abbr
-                title="Edit"
-                className="bg-blue-500 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
-              >
-                <MdEdit />
-              </abbr>
-              <abbr
-                title="Delete"
-                className="bg-red-600 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
-              >
-                <RiDeleteBin5Line />
-              </abbr>
-              {/* <abbr
+                  {/* From and To */}
+                  <p className="text-[1.4rem] font-normal text-neutral-800">
+                    <span className="font-semibold">
+                      From : {itemsExp.startDate}{" "}
+                    </span>
+                    <span className="font-semibold">
+                      To : {itemsExp.endDate}{" "}
+                    </span>
+                  </p>
+                </div>
+                <div className="expRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
+                  <abbr
+                    title="Edit"
+                    className="bg-blue-500 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+                  >
+                    <MdEdit />
+                  </abbr>
+                  <abbr
+                    title="Delete"
+                    className="bg-red-600 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+                  >
+                    <RiDeleteBin5Line />
+                  </abbr>
+                  {/* <abbr
                 title="Drag"
                 className="bg-theme-yellow p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
               >
                 <AiOutlineDrag />
               </abbr> */}
-            </div>
-          </div>
-          </>
+                </div>
+              </div>
+            </>
           ))}
-          
 
           {/* Experience Row */}
         </div>
@@ -469,11 +475,11 @@ const handleNext = () => {
         {/* Buttons Row */}
         <div className="btnRow w-full flex justify-between py-[1rem]">
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => handlePrevious(e)}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
-            <span onClick={handlePrevious}>Previous</span>
+            <span>Previous</span>
           </button>
 
           {!isSaveContent && (
@@ -501,10 +507,10 @@ const handleNext = () => {
           )}
 
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => handleNext(e)}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
-            <span onClick={handleNext}>Next</span>
+            <span>Next</span>
             <ImForward3 size={20} />
           </button>
         </div>

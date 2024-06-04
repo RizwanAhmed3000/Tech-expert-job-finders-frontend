@@ -10,7 +10,7 @@ const DashQuestion = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleUploadPhotoClick = () => {  
+  const handleUploadPhotoClick = () => {
     document.getElementById("fileInput").click();
   };
 
@@ -44,16 +44,13 @@ const DashQuestion = () => {
               </button>
             </div>
           </div>
-          <iframe
+          {/* <iframe
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/b9Mpa6r5yDg"
             title="Build professional resume and cover letter for free"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+          ></iframe> */}
         </div>
         <DashPost />
 
