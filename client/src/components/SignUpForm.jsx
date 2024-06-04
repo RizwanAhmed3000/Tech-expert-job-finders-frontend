@@ -79,7 +79,7 @@ function SignUpForm() {
       // console.log(userCredential);
 
       try {
-        const response = await axios.post(`/api/${SIGNUP_URL}`, userCredential);
+        const response = await axios.post(`/api${SIGNUP_URL}`, userCredential);
         console.log(response.data.data);
         // .data.data
         dispatch(signupSuccess(response.data.data));
@@ -97,7 +97,7 @@ function SignUpForm() {
         }
       } catch (error) {
         console.log(error);
-        console.log(error.response.data.message.includes('duplicate key'));
+        // console.log(error.response.data.message.includes('duplicate key'));
         if(error.response.data.message.includes('duplicate key')){
           Swal.fire({
             icon: "error",
