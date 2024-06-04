@@ -1,8 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-
-const ResumeTemp01 = ({themeColor}) => {
+const ResumeTemp01 = ({ themeColor }) => {
   const resumeData = useSelector((state) => state.resume.resumeAllData);
   console.log(resumeData);
 
@@ -48,85 +47,53 @@ const ResumeTemp01 = ({themeColor}) => {
 
             <div className="text-[1.2rem] mb-1">{profileData?.mobNum}</div>
             <div className="text-[1.2rem] mb-1">{profileData?.email}</div>
-            <div className="text-[1.2rem] mb-1">{profileData?.streetAddress}</div>
+            <div className="text-[1.2rem] mb-1">
+              {profileData?.streetAddress}
+            </div>
             <div className="text-[1.2rem] mb-1">{websiteLink}</div>
 
-//             <div className="text-[1.3rem] mb-1">+41 458 2356</div>
-//             <div className="text-[1.3rem] mb-1">smithwill@gmail.com</div>
-//             <div className="text-[1.3rem] mb-1">01 Street, New York, USA</div>
-//             <div className="text-[1.3rem] mb-1">www.smithwilliam.com</div>
-
+            <div className="text-[1.3rem] mb-1">+41 458 2356</div>
+            <div className="text-[1.3rem] mb-1">smithwill@gmail.com</div>
+            <div className="text-[1.3rem] mb-1">01 Street, New York, USA</div>
+            <div className="text-[1.3rem] mb-1">www.smithwilliam.com</div>
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               SOCIAL
             </div>
 
-            <div className=" text-[1.2rem] mb-1">
-              {fbUserName}
-            </div>
-            <div className="text-[1.2rem] mb-1 ">
-              {twitterUserName}
-            </div>
-            <div className="text-[1.2rem] mb-1 ">
-              {linkedinUserName}
-              </div>
+            <div className=" text-[1.2rem] mb-1">{fbUserName}</div>
+            <div className="text-[1.2rem] mb-1 ">{twitterUserName}</div>
+            <div className="text-[1.2rem] mb-1 ">{linkedinUserName}</div>
 
-//             <div className=" text-[1.3rem] mb-1">
-//               Facebook: facebook/smithwill
-//             </div>
-//             <div className="text-[1.3rem] mb-1 ">
-//               Twitter: twitter/smithwill
-//             </div>
-//             <div className="text-[1.3rem] mb-1 ">
-//               LinkedIn: linkedin/smithwill
-//             </div>
+            <div className=" text-[1.3rem] mb-1">Facebook: {fbUserName}</div>
+            <div className="text-[1.3rem] mb-1 ">
+              Twitter: {twitterUserName}
+            </div>
+            <div className="text-[1.3rem] mb-1 ">
+              LinkedIn: {linkedinUserName}
+            </div>
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               SKILLS
             </div>
 
-            {skills.map((item) =>(
+            {skills.map((item) => (
               <div className="mb-2 text-[1.2rem] ">{item?.skill}</div>
             ))}
-            
-            
-
-//             <div className="mb-2 text-[1.3rem] ">Graphic Design</div>
-//             <div className="mb-2 text-[1.3rem]">Web Design</div>
-//             <div className="mb-2 text-[1.3rem]">Visual Art</div>
-//             <div className="mb-2 text-[1.3rem]">Web development</div>
-//             <div className="mb-2 text-[1.3rem]">User Experience Design</div>
-
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               CERTIFICATE
             </div>
 
-            {certificates.map((item, index) =>(
+            {certificates.map((item, index) => (
               <div key={index} className="mb-2 text-[1.2rem]">
-              {item?.certificate}<br /> {item?.year}
+                {item?.certificate}
+                <br /> {item?.year}
               </div>
-              ))}
-
-//             <div className="mb-2 text-[1.3rem]">
-//               Graphic Design <br /> (2023-2024)
-//             </div>
-//             <div className="mb-2 text-[1.3rem]">
-//               Web Design <br /> (2023-2024)
-//             </div>
-//             <div className="mb-2 text-[1.3rem]">
-//               Visual Art <br /> (2023-2024)
-//             </div>
-//             <div className="mb-2 text-[1.3rem]">
-//               Web development <br /> (2023-2024)
-//             </div>
-//             <div className="mb-2 text-[1.3rem]">
-//               User Experience Design <br /> (2023-2024)
-//             </div>
-        
+            ))}
           </div>
         </div>
 
@@ -134,13 +101,13 @@ const ResumeTemp01 = ({themeColor}) => {
           <div className="flex flex-col items-start w-full bg-gray-200 text-gray-800 p-6">
             <div className="flex items-center gap-[1rem]">
               <h2 className=" text-[3rem] leading-[3rem] font-bold tracking-widest">
-              { ` ${profileData?.firstName} ${profileData?.middleName}`}
+                {` ${profileData?.firstName} ${profileData?.middleName}`}
               </h2>
               <h2 className="text-[3rem] leading-[3rem] font-normal tracking-widest">
                 {profileData?.lastName}
               </h2>
             </div>
-            <h3 className="mb-1.5 text-[2rem]">Web developer</h3>
+            <h3 className="mb-1.5 text-[2rem]">{profileData?.profession}</h3>
             <p className="text-[1.2rem]">{summary}</p>
           </div>
           <div className="p-6">
@@ -179,12 +146,10 @@ const ResumeTemp01 = ({themeColor}) => {
                   {item?.fieldOfStudy}
                 </div>
                 <div className="text-[1.3rem] font-medium mb-1">
-                {`${item?.schoolName} | ${item?.schoolCity}`}
-                  {/* UNIVERSITY NAME | CITY NAME */}
+                  {`${item?.schoolName} | ${item?.schoolCity}`}
                 </div>
                 <div className="text-[1.2rem] mb-1">
-                  Sed ut perspiciatis unde omnis iste natus error sit
-                  voluptatem...
+                  {item?.responsibilities}
                 </div>
               </div>
             ))}
