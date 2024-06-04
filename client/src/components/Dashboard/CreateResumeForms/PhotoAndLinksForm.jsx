@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 import axios from "axios";
 import { RESUME_SEND_DATA } from "../../../constants/apis";
-
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2"
 const PhotoAndLinksForm = ({setActiveTab}) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const resumeData = useSelector((state) => state.resume.resumeAllData)
   console.log(resumeData);
   // const [userImage, setUserImage] = useState("");
@@ -36,6 +38,14 @@ const PhotoAndLinksForm = ({setActiveTab}) => {
       const res = await axios.post(`/api${RESUME_SEND_DATA}`,resumeData)
       console.log(res)
       console.log(res?.data)
+      if(res) {
+        Swal.fire({
+          icon: "success",
+          title: "Oops...",
+          text: "Finish Successfully!",
+        });
+      }
+      navigate('/app/resumeFinish')
     } catch (error) {
       console.log(error)
     }
@@ -44,6 +54,16 @@ const PhotoAndLinksForm = ({setActiveTab}) => {
 
   const saveLinksDataHandler = (e) => {
     e.preventDefault();
+    if(fbUserName,
+      twitterUserName,
+      linkedinUserName,
+      websiteLink){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please Fill required Fields!",
+        });
+    }
     console.log("save Links handler is working");
     const payload = {
       ...resumeData,
@@ -53,6 +73,11 @@ const PhotoAndLinksForm = ({setActiveTab}) => {
       websiteLink,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Links Data Saved Successfully!",
+    });
   };
   return (
     <>
