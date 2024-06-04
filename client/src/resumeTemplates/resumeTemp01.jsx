@@ -51,20 +51,28 @@ const ResumeTemp01 = ({ themeColor }) => {
               {profileData?.streetAddress}
             </div>
             <div className="text-[1.2rem] mb-1">{websiteLink}</div>
+
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               SOCIAL
             </div>
+
+
             <div className=" text-[1.2rem] mb-1">{fbUserName}</div>
             <div className="text-[1.2rem] mb-1 ">{twitterUserName}</div>
-            <div className="text-[1.2rem] mb-1 ">{linkedinUserName}</div>{" "}
+            <div className="text-[1.2rem] mb-1 ">{linkedinUserName}</div>
+
+       
+
           </div>
           <div className="mt-10">
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               SKILLS
             </div>
+
             {skills?.map((item) => (
+
               <div className="mb-2 text-[1.2rem] ">{item?.skill}</div>
             ))}
           </div>
@@ -72,7 +80,9 @@ const ResumeTemp01 = ({ themeColor }) => {
             <div className="text-[1.8rem] font-bold mb-2 tracking-widest">
               CERTIFICATE
             </div>
+
             {certificates?.map((item, index) => (
+
               <div key={index} className="mb-2 text-[1.2rem]">
                 {item?.certificate}
                 <br /> {item?.year}
@@ -91,7 +101,7 @@ const ResumeTemp01 = ({ themeColor }) => {
                 {profileData?.lastName}
               </h2>
             </div>
-            <h3 className="mb-1.5 text-[2rem]">Web developer</h3>
+            <h3 className="mb-1.5 text-[2rem]">{profileData?.profession}</h3>
             <p className="text-[1.2rem]">{summary}</p>
           </div>
           <div className="p-6">
@@ -131,11 +141,10 @@ const ResumeTemp01 = ({ themeColor }) => {
                 </div>
                 <div className="text-[1.3rem] font-medium mb-1">
                   {`${item?.schoolName} | ${item?.schoolCity}`}
-                  {/* UNIVERSITY NAME | CITY NAME */}
+
                 </div>
                 <div className="text-[1.2rem] mb-1">
-                  Sed ut perspiciatis unde omnis iste natus error sit
-                  voluptatem...
+                  {item?.responsibilities}
                 </div>
               </div>
             ))}

@@ -31,6 +31,7 @@ const ResumeTemplates = [
     templateId: "665e020925b8c193e9d9bb53",
     template: <ResumeTemp02 />,
   },
+  // 665e052125b8c193e9d9bb67
   {
     templateId: "665e045a25b8c193e9d9bb5d",
     template: <ResumeTemp03 />,
@@ -73,6 +74,7 @@ const ResumeEditFinish = () => {
       ? SetChangeComponent(true)
       : SetChangeComponent(false);
   };
+
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
@@ -119,7 +121,9 @@ const ResumeEditFinish = () => {
 
         {/* <ResumeTemp01 themeColor={themeColor} /> */}
         {/* <ResumeTemp02 themeColor={themeColor} /> */}
+
         <ResumeTemp03 themeColor={themeColor} />
+
       </div>
 
       {/* Right Div */}

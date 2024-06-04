@@ -9,8 +9,34 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
+import { useSelector } from "react-redux";
 
 const resumeTemp03 = ({ themeColor }) => {
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
+  console.log(resumeData);
+
+  const {
+    profileData,
+    experienceData,
+    educationData,
+    summary,
+    certificates,
+    languages,
+    skills,
+    fbUserName,
+    twitterUserName,
+    linkedinUserName,
+    websiteLink,
+  } = resumeData;
+
+  console.log(profileData);
+  console.log(experienceData);
+  console.log(educationData);
+  console.log(summary);
+  console.log(certificates);
+  console.log(languages);
+  console.log(skills);
+
   return (
     <div className="w-[95%] max-w-[750px] bg-white shadow-xl flex justify-center">
       <div className="cvCont w-[full]">
@@ -25,10 +51,10 @@ const resumeTemp03 = ({ themeColor }) => {
                   : { color: `#${themeColor}` }
               }
             >
-              WILLIAM
+              {profileData?.firstName}
             </span>
           </div>
-          <div className=" text-[1.6rem]">VISUAL ARTIST</div>
+          <div className=" text-[1.6rem]">{profileData?.profession}</div>
         </div>
         <div
           className={`h-[2px] w-[100%] mt-5`}
@@ -54,17 +80,17 @@ const resumeTemp03 = ({ themeColor }) => {
               </div>
 
               <div className="text-[1.3rem] mb-1 flex items-center gap-[0.8rem]">
-                <FaPhoneAlt color="#444" /> <span>+41 458 2356</span>
+                <FaPhoneAlt color="#444" /> <span>{profileData?.mobNum}</span>
               </div>
               <div className="text-[1.3rem] mb-1 flex items-center gap-[0.8rem]">
-                <FaEnvelope color="#444" /> <span>smithwill@gmail.com</span>
+                <FaEnvelope color="#444" /> <span>{profileData?.email}</span>
               </div>
               <div className="text-[1.3rem] mb-1 flex items-center gap-[0.8rem]">
                 <FaMapMarkerAlt color="#444" />{" "}
-                <span>01 Street, New York, USA</span>
+                <span>{profileData?.streetAddress}</span>
               </div>
               <div className="text-[1.3rem] mb-1 flex items-center gap-[0.8rem]">
-                <TbWorld color="#444" /> <a href="#">www.smithwilliam.com</a>
+                <TbWorld color="#444" /> <a href="#">{websiteLink}</a>
               </div>
               <div
                 className={`h-[2px] w-[100%] mt-5`}
@@ -88,15 +114,15 @@ const resumeTemp03 = ({ themeColor }) => {
               </div>
               <div className=" text-[1.2rem] mb-1 flex items-center gap-[0.8rem]">
                 <FaFacebookF color="#444" />
-                <a href="#">Facebook: facebook/smithwill</a>
+                <a href="#"> {fbUserName}</a>
               </div>
               <div className="text-[1.2rem] mb-1 flex items-center gap-[0.8rem]">
                 <FaTwitter color="#444" />
-                <a href="#">Twitter: twitter/smithwill</a>
+                <a href="#">{twitterUserName}</a>
               </div>
               <div className="text-[1.2rem] mb-1 flex items-center gap-[0.8rem]">
                 <FaLinkedinIn color="#444" />
-                <a href="#">LinkedIn: linkedin/smithwill</a>
+                <a href="#">{linkedinUserName}</a>
               </div>
               <div
                 className={`h-[2px] w-[100%] mt-5`}
@@ -118,11 +144,12 @@ const resumeTemp03 = ({ themeColor }) => {
               >
                 SKILLS
               </div>
-              <div className="mb-2 text-[1.3rem] ">Graphic Design</div>
-              <div className="mb-2 text-[1.3rem]">Web Design</div>
-              <div className="mb-2 text-[1.3rem]">Visual Art</div>
-              <div className="mb-2 text-[1.3rem]">Web development</div>
-              <div className="mb-2 text-[1.3rem]">User Experience Design</div>
+              {skills.map((item, index) => (
+                <div key={index} className="mb-2 text-[1.3rem] ">
+                  {item.skill}
+                </div>
+              ))}
+
               <div
                 className={`h-[2px] w-[100%] mt-5`}
                 style={
@@ -143,21 +170,11 @@ const resumeTemp03 = ({ themeColor }) => {
               >
                 CERTIFICATE
               </div>
-              <div className="mb-2 text-[1.3rem]">
-                Graphic Design (2023-2024)
-              </div>
-              <div className="mb-2 text-[1.3rem]">
-                Web Design <br /> (2023-2024)
-              </div>
-              <div className="mb-2 text-[1.3rem]">
-                Visual Art <br /> (2023-2024)
-              </div>
-              <div className="mb-2 text-[1.3rem]">
-                Web development <br /> (2023-2024)
-              </div>
-              <div className="mb-2 text-[1.3rem]">
-                User Experience Design <br /> (2023-2024)
-              </div>
+              {certificates.map((item) => (
+                <div className="mb-2 text-[1.3rem]">
+                  {item?.certificate} <br /> {item?.year}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -175,12 +192,7 @@ const resumeTemp03 = ({ themeColor }) => {
                   ABOUT
                 </h2>
               </div>
-              <p className="text-[1.3rem]">
-                {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui,
-                hic, laudantium quod asperiores unde voluptatibus totam
-                architecto iusto, ut debitis{" "}
-              </p>
+              <p className="text-[1.3rem]">{summary}</p>
               <div
                 className={`h-[2px] w-[100%] mt-2`}
                 style={
@@ -201,40 +213,24 @@ const resumeTemp03 = ({ themeColor }) => {
               >
                 EXPERIENCE
               </h1>
-              <div>
+              {experienceData.map((item, index) => (
+                <div className="mt-6" key={index}>
                 <div className="text-[1.3rem]">
-                  <span>Start Date </span>
-                  <span>- End Date</span>
+                  <span>{item?.startDate} </span>
+                  <span>- {item?.endDate}</span>
                 </div>
-                <div className="text-[1.5rem] font-semibold">Job Title</div>
-                <div className="text-[1.4rem] font-medium mb-1">Employment</div>
+                <div className="text-[1.5rem] font-semibold">{item?.jobTitle}</div>
+                <div className="text-[1.4rem] font-medium mb-1">{item?.employer}</div>
                 <span className="text-[1.3rem] font-medium mb-1">
-                  City, State
+                {`${item?.expCity}, ${item?.expState}`}
                 </span>
                 <div className="text-[1.3rem] mb-1">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Libero ex quisquam consequatur voluptates, optio ducimus quia
-                  eveniet, in earum necessitatibus quaerat porro hic quibusdam
-                  a!
+                {item?.responsibilities}
                 </div>
               </div>
-              <div>
-                <div className="text-[1.3rem]">
-                  <span>Start Date </span>
-                  <span>- End Date</span>
-                </div>
-                <div className="text-[1.5rem] font-semibold">Job Title</div>
-                <div className="text-[1.4rem] font-medium mb-1">Employment</div>
-                <span className="text-[1.3rem] font-medium mb-1">
-                  City, State
-                </span>
-                <div className="text-[1.3rem] mb-1">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Libero ex quisquam consequatur voluptates, optio ducimus quia
-                  eveniet, in earum necessitatibus quaerat porro hic quibusdam
-                  a!
-                </div>
-              </div>
+              ))}
+              
+
               <div
                 className={`h-[2px] w-[100%] mt-4`}
                 style={
@@ -255,54 +251,26 @@ const resumeTemp03 = ({ themeColor }) => {
               >
                 EDUCATION
               </h1>
-              <div>
+              
+              {educationData.map((item,index) => (<div className="mt-5">
                 <div className="text-[1.3rem] mb-1">
-                  <span>2020 </span>
-                  <span>- 2020</span>
+                  <span>{item?.educationStartDate} </span>
+                  <span>- {item?.endEducationDate}</span>
                 </div>
                 <div className="text-[1.5rem] font-semibold">
-                  MASTER'S OF ARTS, MAJOR IN COMMUNICATION
+                {item?.fieldOfStudy}
                 </div>
                 <div className="text-[1.4rem] font-medium mb-1">
-                  UNIVERSITY NAME | CITY NAME
+                {`${item?.schoolName} | ${item?.schoolCity}`}
                 </div>
-                <div className="text-[1.3rem] mb-1">
-                  Sed ut perspiciatis unde omnis iste natus error sit
-                  voluptatem...
-                </div>
-              </div>
-              <div className="mt-5">
-                <div className="text-[1.3rem] mb-1">
-                  <span>2020 </span>
-                  <span>- 2020</span>
-                </div>
-                <div className="text-[1.5rem] font-semibold">
-                  MASTER'S OF ARTS, MAJOR IN COMMUNICATION
-                </div>
-                <div className="text-[1.4rem] font-medium mb-1">
-                  UNIVERSITY NAME | CITY NAME
-                </div>
-                <div className="text-[1.3rem] mb-1">
-                  Sed ut perspiciatis unde omnis iste natus error sit
-                  voluptatem...
-                </div>
-              </div>
-              <div className="mt-5">
-                <div className="text-[1.3rem] mb-1">
-                  <span>2020 </span>
-                  <span>- 2020</span>
-                </div>
-                <div className="text-[1.5rem] font-semibold">
-                  MASTER'S OF ARTS, MAJOR IN COMMUNICATION
-                </div>
-                <div className="text-[1.4rem] font-medium mb-1">
-                  UNIVERSITY NAME | CITY NAME
-                </div>
-                <div className="text-[1.3rem] mb-1">
-                  Sed ut perspiciatis unde omnis iste natus error sit
-                  voluptatem...
-                </div>
-              </div>
+                {/* <div className="text-[1.3rem] mb-1">
+                {item?.fieldOfStudy}
+                </div> */}
+              </div>))}
+              
+
+
+
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices.js";
+import Swal from "sweetalert2";
 
 const LanguageForm = ({ setActiveTab }) => {
   const [languagesList, setLanguagesList] = useState([
@@ -44,6 +45,11 @@ const LanguageForm = ({ setActiveTab }) => {
       languages: languagesList,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Language Data Saved Successfully!",
+    });
   };
 
   return (
