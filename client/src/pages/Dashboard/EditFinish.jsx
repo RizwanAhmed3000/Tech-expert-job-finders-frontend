@@ -22,20 +22,29 @@ import { useReactToPrint } from 'react-to-print';
 import CLTemplate03 from "../../coverLetterTemplates/CLTemplate03";
 import CLTemplate04 from "../../coverLetterTemplates/CLTemplate04";
 import CLTemplate05 from "../../coverLetterTemplates/CLTemplate05";
+import CLTemplate06 from "../../coverLetterTemplates/CLTemplate06";
 
 const coverLetterTemplates = [
   {
-    id: "6655085ce595b205733d8e95",
-    template: <CLTemplate05 />
+    id: "665f838fac4d99199ad0a886",
+    template: <CLTemplate04 />
   },
   {
-    id: "665615890b66a45697909b58",
-    template: <CLTemplate02 />
+    id: "665f83cdac4d99199ad0a888",
+    template: <CLTemplate06 />
   },
-  {
-    id: "665615890b66a45697909b58",
-    template: <CLTemplate03 />
-  },
+  // {
+  //   id: "665615890b66a45697909b58",
+  //   template: <CLTemplate03 />
+  // },
+  // {
+  //   id: "665615890b66a45697909b58",
+  //   template: <CLTemplate04 />
+  // },
+  // {
+  //   id: "665615890b66a45697909b58",
+  //   template: <CLTemplate05 />
+  // },
 ]
 
 const EditFinish = () => {
