@@ -18,7 +18,7 @@ const DashCoverLetter = () => {
           </div>
 
           <CreateButton
-            setIsTitleModalOpen={setIsTitleModalOpen}
+            setIsResumeTitleModalOpen={setIsTitleModalOpen}
             btnText="Create Cover Letter"
           />
         </div>
