@@ -78,7 +78,7 @@ console.log(_id);
           {activeTab !== "premium" ? (
             <Link to={route}>
               <button
-                onClick={dispatch(resumeSuccess({ templateId: _id }))}
+                // onClick={dispatch(resumeSuccess({ templateId: _id }))}
                 className="selectTemplateButton bg-neutral-700 py-[0.8rem] px-[1.5rem] text-[1.6rem] leading-[1.6rem] text-white rounded-md "
               >
                 Select
