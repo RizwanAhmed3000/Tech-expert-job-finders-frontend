@@ -6,10 +6,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const BlogCard = ({ name, desc, imgUrl }) => {
   return (
-    <Card
-      style={{ width: "307px", height: "381px" }}
-      className="bg-[#ffffff] group/item overflow-hidden mb-10 cursor-pointer"
-    >
+    <>
       <div className="w-[100%] bg-slate-200 object-contain overflow-hidden">
         <Card.Img
           variant="top"
@@ -17,7 +14,7 @@ const BlogCard = ({ name, desc, imgUrl }) => {
           className="group-hover/item:rotate-3 duration-300 ease-out scale-110"
         />
       </div>
-      <Card.Body className="p-[10px] flex justify-between flex-col">
+      <div className="p-[10px] flex justify-between flex-col">
         <div className="group-hover/item:opacity-0 duration-300 ease-out">
           <Card.Text className="text-theme-black text-lg my-2">
             By: <span className="text-theme-red">Name</span> / 2024-03-4
@@ -39,8 +36,8 @@ const BlogCard = ({ name, desc, imgUrl }) => {
             Read More <ArrowForwardIcon />
           </Button>
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </>
   );
 };
 

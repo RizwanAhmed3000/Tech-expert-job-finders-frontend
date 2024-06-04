@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IoCloudUpload } from "react-icons/io5";
-import UserProfileAvatar from "../../../assets/profile-avatar.jpg";
+// import { IoCloudUpload } from "react-icons/io5";
+// import UserProfileAvatar from "../../../assets/profile-avatar.jpg";
 import { ImBackward2, ImForward3 } from "react-icons/im";
 import { TfiSave } from "react-icons/tfi";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,9 +8,13 @@ import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 import axios from "axios";
 import { RESUME_SEND_DATA } from "../../../constants/apis";
 
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2"
 const PhotoAndLinksForm = ({setActiveTab}) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const resumeData = useSelector((state) => state.resume.resumeAllData)
+
   console.log(resumeData);
   // const [userImage, setUserImage] = useState("");
   // const [profileImg, setProfileImg] = useState("");
@@ -24,26 +28,48 @@ const PhotoAndLinksForm = ({setActiveTab}) => {
   console.log(linkedinUserName);
   console.log(websiteLink);
 
-  const handlePrevious = () => {
-    setActiveTab('Certifications')
-  }
-  const handleFinish = async () => {
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    setActiveTab("Certifications");
+  };
+  const handleFinish = async (e) => {
+    e.preventDefault();
     // setActiveTab('Summary')
     // const sendDatatoMongoDb = {
     //   firstName
     // }
     try {
+
       const res = await axios.post(`/api${RESUME_SEND_DATA}`,resumeData)
       console.log(res)
       console.log(res?.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+      if(res) {
+        Swal.fire({
+          icon: "success",
+          title: "Oops...",
+          text: "Finish Successfully!",
+        });
+      }
+      navigate('/app/resumeFinish')
 
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const saveLinksDataHandler = (e) => {
     e.preventDefault();
+    if(fbUserName,
+      twitterUserName,
+      linkedinUserName,
+      websiteLink){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please Fill required Fields!",
+        });
+    }
     console.log("save Links handler is working");
     const payload = {
       ...resumeData,
@@ -53,6 +79,11 @@ const PhotoAndLinksForm = ({setActiveTab}) => {
       websiteLink,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Links Data Saved Successfully!",
+    });
   };
   return (
     <>
@@ -150,23 +181,26 @@ const PhotoAndLinksForm = ({setActiveTab}) => {
 
       {/* Buttons Row */}
       <div className="btnRow w-full flex justify-between mt-10 py-[2rem]">
-        <button 
-        onClick={handlePrevious}
-        className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
+        <button
+          onClick={(e) => handlePrevious(e)}
+          className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+        >
           <ImBackward2 size={20} />
           <span>Previous</span>
         </button>
 
         <button
           onClick={saveLinksDataHandler}
-          className="bg-[#18da35] text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
+          className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+        >
           <TfiSave />
           <span>Save</span>
         </button>
 
-        <button 
-        onClick={handleFinish}
-        className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg">
+        <button
+          onClick={(e) => handleFinish(e)}
+          className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
+        >
           <span>Finish</span>
           <ImForward3 size={20} />
         </button>

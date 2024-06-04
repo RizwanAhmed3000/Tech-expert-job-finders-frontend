@@ -167,7 +167,7 @@ function CoverForm() {
                       </>) : (
                     <div className="text-center my-[2rem] w-[100%]">
                       <h1 className="text-[2rem] font-semibold">{`${currentData.firstName} ${currentData.middleName} ${currentData.lastName}`}</h1>
-                      <h1 className="text-[1.3rem] ">{`${currentData.email}, ${currentData.phone}, ${currentData.address}`}</h1>
+                        <h1 className="text-[1.3rem] ">{`${currentData.email}, ${currentData.phone}, ${currentData.streetAddress}`}</h1>
                     </div>
                   )}
                   <button className="invisible group-hover:visible flex items-center gap-1">
@@ -186,7 +186,7 @@ function CoverForm() {
                     <div className="">
                         <p className="text-[1.3rem]">{`${currentData.recipient}`}</p>
                         <p className="text-[1.3rem]">{`${currentData.companyName}`}</p>
-                        <p className="text-[1.3rem]">{`${currentData.streetAddress}`}</p>
+                        <p className="text-[1.3rem]">{`${currentData.address}`}</p>
                         <p className="text-[1.3rem]">{`${currentData.city}`}</p>
                         <p className="text-[1.3rem]">{`${currentData.state}`}</p>
                     </div>

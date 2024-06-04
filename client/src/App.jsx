@@ -51,6 +51,10 @@ import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
 import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
 import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
 import DashWebsite from "./pages/Dashboard/DashWebsite";
+import CLTemplate03 from "./coverLetterTemplates/CLTemplate03";
+import CLTemplate04 from "./coverLetterTemplates/CLTemplate04";
+import CLTemplate05 from "./coverLetterTemplates/CLTemplate05";
+import CLTemplate06 from "./coverLetterTemplates/CLTemplate06";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -128,7 +132,7 @@ const router = createBrowserRouter([
         element: <CoverLetter />,
       },
       {
-        path: "/websiteTemplate",
+        path: "/website",
         element: <WebsiteTemplate />,
       },
     ],
@@ -220,8 +224,24 @@ const router = createBrowserRouter([
         element: <CLTemplate01 />,
       },
       {
-        path: "/app/coverletter/665615890b66a45697909b58",
+        path: "/app/coverletter/2",
         element: <CLTemplate02 />,
+      },
+      {
+        path: "/app/coverletter/3",
+        element: <CLTemplate03 />,
+      },
+      {
+        path: "/app/coverletter/4",
+        element: <CLTemplate04 />,
+      },
+      {
+        path: "/app/coverletter/5",
+        element: <CLTemplate05 />,
+      },
+      {
+        path: "/app/coverletter/6",
+        element: <CLTemplate06 />,
       },
       {
         path: "/app/blogs",

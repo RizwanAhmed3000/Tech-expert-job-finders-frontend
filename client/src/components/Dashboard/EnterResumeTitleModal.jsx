@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import SelectResumeTemplateModal from "./SelectResumeTemplateModal";
 import Swal from "sweetalert2";
-import { useDispatch, useSelector } from "react-redux";
-import { resumeSuccess } from "../../Redux/Slices/resumeSlices";
+// import { useDispatch, useSelector } from "react-redux";
+// import { resumeSuccess } from "../../Redux/Slices/resumeSlices";
 
 
 // const dispatch = useDispatch()

@@ -1,4 +1,4 @@
-import React, { useState , useRef} from "react";
+import React, { useState, useRef } from "react";
 import {
   FaCloudDownloadAlt,
   FaLinkedinIn,
@@ -22,9 +22,6 @@ import ResumeTemp03 from "../../resumeTemplates/resumeTemp03";
 
 import ResumeTemp04 from "../../resumeTemplates/resumeTemp04";
 
-
-
-
 const ResumeTemplates = [
   {
     id: "665e02b125b8c193e9d9bb56",
@@ -34,6 +31,7 @@ const ResumeTemplates = [
     templateId: "665e020925b8c193e9d9bb53",
     template: <ResumeTemp02 />,
   },
+  // 665e052125b8c193e9d9bb67
   {
     templateId: "665e045a25b8c193e9d9bb5d",
     template: <ResumeTemp03 />,
@@ -45,7 +43,7 @@ const ResumeTemplates = [
 ];
 
 const ResumeEditFinish = () => {
-  const tempRef = useRef()
+  const tempRef = useRef();
   const [activeButton, setActiveButton] = useState("coverLetter");
   const [changeComponent, SetChangeComponent] = useState("coverLetter");
   // Email Buttom Click Modal useState
@@ -53,9 +51,7 @@ const ResumeEditFinish = () => {
   // Share Button Click Modal useSate
   const [shareModal, setShareModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { templateId } = useSelector(
-    (state) => state.resume.resumeAllData
-  );
+  const { templateId } = useSelector((state) => state.resume.resumeAllData);
   // console.log(templateId, "===>>> template")
 
   const downloadPdf = () => {
@@ -78,6 +74,7 @@ const ResumeEditFinish = () => {
       ? SetChangeComponent(true)
       : SetChangeComponent(false);
   };
+
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
@@ -111,20 +108,20 @@ const ResumeEditFinish = () => {
         className="templateDiv w-[68%] shadow-lg flex justify-center px-5 py-10 bg-white"
         style={{ fontSize: selectedOption1, fontFamily: selectedOption }}
       >
-        {ResumeTemplates.map((template) => {
+        {ResumeTemplates?.map((template) => {
           // console.log(template.template)
           if (templateId === template.id) {
             return (
               <div ref={tempRef}>
-                {cloneElement(template.template, {bgColor: "red"})}
+                {cloneElement(template.template, { bgColor: "red" })}
               </div>
-            )
+            );
           }
         })}
 
-
         {/* <ResumeTemp01 themeColor={themeColor} /> */}
         {/* <ResumeTemp02 themeColor={themeColor} /> */}
+
         <ResumeTemp03 themeColor={themeColor} />
 
       </div>

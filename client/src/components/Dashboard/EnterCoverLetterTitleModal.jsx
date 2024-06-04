@@ -36,9 +36,8 @@ const EnterCoverLetterTitleModal = ({
   return (
     <div>
       <div
-        className={`w-full fixed z-50 top-0 left-0 h-dvh flex justify-center ${
-          isTitleModalOpen ? "block" : "hidden"
-        }`}
+        className={`w-full fixed z-50 top-0 left-0 h-dvh flex justify-center ${isTitleModalOpen ? "block" : "hidden"
+          }`}
       >
         {/* Overlay */}
         <div

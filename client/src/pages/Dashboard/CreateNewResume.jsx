@@ -18,6 +18,7 @@ import PhotoAndLinksForm from "../../components/Dashboard/CreateResumeForms/Phot
 
 const ResumeForm = () => {
   const [activeTab, setActiveTab] = useState("Profile");
+  const [isSuggestions, setIsSuggestions] = useState(true);
 
   const getTabClassNames = (tabName) => {
     return activeTab === tabName ? "bg-red-500 text-white rounded-full" : "";
@@ -42,7 +43,7 @@ const ResumeForm = () => {
               "Summary",
               "Languages",
               "Certifications",
-              "Photo",
+              "Links",
             ].map((tabname, index) => (
               <span
                 key={index}
@@ -73,89 +74,98 @@ const ResumeForm = () => {
         {/* Bottom Content */}
         <div className="bottomCont flex flex-col gap-[2rem] p-[1.5rem]">
           {/* Tabs Info Cont */}
-          <div className="w-full relative bg-theme-red px-[1.5rem] py-[1.5rem] flex items-start gap-[1.5rem] text-white rounded-md">
-            <div className="iconCont text-[2rem]">
-              <PiLightbulbFilamentBold />
-            </div>
+          {isSuggestions && (
+            <div className="w-full relative bg-theme-red px-[1.5rem] py-[1.5rem] flex items-start gap-[1.5rem] text-white rounded-md">
+              <div className="iconCont text-[2rem]">
+                <PiLightbulbFilamentBold />
+              </div>
 
-            <div className="textCont flex flex-col gap-[0.4rem] text-[1.4rem] leading-[1.7rem] pr-[3rem]">
-              {activeTab === "Profile" ? (
-                <>
-                  <span>What's the best way for Employers to contact you?</span>
-                  <span>We suggest including an email and phone number.</span>
-                </>
-              ) : activeTab === "Experience" ? (
-                <>
-                  <span>Now, let's fill out your work history</span>
-                  <span>
-                    Here's what you need to know: Employers scan your resume for
-                    six seconds to decide if you're a match
-                  </span>
-                  <span>
-                    We'll suggest bullet points that make a great impression
-                  </span>
-                </>
-              ) : activeTab === "Education" ? (
-                <>
-                  <span>Tell us about your education</span>
-                  <span>
-                    Include every school, even if you're still there or didn't
-                    graduate.
-                  </span>
-                </>
-              ) : activeTab === "Skills" ? (
-                <>
-                  <span>Next, let's take care of your skills</span>
-                  <span>
-                    Here's what you need to know: Employers scan skills for
-                    relevant keywords,
-                  </span>
-                  <span>
-                    Enter 4-6 skills that are most relevant to your desired job.
-                  </span>
-                </>
-              ) : activeTab === "Summary" ? (
-                <>
-                  <span>
-                    Briefly describe the value that you bring through your
-                    skills, background and experience
-                  </span>
-                  <span>
-                    Write a career overview so that hiring managers can
-                    immediately see the value that you bring.
-                  </span>
-                </>
-              ) : activeTab === "Languages" ? (
-                <>
-                  <span>What languages do you Speak?</span>
-                  <span>.....</span>
-                </>
-              ) : activeTab === "Certifications" ? (
-                <>
-                  <span>Certifications</span>
-                  <span>Showcase your certifications to an employer</span>
-                </>
-              ) : (
-                activeTab === "Photo" && (
+              <div className="textCont flex flex-col gap-[0.4rem] text-[1.4rem] leading-[1.7rem] pr-[3rem]">
+                {activeTab === "Profile" ? (
                   <>
-                    <span>Photo / Social Links</span>
                     <span>
-                      Including a photo with your CV is not recommended when
-                      applying for jobs in the United Kingdom, the United States
-                      or Canada. Only use this template if you intend to apply
-                      for jobs outside these areas or have a specific need for a
-                      CV that includes a photo. Otherwise, please click the
-                      Finish button to Finish button to Download Resume.
+                      What's the best way for Employers to contact you?
+                    </span>
+                    <span>We suggest including an email and phone number.</span>
+                  </>
+                ) : activeTab === "Experience" ? (
+                  <>
+                    <span>Now, let's fill out your work history</span>
+                    <span>
+                      Here's what you need to know: Employers scan your resume
+                      for six seconds to decide if you're a match
+                    </span>
+                    <span>
+                      We'll suggest bullet points that make a great impression
                     </span>
                   </>
-                )
-              )}
-            </div>
+                ) : activeTab === "Education" ? (
+                  <>
+                    <span>Tell us about your education</span>
+                    <span>
+                      Include every school, even if you're still there or didn't
+                      graduate.
+                    </span>
+                  </>
+                ) : activeTab === "Skills" ? (
+                  <>
+                    <span>Next, let's take care of your skills</span>
+                    <span>
+                      Here's what you need to know: Employers scan skills for
+                      relevant keywords,
+                    </span>
+                    <span>
+                      Enter 4-6 skills that are most relevant to your desired
+                      job.
+                    </span>
+                  </>
+                ) : activeTab === "Summary" ? (
+                  <>
+                    <span>
+                      Briefly describe the value that you bring through your
+                      skills, background and experience
+                    </span>
+                    <span>
+                      Write a career overview so that hiring managers can
+                      immediately see the value that you bring.
+                    </span>
+                  </>
+                ) : activeTab === "Languages" ? (
+                  <>
+                    <span>What languages do you Speak?</span>
+                    <span>.....</span>
+                  </>
+                ) : activeTab === "Certifications" ? (
+                  <>
+                    <span>Certifications</span>
+                    <span>Showcase your certifications to an employer</span>
+                  </>
+                ) : (
+                  activeTab === "Links" && (
+                    <>
+                      <span>Social Links</span>
+                      <span>
+                        Including a photo with your CV is not recommended when
+                        applying for jobs in the United Kingdom, the United
+                        States or Canada. Only use this template if you intend
+                        to apply for jobs outside these areas or have a specific
+                        need for a CV that includes a links. Otherwise, please
+                        click the Finish button to Finish button to Download
+                        Resume.
+                      </span>
+                    </>
+                  )
+                )}
+              </div>
 
-            <button className="absolute top-[1rem] right-[1.5rem] text-white text-[2rem]">
-              <HiMiniXMark />
-            </button>
-          </div>
+              <button
+                onClick={() => setIsSuggestions(false)}
+                className="absolute top-[1rem] right-[1.5rem] text-white text-[2rem]"
+              >
+                <HiMiniXMark />
+              </button>
+            </div>
+          )}
 
           {/* Create Resume Forms */}
           {activeTab === "Profile" ? (
@@ -173,7 +183,7 @@ const ResumeForm = () => {
           ) : activeTab === "Certifications" ? (
             <CertificationForm setActiveTab={setActiveTab} />
           ) : (
-            activeTab === "Photo" && (
+            activeTab === "Links" && (
               <PhotoAndLinksForm setActiveTab={setActiveTab} />
             )
           )}

@@ -2,8 +2,10 @@ import React from "react";
 
 // Import React Icons
 import { IoMdPlay } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const Solution = () => {
+  const navigate = useNavigate();
   return (
     <div className="solutionCont w-full h-[60rem] bg-solution-bg-image bg-cover bg-center bg-no-repeat bg-[#333] bg-blend-multiply">
       <div className="solutionContWrapper h-full mx-[10%] flex items-center justify-between text-white">
@@ -22,7 +24,10 @@ const Solution = () => {
             designed resume templates. Get noticed, Get hired.
           </p>
 
-          <button className="text-[1.6rem] overflow-hidden leading-[1.6rem] bg-theme-red py-[1.5rem] px-[1.5rem] rounded-xl mt-[2rem] before:transition-all before:duration-[1200ms] relative z-[10] before:content-[''] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-yellow before:top-0 before:left-0  before:translate-x-[-125%]  hover:before:translate-x-[0%] before:rounded-2xl">
+          <button
+            onClick={() => navigate("/orderaresumeservice")}
+            className="text-[1.6rem] overflow-hidden leading-[1.6rem] bg-theme-red py-[1.5rem] px-[1.5rem] rounded-xl mt-[2rem] before:transition-all before:duration-[1200ms] relative z-[10] before:content-[''] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-yellow before:top-0 before:left-0  before:translate-x-[-125%]  hover:before:translate-x-[0%] before:rounded-2xl"
+          >
             ORDER A RESUME NOW
           </button>
         </div>
