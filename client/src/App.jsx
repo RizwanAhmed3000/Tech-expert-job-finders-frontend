@@ -36,9 +36,7 @@ import BlogsPage from "./pages/Dashboard/BlogsPage";
 import JobsAlert from "./pages/Dashboard/JobsAlert";
 import CreateNewResume from "./pages/Dashboard/CreateNewResume";
 import DashFeedback from "./pages/Dashboard/DashFeedback";
-
 import CreateNewCoverLetter from "./pages/Dashboard/CreateNewCoverLetter";
-
 import UserProfile from "./pages/Dashboard/Account/UserProfile";
 import EditUserProfile from "./pages/Dashboard/Account/EditUserProfile";
 import ChangeUserPassword from "./pages/Dashboard/Account/ChangeUserPassword";
@@ -52,6 +50,7 @@ import ResumeTemp02 from "./resumeTemplates/resumeTemp02";
 import ResumeTemp03 from "./resumeTemplates/resumeTemp03";
 import ResumeTemp04 from "./resumeTemplates/resumeTemp04";
 import ResumeEditFinish from "./pages/Dashboard/ResumeEditFinish";
+import DashWebsite from "./pages/Dashboard/DashWebsite";
 import CLTemplate03 from "./coverLetterTemplates/CLTemplate03";
 import CLTemplate04 from "./coverLetterTemplates/CLTemplate04";
 import CLTemplate05 from "./coverLetterTemplates/CLTemplate05";
@@ -59,7 +58,7 @@ import CLTemplate06 from "./coverLetterTemplates/CLTemplate06";
 
 const AuthenticatedRoutes = () => {
   const user = useSelector((state) => state.user.currentUser);
-  // console.log(user);
+  console.log(user);
   return (
     <>
       <Navbar />
@@ -133,7 +132,7 @@ const router = createBrowserRouter([
         element: <CoverLetter />,
       },
       {
-        path: "/websiteTemplate",
+        path: "/website",
         element: <WebsiteTemplate />,
       },
     ],
@@ -217,7 +216,11 @@ const router = createBrowserRouter([
         element: <CreateNewCoverLetter />,
       },
       {
-        path: "/app/coverletter/1",
+        path: "/app/website",
+        element: <DashWebsite />,
+      },
+      {
+        path: "/app/coverletter/6655085ce595b205733d8e95",
         element: <CLTemplate01 />,
       },
       {

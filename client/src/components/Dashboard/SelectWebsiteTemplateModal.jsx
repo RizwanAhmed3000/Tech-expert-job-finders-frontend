@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
 import SelectResumeTemplateListing from "./SelectResumeTemplateListing";
+import SelectWebsiteTemplateListing from "./SelectWebsiteTemplateListing";
+import EnterWebsiteResumeTitleModal from "./EnterWebsiteResumeTitleModal";
 
-function SelectResumeTemplateModal({ setIsResumeTemplateModalOpen }) {
+function SelectWebsiteTemplateModal({ setIsStartedModalOpen, setIsChooseTempModalOpen,setIsSelectResumeModalOpen  }) {
   const [activeTab, setActiveTab] = useState("free");
+
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
+  //  Use State Modal change UseEffect
+
 
   const getTabClassNames = (tabName) => {
     return activeTab === tabName ? "bg-red-500 text-white rounded-full" : "";
@@ -15,18 +20,18 @@ function SelectResumeTemplateModal({ setIsResumeTemplateModalOpen }) {
 
   return (
     <div className="fixed z-[100] inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[700px] relative scrollbar-light overflow-y-auto max-h-[90%]">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[700px] relative">
         <button
           className="absolute top-4 right-4"
-          onClick={() => setIsResumeTemplateModalOpen(false)}
+          onClick={() => {setIsChooseTempModalOpen(false), setIsStartedModalOpen(true)}}
         >
           <FiX className="text-theme-red" size={24} />
         </button>
-        <h2 className="text-center text-5xl font-semibold mb-4 text-theme-red">
-          Choose a Resume Template
+        <h2 className="text-center text-4xl font-semibold mb-4 text-theme-red">
+          Choose a Website Template
         </h2>
-        <h2 className="text-center text-2xl font-semibold mb-4 text-black">
-          The Template will be use for you personal resume
+        <h2 className="text-center text-xl font-semibold mb-4 text-black">
+          The Template will be use for you personal resume website.
         </h2>
         <hr />
         <div className="px-[6.5rem] py-[2rem]">
@@ -62,10 +67,16 @@ function SelectResumeTemplateModal({ setIsResumeTemplateModalOpen }) {
             id=""
           />
         </div>
-        <SelectResumeTemplateListing activeTab={activeTab} />
+        <SelectWebsiteTemplateListing
+          activeTab={activeTab}
+          setIsChooseTempModalOpen={setIsChooseTempModalOpen}
+          setIsSelectResumeModalOpen={setIsSelectResumeModalOpen}
+
+          
+        />
       </div>
     </div>
   );
 }
 
-export default SelectResumeTemplateModal;
+export default SelectWebsiteTemplateModal;

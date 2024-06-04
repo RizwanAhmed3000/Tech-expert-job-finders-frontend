@@ -153,9 +153,8 @@ const DashHomeSlider = () => {
             badge: false,
           },
         ].map(({ CardIcon, cardTitle, cardBgImage, badge, link }, index) => (
-          <Link to={link ? link : ""}>
+          <Link to={link ? link : ""} key={index}>
             <div
-              key={index}
               className="card min-w-[20rem] min-h-[20rem] relative z-[10] flex flex-col justify-center items-center gap-[2rem] bg-gray-400 rounded-xl cursor-pointer hover:scale-[1.02] group/trainerCard transition-all overflow-hidden"
               onClick={() => CardClickHandler(cardTitle)}
             >

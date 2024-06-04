@@ -10,14 +10,16 @@ import { ImBackward2, ImForward3 } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 
-const SummaryForm = () => {
+import Swal from 'sweetalert2'
+
+
+const SummaryForm = ({ setActiveTab }) => {
+
   const [selectSummaryText, setSelectSummaryText] = useState([]);
   const [summary, setSummary] = useState("");
 
   const dispatch = useDispatch();
-  const resumeData = useSelector(
-    (state) => state.resume.resumeAllData
-  );
+  const resumeData = useSelector((state) => state.resume.resumeAllData);
   console.log(resumeData);
 
   const handleEditorChange = (content, editor) => {
@@ -26,15 +28,28 @@ const SummaryForm = () => {
   };
   // console.log(summary);
 
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    setActiveTab("Skills");
+  };
+  const handleNext = (e) => {
+    e.preventDefault();
+    setActiveTab("Languages");
+  };
+
   const saveExperienceDataHandler = (e) => {
     e.preventDefault();
     console.log("save Experience handler is working");
     const payload = {
-        ...resumeData,
-        summary,
-      
+      ...resumeData,
+      summary,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Summary Data Saved Successfully!",
+    });
   };
   const editorRef = useRef(null);
 
@@ -174,7 +189,7 @@ const SummaryForm = () => {
         {/* Buttons Row */}
         <div className="btnRow w-full flex justify-between py-[1rem]">
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => handlePrevious(e)}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
@@ -182,18 +197,15 @@ const SummaryForm = () => {
           </button>
 
           <button
-            
             onClick={(e) => e.preventDefault()}
             className="bg-green-500 text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <TfiSave />
-            <span
-            onClick={saveExperienceDataHandler}
-            >Save</span>
+            <span onClick={saveExperienceDataHandler}>Save</span>
           </button>
 
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => handleNext(e)}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <span>Next</span>

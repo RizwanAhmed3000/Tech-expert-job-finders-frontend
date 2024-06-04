@@ -66,6 +66,7 @@ function SignUpForm() {
         icon: "error",
         title: "Oops...",
         text: "Email is Not Valid!",
+        timer: 1500
       });
 
   } else {

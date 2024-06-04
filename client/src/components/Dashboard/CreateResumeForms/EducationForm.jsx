@@ -10,7 +10,7 @@ import { TfiSave } from "react-icons/tfi";
 import { resumeSuccess } from "../../../Redux/Slices/resumeSlices";
 import { useDispatch, useSelector } from "react-redux";
 
-const EducationForm = () => {
+const EducationForm = ({ setActiveTab }) => {
   // const [isCheckCurrentStudy, setIsCheckCurrentStudy] = useState(false);
   // const [isSaveContent, setIsSaveContent] = useState(false);
   // const [schoolName, setSchoolName] = useState("");
@@ -22,7 +22,7 @@ const EducationForm = () => {
   // const [fieldOfStudy, setFieldOfStudy] = useState("");
 
   // // const [educationList, setEducationList] = useState([]);
-  
+
   // const dispatch = useDispatch();
   // const resumeData = useSelector((state) => state.resume.resumeAllData);
   // console.log(resumeData);
@@ -64,7 +64,6 @@ const EducationForm = () => {
   //   fieldOfStudy,
   // };
 
-  
   // const saveEducationDataHandler = (e) => {
   //   e.preventDefault();
   //   console.log("save Education handler is working");
@@ -164,7 +163,9 @@ const EducationForm = () => {
   const dispatch = useDispatch();
   const resumeData = useSelector((state) => state.resume.resumeAllData);
   const educationDataList = useSelector((state) => state.resume.resumeAllData);
-  const educationDataMap = useSelector((state) => state.resume.resumeAllData.educationData);
+  const educationDataMap = useSelector(
+    (state) => state.resume.resumeAllData.educationData
+  );
 
   // Corrected initialization of educationArray
   let educationArray = educationDataList.hasOwnProperty("educationData")
@@ -181,6 +182,15 @@ const EducationForm = () => {
     fieldOfStudy,
   };
 
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    setActiveTab("Experience");
+  };
+  const handleNext = (e) => {
+    e.preventDefault();
+    setActiveTab("Skills");
+  };
+
   const saveEducationDataHandler = (e) => {
     e.preventDefault();
     educationArray.push(educationObj);
@@ -189,6 +199,11 @@ const EducationForm = () => {
       educationData: educationArray,
     };
     dispatch(resumeSuccess(payload));
+    Swal.fire({
+      icon: "success",
+      title: "Good Job",
+      text: "Your Education Data Saved Successfully!",
+    });
   };
 
   const saveContent = (e) => {
@@ -259,35 +274,36 @@ const EducationForm = () => {
           </div>
 
           {/* Education Row */}
-          {educationDataMap?.map((edu,index) =>(
+          {educationDataMap?.map((edu, index) => (
             <div className="infoRowEducation grid grid-cols-12">
-            <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
-              degree and fieldOfStudy 
-              <h4 className="text-[1.4rem] font-normal text-neutral-800">
-               {`${edu.fieldOfStudy} -  ${edu.schoolName}`}
-              </h4>
-
-              {/* From and To */}
-              <p className="text-[1.4rem] font-normal text-neutral-800">
-                <span className="font-semibold">From : </span>{edu.educationStartDate}{" "}
-                <span className="font-semibold">To : </span>{edu.endEducationDate}
-              </p>
+              <div className="eduRowLeft py-[1.2rem] px-[1rem] col-span-8 border-r-[0.2rem] border-t-[0.2rem] flex flex-col gap-[0.2rem]">
+                degree and fieldOfStudy
+                <h4 className="text-[1.4rem] font-normal text-neutral-800">
+                  {`${edu.fieldOfStudy} -  ${edu.schoolName}`}
+                </h4>
+                {/* From and To */}
+                <p className="text-[1.4rem] font-normal text-neutral-800">
+                  <span className="font-semibold">From : </span>
+                  {edu.educationStartDate}{" "}
+                  <span className="font-semibold">To : </span>
+                  {edu.endEducationDate}
+                </p>
+              </div>
+              <div className="eduRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
+                <abbr
+                  title="Edit"
+                  className="bg-blue-500 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+                >
+                  <MdEdit />
+                </abbr>
+                <abbr
+                  title="Delete"
+                  className="bg-red-600 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
+                >
+                  <RiDeleteBin5Line />
+                </abbr>
+              </div>
             </div>
-            <div className="eduRowRight py-[1.2rem] px-[1.5rem] col-span-4 border-t-[0.2rem] flex items-start gap-[2rem] text-white">
-              <abbr
-                title="Edit"
-                className="bg-blue-500 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
-              >
-                <MdEdit />
-              </abbr>
-              <abbr
-                title="Delete"
-                className="bg-red-600 p-[0.7rem] rounded-md text-[1.7rem] cursor-pointer"
-              >
-                <RiDeleteBin5Line />
-              </abbr>
-            </div>
-          </div>
           ))}
         </div>
       </div>
@@ -450,7 +466,7 @@ const EducationForm = () => {
         {/* Buttons Row */}
         <div className="btnRow w-full flex justify-between py-[1rem]">
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => handlePrevious(e)}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <ImBackward2 size={20} />
@@ -482,7 +498,7 @@ const EducationForm = () => {
           )}
 
           <button
-            onClick={(e) => e.preventDefault()}
+            onClick={(e) => handleNext(e)}
             className="bg-theme-red text-white text-[1.5rem] px-[2rem] py-[1rem] flex items-center gap-[0.6rem] rounded-lg"
           >
             <span>Next</span>

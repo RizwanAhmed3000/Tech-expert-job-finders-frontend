@@ -10,8 +10,8 @@ import { FiX } from "react-icons/fi";
 
 const SelectResumeTemplateCard = ({ data, route, activeTab }) => {
   const dispatch = useDispatch();
-  const { _id } = data;
-
+  const { _id , previewImage} = data;
+console.log(_id);
   console.log(data);
   console.log(route);
   console.log(activeTab);
@@ -61,7 +61,7 @@ const SelectResumeTemplateCard = ({ data, route, activeTab }) => {
           <div className="wrapper bg-white p-4 object-cover">
             <Card.Img
               variant="top"
-              src={resumeTwo}
+              src={previewImage}
               className="object-contain rounded-lg"
             />
           </div>
@@ -78,7 +78,7 @@ const SelectResumeTemplateCard = ({ data, route, activeTab }) => {
           {activeTab !== "premium" ? (
             <Link to={route}>
               <button
-                onClick={dispatch(resumeSuccess({ templateId: _id }))}
+                // onClick={dispatch(resumeSuccess({ templateId: _id }))}
                 className="selectTemplateButton bg-neutral-700 py-[0.8rem] px-[1.5rem] text-[1.6rem] leading-[1.6rem] text-white rounded-md "
               >
                 Select
