@@ -1,6 +1,8 @@
 import React from "react";
 import banner from "../assets/sideban.png";
+import { useNavigate } from "react-router-dom";
 function ChooseUsSection() {
+  const navigate = useNavigate();
   return (
     <div className="flex  justify-center gap-x-24 py-40 ">
       <div className="w-[30%] pt-28">
@@ -16,7 +18,10 @@ function ChooseUsSection() {
           </span>{" "}
           for hundreds of jobs you can insert directly into your resume!
         </p>
-        <button className='bg-theme-red overflow-hidden w-1/3 p-6 text-2xl text-white rounded-2xl mt-24 before:transition-all before:duration-[1200ms] relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-yellow before:top-0 before:left-0  before:translate-x-[-125%]  hover:before:translate-x-[0%] before:rounded-2xl'>
+        <button
+          onClick={() => navigate("/login")}
+          className='bg-theme-red overflow-hidden w-1/3 p-6 text-2xl text-white rounded-2xl mt-24 before:transition-all before:duration-[1200ms] relative z-[10] before:content-[""] before:absolute before:z-[-1] before:w-full before:h-full before:bg-theme-yellow before:top-0 before:left-0  before:translate-x-[-125%]  hover:before:translate-x-[0%] before:rounded-2xl'
+        >
           Get Started
         </button>
       </div>

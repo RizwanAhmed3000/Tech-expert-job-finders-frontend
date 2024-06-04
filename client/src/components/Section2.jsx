@@ -86,13 +86,17 @@ const Section2 = () => {
       </div>
       <div className="flex justify-center gap-x-24 p-12 px-1/2">
         {featureCardContent.map((product, index) => (
-          <FeatureCards
+          <div
             key={index}
-            img={product.img}
-            head={product.head}
-            para={product.para}
-            btnText={product.btnText}
-          />
+            className="flex w-2/12 flex-col items-center  text-center justify-between bg-coral-light p-8 rounded-md group/card  hover:shadow-2xl hover:translate-y-[-1rem] transition-all duration-500"
+          >
+            <FeatureCards
+              img={product.img}
+              head={product.head}
+              para={product.para}
+              btnText={product.btnText}
+            />
+          </div>
         ))}
       </div>
       <div className="flex m-24">
@@ -107,25 +111,23 @@ const Section2 = () => {
       </div>
       <div className="flex justify-center mt-20">
         <div className="w-1/3">
-          <iframe
+          {/* <iframe
             width="100%"
             height="300"
             src="https://www.youtube.com/embed/b9Mpa6r5yDg"
             title="Build professional resume and cover letter for free"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+          ></iframe> */}
         </div>
         <div className="w-1/3 flex flex-wrap p-3">
           {featureAssistanceContent.map((product, index) => (
-            <FeatureAsistanceContent
-              key={index}
-              img={product.img}
-              head={product.head}
-              para={product.para}
-            />
+            <div key={index} className="w-3/6  h-fit p-3">
+              <FeatureAsistanceContent
+                img={product.img}
+                head={product.head}
+                para={product.para}
+              />
+            </div>
           ))}
         </div>
       </div>

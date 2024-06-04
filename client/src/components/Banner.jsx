@@ -8,8 +8,10 @@ import BannerParticle03 from "../assets/shapes/banner-particle-03.png";
 import BannerLaptop from "../assets/banner-image/laptop.png";
 import BannerTablet from "../assets/banner-image/tablet.png";
 import BannerMobile from "../assets/banner-image/mobile.png";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
+  const navigate = useNavigate();
   return (
     <div className="bannerCont relative z-0 w-full h-dvh">
       <img
@@ -20,17 +22,17 @@ const Banner = () => {
       <img
         src={BannerParticle01}
         alt="Particle-01"
-        className="absolute top-[40%] left-[1.5%] w-[6rem]"
+        className="absolute top-[40%] left-[1.5%] w-[6rem] animate-pulse"
       />
       <img
         src={BannerParticle02}
         alt="Particle-02"
-        className="absolute top-[55%] left-[2%] w-[15rem]"
+        className="absolute top-[60%] left-[2%] w-[15rem] animate-bounce"
       />
       <img
         src={BannerParticle03}
         alt="Particle-03"
-        className="absolute top-[17%] left-[12%] w-[2.2rem]"
+        className="absolute top-[17%] left-[12%] w-[2.2rem] animate-ping"
       />
 
       <div className="bannerWrapper relative z-[40] h-full flex items-center justify-between mx-[5%]">
@@ -57,7 +59,10 @@ const Banner = () => {
             fine-tuning expert content to match your individuality.
           </p>
 
-          <button className="text-[1.6rem] leading-[1.6rem] bg-theme-red text-white px-[1.5rem] py-[1.4rem] rounded-lg mt-[2.5rem]">
+          <button
+            onClick={() => navigate("/login")}
+            className="text-[1.6rem] leading-[1.6rem] bg-theme-red text-white px-[1.5rem] py-[1.4rem] rounded-lg mt-[2.5rem]"
+          >
             Get Started
           </button>
         </div>
