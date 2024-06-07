@@ -79,7 +79,7 @@ function SignUpForm() {
       // console.log(userCredential);
 
       try {
-        const response = await axios.post(`/api${SIGNUP_URL}`, userCredential);
+        const response = await axios.post(`https://tech-expert-api.up.railway.app/api${SIGNUP_URL}`, userCredential);
         console.log(response.data.data);
         // .data.data
         dispatch(signupSuccess(response.data.data));
