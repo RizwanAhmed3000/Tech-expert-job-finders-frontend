@@ -8,8 +8,8 @@ export default defineConfig({
     port: 8000,
     proxy: {
       "/api": {
-        target: "http://localhost:8800",
-        // target: "https://tech-expert-api.up.railway.app",
+        // target: "http://localhost:8800",
+        target: "https://tech-expert-api.up.railway.app",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, "/api"),
       },
